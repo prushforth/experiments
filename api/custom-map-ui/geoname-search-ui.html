@@ -123,7 +123,30 @@
 
     <mapml-viewer projection="OSMTILE" zoom="4" lat="58.276703" lon="-103.710938" controls controlslist="nofullscreen" id="map">
         <layer- label="OpenStreetMap" src="https://geogratis.gc.ca/mapml/en/osmtile/osm/" checked></layer->
-        <layer- label="Restaurants" src="restaurants/restaurants.mapml" checked></layer->
+        <layer- label="Restaurants" checked>
+          <map-meta name="projection" content="OSMTILE"></map-meta>
+          <map-meta name="cs" content="gcrs" ></map-meta>
+          <map-meta name="extent" content="top-left-easting=-8433179, top-left-northing=5689316, bottom-right-easting=-8420968, bottom-right-northing=5683139"></map-meta>
+          <map-extent units="OSMTILE">
+            <map-input type="zoom" name="fakezoom" min="0" max="22"></map-input>
+            <map-input name="xmin" type="location" rel="map" position="top-left" axis="easting" units="pcrs" min="-8433179" max="-8420968"/>
+            <map-input name="ymin" type="location" rel="map" position="bottom-left" axis="northing" units="pcrs" min="5683139" max="5689316"/>
+            <map-input name="xmax" type="location" rel="map" position="top-right" axis="easting" units="pcrs"  min="-8433179" max="-8420968"/>
+            <map-input name="ymax" type="location" rel="map" position="top-left" axis="northing" units="pcrs" min="5683139" max="5689316"/>
+            <map-input name="w" type="width" min="0" max="10000"/>
+            <map-input name="h" type="height" min="0" max="10000"/>
+              <map-select id="restaurants" name="type">
+                <map-option>restaurants</map-option>
+                <map-option>italian</map-option>
+                <map-option>african</map-option>
+                <map-option>asian</map-option>
+                <map-option>cajun</map-option>
+                <map-option>mexican</map-option>
+                <map-option>indian</map-option>
+              </map-select>
+              <map-link tref="./restaurants/{type}.mapml" rel="features"/>
+            </map-extent>
+        </layer->
     </mapml-viewer>
     
     <script>

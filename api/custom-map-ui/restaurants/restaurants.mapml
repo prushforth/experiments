@@ -10,24 +10,6 @@
         <map-meta name="extent" content="top-left-easting=-8433179, top-left-northing=5689316, bottom-right-easting=-8420968, bottom-right-northing=5683139"></map-meta>
     </map-head>
     <map-body>
-      <map-extent units="OSMTILE">
-        <map-input type="zoom" name="fakezoom" min="0" max="22"></map-input>
-        <map-input name="xmin" type="location" rel="map" position="top-left" axis="easting" units="pcrs" min="-8433179" max="-8420968"/>
-        <map-input name="ymin" type="location" rel="map" position="bottom-left" axis="northing" units="pcrs" min="5683139" max="5689316"/>
-        <map-input name="xmax" type="location" rel="map" position="top-right" axis="easting" units="pcrs"  min="-8433179" max="-8420968"/>
-        <map-input name="ymax" type="location" rel="map" position="top-left" axis="northing" units="pcrs" min="5683139" max="5689316"/>
-        <map-input name="w" type="width" min="0" max="10000"/>
-        <map-input name="h" type="height" min="0" max="10000"/>
-          <map-select id="restaurants" name="type">
-            <map-option label="Italian">italian</map-option>
-            <map-option label="African">african</map-option>
-            <map-option label="Asian">asian</map-option>
-            <map-option label="Cajun">cajun</map-option>
-            <map-option label="Mexican">mexican</map-option>
-            <map-option label="Indian">Indian</map-option>
-          </map-select>
-          <map-link tref="./{type}.mapml" rel="features"/>
-        </map-extent>
         <map-feature id="restaurant_map-point.77" class="restaurant_map-point">
           <map-featurecaption>Hung Sum Restaurant</map-featurecaption>
             <map-geometry>
