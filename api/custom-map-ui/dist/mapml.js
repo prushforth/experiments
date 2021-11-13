@@ -2635,22 +2635,22 @@
 
                     extentFallback.zoom = 0;
                     if (metaExtent){
-                      let content = M.metaContentToObject(metaExtent.getAttribute("content")), cs;
+                      let content = M.metaContentToObject(metaExtent.getAttribute("content"));
                       
                       extentFallback.zoom = content.zoom || extentFallback.zoom;
       
                       let metaKeys = Object.keys(content);
-                      for(let i =0;i<metaKeys.length;i++){
-                        if(!metaKeys[i].includes("zoom")){
-                          cs = M.axisToCS(metaKeys[i].split("-")[2]);
-                          break;
+                        for(let i =0;i<metaKeys.length;i++){
+                          if(!metaKeys[i].includes("zoom")){
+                            extentFallback.cs = M.axisToCS(metaKeys[i].split("-")[2]);
+                            break;
+                          }
                         }
-                      }
-                      let axes = M.csToAxes(cs);
-                      extentFallback.bounds = M.boundsToPCRSBounds(
-                        L.bounds(L.point(+content[`top-left-${axes[0]}`],+content[`top-left-${axes[1]}`]),
-                        L.point(+content[`bottom-right-${axes[0]}`],+content[`bottom-right-${axes[1]}`])),
-                        extentFallback.zoom, projection, cs);
+                        let axes = M.csToAxes(extentFallback.cs);
+                        extentFallback.bounds = M.boundsToPCRSBounds(
+                          L.bounds(L.point(+content[`top-left-${axes[0]}`],+content[`top-left-${axes[1]}`]),
+                          L.point(+content[`bottom-right-${axes[0]}`],+content[`bottom-right-${axes[1]}`])),
+                          extentFallback.zoom, projection, extentFallback.cs);
                       
                     } else {
                       extentFallback.bounds = M[projection].options.crs.pcrs.bounds;
@@ -2751,6 +2751,7 @@
                           type: ttype, 
                           values: inputs, 
                           zoomBounds:zoomBounds, 
+                          extentFallback: extentFallback,
                           projectionMatch: projectionMatch || selectedAlternate,
                           projection:serverExtent.getAttribute("units") || FALLBACK_PROJECTION,
                           tms:tms,
@@ -4364,8 +4365,8 @@
       if(!template) return undefined;
 
       //sets variables with their respective fallback values incase content is missing from the template
-      let inputs = template.values, projection = template.projection || FALLBACK_PROJECTION, value = 0, boundsUnit = FALLBACK_CS;
-      let bounds = this[projection].options.crs.tilematrix.bounds(0), nMinZoom = 0, nMaxZoom = this[projection].options.resolutions.length - 1;
+        let inputs = template.values, projection = template.projection || FALLBACK_PROJECTION, value = 0, boundsUnit = template.extentFallback.cs || FALLBACK_CS;
+        let bounds = template.extentFallback.bounds || this[projection].options.crs.tilematrix.bounds(0), nMinZoom = 0, nMaxZoom = this[projection].options.resolutions.length - 1;
       if(!template.zoomBounds){
         template.zoomBounds ={};
         template.zoomBounds.min=0;
