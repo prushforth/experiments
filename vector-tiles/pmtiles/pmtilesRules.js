@@ -19,6 +19,22 @@ class SpearfishSymbolizer {
 }
 const pmtilesRules = new Map();
 pmtilesRules.set(
+  'https://data.source.coop/protomaps/openstreetmap/tiles/v3.pmtiles',
+  { theme: { theme: 'light' } }
+);
+pmtilesRules.set(
+  'https://maps4html.org/experiments/vector-tiles/pmtiles/spearfish.pmtiles?theme=light',
+  { theme: { theme: 'light' } }
+);
+pmtilesRules.set(
+  'https://maps4html.org/experiments/vector-tiles/pmtiles/spearfish.pmtiles?theme=dark',
+  { theme: { theme: 'dark' } }
+);
+pmtilesRules.set(
+  'https://api.protomaps.com/tiles/v3/{z}/{x}/{y}.mvt?key=41392fb7515533a5',
+  { theme: { theme: 'light' } }
+);
+pmtilesRules.set(
   'http://localhost:8080/geoserver/gwc/service/wmts/rest/spearfish/OSMTILE/{z}/{y}/{x}?format=application/vnd.mapbox-vector-tile',
   {
     rules: {
