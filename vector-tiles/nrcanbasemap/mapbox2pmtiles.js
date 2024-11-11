@@ -84,8 +84,12 @@ const sheet = new protomapsL.Sheet(\`
     } else if (layer.type === 'fill') {
       symbolizerExpr = `new protomapsL.PolygonSymbolizer({ fill: '${paint['fill-color']}', outlineColor: '${paint['fill-outline-color'] || '#000000'}' })`;
     } else if (layer.type === 'symbol' && layout['icon-image']) {
-      const iconId = layout['icon-image'].replace(/[^a-zA-Z0-9_]/g, '_');
-      symbolizerExpr = `new protomapsL.IconSymbolizer({ name: '${iconId}', sheet: sheet })`;
+      let iconId = layout['icon-image'];
+
+      // Handle dynamic icon names by replacing placeholders
+      iconId = iconId.replace(/{([^}]+)}/g, (_, propName) => `\${f.props.${propName}}`).replace(/[^a-zA-Z0-9_]/g, '_');
+
+      symbolizerExpr = `new protomapsL.IconSymbolizer({ name: \`${iconId}\`, sheet: sheet })`;
     } else if (layer.type === 'symbol' && layout['text-field']) {
       const fontSize = getNumericValue(layout['text-size'], 12);
       symbolizerExpr = `new protomapsL.CenteredTextSymbolizer({
