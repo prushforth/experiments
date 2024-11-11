@@ -2549,728 +2549,728 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Dam/(9-24)/Polygon',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Dam__9_24__Polygon_0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Dam__9_24__Polygon_0', sheet: sheet }),
           minZoom: 9,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Hydro Obstacle/(9-24)/Polygon',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Hydro_Features_Hydro_Obstacle__9_24__Polygon_Reef_or_Rocks`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Hydro_Features_Hydro_Obstacle__9_24__Polygon_Reef_or_Rocks', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Transport Features/Runway/(11-24)/Polygon',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Runway__11_24__Polygon_Official_0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Runway__11_24__Polygon_Official_0', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Transport Features/Runway/(11-24)/Polygon',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Runway__11_24__Polygon_Non_Official_0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Runway__11_24__Polygon_Non_Official_0', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Contours/(9-11)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Elevation_Features_Contours__9_11__Derived_0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Elevation_Features_Contours__9_11__Derived_0', sheet: sheet }),
           minZoom: 9,
           maxZoom: 11
         },
         
         {
           dataLayer: 'Contours/(11-24)/Other',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Elevation_Features_Contours__11_24__Other_Depression_0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Elevation_Features_Contours__11_24__Other_Depression_0', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Contours/(11-24)/Index',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Elevation_Features_Contours__11_24__Index_Depression_0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Elevation_Features_Contours__11_24__Index_Depression_0', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Trail/(10-24)/Bridge',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Trail__10_24__Bridge_0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Trail__10_24__Bridge_0', sheet: sheet }),
           minZoom: 14,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Road Ferry/(3-4)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Road_Ferry__3_4__1`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Road_Ferry__3_4__1', sheet: sheet }),
           minZoom: 3,
           maxZoom: 4
         },
         
         {
           dataLayer: 'Road Ferry/(3-4)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Road_Ferry__3_4__0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Road_Ferry__3_4__0', sheet: sheet }),
           minZoom: 3,
           maxZoom: 4
         },
         
         {
           dataLayer: 'Road Ferry/(4-7)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Road_Ferry__4_7__1`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Road_Ferry__4_7__1', sheet: sheet }),
           minZoom: 4,
           maxZoom: 7
         },
         
         {
           dataLayer: 'Road Ferry/(4-7)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Road_Ferry__4_7__0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Road_Ferry__4_7__0', sheet: sheet }),
           minZoom: 4,
           maxZoom: 7
         },
         
         {
           dataLayer: 'Road Ferry/(7-9)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Road_Ferry__7_9__1`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Road_Ferry__7_9__1', sheet: sheet }),
           minZoom: 7,
           maxZoom: 9
         },
         
         {
           dataLayer: 'Road Ferry/(7-9)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Road_Ferry__7_9__0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Road_Ferry__7_9__0', sheet: sheet }),
           minZoom: 7,
           maxZoom: 9
         },
         
         {
           dataLayer: 'Road Ferry/(9-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Road_Ferry__9_24__1`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Road_Ferry__9_24__1', sheet: sheet }),
           minZoom: 9,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Road Ferry/(9-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Road_Ferry__9_24__0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Road_Ferry__9_24__0', sheet: sheet }),
           minZoom: 9,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Rail Ferry/(9-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Rail_Ferry__9_24__1`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Rail_Ferry__9_24__1', sheet: sheet }),
           minZoom: 9,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Rail Ferry/(9-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Rail_Ferry__9_24__0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Rail_Ferry__9_24__0', sheet: sheet }),
           minZoom: 9,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Esker/(9-11)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Land_Features_Esker__9_11__1`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Land_Features_Esker__9_11__1', sheet: sheet }),
           minZoom: 9,
           maxZoom: 11
         },
         
         {
           dataLayer: 'Esker/(9-11)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Land_Features_Esker__9_11__0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Land_Features_Esker__9_11__0', sheet: sheet }),
           minZoom: 9,
           maxZoom: 11
         },
         
         {
           dataLayer: 'Esker/(11-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Land_Features_Esker__11_24__1`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Land_Features_Esker__11_24__1', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Esker/(11-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Land_Features_Esker__11_24__0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Land_Features_Esker__11_24__0', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Hydro Obstacle/(9-24)/Line',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Hydro_Features_Hydro_Obstacle__9_24__Line_Falls_0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Hydro_Features_Hydro_Obstacle__9_24__Line_Falls_0', sheet: sheet }),
           minZoom: 9,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Hydro Obstacle/(9-24)/Line',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Hydro_Features_Hydro_Obstacle__9_24__Line_Rapids_0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Hydro_Features_Hydro_Obstacle__9_24__Line_Rapids_0', sheet: sheet }),
           minZoom: 9,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Dam/(12-24)/Line',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Dam__12_24__Line_3`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Dam__12_24__Line_3', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Dam/(12-24)/Line',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Dam__12_24__Line_2`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Dam__12_24__Line_2', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Protection Structure/(9-11)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Protection_Structure__9_11__Dyke_or_Levee_3`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Protection_Structure__9_11__Dyke_or_Levee_3', sheet: sheet }),
           minZoom: 9,
           maxZoom: 11
         },
         
         {
           dataLayer: 'Protection Structure/(9-11)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Protection_Structure__9_11__Dyke_or_Levee_2`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Protection_Structure__9_11__Dyke_or_Levee_2', sheet: sheet }),
           minZoom: 9,
           maxZoom: 11
         },
         
         {
           dataLayer: 'Protection Structure/(11-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Protection_Structure__11_24__Dyke_or_Levee_3`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Protection_Structure__11_24__Dyke_or_Levee_3', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Protection Structure/(11-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Protection_Structure__11_24__Dyke_or_Levee_2`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Protection_Structure__11_24__Dyke_or_Levee_2', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Track/(2-3)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Track_Segment_Track__2_3__0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Track__2_3__0', sheet: sheet }),
           minZoom: 2,
           maxZoom: 3
         },
         
         {
           dataLayer: 'Track/(3-4)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Track_Segment_Track__3_4__0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Track__3_4__0', sheet: sheet }),
           minZoom: 3,
           maxZoom: 4
         },
         
         {
           dataLayer: 'Track/(6-7)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Track_Segment_Track__6_7__0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Track__6_7__0', sheet: sheet }),
           minZoom: 6,
           maxZoom: 7
         },
         
         {
           dataLayer: 'Track/(5-7)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Track_Segment_Track__5_7__0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Track__5_7__0', sheet: sheet }),
           minZoom: 5,
           maxZoom: 7
         },
         
         {
           dataLayer: 'Track/(4-7)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Track_Segment_Track__4_7__0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Track__4_7__0', sheet: sheet }),
           minZoom: 4,
           maxZoom: 7
         },
         
         {
           dataLayer: 'Track/(7-9)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Track_Segment_Track__7_9__0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Track__7_9__0', sheet: sheet }),
           minZoom: 7,
           maxZoom: 9
         },
         
         {
           dataLayer: 'Track/(9-15)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Track_Segment_Track__9_15__Not_Identified_0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Track__9_15__Not_Identified_0', sheet: sheet }),
           minZoom: 9,
           maxZoom: 15
         },
         
         {
           dataLayer: 'Track/(9-15)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Track_Segment_Track__9_15__Discontinued_0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Track__9_15__Discontinued_0', sheet: sheet }),
           minZoom: 9,
           maxZoom: 15
         },
         
         {
           dataLayer: 'Track/(9-15)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Track_Segment_Track__9_15__Operational_0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Track__9_15__Operational_0', sheet: sheet }),
           minZoom: 9,
           maxZoom: 15
         },
         
         {
           dataLayer: 'Other/(10-15)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Track_Segment_Other__10_15__0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Other__10_15__0', sheet: sheet }),
           minZoom: 10,
           maxZoom: 15
         },
         
         {
           dataLayer: 'Track/(15-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Track_Segment_Track__15_24__Not_Identified_0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Track__15_24__Not_Identified_0', sheet: sheet }),
           minZoom: 15,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Track/(15-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Track_Segment_Track__15_24__Discontinued_0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Track__15_24__Discontinued_0', sheet: sheet }),
           minZoom: 15,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Track/(15-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Track_Segment_Track__15_24__Operational_0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Track__15_24__Operational_0', sheet: sheet }),
           minZoom: 15,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Other/(15-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Track_Segment_Other__15_24__0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Other__15_24__0', sheet: sheet }),
           minZoom: 15,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Aerial Cableway/(13-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Aerial_Cableway__13_24__0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Aerial_Cableway__13_24__0', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Power Line/(12-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Resource_Management_Features_Power_Line__12_24__Aboveground`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Resource_Management_Features_Power_Line__12_24__Aboveground', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Power Line/(12-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Resource_Management_Features_Power_Line__12_24__Underground_Underwater_0`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Resource_Management_Features_Power_Line__12_24__Underground_Underwater_0', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24
         },
         
         {
           dataLayer: 'World/Populated Places/Point/(4-7)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `World_Populated_Places_Point__4_7__Capital`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'World_Populated_Places_Point__4_7__Capital', sheet: sheet }),
           minZoom: 4,
           maxZoom: 7
         },
         
         {
           dataLayer: 'World/Populated Places/Point/(4-7)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `World_Populated_Places_Point__4_7__Regional_Capital`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'World_Populated_Places_Point__4_7__Regional_Capital', sheet: sheet }),
           minZoom: 4,
           maxZoom: 7
         },
         
         {
           dataLayer: 'World/Populated Places/Point/(4-7)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `World_Populated_Places_Point__4_7__Populated_place`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'World_Populated_Places_Point__4_7__Populated_place', sheet: sheet }),
           minZoom: 4,
           maxZoom: 7
         },
         
         {
           dataLayer: 'Land Features/Pingo/(10-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Land_Features_Pingo__10_24_`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Land_Features_Pingo__10_24_', sheet: sheet }),
           minZoom: 10,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Protection Structure/(12-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Protection_Structure__12_24__Fish_Ladder`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Protection_Structure__12_24__Fish_Ladder', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Protection Structure/(12-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Protection_Structure__12_24__Not_Identified`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Protection_Structure__12_24__Not_Identified', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Chimney/(10-11)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Chimney__10_11_`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Chimney__10_11_', sheet: sheet }),
           minZoom: 10,
           maxZoom: 11
         },
         
         {
           dataLayer: 'Buildings/(11-12)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Buildings__11_12_`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Buildings__11_12_', sheet: sheet }),
           minZoom: 11,
           maxZoom: 12
         },
         
         {
           dataLayer: 'Buildings/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Buildings__11_24__Point_Coast_Guard_Station`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Buildings__11_24__Point_Coast_Guard_Station', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Buildings/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Buildings__11_24__Point_Fire_Station`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Buildings__11_24__Point_Fire_Station', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Buildings/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Buildings__11_24__Point_Hospital`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Buildings__11_24__Point_Hospital', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Buildings/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Buildings__11_24__Point_Medical_Centre`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Buildings__11_24__Point_Medical_Centre', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Buildings/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Buildings__11_24__Point_Police_Station`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Buildings__11_24__Point_Police_Station', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Buildings/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Buildings__11_24__Point_Religious_Building`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Buildings__11_24__Point_Religious_Building', sheet: sheet }),
           minZoom: 14,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Buildings/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Buildings__11_24__Point_Customs_Post`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Buildings__11_24__Point_Customs_Post', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Buildings/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Buildings__11_24__Point_Educational_Building`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Buildings__11_24__Point_Educational_Building', sheet: sheet }),
           minZoom: 14,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Buildings/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Buildings__11_24__Point_Municipal_Hall`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Buildings__11_24__Point_Municipal_Hall', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Tower/(13-24)/Water',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Tower__13_24__Water`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Tower__13_24__Water', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Tower/(11-13)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Tower__11_13_`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Tower__11_13_', sheet: sheet }),
           minZoom: 11,
           maxZoom: 13
         },
         
         {
           dataLayer: 'Tower/(13-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Tower__13_24__Communication`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Tower__13_24__Communication', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Tower/(13-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Tower__13_24__Control`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Tower__13_24__Control', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Tower/(13-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Tower__13_24__Fire`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Tower__13_24__Fire', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Tower/(13-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Tower__13_24__Lookout`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Tower__13_24__Lookout', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Tower/(13-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Tower__13_24__Power`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Tower__13_24__Power', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Tower/(13-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Tower__13_24__Not_Identified`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Tower__13_24__Not_Identified', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Dam/(9-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Dam__9_24__Point`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Dam__9_24__Point', sheet: sheet }),
           minZoom: 10,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Hydro Obstacle/(13-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Hydro_Features_Hydro_Obstacle__13_24__Point_Exposed_Shipwreck`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Hydro_Features_Hydro_Obstacle__13_24__Point_Exposed_Shipwreck', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Hydro Obstacle/(13-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Hydro_Features_Hydro_Obstacle__13_24__Point_Falls`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Hydro_Features_Hydro_Obstacle__13_24__Point_Falls', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Hydro Obstacle/(13-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Hydro_Features_Hydro_Obstacle__13_24__Point_Ford`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Hydro_Features_Hydro_Obstacle__13_24__Point_Ford', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Hydro Obstacle/(13-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Hydro_Features_Hydro_Obstacle__13_24__Point_Not_Identified`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Hydro_Features_Hydro_Obstacle__13_24__Point_Not_Identified', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Hydro Obstacle/(13-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Hydro_Features_Hydro_Obstacle__13_24__Point_Rapids`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Hydro_Features_Hydro_Obstacle__13_24__Point_Rapids', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Hydro Obstacle/(13-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Hydro_Features_Hydro_Obstacle__13_24__Point_Rocks`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Hydro_Features_Hydro_Obstacle__13_24__Point_Rocks', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Hydro Obstacle/(13-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Hydro_Features_Hydro_Obstacle__13_24__Point_Sink`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Hydro_Features_Hydro_Obstacle__13_24__Point_Sink', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Runway/(10-11)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Runway__10_11__Other`, sheet: sheet }),
-          minZoom: 10,
-          maxZoom: 11
-        },
-        
-        {
-          dataLayer: 'Runway/(10-11)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Runway__10_11__Hydroaerodrome`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Runway__10_11__Other', sheet: sheet }),
           minZoom: 10,
           maxZoom: 11
         },
         
         {
           dataLayer: 'Runway/(10-11)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Runway__10_11__Heliport`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Runway__10_11__Hydroaerodrome', sheet: sheet }),
+          minZoom: 10,
+          maxZoom: 11
+        },
+        
+        {
+          dataLayer: 'Runway/(10-11)',
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Runway__10_11__Heliport', sheet: sheet }),
           minZoom: 10,
           maxZoom: 11
         },
         
         {
           dataLayer: 'Runway/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Runway__11_24__Point_Airport`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Runway__11_24__Point_Airport', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Runway/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Runway__11_24__Point_Seaplane_Base`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Runway__11_24__Point_Seaplane_Base', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Runway/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Runway__11_24__Point_Heliport`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Runway__11_24__Point_Heliport', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Navigational Aid/(11-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Navigational_Aid__11_24__Navigation_Beacon`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Navigational_Aid__11_24__Navigation_Beacon', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Navigational Aid/(11-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Navigational_Aid__11_24__Navigation_Light`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Navigational_Aid__11_24__Navigation_Light', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Marina/(11-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Marina__11_24_`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Marina__11_24_', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Nautical Facility/(11-24)/Lock Gate/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Nautical_Facility__11_24__Lock_Gate_Point`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Nautical_Facility__11_24__Lock_Gate_Point', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Electric Power Station/(13-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Resource_Management_Features_Electric_Power_Station__13_24_`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Resource_Management_Features_Electric_Power_Station__13_24_', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Ore/(11-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Resource_Management_Features_Ore__11_24_`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Resource_Management_Features_Ore__11_24_', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Oil and Gas Site/(10-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Resource_Management_Features_Oil_and_Gas_Site__10_24__Point`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Resource_Management_Features_Oil_and_Gas_Site__10_24__Point', sheet: sheet }),
           minZoom: 10,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Wind-operated device/(11-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Resource_Management_Features_Wind_operated_device__11_24_`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Resource_Management_Features_Wind_operated_device__11_24_', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Ritual and Cultural Area/Cemetery/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Ritual_and_Cultural_Area_Cemetery__11_24__Point`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Ritual_and_Cultural_Area_Cemetery__11_24__Point', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Leisure Area/(12-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Leisure_Area__12_24__Point_Campground`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Leisure_Area__12_24__Point_Campground', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Leisure Area/(12-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Leisure_Area__12_24__Point_Ski_Centre`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Leisure_Area__12_24__Point_Ski_Centre', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Leisure Area/(12-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Leisure_Area__12_24__Point_Golf_Course`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Leisure_Area__12_24__Point_Golf_Course', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Landmark Feature/Lookout/(14-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Man_made_Features_Landmark_Feature_Lookout__14_24_`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Landmark_Feature_Lookout__14_24_', sheet: sheet }),
           minZoom: 14,
           maxZoom: 24
         },
         
         {
           dataLayer: 'USA Capitals/(7-18)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Toponymic_Features_Named_Feature_USA_Capitals__7_18__Washington`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Toponymic_Features_Named_Feature_USA_Capitals__7_18__Washington', sheet: sheet }),
           minZoom: 7,
           maxZoom: 18
         },
         
         {
           dataLayer: 'USA Capitals/(7-18)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Toponymic_Features_Named_Feature_USA_Capitals__7_18__State_Capital`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Toponymic_Features_Named_Feature_USA_Capitals__7_18__State_Capital', sheet: sheet }),
           minZoom: 7,
           maxZoom: 18
         },
         
         {
           dataLayer: 'Provincial Capitals/(2-18)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Toponymic_Features_Named_Feature_Provincial_Capitals__2_18_`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Toponymic_Features_Named_Feature_Provincial_Capitals__2_18_', sheet: sheet }),
           minZoom: 2,
           maxZoom: 18
         },
         
         {
           dataLayer: 'Ottawa/(2-18)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Toponymic_Features_Named_Feature_Ottawa__2_18_`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Toponymic_Features_Named_Feature_Ottawa__2_18_', sheet: sheet }),
           minZoom: 2,
           maxZoom: 18
         },
         
         {
           dataLayer: 'Road Segment/(7-9)/label',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Road_Segment__7_9__Numbered___f_props__len_`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Road_Segment__7_9__Numbered___len_', sheet: sheet }),
           minZoom: 7,
           maxZoom: 9
         },
@@ -5617,21 +5617,21 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Road Segment/(9-15)/Road/label',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Road_Segment__9_15__Road_Route_Number___f_props__len_`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Road_Segment__9_15__Road_Route_Number___len_', sheet: sheet }),
           minZoom: 9,
           maxZoom: 15
         },
         
         {
           dataLayer: 'Road Segment/(9-15)/Tunnel/label',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Road_Segment__9_15__Tunnel_Route_Number___f_props__len_`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Road_Segment__9_15__Tunnel_Route_Number___len_', sheet: sheet }),
           minZoom: 9,
           maxZoom: 15
         },
         
         {
           dataLayer: 'Road Segment/(15-24)/Road/label',
-          symbolizer: new protomapsL.IconSymbolizer({ name: `Transport_Features_Road_Segment__15_24__Road_Route_Number___f_props__len_`, sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Road_Segment__15_24__Road_Route_Number___len_', sheet: sheet }),
           minZoom: 15,
           maxZoom: 24
         },
