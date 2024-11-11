@@ -1630,21 +1630,21 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Dam/(12-24)/Line',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#FFFFFF', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#FFFFFF', width: 3.02362 }),
           minZoom: 12,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Dam/(12-24)/Line',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#828282', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#828282', width: 0.755904 }),
           minZoom: 12,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Dam/(12-24)/Line',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#828282', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#828282', width: 0.755904 }),
           minZoom: 12,
           maxZoom: 24
         },
@@ -1728,28 +1728,28 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Pipeline/(9-24)',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#999999', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#999999', width: 4.66667 }),
           minZoom: 9,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Pipeline/(9-24)',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#FFFFFF', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#FFFFFF', width: 2.70968 }),
           minZoom: 9,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Pipeline/(9-24)',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#CCCCCC', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#CCCCCC', width: 4.66667 }),
           minZoom: 9,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Pipeline/(9-24)',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#FFFFFF', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#FFFFFF', width: 2.70968 }),
           minZoom: 9,
           maxZoom: 24
         },
@@ -1896,21 +1896,21 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Road Segment/(9-15)/Road',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2B600', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2B600', width: 1.33333 }),
           minZoom: 9,
           maxZoom: 15
         },
         
         {
           dataLayer: 'Road Segment/(9-15)/Road',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2C749', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2C749', width: 1.33333 }),
           minZoom: 9,
           maxZoom: 15
         },
         
         {
           dataLayer: 'Road Segment/(9-15)/Road',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#D9A300', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#D9A300', width: 2.33333 }),
           minZoom: 9,
           maxZoom: 15
         },
@@ -1931,7 +1931,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Road Segment/(9-15)/Road',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2B600', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2B600', width: 1.33333 }),
           minZoom: 9,
           maxZoom: 15
         },
@@ -1959,119 +1959,63 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Road Segment/(9-15)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2B600', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2B600', width: 1.33333 }),
           minZoom: 9,
           maxZoom: 15
         },
         
         {
           dataLayer: 'Road Segment/(9-15)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2C749', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2C749', width: 2.26667 }),
           minZoom: 9,
           maxZoom: 15
         },
         
         {
           dataLayer: 'Road Segment/(9-15)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#D9A300', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#D9A300', width: 2.33333 }),
           minZoom: 9,
           maxZoom: 15
         },
         
         {
           dataLayer: 'Road Segment/(9-15)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#D9A300', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#D9A300', width: 4.66667 }),
           minZoom: 9,
           maxZoom: 15
         },
         
         {
           dataLayer: 'Road Segment/(9-15)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: 2.33319 }),
           minZoom: 9,
           maxZoom: 15
         },
         
         {
           dataLayer: 'Road Segment/(9-15)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: 2.33319 }),
           minZoom: 9,
           maxZoom: 15
         },
         
         {
           dataLayer: 'Road Segment/(9-15)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: 1 }),
           minZoom: 9,
           maxZoom: 15
         },
         
         {
           dataLayer: 'Road Segment/(9-15)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: 1 }),
           minZoom: 9,
           maxZoom: 15
         },
         
         {
           dataLayer: 'Road Segment/(9-15)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2B600', width: [object Object] }),
-          minZoom: 9,
-          maxZoom: 15
-        },
-        
-        {
-          dataLayer: 'Road Segment/(9-15)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: [object Object] }),
-          minZoom: 9,
-          maxZoom: 15
-        },
-        
-        {
-          dataLayer: 'Road Segment/(9-15)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: [object Object] }),
-          minZoom: 9,
-          maxZoom: 15
-        },
-        
-        {
-          dataLayer: 'Road Segment/(9-15)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: [object Object] }),
-          minZoom: 9,
-          maxZoom: 15
-        },
-        
-        {
-          dataLayer: 'Road Segment/(9-15)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: [object Object] }),
-          minZoom: 9,
-          maxZoom: 15
-        },
-        
-        {
-          dataLayer: 'Road Segment/(9-15)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: [object Object] }),
-          minZoom: 9,
-          maxZoom: 15
-        },
-        
-        {
-          dataLayer: 'Road Segment/(9-15)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: [object Object] }),
-          minZoom: 9,
-          maxZoom: 15
-        },
-        
-        {
-          dataLayer: 'Road Segment/(9-15)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: [object Object] }),
-          minZoom: 9,
-          maxZoom: 15
-        },
-        
-        {
-          dataLayer: 'Road Segment/(9-15)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2B600', width: 4.4 }),
           minZoom: 9,
           maxZoom: 15
         },
@@ -2120,7 +2064,63 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Road Segment/(9-15)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2B600', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: 1 }),
+          minZoom: 9,
+          maxZoom: 15
+        },
+        
+        {
+          dataLayer: 'Road Segment/(9-15)/Tunnel',
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: 1 }),
+          minZoom: 9,
+          maxZoom: 15
+        },
+        
+        {
+          dataLayer: 'Road Segment/(9-15)/Tunnel',
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: 1 }),
+          minZoom: 9,
+          maxZoom: 15
+        },
+        
+        {
+          dataLayer: 'Road Segment/(9-15)/Tunnel',
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: 1 }),
+          minZoom: 9,
+          maxZoom: 15
+        },
+        
+        {
+          dataLayer: 'Road Segment/(9-15)/Tunnel',
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: 1 }),
+          minZoom: 9,
+          maxZoom: 15
+        },
+        
+        {
+          dataLayer: 'Road Segment/(9-15)/Tunnel',
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: 1 }),
+          minZoom: 9,
+          maxZoom: 15
+        },
+        
+        {
+          dataLayer: 'Road Segment/(9-15)/Tunnel',
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: 1 }),
+          minZoom: 9,
+          maxZoom: 15
+        },
+        
+        {
+          dataLayer: 'Road Segment/(9-15)/Tunnel',
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: 1 }),
+          minZoom: 9,
+          maxZoom: 15
+        },
+        
+        {
+          dataLayer: 'Road Segment/(9-15)/Tunnel',
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2B600', width: 1.33333 }),
           minZoom: 9,
           maxZoom: 15
         },
@@ -2134,7 +2134,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Road Segment/(15-24)/Road',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2C749', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2C749', width: 1.33333 }),
           minZoom: 15,
           maxZoom: 24
         },
@@ -2148,42 +2148,42 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Road Segment/(15-24)/Road',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2B500', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2B500', width: 1.33333 }),
           minZoom: 15,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Road Segment/(15-24)/Road',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2C749', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2C749', width: 2.26667 }),
           minZoom: 15,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Road Segment/(15-24)/Road',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2B500', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2B500', width: 2.26667 }),
           minZoom: 15,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Road Segment/(15-24)/Road',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2B600', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2B600', width: 4.66667 }),
           minZoom: 15,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Road Segment/(15-24)/Road',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#D9A200', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#D9A200', width: 10.6667 }),
           minZoom: 15,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Road Segment/(15-24)/Road',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#F8F7F2', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#F8F7F2', width: 5.33333 }),
           minZoom: 15,
           maxZoom: 24
         },
@@ -2197,7 +2197,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Road Segment/(15-24)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2C749', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2C749', width: 1.33333 }),
           minZoom: 15,
           maxZoom: 24
         },
@@ -2211,112 +2211,56 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Road Segment/(15-24)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2B500', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2B500', width: 1.33333 }),
           minZoom: 15,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Road Segment/(15-24)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2C749', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2C749', width: 2.26667 }),
           minZoom: 15,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Road Segment/(15-24)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2B500', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2B500', width: 2.26667 }),
           minZoom: 15,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Road Segment/(15-24)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#F8F7F2', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#F8F7F2', width: 5.33333 }),
           minZoom: 15,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Road Segment/(15-24)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2B600', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#F2B600', width: 4.66667 }),
           minZoom: 15,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Road Segment/(15-24)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: 0.707071 }),
           minZoom: 15,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Road Segment/(15-24)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: 0.707071 }),
           minZoom: 15,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Road Segment/(15-24)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#D9A200', width: [object Object] }),
-          minZoom: 15,
-          maxZoom: 24
-        },
-        
-        {
-          dataLayer: 'Road Segment/(15-24)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: [object Object] }),
-          minZoom: 15,
-          maxZoom: 24
-        },
-        
-        {
-          dataLayer: 'Road Segment/(15-24)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: [object Object] }),
-          minZoom: 15,
-          maxZoom: 24
-        },
-        
-        {
-          dataLayer: 'Road Segment/(15-24)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: [object Object] }),
-          minZoom: 15,
-          maxZoom: 24
-        },
-        
-        {
-          dataLayer: 'Road Segment/(15-24)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: [object Object] }),
-          minZoom: 15,
-          maxZoom: 24
-        },
-        
-        {
-          dataLayer: 'Road Segment/(15-24)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: [object Object] }),
-          minZoom: 15,
-          maxZoom: 24
-        },
-        
-        {
-          dataLayer: 'Road Segment/(15-24)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: [object Object] }),
-          minZoom: 15,
-          maxZoom: 24
-        },
-        
-        {
-          dataLayer: 'Road Segment/(15-24)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: [object Object] }),
-          minZoom: 15,
-          maxZoom: 24
-        },
-        
-        {
-          dataLayer: 'Road Segment/(15-24)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#D9A200', width: 10.6667 }),
           minZoom: 15,
           maxZoom: 24
         },
@@ -2337,14 +2281,70 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Road Segment/(15-24)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: 1 }),
           minZoom: 15,
           maxZoom: 24
         },
         
         {
           dataLayer: 'Road Segment/(15-24)/Tunnel',
-          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: [object Object] }),
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: 1 }),
+          minZoom: 15,
+          maxZoom: 24
+        },
+        
+        {
+          dataLayer: 'Road Segment/(15-24)/Tunnel',
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: 1 }),
+          minZoom: 15,
+          maxZoom: 24
+        },
+        
+        {
+          dataLayer: 'Road Segment/(15-24)/Tunnel',
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: 1 }),
+          minZoom: 15,
+          maxZoom: 24
+        },
+        
+        {
+          dataLayer: 'Road Segment/(15-24)/Tunnel',
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: 1 }),
+          minZoom: 15,
+          maxZoom: 24
+        },
+        
+        {
+          dataLayer: 'Road Segment/(15-24)/Tunnel',
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: 1 }),
+          minZoom: 15,
+          maxZoom: 24
+        },
+        
+        {
+          dataLayer: 'Road Segment/(15-24)/Tunnel',
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: 1 }),
+          minZoom: 15,
+          maxZoom: 24
+        },
+        
+        {
+          dataLayer: 'Road Segment/(15-24)/Tunnel',
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: 1 }),
+          minZoom: 15,
+          maxZoom: 24
+        },
+        
+        {
+          dataLayer: 'Road Segment/(15-24)/Tunnel',
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: 1 }),
+          minZoom: 15,
+          maxZoom: 24
+        },
+        
+        {
+          dataLayer: 'Road Segment/(15-24)/Tunnel',
+          symbolizer: new protomapsL.LineSymbolizer({ color: '#666666', width: 1 }),
           minZoom: 15,
           maxZoom: 24
         },
@@ -3282,7 +3282,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#686868',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Italic 9px'
+        font: 'Aboriginal Sans Italic 9.33333px'
       }),
           minZoom: 13,
           maxZoom: 24
@@ -3295,7 +3295,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#686868',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Italic 9px'
+        font: 'Aboriginal Sans Italic 9.33333px'
       }),
           minZoom: 13,
           maxZoom: 24
@@ -3308,7 +3308,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#606060',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Italic 9px'
+        font: 'Aboriginal Sans Italic 9.33333px'
       }),
           minZoom: 11,
           maxZoom: 13
@@ -3321,7 +3321,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#606060',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Italic 9px'
+        font: 'Aboriginal Sans Italic 9.33333px'
       }),
           minZoom: 11,
           maxZoom: 13
@@ -3334,7 +3334,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#606060',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Bold Italic 11px'
+        font: 'Aboriginal Sans Bold Italic 10.6667px'
       }),
           minZoom: 13,
           maxZoom: 18
@@ -3347,7 +3347,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#606060',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Bold Italic 11px'
+        font: 'Aboriginal Sans Bold Italic 10.6667px'
       }),
           minZoom: 13,
           maxZoom: 18
@@ -3360,7 +3360,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 11,
           maxZoom: 18
@@ -3373,7 +3373,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 11,
           maxZoom: 18
@@ -3386,7 +3386,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 13,
           maxZoom: 18
@@ -3399,7 +3399,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 13,
           maxZoom: 18
@@ -3412,7 +3412,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 13,
           maxZoom: 18
@@ -3425,7 +3425,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 13,
           maxZoom: 18
@@ -3438,7 +3438,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#997C61',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 12,
           maxZoom: 18
@@ -3451,7 +3451,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#997C61',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 12,
           maxZoom: 18
@@ -3464,7 +3464,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#558000',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 13,
           maxZoom: 18
@@ -3477,7 +3477,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#558000',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 13,
           maxZoom: 18
@@ -3490,7 +3490,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2B9BA6',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 18
@@ -3503,7 +3503,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2B9BA6',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 18
@@ -3516,7 +3516,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5B81A2',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 13,
           maxZoom: 18
@@ -3529,7 +3529,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 13,
           maxZoom: 18
@@ -3542,7 +3542,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5B81A2',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 11,
           maxZoom: 18
@@ -3555,7 +3555,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5B81A2',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 11,
           maxZoom: 18
@@ -3568,7 +3568,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#558000',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 12,
           maxZoom: 18
@@ -3581,7 +3581,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#558000',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 12,
           maxZoom: 18
@@ -3594,7 +3594,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#558000',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 18
@@ -3607,7 +3607,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#558000',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 18
@@ -3620,7 +3620,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#558000',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 9,
           maxZoom: 18
@@ -3633,7 +3633,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#6A8040',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 9,
           maxZoom: 18
@@ -3646,7 +3646,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5C9399',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 15,
           maxZoom: 18
@@ -3659,7 +3659,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5C9399',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 15,
           maxZoom: 18
@@ -3672,7 +3672,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5C9399',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 18
@@ -3685,7 +3685,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5C9399',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 18
@@ -3698,7 +3698,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5C9399',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 9,
           maxZoom: 18
@@ -3711,7 +3711,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5C9399',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 9,
           maxZoom: 18
@@ -3724,7 +3724,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Italic 11px'
+        font: 'Aboriginal Serif Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 18
@@ -3737,7 +3737,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Italic 11px'
+        font: 'Aboriginal Serif Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 18
@@ -3750,7 +3750,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Regular 11px'
+        font: 'Aboriginal Sans Regular 11.3333px'
       }),
           minZoom: 10,
           maxZoom: 18
@@ -3763,7 +3763,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Regular 11px'
+        font: 'Aboriginal Sans Regular 11.3333px'
       }),
           minZoom: 10,
           maxZoom: 18
@@ -3776,7 +3776,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Regular 11px'
+        font: 'Aboriginal Sans Regular 11.3333px'
       }),
           minZoom: 9,
           maxZoom: 18
@@ -3789,7 +3789,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Regular 11px'
+        font: 'Aboriginal Sans Regular 11.3333px'
       }),
           minZoom: 9,
           maxZoom: 18
@@ -3802,7 +3802,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#848688',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 12
@@ -3815,7 +3815,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#848688',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 12
@@ -3828,7 +3828,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 13,
           maxZoom: 18
@@ -3841,7 +3841,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 13,
           maxZoom: 18
@@ -3854,7 +3854,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#A68042',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Bold Italic 11px'
+        font: 'Aboriginal Sans Bold Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 18
@@ -3867,7 +3867,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#708C5B',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Bold Italic 11px'
+        font: 'Aboriginal Sans Bold Italic 11.3333px'
       }),
           minZoom: 12,
           maxZoom: 24
@@ -3880,7 +3880,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#A68042',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Bold Italic 11px'
+        font: 'Aboriginal Sans Bold Italic 10.6667px'
       }),
           minZoom: 9,
           maxZoom: 18
@@ -3893,7 +3893,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#A68042',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Bold Italic 11px'
+        font: 'Aboriginal Sans Bold Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 18
@@ -3906,7 +3906,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#708C5B',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Bold Italic 11px'
+        font: 'Aboriginal Sans Bold Italic 11.3333px'
       }),
           minZoom: 12,
           maxZoom: 24
@@ -3919,7 +3919,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#A68042',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Bold Italic 11px'
+        font: 'Aboriginal Sans Bold Italic 10.6667px'
       }),
           minZoom: 9,
           maxZoom: 18
@@ -3984,7 +3984,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular 11px'
+        font: 'Aboriginal Sans Regular 10.6667px'
       }),
           minZoom: 8,
           maxZoom: 11
@@ -3997,7 +3997,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular 11px'
+        font: 'Aboriginal Sans Regular 10.6667px'
       }),
           minZoom: 8,
           maxZoom: 11
@@ -4010,7 +4010,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 11.3333px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -4023,7 +4023,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 11.3333px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -4062,7 +4062,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 13.3333px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -4075,7 +4075,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 13.3333px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -4088,7 +4088,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular 13px'
+        font: 'Aboriginal Sans Regular 13.3333px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -4101,7 +4101,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular 13px'
+        font: 'Aboriginal Sans Regular 13.3333px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -4114,7 +4114,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 16px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -4127,7 +4127,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 16px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -4140,7 +4140,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 18.6667px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -4153,7 +4153,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 18.6667px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -4166,7 +4166,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 24px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -4179,7 +4179,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 24px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -4192,7 +4192,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 11,
           maxZoom: 24
@@ -4205,7 +4205,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 11,
           maxZoom: 24
@@ -4218,7 +4218,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 11.3333px'
       }),
           minZoom: 11,
           maxZoom: 24
@@ -4231,7 +4231,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 11.3333px'
       }),
           minZoom: 11,
           maxZoom: 24
@@ -4244,7 +4244,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5B81A2',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Bold Italic 11px'
+        font: 'Aboriginal Sans Bold Italic 11.3333px'
       }),
           minZoom: 9.2096,
           maxZoom: 11.2096
@@ -4257,7 +4257,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5B81A2',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Bold Italic 11px'
+        font: 'Aboriginal Sans Bold Italic 11.3333px'
       }),
           minZoom: 9.2096,
           maxZoom: 11.2096
@@ -4270,7 +4270,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 11.3333px'
       }),
           minZoom: 11,
           maxZoom: 24
@@ -4283,7 +4283,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 11.3333px'
       }),
           minZoom: 11,
           maxZoom: 24
@@ -4296,7 +4296,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5B81A2',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Bold Italic 11px'
+        font: 'Aboriginal Sans Bold Italic 11.3333px'
       }),
           minZoom: 9.2096,
           maxZoom: 11.2096
@@ -4309,7 +4309,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5B81A2',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Bold Italic 11px'
+        font: 'Aboriginal Sans Bold Italic 11.3333px'
       }),
           minZoom: 9.2096,
           maxZoom: 11.2096
@@ -4322,7 +4322,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 18
@@ -4335,7 +4335,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 18
@@ -4348,7 +4348,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#A68753',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Bold Italic 13px'
+        font: 'Aboriginal Sans Bold Italic 13.3333px'
       }),
           minZoom: 11,
           maxZoom: 18
@@ -4361,7 +4361,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#A68753',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Bold Italic 13px'
+        font: 'Aboriginal Sans Bold Italic 13.3333px'
       }),
           minZoom: 11,
           maxZoom: 18
@@ -4374,7 +4374,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 12,
           maxZoom: 18
@@ -4387,7 +4387,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 12,
           maxZoom: 18
@@ -4400,7 +4400,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 18
@@ -4413,7 +4413,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 18
@@ -4426,7 +4426,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 12,
           maxZoom: 11
@@ -4439,7 +4439,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 12,
           maxZoom: 11
@@ -4452,7 +4452,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 11
@@ -4465,7 +4465,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 11
@@ -4478,7 +4478,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -4491,7 +4491,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -4504,7 +4504,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -4517,7 +4517,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -4530,7 +4530,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -4543,7 +4543,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -4556,7 +4556,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 15,
           maxZoom: 18
@@ -4569,7 +4569,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 15,
           maxZoom: 18
@@ -4582,7 +4582,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 11
@@ -4595,7 +4595,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 11
@@ -4608,7 +4608,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 11
@@ -4621,7 +4621,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 11
@@ -4634,7 +4634,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 11
@@ -4647,7 +4647,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 11
@@ -4660,7 +4660,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 11
@@ -4673,7 +4673,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 11
@@ -4686,7 +4686,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 16,
           maxZoom: 18
@@ -4699,7 +4699,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 16,
           maxZoom: 18
@@ -4712,7 +4712,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 18
@@ -4725,7 +4725,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 18
@@ -4738,7 +4738,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 18
@@ -4751,7 +4751,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 18
@@ -4764,7 +4764,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 18
@@ -4777,7 +4777,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 18
@@ -4790,7 +4790,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 18
@@ -4803,7 +4803,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 10,
           maxZoom: 18
@@ -4972,7 +4972,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#997C61',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular 13px'
+        font: 'Aboriginal Sans Regular 13.3333px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -4985,7 +4985,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#997C61',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular 13px'
+        font: 'Aboriginal Sans Regular 13.3333px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -4998,7 +4998,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#997C61',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular 15px'
+        font: 'Aboriginal Sans Regular 15.3333px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -5011,7 +5011,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#997C61',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular 15px'
+        font: 'Aboriginal Sans Regular 15.3333px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -5024,7 +5024,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#997C61',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular 19px'
+        font: 'Aboriginal Sans Regular 18.6667px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -5037,7 +5037,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#997C61',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular 19px'
+        font: 'Aboriginal Sans Regular 18.6667px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -5050,7 +5050,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#997C61',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular 23px'
+        font: 'Aboriginal Sans Regular 22.6667px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -5063,7 +5063,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#997C61',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular 23px'
+        font: 'Aboriginal Sans Regular 22.6667px'
       }),
           minZoom: 7,
           maxZoom: 11
@@ -5076,7 +5076,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 8,
           maxZoom: 18
@@ -5089,7 +5089,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#8F451F',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Italic 11px'
+        font: 'Aboriginal Sans Italic 10.6667px'
       }),
           minZoom: 8,
           maxZoom: 18
@@ -5102,7 +5102,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#343434',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 14px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5115,7 +5115,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#343434',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 14px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5128,7 +5128,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#343434',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 14.6667px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5141,7 +5141,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#343434',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 14.6667px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5154,7 +5154,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 15.3333px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5167,7 +5167,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 15.3333px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5180,7 +5180,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 15.3333px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5193,7 +5193,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 15.3333px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5206,7 +5206,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 15.3333px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5219,7 +5219,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 15.3333px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5232,7 +5232,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 15.3333px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5245,7 +5245,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 15.3333px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5258,7 +5258,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#735025',
         halo: '#F8F7F2',
         haloWidth: 2,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 16px'
       }),
           minZoom: 11,
           maxZoom: 15
@@ -5271,7 +5271,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#735025',
         halo: '#F8F7F2',
         haloWidth: 2,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 16px'
       }),
           minZoom: 11,
           maxZoom: 15
@@ -5284,7 +5284,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#735025',
         halo: '#F8F7F2',
         haloWidth: 2,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 16px'
       }),
           minZoom: 11,
           maxZoom: 15
@@ -5297,7 +5297,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#735025',
         halo: '#F8F7F2',
         haloWidth: 2,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 16px'
       }),
           minZoom: 11,
           maxZoom: 15
@@ -5310,7 +5310,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#735025',
         halo: '#F8F7F2',
         haloWidth: 2,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 16px'
       }),
           minZoom: 15,
           maxZoom: 24
@@ -5323,7 +5323,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#735025',
         halo: '#F8F7F2',
         haloWidth: 2,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 16px'
       }),
           minZoom: 15,
           maxZoom: 24
@@ -5336,7 +5336,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#735025',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 14.6667px'
       }),
           minZoom: 11,
           maxZoom: 15
@@ -5349,7 +5349,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#735025',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 14.6667px'
       }),
           minZoom: 11,
           maxZoom: 15
@@ -5362,7 +5362,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#735025',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 14.6667px'
       }),
           minZoom: 11,
           maxZoom: 15
@@ -5375,7 +5375,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#735025',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 14.6667px'
       }),
           minZoom: 11,
           maxZoom: 15
@@ -5388,7 +5388,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#735025',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 14.6667px'
       }),
           minZoom: 15,
           maxZoom: 24
@@ -5401,7 +5401,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#735025',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 14.6667px'
       }),
           minZoom: 15,
           maxZoom: 24
@@ -5414,7 +5414,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#736350',
         halo: '#F8F7F2',
         haloWidth: 2,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 12px'
       }),
           minZoom: 13,
           maxZoom: 15
@@ -5427,7 +5427,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#736350',
         halo: '#F8F7F2',
         haloWidth: 2,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 12px'
       }),
           minZoom: 13,
           maxZoom: 15
@@ -5440,7 +5440,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#736350',
         halo: '#F8F7F2',
         haloWidth: 2,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 12px'
       }),
           minZoom: 13,
           maxZoom: 15
@@ -5453,7 +5453,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#736350',
         halo: '#F8F7F2',
         haloWidth: 2,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 12px'
       }),
           minZoom: 13,
           maxZoom: 15
@@ -5466,7 +5466,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#736350',
         halo: '#F8F7F2',
         haloWidth: 2,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 12px'
       }),
           minZoom: 15,
           maxZoom: 24
@@ -5479,7 +5479,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#736350',
         halo: '#F8F7F2',
         haloWidth: 2,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 12px'
       }),
           minZoom: 15,
           maxZoom: 24
@@ -5492,7 +5492,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#736350',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 13.3333px'
       }),
           minZoom: 15,
           maxZoom: 24
@@ -5505,7 +5505,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#736350',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 13.3333px'
       }),
           minZoom: 15,
           maxZoom: 24
@@ -5518,7 +5518,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#736350',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 13.3333px'
       }),
           minZoom: 15,
           maxZoom: 24
@@ -5531,7 +5531,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#736350',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 13.3333px'
       }),
           minZoom: 15,
           maxZoom: 24
@@ -5544,7 +5544,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#735025',
         halo: '#F8F7F2',
         haloWidth: 2.66667,
-        font: 'Aboriginal Sans Italic NaNpx'
+        font: 'Aboriginal Sans Italic 16px'
       }),
           minZoom: 9,
           maxZoom: 15
@@ -5557,7 +5557,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#735025',
         halo: '#F8F7F2',
         haloWidth: 2.66667,
-        font: 'Aboriginal Sans Italic NaNpx'
+        font: 'Aboriginal Sans Italic 16px'
       }),
           minZoom: 9,
           maxZoom: 15
@@ -5570,7 +5570,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#735025',
         halo: '#F8F7F2',
         haloWidth: 2.66667,
-        font: 'Aboriginal Sans Italic NaNpx'
+        font: 'Aboriginal Sans Italic 16px'
       }),
           minZoom: 9,
           maxZoom: 15
@@ -5583,7 +5583,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#735025',
         halo: '#F8F7F2',
         haloWidth: 2.66667,
-        font: 'Aboriginal Sans Italic NaNpx'
+        font: 'Aboriginal Sans Italic 16px'
       }),
           minZoom: 9,
           maxZoom: 15
@@ -5596,7 +5596,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#735025',
         halo: '#F8F7F2',
         haloWidth: 2.66667,
-        font: 'Aboriginal Sans Italic NaNpx'
+        font: 'Aboriginal Sans Italic 16px'
       }),
           minZoom: 15,
           maxZoom: 24
@@ -5609,7 +5609,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#735025',
         halo: '#F8F7F2',
         haloWidth: 2.66667,
-        font: 'Aboriginal Sans Italic NaNpx'
+        font: 'Aboriginal Sans Italic 16px'
       }),
           minZoom: 15,
           maxZoom: 24
@@ -5643,7 +5643,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 16px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5656,7 +5656,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 16px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5669,7 +5669,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 16px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5682,7 +5682,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 16px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5695,7 +5695,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 16.6667px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5708,7 +5708,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 16.6667px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5721,7 +5721,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 16.6667px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5734,7 +5734,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 16.6667px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5747,7 +5747,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 16.6667px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5760,7 +5760,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 16.6667px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5773,7 +5773,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 16.6667px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5786,7 +5786,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 16.6667px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5799,7 +5799,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 17.3333px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5812,7 +5812,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 17.3333px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5825,7 +5825,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 18px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5838,7 +5838,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 18px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5851,7 +5851,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 18.6667px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5864,7 +5864,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 18.6667px'
       }),
           minZoom: 5,
           maxZoom: 18
@@ -5877,7 +5877,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#848688',
         halo: '#F3F4F4',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Regular 11px'
+        font: 'Aboriginal Sans Regular 10.6667px'
       }),
           minZoom: 7,
           maxZoom: 18
@@ -5890,7 +5890,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#848688',
         halo: '#F3F4F4',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Regular 11px'
+        font: 'Aboriginal Sans Regular 10.6667px'
       }),
           minZoom: 7,
           maxZoom: 18
@@ -5903,7 +5903,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#A17367',
         halo: '#F3F4F4',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular 15px'
+        font: 'Aboriginal Sans Regular 14.6667px'
       }),
           minZoom: 7,
           maxZoom: 18
@@ -5916,7 +5916,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#A17367',
         halo: '#F3F4F4',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular 15px'
+        font: 'Aboriginal Sans Regular 14.6667px'
       }),
           minZoom: 7,
           maxZoom: 18
@@ -5929,7 +5929,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#848688',
         halo: '#F3F4F4',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 13.3333px'
       }),
           minZoom: 7,
           maxZoom: 18
@@ -5942,7 +5942,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#848688',
         halo: '#F3F4F4',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 13.3333px'
       }),
           minZoom: 7,
           maxZoom: 18
@@ -5955,7 +5955,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F3F4F4',
         haloWidth: 2,
-        font: 'Aboriginal Serif Italic 11px'
+        font: 'Aboriginal Serif Italic 10.6667px'
       }),
           minZoom: 7,
           maxZoom: 24
@@ -5968,7 +5968,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F3F4F4',
         haloWidth: 2,
-        font: 'Aboriginal Serif Italic 11px'
+        font: 'Aboriginal Serif Italic 10.6667px'
       }),
           minZoom: 7,
           maxZoom: 24
@@ -6007,7 +6007,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5B81A2',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Bold Italic 13px'
+        font: 'Aboriginal Serif Bold Italic 13.3333px'
       }),
           minZoom: 8,
           maxZoom: 10
@@ -6020,7 +6020,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5B81A2',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Bold Italic 13px'
+        font: 'Aboriginal Serif Bold Italic 13.3333px'
       }),
           minZoom: 8,
           maxZoom: 10
@@ -6033,7 +6033,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5B81A2',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Italic 15px'
+        font: 'Aboriginal Serif Italic 14.6667px'
       }),
           minZoom: 7,
           maxZoom: 10
@@ -6046,7 +6046,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5B81A2',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Italic 15px'
+        font: 'Aboriginal Serif Italic 14.6667px'
       }),
           minZoom: 7,
           maxZoom: 10
@@ -6059,7 +6059,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5B81A2',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Italic NaNpx'
+        font: 'Aboriginal Serif Italic 14.6667px'
       }),
           minZoom: 7,
           maxZoom: 10
@@ -6072,7 +6072,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5B81A2',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Italic 15px'
+        font: 'Aboriginal Serif Italic 14.6667px'
       }),
           minZoom: 7,
           maxZoom: 10
@@ -6085,7 +6085,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5B81A2',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Italic NaNpx'
+        font: 'Aboriginal Serif Italic 14.6667px'
       }),
           minZoom: 7,
           maxZoom: 10
@@ -6098,7 +6098,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5B81A2',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Italic 15px'
+        font: 'Aboriginal Serif Italic 14.6667px'
       }),
           minZoom: 7,
           maxZoom: 10
@@ -6111,7 +6111,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 9,
           maxZoom: 10
@@ -6124,7 +6124,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 9,
           maxZoom: 10
@@ -6137,7 +6137,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 9,
           maxZoom: 10
@@ -6150,7 +6150,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 9,
           maxZoom: 10
@@ -6163,7 +6163,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 7,
           maxZoom: 10
@@ -6176,7 +6176,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 7,
           maxZoom: 10
@@ -6189,7 +6189,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 7,
           maxZoom: 10
@@ -6202,7 +6202,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 7,
           maxZoom: 10
@@ -6215,7 +6215,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 7,
           maxZoom: 10
@@ -6228,7 +6228,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 7,
           maxZoom: 10
@@ -6293,7 +6293,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 6,
           maxZoom: 7
@@ -6306,7 +6306,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 6,
           maxZoom: 7
@@ -6319,7 +6319,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 6,
           maxZoom: 7
@@ -6332,7 +6332,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 6,
           maxZoom: 7
@@ -6345,7 +6345,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 5,
           maxZoom: 7
@@ -6358,7 +6358,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 5,
           maxZoom: 7
@@ -6371,7 +6371,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 5,
           maxZoom: 7
@@ -6384,7 +6384,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 10.6667px'
       }),
           minZoom: 5,
           maxZoom: 7
@@ -6449,7 +6449,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#848688',
         halo: '#F3F4F4',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Bold 11px'
+        font: 'Aboriginal Sans Bold 10.6667px'
       }),
           minZoom: 3,
           maxZoom: 7
@@ -6462,7 +6462,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#848688',
         halo: '#F3F4F4',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Bold 11px'
+        font: 'Aboriginal Sans Bold 10.6667px'
       }),
           minZoom: 3,
           maxZoom: 7
@@ -6475,7 +6475,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#848688',
         halo: '#F3F4F4',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Bold 15px'
+        font: 'Aboriginal Sans Bold 14.6667px'
       }),
           minZoom: 7,
           maxZoom: 18
@@ -6488,7 +6488,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#848688',
         halo: '#F3F4F4',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Bold 15px'
+        font: 'Aboriginal Sans Bold 14.6667px'
       }),
           minZoom: 7,
           maxZoom: 18
@@ -6501,7 +6501,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#848688',
         halo: '#F3F4F4',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Bold 13px'
+        font: 'Aboriginal Sans Bold 13.3333px'
       }),
           minZoom: 7,
           maxZoom: 18
@@ -6514,7 +6514,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#848688',
         halo: '#F3F4F4',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Bold 13px'
+        font: 'Aboriginal Sans Bold 13.3333px'
       }),
           minZoom: 7,
           maxZoom: 18
@@ -6527,7 +6527,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#848688',
         halo: '#F3F4F4',
         haloWidth: 1.33333,
-        font: 'Aboriginal Sans Regular 11px'
+        font: 'Aboriginal Sans Regular 10.6667px'
       }),
           minZoom: 2,
           maxZoom: 4
@@ -6540,7 +6540,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#848688',
         halo: '#F3F4F4',
         haloWidth: 1.33333,
-        font: 'Aboriginal Sans Regular 11px'
+        font: 'Aboriginal Sans Regular 10.6667px'
       }),
           minZoom: 2,
           maxZoom: 4
@@ -6553,7 +6553,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#848688',
         halo: '#F3F4F4',
         haloWidth: 1.33333,
-        font: 'Aboriginal Sans Regular 11px'
+        font: 'Aboriginal Sans Regular 10.6667px'
       }),
           minZoom: 2,
           maxZoom: 3
@@ -6566,7 +6566,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#848688',
         halo: '#F3F4F4',
         haloWidth: 1.33333,
-        font: 'Aboriginal Sans Regular 11px'
+        font: 'Aboriginal Sans Regular 10.6667px'
       }),
           minZoom: 2,
           maxZoom: 3
@@ -6579,7 +6579,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Arial Bold NaNpx'
+        font: 'Arial Bold 16.6667px'
       }),
           minZoom: 2,
           maxZoom: 18
@@ -6592,7 +6592,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#000001',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Arial Bold NaNpx'
+        font: 'Arial Bold 16.6667px'
       }),
           minZoom: 2,
           maxZoom: 18
@@ -6605,7 +6605,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5B81A2',
         halo: '#FFFFFF',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Bold Italic NaNpx'
+        font: 'Aboriginal Serif Bold Italic 13.3333px'
       }),
           minZoom: 2,
           maxZoom: 7
@@ -6618,7 +6618,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5B81A2',
         halo: '#FFFFFF',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Bold Italic NaNpx'
+        font: 'Aboriginal Serif Bold Italic 13.3333px'
       }),
           minZoom: 2,
           maxZoom: 7
@@ -6631,7 +6631,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5B81A2',
         halo: '#FFFFFF',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Bold Italic NaNpx'
+        font: 'Aboriginal Serif Bold Italic 14.6667px'
       }),
           minZoom: 2,
           maxZoom: 7
@@ -6644,7 +6644,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5B81A2',
         halo: '#FFFFFF',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Bold Italic NaNpx'
+        font: 'Aboriginal Serif Bold Italic 14.6667px'
       }),
           minZoom: 2,
           maxZoom: 7
@@ -6657,7 +6657,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5B81A2',
         halo: '#FFFFFF',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Bold Italic NaNpx'
+        font: 'Aboriginal Serif Bold Italic 13.3333px'
       }),
           minZoom: 2,
           maxZoom: 7
@@ -6670,7 +6670,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5B81A2',
         halo: '#FFFFFF',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Bold Italic NaNpx'
+        font: 'Aboriginal Serif Bold Italic 13.3333px'
       }),
           minZoom: 2,
           maxZoom: 7
@@ -6683,7 +6683,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#848688',
         halo: '#F8F7F2',
         haloWidth: 2,
-        font: 'Aboriginal Sans Bold 13px'
+        font: 'Aboriginal Sans Bold 13.3333px'
       }),
           minZoom: 4,
           maxZoom: 7
@@ -6696,7 +6696,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#848688',
         halo: '#F8F7F2',
         haloWidth: 2,
-        font: 'Aboriginal Sans Bold 13px'
+        font: 'Aboriginal Sans Bold 13.3333px'
       }),
           minZoom: 4,
           maxZoom: 7
@@ -6709,7 +6709,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#686868',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 12.6667px'
       }),
           minZoom: 2,
           maxZoom: 4
@@ -6722,7 +6722,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#686868',
         halo: '#F8F7F2',
         haloWidth: 1.6,
-        font: 'Aboriginal Sans Regular NaNpx'
+        font: 'Aboriginal Sans Regular 12.6667px'
       }),
           minZoom: 2,
           maxZoom: 4
@@ -6735,7 +6735,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#732600',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Arial Bold NaNpx'
+        font: 'Arial Bold 16.6667px'
       }),
           minZoom: 2,
           maxZoom: 18
@@ -6748,7 +6748,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#732600',
         halo: '#F8F7F2',
         haloWidth: 1.86667,
-        font: 'Arial Bold NaNpx'
+        font: 'Arial Bold 16.6667px'
       }),
           minZoom: 2,
           maxZoom: 18
@@ -6761,7 +6761,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#FFFFFF',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 11.3333px'
       }),
           minZoom: 11,
           maxZoom: 24
@@ -6774,7 +6774,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#2174A6',
         halo: '#FFFFFF',
         haloWidth: 1.73333,
-        font: 'Aboriginal Serif Bold Italic 11px'
+        font: 'Aboriginal Serif Bold Italic 11.3333px'
       }),
           minZoom: 11,
           maxZoom: 24
@@ -6787,7 +6787,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#D19E34',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Bold Italic 11px'
+        font: 'Aboriginal Sans Bold Italic 11.3333px'
       }),
           minZoom: 12,
           maxZoom: 24
@@ -6800,7 +6800,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#D19E34',
         halo: '#F8F7F2',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Bold Italic 11px'
+        font: 'Aboriginal Sans Bold Italic 11.3333px'
       }),
           minZoom: 12,
           maxZoom: 24
@@ -6813,7 +6813,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 55 Roman 13px'
+        font: 'Helvetica Neue LT Pro 55 Roman 13.3333px'
       }),
           minZoom: 4,
           maxZoom: 5
@@ -6826,7 +6826,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 55 Roman 11px'
+        font: 'Helvetica Neue LT Pro 55 Roman 10.6667px'
       }),
           minZoom: 4,
           maxZoom: 5
@@ -6852,7 +6852,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 55 Roman 13px'
+        font: 'Helvetica Neue LT Pro 55 Roman 13.3333px'
       }),
           minZoom: 5,
           maxZoom: 6
@@ -6865,7 +6865,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 55 Roman 11px'
+        font: 'Helvetica Neue LT Pro 55 Roman 10.6667px'
       }),
           minZoom: 5,
           maxZoom: 6
@@ -6891,7 +6891,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 55 Roman 13px'
+        font: 'Helvetica Neue LT Pro 55 Roman 13.3333px'
       }),
           minZoom: 6,
           maxZoom: 7
@@ -6904,7 +6904,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 55 Roman 11px'
+        font: 'Helvetica Neue LT Pro 55 Roman 10.6667px'
       }),
           minZoom: 6,
           maxZoom: 7
@@ -6917,7 +6917,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 55 Roman 13px'
+        font: 'Helvetica Neue LT Pro 55 Roman 13.3333px'
       }),
           minZoom: 4,
           maxZoom: 5
@@ -6930,7 +6930,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 55 Roman 11px'
+        font: 'Helvetica Neue LT Pro 55 Roman 10.6667px'
       }),
           minZoom: 4,
           maxZoom: 5
@@ -6969,7 +6969,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 55 Roman 13px'
+        font: 'Helvetica Neue LT Pro 55 Roman 13.3333px'
       }),
           minZoom: 5,
           maxZoom: 6
@@ -6982,7 +6982,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 55 Roman 11px'
+        font: 'Helvetica Neue LT Pro 55 Roman 10.6667px'
       }),
           minZoom: 5,
           maxZoom: 6
@@ -7008,7 +7008,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 55 Roman 13px'
+        font: 'Helvetica Neue LT Pro 55 Roman 13.3333px'
       }),
           minZoom: 6,
           maxZoom: 7
@@ -7021,7 +7021,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 55 Roman 11px'
+        font: 'Helvetica Neue LT Pro 55 Roman 10.6667px'
       }),
           minZoom: 6,
           maxZoom: 7
@@ -7060,7 +7060,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 65 Medium 11px'
+        font: 'Helvetica Neue LT Pro 65 Medium 10.6667px'
       }),
           minZoom: 3,
           maxZoom: 4
@@ -7086,7 +7086,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 57 Condensed 31px'
+        font: 'Helvetica Neue LT Pro 57 Condensed 30.6667px'
       }),
           minZoom: 3,
           maxZoom: 4
@@ -7125,7 +7125,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 57 Condensed 13px'
+        font: 'Helvetica Neue LT Pro 57 Condensed 13.3333px'
       }),
           minZoom: 4,
           maxZoom: 5
@@ -7151,7 +7151,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 57 Condensed 31px'
+        font: 'Helvetica Neue LT Pro 57 Condensed 30.6667px'
       }),
           minZoom: 4,
           maxZoom: 5
@@ -7164,7 +7164,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 65 Medium 13px'
+        font: 'Helvetica Neue LT Pro 65 Medium 13.3333px'
       }),
           minZoom: 4,
           maxZoom: 5
@@ -7177,7 +7177,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 65 Medium 11px'
+        font: 'Helvetica Neue LT Pro 65 Medium 10.6667px'
       }),
           minZoom: 4,
           maxZoom: 5
@@ -7203,7 +7203,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Arial Regular 19px'
+        font: 'Arial Regular 18.6667px'
       }),
           minZoom: 4,
           maxZoom: 5
@@ -7242,7 +7242,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Arial Regular 9px'
+        font: 'Arial Regular 9.33333px'
       }),
           minZoom: 5,
           maxZoom: 6
@@ -7255,7 +7255,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 65 Medium 9px'
+        font: 'Helvetica Neue LT Pro 65 Medium 9.33333px'
       }),
           minZoom: 5,
           maxZoom: 6
@@ -7268,7 +7268,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 77 Bold Condensed 31px'
+        font: 'Helvetica Neue LT Pro 77 Bold Condensed 30.6667px'
       }),
           minZoom: 5,
           maxZoom: 6
@@ -7307,7 +7307,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Arial Regular 13px'
+        font: 'Arial Regular 13.3333px'
       }),
           minZoom: 5,
           maxZoom: 6
@@ -7320,7 +7320,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 77 Bold Condensed 19px'
+        font: 'Helvetica Neue LT Pro 77 Bold Condensed 18.6667px'
       }),
           minZoom: 5,
           maxZoom: 6
@@ -7372,7 +7372,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Arial Regular 11px'
+        font: 'Arial Regular 10.6667px'
       }),
           minZoom: 5,
           maxZoom: 6
@@ -7385,7 +7385,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 77 Bold Condensed 13px'
+        font: 'Helvetica Neue LT Pro 77 Bold Condensed 13.3333px'
       }),
           minZoom: 5,
           maxZoom: 6
@@ -7398,7 +7398,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 65 Medium 11px'
+        font: 'Helvetica Neue LT Pro 65 Medium 10.6667px'
       }),
           minZoom: 5,
           maxZoom: 6
@@ -7411,7 +7411,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Arial Regular 21px'
+        font: 'Arial Regular 21.3333px'
       }),
           minZoom: 5,
           maxZoom: 6
@@ -7450,7 +7450,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Arial Regular 11px'
+        font: 'Arial Regular 10.6667px'
       }),
           minZoom: 6,
           maxZoom: 7
@@ -7476,7 +7476,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Arial Regular 21px'
+        font: 'Arial Regular 21.3333px'
       }),
           minZoom: 6,
           maxZoom: 7
@@ -7528,7 +7528,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 77 Bold Condensed 31px'
+        font: 'Helvetica Neue LT Pro 77 Bold Condensed 30.6667px'
       }),
           minZoom: 6,
           maxZoom: 7
@@ -7567,7 +7567,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 65 Medium 11px'
+        font: 'Helvetica Neue LT Pro 65 Medium 10.6667px'
       }),
           minZoom: 6,
           maxZoom: 7
@@ -7580,7 +7580,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Arial Regular 13px'
+        font: 'Arial Regular 13.3333px'
       }),
           minZoom: 6,
           maxZoom: 7
@@ -7593,7 +7593,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 77 Bold Condensed 13px'
+        font: 'Helvetica Neue LT Pro 77 Bold Condensed 13.3333px'
       }),
           minZoom: 6,
           maxZoom: 7
@@ -7671,7 +7671,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 65 Medium 11px'
+        font: 'Helvetica Neue LT Pro 65 Medium 10.6667px'
       }),
           minZoom: 3,
           maxZoom: 4
@@ -7736,7 +7736,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 57 Condensed 13px'
+        font: 'Helvetica Neue LT Pro 57 Condensed 13.3333px'
       }),
           minZoom: 4,
           maxZoom: 5
@@ -7775,7 +7775,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 65 Medium 13px'
+        font: 'Helvetica Neue LT Pro 65 Medium 13.3333px'
       }),
           minZoom: 4,
           maxZoom: 5
@@ -7788,7 +7788,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 65 Medium 11px'
+        font: 'Helvetica Neue LT Pro 65 Medium 10.6667px'
       }),
           minZoom: 4,
           maxZoom: 5
@@ -7827,7 +7827,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Arial Regular 19px'
+        font: 'Arial Regular 18.6667px'
       }),
           minZoom: 4,
           maxZoom: 5
@@ -7866,7 +7866,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Arial Regular 9px'
+        font: 'Arial Regular 9.33333px'
       }),
           minZoom: 5,
           maxZoom: 6
@@ -7879,7 +7879,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 65 Medium 9px'
+        font: 'Helvetica Neue LT Pro 65 Medium 9.33333px'
       }),
           minZoom: 5,
           maxZoom: 6
@@ -7892,7 +7892,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 77 Bold Condensed 31px'
+        font: 'Helvetica Neue LT Pro 77 Bold Condensed 30.6667px'
       }),
           minZoom: 5,
           maxZoom: 6
@@ -7931,7 +7931,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Arial Regular 13px'
+        font: 'Arial Regular 13.3333px'
       }),
           minZoom: 5,
           maxZoom: 6
@@ -7944,7 +7944,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 77 Bold Condensed 19px'
+        font: 'Helvetica Neue LT Pro 77 Bold Condensed 18.6667px'
       }),
           minZoom: 5,
           maxZoom: 6
@@ -7983,7 +7983,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Arial Regular 11px'
+        font: 'Arial Regular 10.6667px'
       }),
           minZoom: 5,
           maxZoom: 6
@@ -7996,7 +7996,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 77 Bold Condensed 13px'
+        font: 'Helvetica Neue LT Pro 77 Bold Condensed 13.3333px'
       }),
           minZoom: 5,
           maxZoom: 6
@@ -8009,7 +8009,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 65 Medium 11px'
+        font: 'Helvetica Neue LT Pro 65 Medium 10.6667px'
       }),
           minZoom: 5,
           maxZoom: 6
@@ -8022,7 +8022,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Arial Regular 21px'
+        font: 'Arial Regular 21.3333px'
       }),
           minZoom: 5,
           maxZoom: 6
@@ -8061,7 +8061,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 65 Medium 11px'
+        font: 'Helvetica Neue LT Pro 65 Medium 10.6667px'
       }),
           minZoom: 6,
           maxZoom: 7
@@ -8074,7 +8074,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Arial Regular 13px'
+        font: 'Arial Regular 13.3333px'
       }),
           minZoom: 6,
           maxZoom: 7
@@ -8100,7 +8100,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Arial Regular 21px'
+        font: 'Arial Regular 21.3333px'
       }),
           minZoom: 6,
           maxZoom: 7
@@ -8126,7 +8126,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 77 Bold Condensed 31px'
+        font: 'Helvetica Neue LT Pro 77 Bold Condensed 30.6667px'
       }),
           minZoom: 6,
           maxZoom: 7
@@ -8204,7 +8204,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Arial Regular 11px'
+        font: 'Arial Regular 10.6667px'
       }),
           minZoom: 6,
           maxZoom: 7
@@ -8217,7 +8217,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#828282',
         halo: '#FFFFFF',
         haloWidth: 1.33333,
-        font: 'Helvetica Neue LT Pro 77 Bold Condensed 13px'
+        font: 'Helvetica Neue LT Pro 77 Bold Condensed 13.3333px'
       }),
           minZoom: 6,
           maxZoom: 7
@@ -8256,7 +8256,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5B81A2',
         halo: '#FFFFFF',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Bold Italic 11px'
+        font: 'Aboriginal Sans Bold Italic 11.3333px'
       }),
           minZoom: 11.2096,
           maxZoom: 11.2096
@@ -8269,7 +8269,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         fill: '#5B81A2',
         halo: '#FFFFFF',
         haloWidth: 1.73333,
-        font: 'Aboriginal Sans Bold Italic 11px'
+        font: 'Aboriginal Sans Bold Italic 11.3333px'
       }),
           minZoom: 11.2096,
           maxZoom: 11.2096

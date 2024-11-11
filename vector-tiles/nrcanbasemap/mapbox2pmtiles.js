@@ -40,6 +40,17 @@ const protomapsL = {
   }
 };
 
+// Helper function to extract numeric values from paint properties
+function getNumericValue(property, defaultValue = 1) {
+  if (typeof property === 'number') {
+    return property;
+  } else if (typeof property === 'object' && property.stops) {
+    // Use the last stop value for simplicity
+    return property.stops[property.stops.length - 1][1];
+  }
+  return defaultValue;
+}
+
 // Function to generate pmtilesRules.js from mapbox.json
 const generatePmtilesRules = (layers, spriteJson, spriteSheetUrl) => {
   const sheetContent = Object.keys(spriteJson).map(key => {
@@ -68,19 +79,21 @@ const sheet = new protomapsL.Sheet(\`
     // Determine which symbolizer to use
     let symbolizerExpr;
     if (layer.type === 'line') {
-      symbolizerExpr = `new protomapsL.LineSymbolizer({ color: '${paint['line-color']}', width: ${paint['line-width'] || 1} })`;
+      const lineWidth = getNumericValue(paint['line-width'], 1);
+      symbolizerExpr = `new protomapsL.LineSymbolizer({ color: '${paint['line-color']}', width: ${lineWidth} })`;
     } else if (layer.type === 'fill') {
       symbolizerExpr = `new protomapsL.PolygonSymbolizer({ fill: '${paint['fill-color']}', outlineColor: '${paint['fill-outline-color'] || '#000000'}' })`;
     } else if (layer.type === 'symbol' && layout['icon-image']) {
       const iconId = layout['icon-image'].replace(/[^a-zA-Z0-9_]/g, '_');
       symbolizerExpr = `new protomapsL.IconSymbolizer({ name: '${iconId}', sheet: sheet })`;
     } else if (layer.type === 'symbol' && layout['text-field']) {
+      const fontSize = getNumericValue(layout['text-size'], 12);
       symbolizerExpr = `new protomapsL.CenteredTextSymbolizer({
         labelProps: ['${layout['text-field'].replace(/[{}]/g, '')}'],
         fill: '${paint['text-color'] || "#000000"}',
         halo: '${paint['text-halo-color'] || "#FFFFFF"}',
-        haloWidth: ${paint['text-halo-width'] || 1},
-        font: '${layout['text-font'] ? layout['text-font'][0] : "Arial"} ${Math.round(layout['text-size'] || 12)}px'
+        haloWidth: ${getNumericValue(paint['text-halo-width'], 1)},
+        font: '${layout['text-font'] ? layout['text-font'][0] : "Arial"} ${fontSize}px'
       })`;
     }
 
