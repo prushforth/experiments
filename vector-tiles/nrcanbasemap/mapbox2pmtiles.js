@@ -1,179 +1,145 @@
 const fs = require('fs');
-const sharp = require('sharp');
+const path = require('path');
 
-// Paths or URLs to sprite resources
-const SPRITES_JSON_URL = 'sprite.json';
-const SPRITES_PNG_URL = 'sprite.png';
-
-// Helper function to handle object serialization
-function fixSymbolizerValue(value) {
-    if (typeof value === 'object' && value !== null) {
-        return JSON.stringify(value);
+// Mock protomapsL for Node.js environment
+const protomapsL = {
+  IconSymbolizer: class {
+    constructor(options) {
+      this.options = options;
     }
-    return value;
-}
+  },
+  LineSymbolizer: class {
+    constructor(options) {
+      this.options = options;
+    }
+  },
+  PolygonSymbolizer: class {
+    constructor(options) {
+      this.options = options;
+    }
+  },
+  CenteredTextSymbolizer: class {
+    constructor(options) {
+      this.options = options;
+    }
+  },
+  Sheet: class {
+    constructor(svgContent) {
+      this.svgContent = svgContent;
+      this.loaded = false;
+    }
+    load() {
+      return new Promise((resolve) => {
+        // Simulate async loading
+        setTimeout(() => {
+          this.loaded = true;
+          resolve();
+        }, 100);
+      });
+    }
+  }
+};
 
-// Simplified function to sanitize and create unique IDs
-function sanitizeId(id) {
-    return `icon_${id}`; // Simplified to generate unique numeric IDs
-}
+// Function to generate pmtilesRules.js from mapbox.json
+const generatePmtilesRules = (layers, spriteJson, spriteSheetUrl) => {
+  const sheetContent = Object.keys(spriteJson).map(key => {
+    const { x, y, width, height } = spriteJson[key];
+    return `
+    <svg id="${key.replace(/[^a-zA-Z0-9_]/g, '_')}" width="${width}px" height="${height}px" xmlns="http://www.w3.org/2000/svg">
+      <use href="${spriteSheetUrl}#${key}" x="${x}" y="${y}" width="${width}" height="${height}" />
+    </svg>`;
+  }).join('');
 
-// Generate an icon sheet compatible with Protomaps
-async function generateIconSheet() {
-    const spriteData = JSON.parse(fs.readFileSync(SPRITES_JSON_URL, 'utf-8'));
-    const svgIcons = [];
-    const iconIdMap = {};
-    let iconCounter = 1;
+  const sheetDeclaration = `
+const sheet = new protomapsL.Sheet(\`
+<html>
+  <body>
+    ${sheetContent}
+  </body>
+</html>
+\`);`;
 
-    for (const iconName in spriteData) {
-        const { x, y, width, height } = spriteData[iconName];
-        
-        // Generate a unique ID with a prefix and counter
-        const generatedId = `icon_${iconCounter++}`;
-        iconIdMap[iconName] = generatedId;
+  const paintRules = [];
+  const labelRules = [];
 
-        // Use sharp to extract each icon from the PNG
-        const buffer = await sharp(SPRITES_PNG_URL)
-            .extract({ left: x, top: y, width, height })
-            .toBuffer();
-        const encodedIcon = buffer.toString('base64');
+  layers.forEach(layer => {
+    const { filter, minzoom, maxzoom, layout, paint } = layer;
 
-        svgIcons.push(`
-          <svg id="${generatedId}" width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
-            <image href="data:image/png;base64,${encodedIcon}" width="${width}" height="${height}" />
-          </svg>
-        `);
+    // Determine which symbolizer to use
+    let symbolizerExpr;
+    if (layer.type === 'line') {
+      symbolizerExpr = `new protomapsL.LineSymbolizer({ color: '${paint['line-color']}', width: ${paint['line-width'] || 1} })`;
+    } else if (layer.type === 'fill') {
+      symbolizerExpr = `new protomapsL.PolygonSymbolizer({ fill: '${paint['fill-color']}', outlineColor: '${paint['fill-outline-color'] || '#000000'}' })`;
+    } else if (layer.type === 'symbol' && layout['icon-image']) {
+      const iconId = layout['icon-image'].replace(/[^a-zA-Z0-9_]/g, '_');
+      symbolizerExpr = `new protomapsL.IconSymbolizer({ name: '${iconId}', sheet: sheet })`;
+    } else if (layer.type === 'symbol' && layout['text-field']) {
+      symbolizerExpr = `new protomapsL.CenteredTextSymbolizer({
+        labelProps: ['${layout['text-field'].replace(/[{}]/g, '')}'],
+        fill: '${paint['text-color'] || "#000000"}',
+        halo: '${paint['text-halo-color'] || "#FFFFFF"}',
+        haloWidth: ${paint['text-halo-width'] || 1},
+        font: '${layout['text-font'] ? layout['text-font'][0] : "Arial"} ${Math.round(layout['text-size'] || 12)}px'
+      })`;
     }
 
-    return { svgSheet: `<html><body>${svgIcons.join('\n')}</body></html>`, iconIdMap };
-}
-
-// Define mapping functions for symbolizers
-function mapPaint(layer) {
-    if (layer.type === 'fill') {
-        return `new protomapsL.PolygonSymbolizer({ fill: '${layer.paint["fill-color"]}' })`;
-    } else if (layer.type === 'line') {
-        return `new protomapsL.LineSymbolizer({ color: '${layer.paint["line-color"]}', width: ${fixSymbolizerValue(layer.paint["line-width"] || 1)} })`;
-    }
-    return null;
-}
-
-function resolveIconName(iconImage, layerProps, iconIdMap) {
-    let resolvedIconName = iconImage.replace(/\{(\w+)\}/g, (_, prop) => layerProps[prop] || '');
-
-    if (!iconIdMap[resolvedIconName]) {
-        for (let i = 1; i <= 7; i++) {
-            const numberedIconName = resolvedIconName.replace(/\{\w+\}/, i);
-            if (iconIdMap[numberedIconName]) {
-                return numberedIconName;
-            }
-        }
-        return 'default_icon';
-    }
-
-    return resolvedIconName;
-}
-
-function mapLabel(layer, sheet, iconIdMap) {
-    if (layer.type === 'symbol') {
-        if (layer.layout["icon-image"]) {
-            let iconName = layer.layout["icon-image"];
-            const resolvedIconName = resolveIconName(iconName, layer.layout, iconIdMap);
-            const generatedId = iconIdMap[resolvedIconName] || 'default_icon';
-            return `new protomapsL.IconSymbolizer({ name: '${generatedId}', sheet: sheet })`;
-        } else {
-            const fontSize = getFontSize(layer.layout["text-size"]);
-            return `new protomapsL.CenteredTextSymbolizer({
-                labelProps: ['${layer.layout["text-field"] || "_name"}'],
-                fill: '${layer.paint["text-color"] || "#000000"}',
-                halo: '${layer.paint["text-halo-color"] || "#FFFFFF"}',
-                haloWidth: ${fixSymbolizerValue(layer.paint["text-halo-width"] || 1)},
-                font: '${layer.layout["text-font"] ? layer.layout["text-font"][0] : "Arial"} ${fontSize}px'
-            })`;
-        }
-    }
-    return null;
-}
-
-
-
-
-// Helper function to extract font size from stops or provide a default value
-function getFontSize(size) {
-    if (typeof size === 'object' && size.stops) {
-        const maxStop = size.stops[size.stops.length - 1];
-        return maxStop ? Math.round(maxStop[1]) : 12;
-    }
-    return Math.round(size || 12);
-}
-
-function mapFilter(filter) {
-    if (!filter) return null;
-    if (filter[0] === '==') {
-        return `(z, f) => f.props.${filter[1]} === ${JSON.stringify(filter[2])}`;
-    }
-    return null;
-}
-function generateRules(layers, sheet, iconIdMap) {
-    const paintRules = [];
-    const labelRules = [];
-
-    layers.forEach((layer, index) => {
-        const dataLayer = layer["source-layer"];
-        const filter = mapFilter(layer.filter);
-        const symbolizer = layer.type === 'symbol' ? mapLabel(layer, sheet, iconIdMap) : mapPaint(layer);
-
-        if (symbolizer) {
-            const rule = `{
-                dataLayer: '${dataLayer}',
-                symbolizer: ${symbolizer},
-                minZoom: ${layer.minzoom || 0},
-                maxZoom: ${layer.maxzoom || 24}${filter ? `,\n                filter: ${filter}` : ''}
-            }`;
-
-            if (layer.type === 'symbol') {
-                labelRules.push(rule);
-            } else {
-                paintRules.push(rule);
-            }
-        }
-    });
-
-    return { paintRules, labelRules };
-}
-
-async function generatePmtilesRules(inputFile, outputFile) {
-    const mapboxStyle = JSON.parse(fs.readFileSync(inputFile, 'utf-8'));
-    const { svgSheet, iconIdMap } = await generateIconSheet();
-
-    const sheetDefinition = `
-const sheet = new protomapsL.Sheet(\`${svgSheet}\`); 
-
-const pmtilesRulesReady = sheet.load().then(() => {
-  const pmtilesRules = new Map();
-  
-  pmtilesRules.set(
-    'https://tiles.arcgis.com/tiles/HsjBaDykC1mjhXz9/arcgis/rest/services/CBMT_CBCT_3857_V_OSM/VectorTileServer/tile/{z}/{y}/{x}.pbf',
-    {
-      sheet: sheet,
-      rules: {
-        PAINT_RULES: [
-          ${generateRules(mapboxStyle.layers, "sheet", iconIdMap).paintRules.join(',\n          ')}
-        ],
-        LABEL_RULES: [
-          ${generateRules(mapboxStyle.layers, "sheet", iconIdMap).labelRules.join(',\n          ')}
-        ]
+    if (symbolizerExpr) {
+      const rule = `
+        {
+          dataLayer: '${layer['source-layer']}',
+          symbolizer: ${symbolizerExpr},
+          minZoom: ${minzoom || 0},
+          maxZoom: ${maxzoom || 24}
+        }`;
+      if (layer.type === 'symbol') {
+        labelRules.push(rule);
+      } else {
+        paintRules.push(rule);
       }
     }
-  );
+  });
+
+  // Generate the complete pmtilesRules.js content with promise-returning structure
+  const output = `
+${sheetDeclaration}
+
+const pmtilesRules = new Map();
+const pmtilesRulesReady = sheet.load().then(() => {
+  pmtilesRules.set('https://tiles.arcgis.com/tiles/HsjBaDykC1mjhXz9/arcgis/rest/services/CBMT_CBCT_3857_V_OSM/VectorTileServer/tile/{z}/{y}/{x}.pbf', {
+    sheet: sheet,
+    rules: {
+      PAINT_RULES: [
+        ${paintRules.join(',\n        ')}
+      ],
+      LABEL_RULES: [
+        ${labelRules.join(',\n        ')}
+      ]
+    }
+  });
   return pmtilesRules;
 });
-export { pmtilesRulesReady };
+
+export { pmtilesRules, pmtilesRulesReady };
 `;
 
-    fs.writeFileSync(outputFile, sheetDefinition);
-    console.log('pmtilesRules.js generated successfully');
+  return output;
+};
+
+// Main function to execute the script
+async function main() {
+  const mapboxFile = path.join(__dirname, 'mapbox.json');
+  const spriteJsonFile = path.join(__dirname, 'sprite.json');
+  const spritePngUrl = 'https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png';
+
+  const mapboxData = JSON.parse(fs.readFileSync(mapboxFile, 'utf8'));
+  const spriteJsonData = JSON.parse(fs.readFileSync(spriteJsonFile, 'utf8'));
+
+  const output = generatePmtilesRules(mapboxData.layers, spriteJsonData, spritePngUrl);
+  fs.writeFileSync(path.join(__dirname, 'pmtilesRules.js'), output);
 }
 
-// Run the script
-generatePmtilesRules('mapbox.json', 'pmtilesRules.js');
+main().catch(err => {
+  console.error(err);
+  process.exit(1);
+});
