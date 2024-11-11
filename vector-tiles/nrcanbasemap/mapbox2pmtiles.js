@@ -13,26 +13,24 @@ function fixSymbolizerValue(value) {
     return value;
 }
 
-// Improved function to sanitize and simplify SVG IDs
+// Simplified function to sanitize and create unique IDs
 function sanitizeId(id) {
-    // Remove all non-alphanumeric characters and replace them with underscores
-    return id.replace(/[^a-zA-Z0-9]/g, '_').replace(/_+/g, '_').replace(/^_+|_+$/g, '');
+    return `icon_${id}`; // Simplified to generate unique numeric IDs
 }
 
 // Generate an icon sheet compatible with Protomaps
-// Generate an icon sheet compatible with Protomaps, using prefix-based IDs
 async function generateIconSheet() {
     const spriteData = JSON.parse(fs.readFileSync(SPRITES_JSON_URL, 'utf-8'));
     const svgIcons = [];
     const iconIdMap = {};
-    let iconCounter = 1;  // Start counter for unique IDs
+    let iconCounter = 1;
 
     for (const iconName in spriteData) {
         const { x, y, width, height } = spriteData[iconName];
         
         // Generate a unique ID with a prefix and counter
         const generatedId = `icon_${iconCounter++}`;
-        iconIdMap[iconName] = generatedId;  // Map original name to generated ID
+        iconIdMap[iconName] = generatedId;
 
         // Use sharp to extract each icon from the PNG
         const buffer = await sharp(SPRITES_PNG_URL)
@@ -50,7 +48,6 @@ async function generateIconSheet() {
     return { svgSheet: `<html><body>${svgIcons.join('\n')}</body></html>`, iconIdMap };
 }
 
-
 // Define mapping functions for symbolizers
 function mapPaint(layer) {
     if (layer.type === 'fill') {
@@ -62,19 +59,15 @@ function mapPaint(layer) {
 }
 
 function resolveIconName(iconImage, layerProps, iconIdMap) {
-    // Replace placeholders (e.g., {property}) with values from layerProps
     let resolvedIconName = iconImage.replace(/\{(\w+)\}/g, (_, prop) => layerProps[prop] || '');
 
-    // If resolvedIconName is still not found in iconIdMap, try numbered variations
     if (!iconIdMap[resolvedIconName]) {
-        // Check if there's a version with numbered suffixes (e.g., Route Number/1, Route Number/2)
         for (let i = 1; i <= 7; i++) {
-            const numberedIconName = resolvedIconName.replace(/\{\w+\}/, i); // Replace placeholder with a number
+            const numberedIconName = resolvedIconName.replace(/\{\w+\}/, i);
             if (iconIdMap[numberedIconName]) {
-                return numberedIconName; // Return the first valid numbered icon
+                return numberedIconName;
             }
         }
-        // If no numbered icon found, fallback to default icon
         return 'default_icon';
     }
 
@@ -84,13 +77,10 @@ function resolveIconName(iconImage, layerProps, iconIdMap) {
 function mapLabel(layer, sheet, iconIdMap) {
     if (layer.type === 'symbol') {
         if (layer.layout["icon-image"]) {
-//            let iconName = layer.layout["icon-image"];
-//            const resolvedIconName = resolveIconName(iconName, layer.layout, iconIdMap);  // Resolve any placeholders
-//
-//            // Use the resolved icon name if it exists in iconIdMap
-//            const generatedId = iconIdMap[resolvedIconName] || 'default_icon';  // Fallback to 'default_icon' if undefined
-//
-//            return `new protomapsL.IconSymbolizer({ name: '${generatedId}', sheet: sheet })`;
+            let iconName = layer.layout["icon-image"];
+            const resolvedIconName = resolveIconName(iconName, layer.layout, iconIdMap);
+            const generatedId = iconIdMap[resolvedIconName] || 'default_icon';
+            return `new protomapsL.IconSymbolizer({ name: '${generatedId}', sheet: sheet })`;
         } else {
             const fontSize = getFontSize(layer.layout["text-size"]);
             return `new protomapsL.CenteredTextSymbolizer({
@@ -98,7 +88,7 @@ function mapLabel(layer, sheet, iconIdMap) {
                 fill: '${layer.paint["text-color"] || "#000000"}',
                 halo: '${layer.paint["text-halo-color"] || "#FFFFFF"}',
                 haloWidth: ${fixSymbolizerValue(layer.paint["text-halo-width"] || 1)},
-                font: '${layer.layout["text-font"] || "Arial"} ${fontSize}px'
+                font: '${layer.layout["text-font"] ? layer.layout["text-font"][0] : "Arial"} ${fontSize}px'
             })`;
         }
     }
@@ -124,7 +114,6 @@ function mapFilter(filter) {
     }
     return null;
 }
-
 function generateRules(layers, sheet, iconIdMap) {
     const paintRules = [];
     const labelRules = [];
