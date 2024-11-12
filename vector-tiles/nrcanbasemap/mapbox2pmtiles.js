@@ -77,10 +77,16 @@ function getNumericValue(property, defaultValue = 1) {
 
 // Function to generate pmtilesRules.js from mapbox.json
 const generatePmtilesRules = (layers, spriteJson, spriteSheetUrl) => {
+  let iconCounter = 0;
+  const iconIdMap = {};
+
   const sheetContent = Object.keys(spriteJson).map(key => {
     const { x, y, width, height } = spriteJson[key];
+    const uniqueIconId = `icon_${iconCounter++}`;
+    iconIdMap[key] = uniqueIconId;
+
     return `
-    <svg id="${key.replace(/[^a-zA-Z0-9_]/g, '_')}" width="${width}px" height="${height}px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="${uniqueIconId}" width="${width}px" height="${height}px" xmlns="http://www.w3.org/2000/svg">
       <image href="${spriteSheetUrl}" x="${x}" y="${y}" width="${width}" height="${height}" />
     </svg>`;
   }).join('');
@@ -108,9 +114,9 @@ const sheet = new protomapsL.Sheet(\`
     } else if (layer.type === 'fill') {
       symbolizerExpr = `new protomapsL.PolygonSymbolizer({ fill: '${paint['fill-color']}', outlineColor: '${paint['fill-outline-color'] || '#000000'}' })`;
     } else if (layer.type === 'symbol' && layout['icon-image'] && layout['icon-image'].includes('{_len}') && layout['text-field']) {
-      const baseIconId = layout['icon-image'].replace(/{[^}]+}/g, '').replace(/[^a-zA-Z0-9]/g, '_');
+      const baseIconName = layout['icon-image'].replace(/{[^}]+}/g, '');
       for (let len = 1; len <= 3; len++) {
-        const iconId = `${baseIconId}_${len}`;
+        const iconId = iconIdMap[`${baseIconName}${len}`] || `icon_${iconCounter++}`;
         symbolizerExpr = `new protomapsL.ShieldSymbolizer({
           icon: '${iconId}',
           labelProps: ['${layout['text-field'].replace(/[{}]/g, '')}'],
@@ -130,7 +136,7 @@ const sheet = new protomapsL.Sheet(\`
           }`);
       }
     } else if (layer.type === 'symbol' && layout['icon-image']) {
-      const iconId = layout['icon-image'].replace(/[^a-zA-Z0-9_]/g, '_');
+      const iconId = iconIdMap[layout['icon-image']] || `icon_${iconCounter++}`;
       symbolizerExpr = `new protomapsL.IconSymbolizer({ name: '${iconId}', sheet: sheet })`;
       labelRules.push(`
         {

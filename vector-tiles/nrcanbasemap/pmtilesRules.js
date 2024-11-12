@@ -4,469 +4,469 @@ const sheet = new protomapsL.Sheet(`
 <html>
   <body>
     
-    <svg id="Hydro_Features_Permanent_Snow_and_Ice__4_9__1" width="99px" height="97px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_0" width="99px" height="97px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="0" y="0" width="99" height="97" />
     </svg>
-    <svg id="Hydro_Features_Permanent_Snow_and_Ice__9_24__1" width="76px" height="75px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_1" width="76px" height="75px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="99" y="0" width="76" height="75" />
     </svg>
-    <svg id="Land_Features_Saturated_Soil__9_24__Wetland" width="53px" height="52px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_2" width="53px" height="52px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="175" y="0" width="53" height="52" />
     </svg>
-    <svg id="Land_Features_Saturated_Soil__9_24__String_Bog" width="53px" height="52px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_3" width="53px" height="52px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="228" y="0" width="53" height="52" />
     </svg>
-    <svg id="Hydro_Features_Hydro_Obstacle__9_24__Polygon_Rapids_0" width="50px" height="50px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_4" width="50px" height="50px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="281" y="0" width="50" height="50" />
     </svg>
-    <svg id="Land_Features_Landform__11_24__Tundra_Polygon" width="49px" height="46px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_5" width="49px" height="46px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="331" y="0" width="49" height="46" />
     </svg>
-    <svg id="Land_Features_Landform__9_11__Tundra_Polygon" width="49px" height="46px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_6" width="49px" height="46px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="331" y="0" width="49" height="46" />
     </svg>
-    <svg id="Land_Features_Saturated_Soil__9_24__Tundra_Pond" width="49px" height="46px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_7" width="49px" height="46px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="331" y="0" width="49" height="46" />
     </svg>
-    <svg id="Resource_Management_Features_Quarry__9_24__3" width="29px" height="30px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_8" width="29px" height="30px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="380" y="0" width="29" height="30" />
     </svg>
-    <svg id="Resource_Management_Features_Ore__9_24__1" width="29px" height="30px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_9" width="29px" height="30px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="380" y="0" width="29" height="30" />
     </svg>
-    <svg id="Land_Features_Landform__11_24__Sand" width="29px" height="30px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_10" width="29px" height="30px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="409" y="0" width="29" height="30" />
     </svg>
-    <svg id="Land_Features_Landform__9_11__Sand" width="29px" height="30px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_11" width="29px" height="30px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="409" y="0" width="29" height="30" />
     </svg>
-    <svg id="Land_Features_Landform__9_11__Moraine_0" width="29px" height="29px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_12" width="29px" height="29px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="0" y="97" width="29" height="29" />
     </svg>
-    <svg id="Land_Features_Landform__11_24__Glacial_Debris_Undifferentiated_0" width="29px" height="29px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_13" width="29px" height="29px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="0" y="97" width="29" height="29" />
     </svg>
-    <svg id="Land_Features_Landform__11_24__Moraine_0" width="29px" height="29px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_14" width="29px" height="29px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="0" y="97" width="29" height="29" />
     </svg>
-    <svg id="Land_Features_Landform__11_24__Glacial_Debris_Undifferentiated_1" width="29px" height="29px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_15" width="29px" height="29px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="29" y="97" width="29" height="29" />
     </svg>
-    <svg id="Land_Features_Landform__9_11__Moraine_1" width="29px" height="29px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_16" width="29px" height="29px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="29" y="97" width="29" height="29" />
     </svg>
-    <svg id="Land_Features_Landform__11_24__Moraine_1" width="29px" height="29px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_17" width="29px" height="29px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="29" y="97" width="29" height="29" />
     </svg>
-    <svg id="Land_Features_Saturated_Soil__9_24__Palsa_Bog" width="58px" height="29px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_18" width="58px" height="29px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="58" y="97" width="58" height="29" />
     </svg>
-    <svg id="Hydro_Features_Waterbody__11_24__Intermittent_1" width="20px" height="21px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_19" width="20px" height="21px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="116" y="97" width="20" height="21" />
     </svg>
-    <svg id="Hydro_Features_Waterbody__7_9__Below_Intermittent_1_1" width="20px" height="21px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_20" width="20px" height="21px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="136" y="97" width="20" height="21" />
     </svg>
-    <svg id="Hydro_Features_Waterbody__9_11__Intermittent_1" width="20px" height="21px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_21" width="20px" height="21px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="136" y="97" width="20" height="21" />
     </svg>
-    <svg id="Hydro_Features_Waterbody__7_9__Above_Intermittent_1" width="20px" height="21px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_22" width="20px" height="21px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="136" y="97" width="20" height="21" />
     </svg>
-    <svg id="Hydro_Features_Intermittent_Water__11_24__1" width="20px" height="21px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_23" width="20px" height="21px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="136" y="97" width="20" height="21" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__9_15__Road_Route_Number_6" width="51px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_24" width="51px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="156" y="97" width="51" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__9_15__Tunnel_Route_Number_6" width="51px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_25" width="51px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="156" y="97" width="51" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__15_24__Road_Route_Number_6" width="51px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_26" width="51px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="156" y="97" width="51" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__9_15__Tunnel_Route_Number_7" width="59px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_27" width="59px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="207" y="97" width="59" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__9_15__Road_Route_Number_7" width="59px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_28" width="59px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="207" y="97" width="59" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__15_24__Road_Route_Number_7" width="59px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_29" width="59px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="207" y="97" width="59" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__9_15__Road_Route_Number_2" width="27px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_30" width="27px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="266" y="97" width="27" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__9_15__Road_Route_Number_1" width="27px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_31" width="27px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="266" y="97" width="27" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__9_15__Road_Route_Number_3" width="27px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_32" width="27px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="266" y="97" width="27" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__9_15__Tunnel_Route_Number_1" width="27px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_33" width="27px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="266" y="97" width="27" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__9_15__Tunnel_Route_Number_2" width="27px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_34" width="27px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="266" y="97" width="27" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__9_15__Tunnel_Route_Number_3" width="27px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_35" width="27px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="266" y="97" width="27" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__15_24__Road_Route_Number_3" width="27px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_36" width="27px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="266" y="97" width="27" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__15_24__Road_Route_Number_2" width="27px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_37" width="27px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="266" y="97" width="27" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__15_24__Road_Route_Number_1" width="27px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_38" width="27px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="266" y="97" width="27" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__9_15__Road_Route_Number_5" width="43px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_39" width="43px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="293" y="97" width="43" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__15_24__Road_Route_Number_5" width="43px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_40" width="43px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="293" y="97" width="43" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__9_15__Tunnel_Route_Number_5" width="43px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_41" width="43px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="293" y="97" width="43" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__9_15__Tunnel_Route_Number_4" width="35px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_42" width="35px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="336" y="97" width="35" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__15_24__Road_Route_Number_4" width="35px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_43" width="35px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="336" y="97" width="35" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__9_15__Road_Route_Number_4" width="35px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_44" width="35px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="336" y="97" width="35" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__7_9__Numbered_6" width="51px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_45" width="51px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="371" y="97" width="51" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__7_9__Numbered_7" width="59px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_46" width="59px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="0" y="126" width="59" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__7_9__Numbered_3" width="27px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_47" width="27px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="59" y="126" width="27" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__7_9__Numbered_2" width="27px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_48" width="27px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="59" y="126" width="27" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__7_9__Numbered_1" width="27px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_49" width="27px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="59" y="126" width="27" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__7_9__Numbered_5" width="43px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_50" width="43px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="86" y="126" width="43" height="19" />
     </svg>
-    <svg id="Transport_Features_Road_Segment__7_9__Numbered_4" width="35px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_51" width="35px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="129" y="126" width="35" height="19" />
     </svg>
-    <svg id="Man_made_Features_Leisure_Area__12_24__Point_Ski_Centre" width="18px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_52" width="18px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="164" y="126" width="18" height="19" />
     </svg>
-    <svg id="Man_made_Features_Tower__13_24__Control" width="11px" height="19px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_53" width="11px" height="19px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="182" y="126" width="11" height="19" />
     </svg>
-    <svg id="Man_made_Features_Buildings__11_24__Point_Religious_Building" width="11px" height="18px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_54" width="11px" height="18px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="193" y="126" width="11" height="18" />
     </svg>
-    <svg id="Man_made_Features_Leisure_Area__12_24__Point_Golf_Course" width="19px" height="18px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_55" width="19px" height="18px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="204" y="126" width="19" height="18" />
     </svg>
-    <svg id="Resource_Management_Features_Electric_Power_Station__13_24_" width="17px" height="18px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_56" width="17px" height="18px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="223" y="126" width="17" height="18" />
     </svg>
-    <svg id="Toponymic_Features_Named_Feature_USA_Capitals__7_18__Washington" width="18px" height="17px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_57" width="18px" height="17px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="240" y="126" width="18" height="17" />
     </svg>
-    <svg id="Toponymic_Features_Named_Feature_Provincial_Capitals__2_18_" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_58" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="258" y="126" width="16" height="16" />
     </svg>
-    <svg id="Man_made_Features_Buildings__11_24__Point_Educational_Building" width="13px" height="16px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_59" width="13px" height="16px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="274" y="126" width="13" height="16" />
     </svg>
-    <svg id="Transport_Features_Runway__10_11__Hydroaerodrome" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_60" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="287" y="126" width="16" height="16" />
     </svg>
-    <svg id="Man_made_Features_Buildings__11_24__Point_Medical_Centre" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_61" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="303" y="126" width="16" height="16" />
     </svg>
-    <svg id="Man_made_Features_Buildings__11_24__Point_Hospital" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_62" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="319" y="126" width="16" height="16" />
     </svg>
-    <svg id="Man_made_Features_Buildings__11_24__Point_Coast_Guard_Station" width="14px" height="16px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_63" width="14px" height="16px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="335" y="126" width="14" height="16" />
     </svg>
-    <svg id="Toponymic_Features_Named_Feature_Ottawa__2_18_" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_64" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="349" y="126" width="16" height="16" />
     </svg>
-    <svg id="Toponymic_Features_Named_Feature_USA_Capitals__7_18__State_Capital" width="15px" height="15px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_65" width="15px" height="15px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="365" y="126" width="15" height="15" />
     </svg>
-    <svg id="Resource_Management_Features_Wind_operated_device__11_24_" width="12px" height="15px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_66" width="12px" height="15px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="380" y="126" width="12" height="15" />
     </svg>
-    <svg id="Transport_Features_Runway__11_24__Polygon_Non_Official_0" width="15px" height="15px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_67" width="15px" height="15px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="392" y="126" width="15" height="15" />
     </svg>
-    <svg id="Transport_Features_Runway__11_24__Polygon_Official_0" width="15px" height="15px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_68" width="15px" height="15px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="407" y="126" width="15" height="15" />
     </svg>
-    <svg id="Transport_Features_Marina__11_24_" width="14px" height="15px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_69" width="14px" height="15px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="422" y="126" width="14" height="15" />
     </svg>
-    <svg id="Man_made_Features_Ritual_and_Cultural_Area_Cemetery__11_24__Point" width="12px" height="15px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_70" width="12px" height="15px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="436" y="126" width="12" height="15" />
     </svg>
-    <svg id="Transport_Features_Runway__10_11__Heliport" width="15px" height="15px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_71" width="15px" height="15px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="0" y="145" width="15" height="15" />
     </svg>
-    <svg id="Transport_Features_Trail__10_24__Bridge_0" width="10px" height="15px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_72" width="10px" height="15px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="15" y="145" width="10" height="15" />
     </svg>
-    <svg id="Hydro_Features_Hydro_Obstacle__9_24__Line_Falls_0" width="14px" height="15px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_73" width="14px" height="15px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="25" y="145" width="14" height="15" />
     </svg>
-    <svg id="Transport_Features_Navigational_Aid__11_24__Navigation_Beacon" width="13px" height="14px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_74" width="13px" height="14px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="39" y="145" width="13" height="14" />
     </svg>
-    <svg id="Man_made_Features_Leisure_Area__12_24__Point_Campground" width="16px" height="14px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_75" width="16px" height="14px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="52" y="145" width="16" height="14" />
     </svg>
-    <svg id="World_Populated_Places_Point__4_7__Capital" width="14px" height="14px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_76" width="14px" height="14px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="68" y="145" width="14" height="14" />
     </svg>
-    <svg id="Man_made_Features_Buildings__11_24__Point_Customs_Post" width="17px" height="14px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_77" width="17px" height="14px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="82" y="145" width="17" height="14" />
     </svg>
-    <svg id="Man_made_Features_Dam__9_24__Point" width="14px" height="14px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_78" width="14px" height="14px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="99" y="145" width="14" height="14" />
     </svg>
-    <svg id="Man_made_Features_Tower__13_24__Fire" width="11px" height="14px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_79" width="11px" height="14px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="113" y="145" width="11" height="14" />
     </svg>
-    <svg id="Transport_Features_Runway__11_24__Point_Seaplane_Base" width="14px" height="14px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_80" width="14px" height="14px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="124" y="145" width="14" height="14" />
     </svg>
-    <svg id="Man_made_Features_Protection_Structure__12_24__Fish_Ladder" width="14px" height="14px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_81" width="14px" height="14px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="138" y="145" width="14" height="14" />
     </svg>
-    <svg id="Resource_Management_Features_Oil_and_Gas_Site__10_24__Point" width="13px" height="14px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_82" width="13px" height="14px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="152" y="145" width="13" height="14" />
     </svg>
-    <svg id="Hydro_Features_Hydro_Obstacle__9_24__Line_Rapids_0" width="15px" height="14px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_83" width="15px" height="14px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="165" y="145" width="15" height="14" />
     </svg>
-    <svg id="Transport_Features_Navigational_Aid__11_24__Navigation_Light" width="13px" height="14px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_84" width="13px" height="14px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="180" y="145" width="13" height="14" />
     </svg>
-    <svg id="Transport_Features_Runway__10_11__Other" width="14px" height="14px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_85" width="14px" height="14px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="193" y="145" width="14" height="14" />
     </svg>
-    <svg id="Man_made_Features_Tower__13_24__Water" width="12px" height="14px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_86" width="12px" height="14px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="207" y="145" width="12" height="14" />
     </svg>
-    <svg id="Man_made_Features_Buildings__11_24__Point_Fire_Station" width="13px" height="14px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_87" width="13px" height="14px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="219" y="145" width="13" height="14" />
     </svg>
-    <svg id="Man_made_Features_Buildings__11_24__Point_Police_Station" width="13px" height="14px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_88" width="13px" height="14px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="232" y="145" width="13" height="14" />
     </svg>
-    <svg id="Man_made_Features_Buildings__11_24__Point_Municipal_Hall" width="15px" height="14px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_89" width="15px" height="14px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="245" y="145" width="15" height="14" />
     </svg>
-    <svg id="Hydro_Features_Hydro_Obstacle__13_24__Point_Exposed_Shipwreck" width="16px" height="13px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_90" width="16px" height="13px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="260" y="145" width="16" height="13" />
     </svg>
-    <svg id="Man_made_Features_Tower__13_24__Lookout" width="8px" height="12px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_91" width="8px" height="12px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="276" y="145" width="8" height="12" />
     </svg>
-    <svg id="Land_Features_Pingo__10_24_" width="12px" height="12px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_92" width="12px" height="12px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="284" y="145" width="12" height="12" />
     </svg>
-    <svg id="Transport_Features_Nautical_Facility__11_24__Lock_Gate_Point" width="12px" height="12px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_93" width="12px" height="12px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="296" y="145" width="12" height="12" />
     </svg>
-    <svg id="Hydro_Features_Hydro_Obstacle__9_24__Polygon_Reef_or_Rocks" width="14px" height="12px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_94" width="14px" height="12px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="308" y="145" width="14" height="12" />
     </svg>
-    <svg id="World_Populated_Places_Point__4_7__Regional_Capital" width="12px" height="12px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_95" width="12px" height="12px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="322" y="145" width="12" height="12" />
     </svg>
-    <svg id="Transport_Features_Runway__11_24__Point_Airport" width="12px" height="12px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_96" width="12px" height="12px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="334" y="145" width="12" height="12" />
     </svg>
-    <svg id="Resource_Management_Features_Ore__11_24_" width="13px" height="12px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_97" width="13px" height="12px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="346" y="145" width="13" height="12" />
     </svg>
-    <svg id="Hydro_Features_Hydro_Obstacle__13_24__Point_Falls" width="12px" height="12px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_98" width="12px" height="12px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="359" y="145" width="12" height="12" />
     </svg>
-    <svg id="Transport_Features_Runway__11_24__Point_Heliport" width="12px" height="12px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_99" width="12px" height="12px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="371" y="145" width="12" height="12" />
     </svg>
-    <svg id="Man_made_Features_Landmark_Feature_Lookout__14_24_" width="12px" height="11px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_100" width="12px" height="11px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="383" y="145" width="12" height="11" />
     </svg>
-    <svg id="Hydro_Features_Hydro_Obstacle__13_24__Point_Rapids" width="12px" height="11px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_101" width="12px" height="11px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="395" y="145" width="12" height="11" />
     </svg>
-    <svg id="Man_made_Features_Chimney__10_11_" width="11px" height="11px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_102" width="11px" height="11px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="407" y="145" width="11" height="11" />
     </svg>
-    <svg id="Man_made_Features_Tower__11_13_" width="10px" height="10px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_103" width="10px" height="10px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="418" y="145" width="10" height="10" />
     </svg>
-    <svg id="Transport_Features_Aerial_Cableway__13_24__0" width="10px" height="10px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_104" width="10px" height="10px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="428" y="145" width="10" height="10" />
     </svg>
-    <svg id="Man_made_Features_Tower__13_24__Communication" width="14px" height="10px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_105" width="14px" height="10px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="0" y="160" width="14" height="10" />
     </svg>
-    <svg id="Man_made_Features_Tower__13_24__Not_Identified" width="10px" height="10px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_106" width="10px" height="10px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="14" y="160" width="10" height="10" />
     </svg>
-    <svg id="Hydro_Features_Hydro_Obstacle__13_24__Point_Rocks" width="10px" height="10px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_107" width="10px" height="10px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="24" y="160" width="10" height="10" />
     </svg>
-    <svg id="World_Populated_Places_Point__4_7__Populated_place" width="10px" height="10px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_108" width="10px" height="10px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="34" y="160" width="10" height="10" />
     </svg>
-    <svg id="Hydro_Features_Hydro_Obstacle__13_24__Point_Sink" width="10px" height="10px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_109" width="10px" height="10px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="44" y="160" width="10" height="10" />
     </svg>
-    <svg id="Resource_Management_Features_Power_Line__12_24__Underground_Underwater_0" width="14px" height="9px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_110" width="14px" height="9px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="54" y="160" width="14" height="9" />
     </svg>
-    <svg id="Resource_Management_Features_Power_Line__12_24__Aboveground" width="14px" height="9px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_111" width="14px" height="9px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="68" y="160" width="14" height="9" />
     </svg>
-    <svg id="Man_made_Features_Protection_Structure__12_24__Not_Identified" width="9px" height="9px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_112" width="9px" height="9px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="82" y="160" width="9" height="9" />
     </svg>
-    <svg id="Hydro_Features_Hydro_Obstacle__13_24__Point_Not_Identified" width="9px" height="9px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_113" width="9px" height="9px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="91" y="160" width="9" height="9" />
     </svg>
-    <svg id="Land_Features_Esker__11_24__1" width="8px" height="8px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_114" width="8px" height="8px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="100" y="160" width="8" height="8" />
     </svg>
-    <svg id="Land_Features_Esker__9_11__1" width="8px" height="8px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_115" width="8px" height="8px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="100" y="160" width="8" height="8" />
     </svg>
-    <svg id="Land_Features_Esker__9_11__0" width="8px" height="8px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_116" width="8px" height="8px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="108" y="160" width="8" height="8" />
     </svg>
-    <svg id="Land_Features_Esker__11_24__0" width="8px" height="8px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_117" width="8px" height="8px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="108" y="160" width="8" height="8" />
     </svg>
-    <svg id="Hydro_Features_Hydro_Obstacle__13_24__Point_Ford" width="12px" height="8px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_118" width="12px" height="8px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="116" y="160" width="12" height="8" />
     </svg>
-    <svg id="Man_made_Features_Dam__12_24__Line_2" width="7px" height="8px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_119" width="7px" height="8px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="128" y="160" width="7" height="8" />
     </svg>
-    <svg id="Man_made_Features_Protection_Structure__11_24__Dyke_or_Levee_2" width="7px" height="8px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_120" width="7px" height="8px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="135" y="160" width="7" height="8" />
     </svg>
-    <svg id="Man_made_Features_Buildings__11_12_" width="7px" height="7px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_121" width="7px" height="7px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="142" y="160" width="7" height="7" />
     </svg>
-    <svg id="Man_made_Features_Protection_Structure__9_11__Dyke_or_Levee_2" width="6px" height="7px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_122" width="6px" height="7px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="149" y="160" width="6" height="7" />
     </svg>
-    <svg id="Transport_Features_Road_Ferry__7_9__1" width="8px" height="6px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_123" width="8px" height="6px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="155" y="160" width="8" height="6" />
     </svg>
-    <svg id="Transport_Features_Rail_Ferry__9_24__1" width="8px" height="6px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_124" width="8px" height="6px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="155" y="160" width="8" height="6" />
     </svg>
-    <svg id="Transport_Features_Road_Ferry__4_7__1" width="8px" height="6px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_125" width="8px" height="6px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="155" y="160" width="8" height="6" />
     </svg>
-    <svg id="Transport_Features_Road_Ferry__3_4__1" width="8px" height="6px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_126" width="8px" height="6px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="155" y="160" width="8" height="6" />
     </svg>
-    <svg id="Transport_Features_Road_Ferry__9_24__1" width="8px" height="6px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_127" width="8px" height="6px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="163" y="160" width="8" height="6" />
     </svg>
-    <svg id="Man_made_Features_Tower__13_24__Power" width="6px" height="6px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_128" width="6px" height="6px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="171" y="160" width="6" height="6" />
     </svg>
-    <svg id="Transport_Features_Road_Ferry__4_7__0" width="7px" height="5px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_129" width="7px" height="5px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="177" y="160" width="7" height="5" />
     </svg>
-    <svg id="Transport_Features_Road_Ferry__7_9__0" width="7px" height="5px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_130" width="7px" height="5px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="177" y="160" width="7" height="5" />
     </svg>
-    <svg id="Transport_Features_Rail_Ferry__9_24__0" width="7px" height="5px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_131" width="7px" height="5px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="177" y="160" width="7" height="5" />
     </svg>
-    <svg id="Transport_Features_Road_Ferry__3_4__0" width="7px" height="5px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_132" width="7px" height="5px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="177" y="160" width="7" height="5" />
     </svg>
-    <svg id="Transport_Features_Road_Ferry__9_24__0" width="7px" height="5px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_133" width="7px" height="5px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="184" y="160" width="7" height="5" />
     </svg>
-    <svg id="Transport_Features_Track_Segment_Track__9_15__Not_Identified_0" width="9px" height="4px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_134" width="9px" height="4px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="191" y="160" width="9" height="4" />
     </svg>
-    <svg id="Transport_Features_Track_Segment_Track__9_15__Operational_0" width="9px" height="4px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_135" width="9px" height="4px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="191" y="160" width="9" height="4" />
     </svg>
-    <svg id="Transport_Features_Track_Segment_Other__10_15__0" width="9px" height="4px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_136" width="9px" height="4px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="191" y="160" width="9" height="4" />
     </svg>
-    <svg id="Transport_Features_Track_Segment_Track__15_24__Not_Identified_0" width="9px" height="4px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_137" width="9px" height="4px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="191" y="160" width="9" height="4" />
     </svg>
-    <svg id="Transport_Features_Track_Segment_Track__15_24__Operational_0" width="9px" height="4px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_138" width="9px" height="4px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="191" y="160" width="9" height="4" />
     </svg>
-    <svg id="Transport_Features_Track_Segment_Other__15_24__0" width="9px" height="4px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_139" width="9px" height="4px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="191" y="160" width="9" height="4" />
     </svg>
-    <svg id="Transport_Features_Track_Segment_Track__9_15__Discontinued_0" width="9px" height="4px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_140" width="9px" height="4px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="200" y="160" width="9" height="4" />
     </svg>
-    <svg id="Transport_Features_Track_Segment_Track__15_24__Discontinued_0" width="9px" height="4px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_141" width="9px" height="4px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="209" y="160" width="9" height="4" />
     </svg>
-    <svg id="Transport_Features_Track_Segment_Track__7_9__0" width="8px" height="4px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_142" width="8px" height="4px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="218" y="160" width="8" height="4" />
     </svg>
-    <svg id="Transport_Features_Track_Segment_Track__5_7__0" width="8px" height="4px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_143" width="8px" height="4px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="218" y="160" width="8" height="4" />
     </svg>
-    <svg id="Transport_Features_Track_Segment_Track__6_7__0" width="8px" height="4px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_144" width="8px" height="4px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="226" y="160" width="8" height="4" />
     </svg>
-    <svg id="Transport_Features_Track_Segment_Track__4_7__0" width="8px" height="4px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_145" width="8px" height="4px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="226" y="160" width="8" height="4" />
     </svg>
-    <svg id="Man_made_Features_Protection_Structure__11_24__Dyke_or_Levee_3" width="6px" height="4px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_146" width="6px" height="4px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="234" y="160" width="6" height="4" />
     </svg>
-    <svg id="Man_made_Features_Dam__12_24__Line_3" width="6px" height="4px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_147" width="6px" height="4px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="240" y="160" width="6" height="4" />
     </svg>
-    <svg id="Transport_Features_Track_Segment_Track__2_3__0" width="7px" height="3px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_148" width="7px" height="3px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="246" y="160" width="7" height="3" />
     </svg>
-    <svg id="Transport_Features_Track_Segment_Track__3_4__0" width="7px" height="3px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_149" width="7px" height="3px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="246" y="160" width="7" height="3" />
     </svg>
-    <svg id="Elevation_Features_Contours__11_24__Index_Depression_0" width="5px" height="3px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_150" width="5px" height="3px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="253" y="160" width="5" height="3" />
     </svg>
-    <svg id="Elevation_Features_Contours__9_11__Derived_0" width="5px" height="3px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_151" width="5px" height="3px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="258" y="160" width="5" height="3" />
     </svg>
-    <svg id="Elevation_Features_Contours__11_24__Other_Depression_0" width="5px" height="3px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_152" width="5px" height="3px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="263" y="160" width="5" height="3" />
     </svg>
-    <svg id="Man_made_Features_Dam__9_24__Polygon_0" width="5px" height="3px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_153" width="5px" height="3px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="268" y="160" width="5" height="3" />
     </svg>
-    <svg id="Man_made_Features_Protection_Structure__9_11__Dyke_or_Levee_3" width="4px" height="3px" xmlns="http://www.w3.org/2000/svg">
+    <svg id="icon_154" width="4px" height="3px" xmlns="http://www.w3.org/2000/svg">
       <image href="https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png" x="273" y="160" width="4" height="3" />
     </svg>
   </body>
@@ -2549,7 +2549,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Dam/(9-24)/Polygon',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Dam__9_24__Polygon_0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_153', sheet: sheet }),
           minZoom: 9,
           maxZoom: 24,
           filter: () => true
@@ -2557,7 +2557,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Hydro Obstacle/(9-24)/Polygon',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Hydro_Features_Hydro_Obstacle__9_24__Polygon_Reef_or_Rocks', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_94', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 1
@@ -2565,7 +2565,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Transport Features/Runway/(11-24)/Polygon',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Runway__11_24__Polygon_Official_0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_68', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24,
           filter: (z, f) => ((z, f) => f.props && f.props['_symbol'] === 0) && ((z, f) => f.props && f.props['$type'] === "Point")
@@ -2573,7 +2573,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Transport Features/Runway/(11-24)/Polygon',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Runway__11_24__Polygon_Non_Official_0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_67', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24,
           filter: (z, f) => ((z, f) => f.props && f.props['_symbol'] === 1) && ((z, f) => f.props && f.props['$type'] === "Point")
@@ -2581,7 +2581,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Contours/(9-11)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Elevation_Features_Contours__9_11__Derived_0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_151', sheet: sheet }),
           minZoom: 9,
           maxZoom: 11,
           filter: (z, f) => f.props && f.props['_symbol'] === 1
@@ -2589,7 +2589,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Contours/(11-24)/Other',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Elevation_Features_Contours__11_24__Other_Depression_0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_152', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 0
@@ -2597,7 +2597,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Contours/(11-24)/Index',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Elevation_Features_Contours__11_24__Index_Depression_0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_150', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 0
@@ -2605,7 +2605,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Trail/(10-24)/Bridge',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Trail__10_24__Bridge_0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_72', sheet: sheet }),
           minZoom: 14,
           maxZoom: 24,
           filter: () => true
@@ -2613,7 +2613,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Road Ferry/(3-4)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Road_Ferry__3_4__1', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_126', sheet: sheet }),
           minZoom: 3,
           maxZoom: 4,
           filter: () => true
@@ -2621,7 +2621,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Road Ferry/(3-4)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Road_Ferry__3_4__0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_132', sheet: sheet }),
           minZoom: 3,
           maxZoom: 4,
           filter: () => true
@@ -2629,7 +2629,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Road Ferry/(4-7)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Road_Ferry__4_7__1', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_125', sheet: sheet }),
           minZoom: 4,
           maxZoom: 7,
           filter: () => true
@@ -2637,7 +2637,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Road Ferry/(4-7)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Road_Ferry__4_7__0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_129', sheet: sheet }),
           minZoom: 4,
           maxZoom: 7,
           filter: () => true
@@ -2645,7 +2645,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Road Ferry/(7-9)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Road_Ferry__7_9__1', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_123', sheet: sheet }),
           minZoom: 7,
           maxZoom: 9,
           filter: () => true
@@ -2653,7 +2653,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Road Ferry/(7-9)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Road_Ferry__7_9__0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_130', sheet: sheet }),
           minZoom: 7,
           maxZoom: 9,
           filter: () => true
@@ -2661,7 +2661,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Road Ferry/(9-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Road_Ferry__9_24__1', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_127', sheet: sheet }),
           minZoom: 9,
           maxZoom: 24,
           filter: () => true
@@ -2669,7 +2669,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Road Ferry/(9-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Road_Ferry__9_24__0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_133', sheet: sheet }),
           minZoom: 9,
           maxZoom: 24,
           filter: () => true
@@ -2677,7 +2677,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Rail Ferry/(9-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Rail_Ferry__9_24__1', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_124', sheet: sheet }),
           minZoom: 9,
           maxZoom: 24,
           filter: () => true
@@ -2685,7 +2685,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Rail Ferry/(9-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Rail_Ferry__9_24__0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_131', sheet: sheet }),
           minZoom: 9,
           maxZoom: 24,
           filter: () => true
@@ -2693,7 +2693,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Esker/(9-11)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Land_Features_Esker__9_11__1', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_115', sheet: sheet }),
           minZoom: 9,
           maxZoom: 11,
           filter: () => true
@@ -2701,7 +2701,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Esker/(9-11)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Land_Features_Esker__9_11__0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_116', sheet: sheet }),
           minZoom: 9,
           maxZoom: 11,
           filter: () => true
@@ -2709,7 +2709,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Esker/(11-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Land_Features_Esker__11_24__1', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_114', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24,
           filter: () => true
@@ -2717,7 +2717,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Esker/(11-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Land_Features_Esker__11_24__0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_117', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24,
           filter: () => true
@@ -2725,7 +2725,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Hydro Obstacle/(9-24)/Line',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Hydro_Features_Hydro_Obstacle__9_24__Line_Falls_0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_73', sheet: sheet }),
           minZoom: 9,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 0
@@ -2733,7 +2733,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Hydro Obstacle/(9-24)/Line',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Hydro_Features_Hydro_Obstacle__9_24__Line_Rapids_0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_83', sheet: sheet }),
           minZoom: 9,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 2
@@ -2741,7 +2741,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Dam/(12-24)/Line',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Dam__12_24__Line_3', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_147', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24,
           filter: () => true
@@ -2749,7 +2749,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Dam/(12-24)/Line',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Dam__12_24__Line_2', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_119', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24,
           filter: () => true
@@ -2757,7 +2757,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Protection Structure/(9-11)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Protection_Structure__9_11__Dyke_or_Levee_3', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_154', sheet: sheet }),
           minZoom: 9,
           maxZoom: 11,
           filter: (z, f) => f.props && f.props['_symbol'] === 0
@@ -2765,7 +2765,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Protection Structure/(9-11)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Protection_Structure__9_11__Dyke_or_Levee_2', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_122', sheet: sheet }),
           minZoom: 9,
           maxZoom: 11,
           filter: (z, f) => f.props && f.props['_symbol'] === 0
@@ -2773,7 +2773,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Protection Structure/(11-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Protection_Structure__11_24__Dyke_or_Levee_3', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_146', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 0
@@ -2781,7 +2781,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Protection Structure/(11-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Protection_Structure__11_24__Dyke_or_Levee_2', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_120', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 0
@@ -2789,7 +2789,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Track/(2-3)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Track__2_3__0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_148', sheet: sheet }),
           minZoom: 2,
           maxZoom: 3,
           filter: () => true
@@ -2797,7 +2797,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Track/(3-4)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Track__3_4__0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_149', sheet: sheet }),
           minZoom: 3,
           maxZoom: 4,
           filter: () => true
@@ -2805,7 +2805,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Track/(6-7)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Track__6_7__0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_144', sheet: sheet }),
           minZoom: 6,
           maxZoom: 7,
           filter: () => true
@@ -2813,7 +2813,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Track/(5-7)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Track__5_7__0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_143', sheet: sheet }),
           minZoom: 5,
           maxZoom: 7,
           filter: () => true
@@ -2821,7 +2821,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Track/(4-7)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Track__4_7__0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_145', sheet: sheet }),
           minZoom: 4,
           maxZoom: 7,
           filter: () => true
@@ -2829,7 +2829,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Track/(7-9)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Track__7_9__0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_142', sheet: sheet }),
           minZoom: 7,
           maxZoom: 9,
           filter: () => true
@@ -2837,7 +2837,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Track/(9-15)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Track__9_15__Not_Identified_0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_134', sheet: sheet }),
           minZoom: 9,
           maxZoom: 15,
           filter: (z, f) => f.props && f.props['_symbol'] === 0
@@ -2845,7 +2845,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Track/(9-15)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Track__9_15__Discontinued_0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_140', sheet: sheet }),
           minZoom: 9,
           maxZoom: 15,
           filter: (z, f) => f.props && f.props['_symbol'] === 1
@@ -2853,7 +2853,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Track/(9-15)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Track__9_15__Operational_0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_135', sheet: sheet }),
           minZoom: 9,
           maxZoom: 15,
           filter: (z, f) => f.props && f.props['_symbol'] === 2
@@ -2861,7 +2861,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Other/(10-15)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Other__10_15__0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_136', sheet: sheet }),
           minZoom: 10,
           maxZoom: 15,
           filter: () => true
@@ -2869,7 +2869,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Track/(15-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Track__15_24__Not_Identified_0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_137', sheet: sheet }),
           minZoom: 15,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 0
@@ -2877,7 +2877,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Track/(15-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Track__15_24__Discontinued_0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_141', sheet: sheet }),
           minZoom: 15,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 1
@@ -2885,7 +2885,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Track/(15-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Track__15_24__Operational_0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_138', sheet: sheet }),
           minZoom: 15,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 2
@@ -2893,7 +2893,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Other/(15-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Track_Segment_Other__15_24__0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_139', sheet: sheet }),
           minZoom: 15,
           maxZoom: 24,
           filter: () => true
@@ -2901,7 +2901,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Aerial Cableway/(13-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Aerial_Cableway__13_24__0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_104', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24,
           filter: () => true
@@ -2909,7 +2909,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Power Line/(12-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Resource_Management_Features_Power_Line__12_24__Aboveground', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_111', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 0
@@ -2917,7 +2917,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Power Line/(12-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Resource_Management_Features_Power_Line__12_24__Underground_Underwater_0', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_110', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 1
@@ -2925,7 +2925,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'World/Populated Places/Point/(4-7)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'World_Populated_Places_Point__4_7__Capital', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_76', sheet: sheet }),
           minZoom: 4,
           maxZoom: 7,
           filter: (z, f) => f.props && f.props['_symbol'] === 0
@@ -2933,7 +2933,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'World/Populated Places/Point/(4-7)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'World_Populated_Places_Point__4_7__Regional_Capital', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_95', sheet: sheet }),
           minZoom: 4,
           maxZoom: 7,
           filter: (z, f) => f.props && f.props['_symbol'] === 1
@@ -2941,7 +2941,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'World/Populated Places/Point/(4-7)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'World_Populated_Places_Point__4_7__Populated_place', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_108', sheet: sheet }),
           minZoom: 4,
           maxZoom: 7,
           filter: (z, f) => f.props && f.props['_symbol'] === 2
@@ -2949,7 +2949,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Land Features/Pingo/(10-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Land_Features_Pingo__10_24_', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_92', sheet: sheet }),
           minZoom: 10,
           maxZoom: 24,
           filter: () => true
@@ -2957,7 +2957,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Protection Structure/(12-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Protection_Structure__12_24__Fish_Ladder', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_81', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 0
@@ -2965,7 +2965,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Protection Structure/(12-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Protection_Structure__12_24__Not_Identified', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_112', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 1
@@ -2973,7 +2973,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Chimney/(10-11)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Chimney__10_11_', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_102', sheet: sheet }),
           minZoom: 10,
           maxZoom: 11,
           filter: () => true
@@ -2981,7 +2981,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Buildings/(11-12)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Buildings__11_12_', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_121', sheet: sheet }),
           minZoom: 11,
           maxZoom: 12,
           filter: () => true
@@ -2989,7 +2989,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Buildings/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Buildings__11_24__Point_Coast_Guard_Station', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_63', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 0
@@ -2997,7 +2997,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Buildings/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Buildings__11_24__Point_Fire_Station', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_87', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 1
@@ -3005,7 +3005,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Buildings/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Buildings__11_24__Point_Hospital', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_62', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 2
@@ -3013,7 +3013,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Buildings/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Buildings__11_24__Point_Medical_Centre', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_61', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 3
@@ -3021,7 +3021,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Buildings/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Buildings__11_24__Point_Police_Station', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_88', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 4
@@ -3029,7 +3029,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Buildings/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Buildings__11_24__Point_Religious_Building', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_54', sheet: sheet }),
           minZoom: 14,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 5
@@ -3037,7 +3037,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Buildings/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Buildings__11_24__Point_Customs_Post', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_77', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 6
@@ -3045,7 +3045,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Buildings/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Buildings__11_24__Point_Educational_Building', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_59', sheet: sheet }),
           minZoom: 14,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 7
@@ -3053,7 +3053,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Buildings/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Buildings__11_24__Point_Municipal_Hall', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_89', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 8
@@ -3061,7 +3061,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Tower/(13-24)/Water',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Tower__13_24__Water', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_86', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24,
           filter: () => true
@@ -3069,7 +3069,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Tower/(11-13)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Tower__11_13_', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_103', sheet: sheet }),
           minZoom: 11,
           maxZoom: 13,
           filter: () => true
@@ -3077,7 +3077,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Tower/(13-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Tower__13_24__Communication', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_105', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 0
@@ -3085,7 +3085,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Tower/(13-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Tower__13_24__Control', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_53', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 1
@@ -3093,7 +3093,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Tower/(13-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Tower__13_24__Fire', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_79', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 2
@@ -3101,7 +3101,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Tower/(13-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Tower__13_24__Lookout', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_91', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 3
@@ -3109,7 +3109,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Tower/(13-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Tower__13_24__Power', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_128', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 4
@@ -3117,7 +3117,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Tower/(13-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Tower__13_24__Not_Identified', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_106', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 5
@@ -3125,7 +3125,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Dam/(9-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Dam__9_24__Point', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_78', sheet: sheet }),
           minZoom: 10,
           maxZoom: 24,
           filter: () => true
@@ -3133,7 +3133,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Hydro Obstacle/(13-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Hydro_Features_Hydro_Obstacle__13_24__Point_Exposed_Shipwreck', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_90', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 1
@@ -3141,7 +3141,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Hydro Obstacle/(13-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Hydro_Features_Hydro_Obstacle__13_24__Point_Falls', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_98', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 2
@@ -3149,7 +3149,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Hydro Obstacle/(13-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Hydro_Features_Hydro_Obstacle__13_24__Point_Ford', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_118', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 3
@@ -3157,7 +3157,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Hydro Obstacle/(13-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Hydro_Features_Hydro_Obstacle__13_24__Point_Not_Identified', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_113', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 4
@@ -3165,7 +3165,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Hydro Obstacle/(13-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Hydro_Features_Hydro_Obstacle__13_24__Point_Rapids', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_101', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 5
@@ -3173,7 +3173,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Hydro Obstacle/(13-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Hydro_Features_Hydro_Obstacle__13_24__Point_Rocks', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_107', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 6
@@ -3181,7 +3181,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Hydro Obstacle/(13-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Hydro_Features_Hydro_Obstacle__13_24__Point_Sink', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_109', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 7
@@ -3189,7 +3189,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Runway/(10-11)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Runway__10_11__Other', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_85', sheet: sheet }),
           minZoom: 10,
           maxZoom: 11,
           filter: (z, f) => f.props && f.props['_symbol'] === 0
@@ -3197,7 +3197,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Runway/(10-11)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Runway__10_11__Hydroaerodrome', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_60', sheet: sheet }),
           minZoom: 10,
           maxZoom: 11,
           filter: (z, f) => f.props && f.props['_symbol'] === 1
@@ -3205,7 +3205,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Runway/(10-11)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Runway__10_11__Heliport', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_71', sheet: sheet }),
           minZoom: 10,
           maxZoom: 11,
           filter: (z, f) => f.props && f.props['_symbol'] === 2
@@ -3213,7 +3213,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Runway/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Runway__11_24__Point_Airport', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_96', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 0
@@ -3221,7 +3221,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Runway/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Runway__11_24__Point_Seaplane_Base', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_80', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 1
@@ -3229,7 +3229,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Runway/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Runway__11_24__Point_Heliport', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_99', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 2
@@ -3237,7 +3237,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Navigational Aid/(11-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Navigational_Aid__11_24__Navigation_Beacon', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_74', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 0
@@ -3245,7 +3245,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Navigational Aid/(11-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Navigational_Aid__11_24__Navigation_Light', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_84', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 1
@@ -3253,7 +3253,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Marina/(11-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Marina__11_24_', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_69', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24,
           filter: () => true
@@ -3261,7 +3261,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Nautical Facility/(11-24)/Lock Gate/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Transport_Features_Nautical_Facility__11_24__Lock_Gate_Point', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_93', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24,
           filter: () => true
@@ -3269,7 +3269,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Electric Power Station/(13-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Resource_Management_Features_Electric_Power_Station__13_24_', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_56', sheet: sheet }),
           minZoom: 13,
           maxZoom: 24,
           filter: () => true
@@ -3277,7 +3277,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Ore/(11-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Resource_Management_Features_Ore__11_24_', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_97', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24,
           filter: () => true
@@ -3285,7 +3285,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Oil and Gas Site/(10-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Resource_Management_Features_Oil_and_Gas_Site__10_24__Point', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_82', sheet: sheet }),
           minZoom: 10,
           maxZoom: 24,
           filter: () => true
@@ -3293,7 +3293,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Wind-operated device/(11-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Resource_Management_Features_Wind_operated_device__11_24_', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_66', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24,
           filter: () => true
@@ -3301,7 +3301,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Ritual and Cultural Area/Cemetery/(11-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Ritual_and_Cultural_Area_Cemetery__11_24__Point', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_70', sheet: sheet }),
           minZoom: 11,
           maxZoom: 24,
           filter: () => true
@@ -3309,7 +3309,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Leisure Area/(12-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Leisure_Area__12_24__Point_Campground', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_75', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 0
@@ -3317,7 +3317,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Leisure Area/(12-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Leisure_Area__12_24__Point_Ski_Centre', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_52', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 1
@@ -3325,7 +3325,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Leisure Area/(12-24)/Point',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Leisure_Area__12_24__Point_Golf_Course', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_55', sheet: sheet }),
           minZoom: 12,
           maxZoom: 24,
           filter: (z, f) => f.props && f.props['_symbol'] === 2
@@ -3333,7 +3333,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Landmark Feature/Lookout/(14-24)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Man_made_Features_Landmark_Feature_Lookout__14_24_', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_100', sheet: sheet }),
           minZoom: 14,
           maxZoom: 24,
           filter: () => true
@@ -3341,7 +3341,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'USA Capitals/(7-18)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Toponymic_Features_Named_Feature_USA_Capitals__7_18__Washington', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_57', sheet: sheet }),
           minZoom: 7,
           maxZoom: 18,
           filter: (z, f) => f.props && f.props['_symbol'] === 0
@@ -3349,7 +3349,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'USA Capitals/(7-18)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Toponymic_Features_Named_Feature_USA_Capitals__7_18__State_Capital', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_65', sheet: sheet }),
           minZoom: 7,
           maxZoom: 18,
           filter: (z, f) => f.props && f.props['_symbol'] === 1
@@ -3357,7 +3357,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Provincial Capitals/(2-18)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Toponymic_Features_Named_Feature_Provincial_Capitals__2_18_', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_58', sheet: sheet }),
           minZoom: 2,
           maxZoom: 18,
           filter: () => true
@@ -3365,7 +3365,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
         
         {
           dataLayer: 'Ottawa/(2-18)',
-          symbolizer: new protomapsL.IconSymbolizer({ name: 'Toponymic_Features_Named_Feature_Ottawa__2_18_', sheet: sheet }),
+          symbolizer: new protomapsL.IconSymbolizer({ name: 'icon_64', sheet: sheet }),
           minZoom: 2,
           maxZoom: 18,
           filter: () => true
@@ -3374,7 +3374,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
           {
             dataLayer: 'Road Segment/(7-9)/label',
             symbolizer: new protomapsL.ShieldSymbolizer({
-          icon: 'Transport_Features_Road_Segment__7_9__Numbered__1',
+          icon: 'icon_49',
           labelProps: ['_name'],
           sheet: sheet,
           font: 'Arial Bold 9.33333px',
@@ -3390,7 +3390,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
           {
             dataLayer: 'Road Segment/(7-9)/label',
             symbolizer: new protomapsL.ShieldSymbolizer({
-          icon: 'Transport_Features_Road_Segment__7_9__Numbered__2',
+          icon: 'icon_48',
           labelProps: ['_name'],
           sheet: sheet,
           font: 'Arial Bold 9.33333px',
@@ -3406,7 +3406,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
           {
             dataLayer: 'Road Segment/(7-9)/label',
             symbolizer: new protomapsL.ShieldSymbolizer({
-          icon: 'Transport_Features_Road_Segment__7_9__Numbered__3',
+          icon: 'icon_47',
           labelProps: ['_name'],
           sheet: sheet,
           font: 'Arial Bold 9.33333px',
@@ -5942,7 +5942,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
           {
             dataLayer: 'Road Segment/(9-15)/Road/label',
             symbolizer: new protomapsL.ShieldSymbolizer({
-          icon: 'Transport_Features_Road_Segment__9_15__Road_Route_Number__1',
+          icon: 'icon_31',
           labelProps: ['_name'],
           sheet: sheet,
           font: 'Arial Bold 10.6667px',
@@ -5958,7 +5958,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
           {
             dataLayer: 'Road Segment/(9-15)/Road/label',
             symbolizer: new protomapsL.ShieldSymbolizer({
-          icon: 'Transport_Features_Road_Segment__9_15__Road_Route_Number__2',
+          icon: 'icon_30',
           labelProps: ['_name'],
           sheet: sheet,
           font: 'Arial Bold 10.6667px',
@@ -5974,7 +5974,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
           {
             dataLayer: 'Road Segment/(9-15)/Road/label',
             symbolizer: new protomapsL.ShieldSymbolizer({
-          icon: 'Transport_Features_Road_Segment__9_15__Road_Route_Number__3',
+          icon: 'icon_32',
           labelProps: ['_name'],
           sheet: sheet,
           font: 'Arial Bold 10.6667px',
@@ -5990,7 +5990,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
           {
             dataLayer: 'Road Segment/(9-15)/Tunnel/label',
             symbolizer: new protomapsL.ShieldSymbolizer({
-          icon: 'Transport_Features_Road_Segment__9_15__Tunnel_Route_Number__1',
+          icon: 'icon_33',
           labelProps: ['_name'],
           sheet: sheet,
           font: 'Arial Bold 10.6667px',
@@ -6006,7 +6006,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
           {
             dataLayer: 'Road Segment/(9-15)/Tunnel/label',
             symbolizer: new protomapsL.ShieldSymbolizer({
-          icon: 'Transport_Features_Road_Segment__9_15__Tunnel_Route_Number__2',
+          icon: 'icon_34',
           labelProps: ['_name'],
           sheet: sheet,
           font: 'Arial Bold 10.6667px',
@@ -6022,7 +6022,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
           {
             dataLayer: 'Road Segment/(9-15)/Tunnel/label',
             symbolizer: new protomapsL.ShieldSymbolizer({
-          icon: 'Transport_Features_Road_Segment__9_15__Tunnel_Route_Number__3',
+          icon: 'icon_35',
           labelProps: ['_name'],
           sheet: sheet,
           font: 'Arial Bold 10.6667px',
@@ -6038,7 +6038,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
           {
             dataLayer: 'Road Segment/(15-24)/Road/label',
             symbolizer: new protomapsL.ShieldSymbolizer({
-          icon: 'Transport_Features_Road_Segment__15_24__Road_Route_Number__1',
+          icon: 'icon_38',
           labelProps: ['_name'],
           sheet: sheet,
           font: 'Aboriginal Sans Bold [object Object]px',
@@ -6054,7 +6054,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
           {
             dataLayer: 'Road Segment/(15-24)/Road/label',
             symbolizer: new protomapsL.ShieldSymbolizer({
-          icon: 'Transport_Features_Road_Segment__15_24__Road_Route_Number__2',
+          icon: 'icon_37',
           labelProps: ['_name'],
           sheet: sheet,
           font: 'Aboriginal Sans Bold [object Object]px',
@@ -6070,7 +6070,7 @@ const pmtilesRulesReady = sheet.load().then(() => {
           {
             dataLayer: 'Road Segment/(15-24)/Road/label',
             symbolizer: new protomapsL.ShieldSymbolizer({
-          icon: 'Transport_Features_Road_Segment__15_24__Road_Route_Number__3',
+          icon: 'icon_36',
           labelProps: ['_name'],
           sheet: sheet,
           font: 'Aboriginal Sans Bold [object Object]px',
