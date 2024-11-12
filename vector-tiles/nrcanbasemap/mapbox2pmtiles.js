@@ -1,8 +1,32 @@
 const fs = require('fs');
 const path = require('path');
 
+// Helper function to create filter functions from Mapbox filter syntax
+function mapFilter(filter) {
+  if (!filter) return "() => true";
+
+  // Handle equality filter
+  if (filter[0] === "==") {
+    const [_, property, value] = filter;
+    return `(z, f) => f.props && f.props['${property}'] === ${JSON.stringify(value)}`;
+  }
+
+  // Handle "all" filter (conjunction)
+  if (filter[0] === "all") {
+    const conditions = filter.slice(1).map(mapFilter);
+    return `(z, f) => ${conditions.map(cond => `(${cond})`).join(" && ")}`;
+  }
+
+  // Default to a function that allows all features if unsupported
+  return "() => true";
+}
 // Mock protomapsL for Node.js environment
 const protomapsL = {
+  ShieldSymbolizer: class {
+    constructor(options) {
+      this.options = options;
+    }
+  },
   IconSymbolizer: class {
     constructor(options) {
       this.options = options;
@@ -57,7 +81,7 @@ const generatePmtilesRules = (layers, spriteJson, spriteSheetUrl) => {
     const { x, y, width, height } = spriteJson[key];
     return `
     <svg id="${key.replace(/[^a-zA-Z0-9_]/g, '_')}" width="${width}px" height="${height}px" xmlns="http://www.w3.org/2000/svg">
-      <use href="${spriteSheetUrl}#${key}" x="${x}" y="${y}" width="${width}" height="${height}" />
+      <image href="${spriteSheetUrl}" x="${x}" y="${y}" width="${width}" height="${height}" />
     </svg>`;
   }).join('');
 
@@ -83,9 +107,39 @@ const sheet = new protomapsL.Sheet(\`
       symbolizerExpr = `new protomapsL.LineSymbolizer({ color: '${paint['line-color']}', width: ${lineWidth} })`;
     } else if (layer.type === 'fill') {
       symbolizerExpr = `new protomapsL.PolygonSymbolizer({ fill: '${paint['fill-color']}', outlineColor: '${paint['fill-outline-color'] || '#000000'}' })`;
+    } else if (layer.type === 'symbol' && layout['icon-image'] && layout['icon-image'].includes('{_len}') && layout['text-field']) {
+      const baseIconId = layout['icon-image'].replace(/{[^}]+}/g, '').replace(/[^a-zA-Z0-9]/g, '_');
+      for (let len = 1; len <= 3; len++) {
+        const iconId = `${baseIconId}_${len}`;
+        symbolizerExpr = `new protomapsL.ShieldSymbolizer({
+          icon: '${iconId}',
+          labelProps: ['${layout['text-field'].replace(/[{}]/g, '')}'],
+          sheet: sheet,
+          font: '${layout['text-font'] ? layout['text-font'][0] : "Arial"} ${(layout['text-size'] || 12)}px',
+          fill: '${paint['text-color'] || "#000000"}',
+          halo: '${paint['text-halo-color'] || "#FFFFFF"}',
+          haloWidth: ${getNumericValue(paint['text-halo-width'], 1)}
+        })`;
+        labelRules.push(`
+          {
+            dataLayer: '${layer['source-layer']}',
+            symbolizer: ${symbolizerExpr},
+            minZoom: ${minzoom || 0},
+            maxZoom: ${maxzoom || 24},
+            filter: ${filter ? mapFilter(filter).toString() : "() => true"}
+          }`);
+      }
     } else if (layer.type === 'symbol' && layout['icon-image']) {
       const iconId = layout['icon-image'].replace(/[^a-zA-Z0-9_]/g, '_');
       symbolizerExpr = `new protomapsL.IconSymbolizer({ name: '${iconId}', sheet: sheet })`;
+      labelRules.push(`
+        {
+          dataLayer: '${layer['source-layer']}',
+          symbolizer: ${symbolizerExpr},
+          minZoom: ${minzoom || 0},
+          maxZoom: ${maxzoom || 24},
+          filter: ${filter ? mapFilter(filter).toString() : "() => true"}
+        }`);
     } else if (layer.type === 'symbol' && layout['text-field']) {
       const fontSize = getNumericValue(layout['text-size'], 12);
       symbolizerExpr = `new protomapsL.CenteredTextSymbolizer({
@@ -95,25 +149,27 @@ const sheet = new protomapsL.Sheet(\`
         haloWidth: ${getNumericValue(paint['text-halo-width'], 1)},
         font: '${layout['text-font'] ? layout['text-font'][0] : "Arial"} ${fontSize}px'
       })`;
+      labelRules.push(`
+        {
+          dataLayer: '${layer['source-layer']}',
+          symbolizer: ${symbolizerExpr},
+          minZoom: ${minzoom || 0},
+          maxZoom: ${maxzoom || 24},
+          filter: ${filter ? mapFilter(filter).toString() : "() => true"}
+        }`);
     }
 
-    if (symbolizerExpr) {
-      const rule = `
+    if (symbolizerExpr && layer.type !== 'symbol') {
+      paintRules.push(`
         {
           dataLayer: '${layer['source-layer']}',
           symbolizer: ${symbolizerExpr},
           minZoom: ${minzoom || 0},
           maxZoom: ${maxzoom || 24}
-        }`;
-      if (layer.type === 'symbol') {
-        labelRules.push(rule);
-      } else {
-        paintRules.push(rule);
-      }
+        }`);
     }
   });
 
-  // Generate the complete pmtilesRules.js content with promise-returning structure
   const output = `
 ${sheetDeclaration}
 
