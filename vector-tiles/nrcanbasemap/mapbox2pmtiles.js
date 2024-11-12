@@ -69,7 +69,6 @@ function getNumericValue(property, defaultValue = 1) {
   if (typeof property === 'number') {
     return property;
   } else if (typeof property === 'object' && property.stops) {
-    // Use the last stop value for simplicity
     return property.stops[property.stops.length - 1][1];
   }
   return defaultValue;
@@ -80,16 +79,17 @@ const generatePmtilesRules = (layers, spriteJson, spriteSheetUrl) => {
   let iconCounter = 0;
   const iconIdMap = {};
 
-  const sheetContent = Object.keys(spriteJson).map(key => {
+const sheetContent = Object.keys(spriteJson).map((key) => {
     const { x, y, width, height } = spriteJson[key];
     const uniqueIconId = `icon_${iconCounter++}`;
     iconIdMap[key] = uniqueIconId;
 
+    // Generate SVG with adjusted x and y values for cropping
     return `
     <svg id="${uniqueIconId}" width="${width}px" height="${height}px" xmlns="http://www.w3.org/2000/svg">
-      <image href="${spriteSheetUrl}" x="${x}" y="${y}" width="${width}" height="${height}" />
+      <image href="${spriteSheetUrl}?${uniqueIconId}" x="-${x}" y="-${y}" width="451" height="173" />
     </svg>`;
-  }).join('');
+}).join('');
 
   const sheetDeclaration = `
 const sheet = new protomapsL.Sheet(\`
@@ -106,7 +106,6 @@ const sheet = new protomapsL.Sheet(\`
   layers.forEach(layer => {
     const { filter, minzoom, maxzoom, layout, paint } = layer;
 
-    // Determine which symbolizer to use
     let symbolizerExpr;
     if (layer.type === 'line') {
       const lineWidth = getNumericValue(paint['line-width'], 1);
