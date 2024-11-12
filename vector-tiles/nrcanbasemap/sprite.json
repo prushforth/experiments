@@ -1,0 +1,1242 @@
+{
+    "Hydro Features/Permanent Snow and Ice/(4-9)/1": {
+        "x": 0,
+        "y": 0,
+        "width": 99,
+        "height": 97,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Hydro Features/Permanent Snow and Ice/(9-24)/1": {
+        "x": 99,
+        "y": 0,
+        "width": 76,
+        "height": 75,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Land Features/Saturated Soil/(9-24)/Wetland": {
+        "x": 175,
+        "y": 0,
+        "width": 53,
+        "height": 52,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Land Features/Saturated Soil/(9-24)/String Bog": {
+        "x": 228,
+        "y": 0,
+        "width": 53,
+        "height": 52,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Hydro Features/Hydro Obstacle/(9-24)/Polygon/Rapids/0": {
+        "x": 281,
+        "y": 0,
+        "width": 50,
+        "height": 50,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Land Features/Landform/(11-24)/Tundra Polygon": {
+        "x": 331,
+        "y": 0,
+        "width": 49,
+        "height": 46,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Land Features/Landform/(9-11)/Tundra Polygon": {
+        "x": 331,
+        "y": 0,
+        "width": 49,
+        "height": 46,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Land Features/Saturated Soil/(9-24)/Tundra Pond": {
+        "x": 331,
+        "y": 0,
+        "width": 49,
+        "height": 46,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Resource Management Features/Quarry/(9-24)/3": {
+        "x": 380,
+        "y": 0,
+        "width": 29,
+        "height": 30,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Resource Management Features/Ore/(9-24)/1": {
+        "x": 380,
+        "y": 0,
+        "width": 29,
+        "height": 30,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Land Features/Landform/(11-24)/Sand": {
+        "x": 409,
+        "y": 0,
+        "width": 29,
+        "height": 30,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Land Features/Landform/(9-11)/Sand": {
+        "x": 409,
+        "y": 0,
+        "width": 29,
+        "height": 30,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Land Features/Landform/(9-11)/Moraine/0": {
+        "x": 0,
+        "y": 97,
+        "width": 29,
+        "height": 29,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Land Features/Landform/(11-24)/Glacial Debris Undifferentiated/0": {
+        "x": 0,
+        "y": 97,
+        "width": 29,
+        "height": 29,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Land Features/Landform/(11-24)/Moraine/0": {
+        "x": 0,
+        "y": 97,
+        "width": 29,
+        "height": 29,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Land Features/Landform/(11-24)/Glacial Debris Undifferentiated/1": {
+        "x": 29,
+        "y": 97,
+        "width": 29,
+        "height": 29,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Land Features/Landform/(9-11)/Moraine/1": {
+        "x": 29,
+        "y": 97,
+        "width": 29,
+        "height": 29,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Land Features/Landform/(11-24)/Moraine/1": {
+        "x": 29,
+        "y": 97,
+        "width": 29,
+        "height": 29,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Land Features/Saturated Soil/(9-24)/Palsa Bog": {
+        "x": 58,
+        "y": 97,
+        "width": 58,
+        "height": 29,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Hydro Features/Waterbody/(11-24)/Intermittent/1": {
+        "x": 116,
+        "y": 97,
+        "width": 20,
+        "height": 21,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Hydro Features/Waterbody/(7-9)/Below/Intermittent_1/1": {
+        "x": 136,
+        "y": 97,
+        "width": 20,
+        "height": 21,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Hydro Features/Waterbody/(9-11)/Intermittent/1": {
+        "x": 136,
+        "y": 97,
+        "width": 20,
+        "height": 21,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Hydro Features/Waterbody/(7-9)/Above/Intermittent/1": {
+        "x": 136,
+        "y": 97,
+        "width": 20,
+        "height": 21,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Hydro Features/Intermittent Water/(11-24)/1": {
+        "x": 136,
+        "y": 97,
+        "width": 20,
+        "height": 21,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(9-15)/Road/Route Number/6": {
+        "x": 156,
+        "y": 97,
+        "width": 51,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(9-15)/Tunnel/Route Number/6": {
+        "x": 156,
+        "y": 97,
+        "width": 51,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(15-24)/Road/Route Number/6": {
+        "x": 156,
+        "y": 97,
+        "width": 51,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(9-15)/Tunnel/Route Number/7": {
+        "x": 207,
+        "y": 97,
+        "width": 59,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(9-15)/Road/Route Number/7": {
+        "x": 207,
+        "y": 97,
+        "width": 59,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(15-24)/Road/Route Number/7": {
+        "x": 207,
+        "y": 97,
+        "width": 59,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(9-15)/Road/Route Number/2": {
+        "x": 266,
+        "y": 97,
+        "width": 27,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(9-15)/Road/Route Number/1": {
+        "x": 266,
+        "y": 97,
+        "width": 27,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(9-15)/Road/Route Number/3": {
+        "x": 266,
+        "y": 97,
+        "width": 27,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(9-15)/Tunnel/Route Number/1": {
+        "x": 266,
+        "y": 97,
+        "width": 27,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(9-15)/Tunnel/Route Number/2": {
+        "x": 266,
+        "y": 97,
+        "width": 27,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(9-15)/Tunnel/Route Number/3": {
+        "x": 266,
+        "y": 97,
+        "width": 27,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(15-24)/Road/Route Number/3": {
+        "x": 266,
+        "y": 97,
+        "width": 27,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(15-24)/Road/Route Number/2": {
+        "x": 266,
+        "y": 97,
+        "width": 27,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(15-24)/Road/Route Number/1": {
+        "x": 266,
+        "y": 97,
+        "width": 27,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(9-15)/Road/Route Number/5": {
+        "x": 293,
+        "y": 97,
+        "width": 43,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(15-24)/Road/Route Number/5": {
+        "x": 293,
+        "y": 97,
+        "width": 43,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(9-15)/Tunnel/Route Number/5": {
+        "x": 293,
+        "y": 97,
+        "width": 43,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(9-15)/Tunnel/Route Number/4": {
+        "x": 336,
+        "y": 97,
+        "width": 35,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(15-24)/Road/Route Number/4": {
+        "x": 336,
+        "y": 97,
+        "width": 35,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(9-15)/Road/Route Number/4": {
+        "x": 336,
+        "y": 97,
+        "width": 35,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(7-9)/Numbered/6": {
+        "x": 371,
+        "y": 97,
+        "width": 51,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(7-9)/Numbered/7": {
+        "x": 0,
+        "y": 126,
+        "width": 59,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(7-9)/Numbered/3": {
+        "x": 59,
+        "y": 126,
+        "width": 27,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(7-9)/Numbered/2": {
+        "x": 59,
+        "y": 126,
+        "width": 27,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(7-9)/Numbered/1": {
+        "x": 59,
+        "y": 126,
+        "width": 27,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(7-9)/Numbered/5": {
+        "x": 86,
+        "y": 126,
+        "width": 43,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Segment/(7-9)/Numbered/4": {
+        "x": 129,
+        "y": 126,
+        "width": 35,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Leisure Area/(12-24)/Point/Ski Centre": {
+        "x": 164,
+        "y": 126,
+        "width": 18,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Tower/(13-24)/Control": {
+        "x": 182,
+        "y": 126,
+        "width": 11,
+        "height": 19,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Buildings/(11-24)/Point/Religious Building": {
+        "x": 193,
+        "y": 126,
+        "width": 11,
+        "height": 18,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Leisure Area/(12-24)/Point/Golf Course": {
+        "x": 204,
+        "y": 126,
+        "width": 19,
+        "height": 18,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Resource Management Features/Electric Power Station/(13-24)": {
+        "x": 223,
+        "y": 126,
+        "width": 17,
+        "height": 18,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Toponymic Features/Named Feature/USA Capitals/(7-18)/Washington": {
+        "x": 240,
+        "y": 126,
+        "width": 18,
+        "height": 17,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Toponymic Features/Named Feature/Provincial Capitals/(2-18)": {
+        "x": 258,
+        "y": 126,
+        "width": 16,
+        "height": 16,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Buildings/(11-24)/Point/Educational Building": {
+        "x": 274,
+        "y": 126,
+        "width": 13,
+        "height": 16,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Runway/(10-11)/Hydroaerodrome": {
+        "x": 287,
+        "y": 126,
+        "width": 16,
+        "height": 16,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Buildings/(11-24)/Point/Medical Centre": {
+        "x": 303,
+        "y": 126,
+        "width": 16,
+        "height": 16,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Buildings/(11-24)/Point/Hospital": {
+        "x": 319,
+        "y": 126,
+        "width": 16,
+        "height": 16,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Buildings/(11-24)/Point/Coast Guard Station": {
+        "x": 335,
+        "y": 126,
+        "width": 14,
+        "height": 16,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Toponymic Features/Named Feature/Ottawa/(2-18)": {
+        "x": 349,
+        "y": 126,
+        "width": 16,
+        "height": 16,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Toponymic Features/Named Feature/USA Capitals/(7-18)/State Capital": {
+        "x": 365,
+        "y": 126,
+        "width": 15,
+        "height": 15,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Resource Management Features/Wind-operated device/(11-24)": {
+        "x": 380,
+        "y": 126,
+        "width": 12,
+        "height": 15,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Runway/(11-24)/Polygon/Non Official/0": {
+        "x": 392,
+        "y": 126,
+        "width": 15,
+        "height": 15,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Runway/(11-24)/Polygon/Official/0": {
+        "x": 407,
+        "y": 126,
+        "width": 15,
+        "height": 15,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Marina/(11-24)": {
+        "x": 422,
+        "y": 126,
+        "width": 14,
+        "height": 15,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Ritual and Cultural Area/Cemetery/(11-24)/Point": {
+        "x": 436,
+        "y": 126,
+        "width": 12,
+        "height": 15,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Runway/(10-11)/Heliport": {
+        "x": 0,
+        "y": 145,
+        "width": 15,
+        "height": 15,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Trail/(10-24)/Bridge/0": {
+        "x": 15,
+        "y": 145,
+        "width": 10,
+        "height": 15,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Hydro Features/Hydro Obstacle/(9-24)/Line/Falls/0": {
+        "x": 25,
+        "y": 145,
+        "width": 14,
+        "height": 15,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Navigational Aid/(11-24)/Navigation Beacon": {
+        "x": 39,
+        "y": 145,
+        "width": 13,
+        "height": 14,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Leisure Area/(12-24)/Point/Campground": {
+        "x": 52,
+        "y": 145,
+        "width": 16,
+        "height": 14,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "World/Populated Places/Point/(4-7)/Capital": {
+        "x": 68,
+        "y": 145,
+        "width": 14,
+        "height": 14,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Buildings/(11-24)/Point/Customs Post": {
+        "x": 82,
+        "y": 145,
+        "width": 17,
+        "height": 14,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Dam/(9-24)/Point": {
+        "x": 99,
+        "y": 145,
+        "width": 14,
+        "height": 14,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Tower/(13-24)/Fire": {
+        "x": 113,
+        "y": 145,
+        "width": 11,
+        "height": 14,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Runway/(11-24)/Point/Seaplane Base": {
+        "x": 124,
+        "y": 145,
+        "width": 14,
+        "height": 14,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Protection Structure/(12-24)/Fish Ladder": {
+        "x": 138,
+        "y": 145,
+        "width": 14,
+        "height": 14,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Resource Management Features/Oil and Gas Site/(10-24)/Point": {
+        "x": 152,
+        "y": 145,
+        "width": 13,
+        "height": 14,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Hydro Features/Hydro Obstacle/(9-24)/Line/Rapids/0": {
+        "x": 165,
+        "y": 145,
+        "width": 15,
+        "height": 14,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Navigational Aid/(11-24)/Navigation Light": {
+        "x": 180,
+        "y": 145,
+        "width": 13,
+        "height": 14,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Runway/(10-11)/Other": {
+        "x": 193,
+        "y": 145,
+        "width": 14,
+        "height": 14,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Tower/(13-24)/Water": {
+        "x": 207,
+        "y": 145,
+        "width": 12,
+        "height": 14,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Buildings/(11-24)/Point/Fire Station": {
+        "x": 219,
+        "y": 145,
+        "width": 13,
+        "height": 14,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Buildings/(11-24)/Point/Police Station": {
+        "x": 232,
+        "y": 145,
+        "width": 13,
+        "height": 14,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Buildings/(11-24)/Point/Municipal Hall": {
+        "x": 245,
+        "y": 145,
+        "width": 15,
+        "height": 14,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Hydro Features/Hydro Obstacle/(13-24)/Point/Exposed Shipwreck": {
+        "x": 260,
+        "y": 145,
+        "width": 16,
+        "height": 13,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Tower/(13-24)/Lookout": {
+        "x": 276,
+        "y": 145,
+        "width": 8,
+        "height": 12,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Land Features/Pingo/(10-24)": {
+        "x": 284,
+        "y": 145,
+        "width": 12,
+        "height": 12,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Nautical Facility/(11-24)/Lock Gate/Point": {
+        "x": 296,
+        "y": 145,
+        "width": 12,
+        "height": 12,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Hydro Features/Hydro Obstacle/(9-24)/Polygon/Reef or Rocks": {
+        "x": 308,
+        "y": 145,
+        "width": 14,
+        "height": 12,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "World/Populated Places/Point/(4-7)/Regional Capital": {
+        "x": 322,
+        "y": 145,
+        "width": 12,
+        "height": 12,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Runway/(11-24)/Point/Airport": {
+        "x": 334,
+        "y": 145,
+        "width": 12,
+        "height": 12,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Resource Management Features/Ore/(11-24)": {
+        "x": 346,
+        "y": 145,
+        "width": 13,
+        "height": 12,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Hydro Features/Hydro Obstacle/(13-24)/Point/Falls": {
+        "x": 359,
+        "y": 145,
+        "width": 12,
+        "height": 12,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Runway/(11-24)/Point/Heliport": {
+        "x": 371,
+        "y": 145,
+        "width": 12,
+        "height": 12,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Landmark Feature/Lookout/(14-24)": {
+        "x": 383,
+        "y": 145,
+        "width": 12,
+        "height": 11,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Hydro Features/Hydro Obstacle/(13-24)/Point/Rapids": {
+        "x": 395,
+        "y": 145,
+        "width": 12,
+        "height": 11,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Chimney/(10-11)": {
+        "x": 407,
+        "y": 145,
+        "width": 11,
+        "height": 11,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Tower/(11-13)": {
+        "x": 418,
+        "y": 145,
+        "width": 10,
+        "height": 10,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Aerial Cableway/(13-24)/0": {
+        "x": 428,
+        "y": 145,
+        "width": 10,
+        "height": 10,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Tower/(13-24)/Communication": {
+        "x": 0,
+        "y": 160,
+        "width": 14,
+        "height": 10,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Tower/(13-24)/Not Identified": {
+        "x": 14,
+        "y": 160,
+        "width": 10,
+        "height": 10,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Hydro Features/Hydro Obstacle/(13-24)/Point/Rocks": {
+        "x": 24,
+        "y": 160,
+        "width": 10,
+        "height": 10,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "World/Populated Places/Point/(4-7)/Populated place": {
+        "x": 34,
+        "y": 160,
+        "width": 10,
+        "height": 10,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Hydro Features/Hydro Obstacle/(13-24)/Point/Sink": {
+        "x": 44,
+        "y": 160,
+        "width": 10,
+        "height": 10,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Resource Management Features/Power Line/(12-24)/Underground/Underwater/0": {
+        "x": 54,
+        "y": 160,
+        "width": 14,
+        "height": 9,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Resource Management Features/Power Line/(12-24)/Aboveground": {
+        "x": 68,
+        "y": 160,
+        "width": 14,
+        "height": 9,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Protection Structure/(12-24)/Not Identified": {
+        "x": 82,
+        "y": 160,
+        "width": 9,
+        "height": 9,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Hydro Features/Hydro Obstacle/(13-24)/Point/Not Identified": {
+        "x": 91,
+        "y": 160,
+        "width": 9,
+        "height": 9,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Land Features/Esker/(11-24)/1": {
+        "x": 100,
+        "y": 160,
+        "width": 8,
+        "height": 8,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Land Features/Esker/(9-11)/1": {
+        "x": 100,
+        "y": 160,
+        "width": 8,
+        "height": 8,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Land Features/Esker/(9-11)/0": {
+        "x": 108,
+        "y": 160,
+        "width": 8,
+        "height": 8,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Land Features/Esker/(11-24)/0": {
+        "x": 108,
+        "y": 160,
+        "width": 8,
+        "height": 8,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Hydro Features/Hydro Obstacle/(13-24)/Point/Ford": {
+        "x": 116,
+        "y": 160,
+        "width": 12,
+        "height": 8,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Dam/(12-24)/Line/2": {
+        "x": 128,
+        "y": 160,
+        "width": 7,
+        "height": 8,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Protection Structure/(11-24)/Dyke or Levee/2": {
+        "x": 135,
+        "y": 160,
+        "width": 7,
+        "height": 8,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Buildings/(11-12)": {
+        "x": 142,
+        "y": 160,
+        "width": 7,
+        "height": 7,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Protection Structure/(9-11)/Dyke or Levee/2": {
+        "x": 149,
+        "y": 160,
+        "width": 6,
+        "height": 7,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Ferry/(7-9)/1": {
+        "x": 155,
+        "y": 160,
+        "width": 8,
+        "height": 6,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Rail Ferry/(9-24)/1": {
+        "x": 155,
+        "y": 160,
+        "width": 8,
+        "height": 6,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Ferry/(4-7)/1": {
+        "x": 155,
+        "y": 160,
+        "width": 8,
+        "height": 6,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Ferry/(3-4)/1": {
+        "x": 155,
+        "y": 160,
+        "width": 8,
+        "height": 6,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Ferry/(9-24)/1": {
+        "x": 163,
+        "y": 160,
+        "width": 8,
+        "height": 6,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Tower/(13-24)/Power": {
+        "x": 171,
+        "y": 160,
+        "width": 6,
+        "height": 6,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Ferry/(4-7)/0": {
+        "x": 177,
+        "y": 160,
+        "width": 7,
+        "height": 5,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Ferry/(7-9)/0": {
+        "x": 177,
+        "y": 160,
+        "width": 7,
+        "height": 5,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Rail Ferry/(9-24)/0": {
+        "x": 177,
+        "y": 160,
+        "width": 7,
+        "height": 5,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Ferry/(3-4)/0": {
+        "x": 177,
+        "y": 160,
+        "width": 7,
+        "height": 5,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Road Ferry/(9-24)/0": {
+        "x": 184,
+        "y": 160,
+        "width": 7,
+        "height": 5,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Track Segment/Track/(9-15)/Not Identified/0": {
+        "x": 191,
+        "y": 160,
+        "width": 9,
+        "height": 4,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Track Segment/Track/(9-15)/Operational/0": {
+        "x": 191,
+        "y": 160,
+        "width": 9,
+        "height": 4,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Track Segment/Other/(10-15)/0": {
+        "x": 191,
+        "y": 160,
+        "width": 9,
+        "height": 4,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Track Segment/Track/(15-24)/Not Identified/0": {
+        "x": 191,
+        "y": 160,
+        "width": 9,
+        "height": 4,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Track Segment/Track/(15-24)/Operational/0": {
+        "x": 191,
+        "y": 160,
+        "width": 9,
+        "height": 4,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Track Segment/Other/(15-24)/0": {
+        "x": 191,
+        "y": 160,
+        "width": 9,
+        "height": 4,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Track Segment/Track/(9-15)/Discontinued/0": {
+        "x": 200,
+        "y": 160,
+        "width": 9,
+        "height": 4,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Track Segment/Track/(15-24)/Discontinued/0": {
+        "x": 209,
+        "y": 160,
+        "width": 9,
+        "height": 4,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Track Segment/Track/(7-9)/0": {
+        "x": 218,
+        "y": 160,
+        "width": 8,
+        "height": 4,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Track Segment/Track/(5-7)/0": {
+        "x": 218,
+        "y": 160,
+        "width": 8,
+        "height": 4,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Track Segment/Track/(6-7)/0": {
+        "x": 226,
+        "y": 160,
+        "width": 8,
+        "height": 4,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Track Segment/Track/(4-7)/0": {
+        "x": 226,
+        "y": 160,
+        "width": 8,
+        "height": 4,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Protection Structure/(11-24)/Dyke or Levee/3": {
+        "x": 234,
+        "y": 160,
+        "width": 6,
+        "height": 4,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Dam/(12-24)/Line/3": {
+        "x": 240,
+        "y": 160,
+        "width": 6,
+        "height": 4,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Track Segment/Track/(2-3)/0": {
+        "x": 246,
+        "y": 160,
+        "width": 7,
+        "height": 3,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Transport Features/Track Segment/Track/(3-4)/0": {
+        "x": 246,
+        "y": 160,
+        "width": 7,
+        "height": 3,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Elevation Features/Contours/(11-24)/Index/Depression/0": {
+        "x": 253,
+        "y": 160,
+        "width": 5,
+        "height": 3,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Elevation Features/Contours/(9-11)/Derived/0": {
+        "x": 258,
+        "y": 160,
+        "width": 5,
+        "height": 3,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Elevation Features/Contours/(11-24)/Other/Depression/0": {
+        "x": 263,
+        "y": 160,
+        "width": 5,
+        "height": 3,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Dam/(9-24)/Polygon/0": {
+        "x": 268,
+        "y": 160,
+        "width": 5,
+        "height": 3,
+        "pixelRatio": 1,
+        "sdf": false
+    },
+    "Man-made Features/Protection Structure/(9-11)/Dyke or Levee/3": {
+        "x": 273,
+        "y": 160,
+        "width": 4,
+        "height": 3,
+        "pixelRatio": 1,
+        "sdf": false
+    }
+}

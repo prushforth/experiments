@@ -1,68 +1,90 @@
 const fs = require('fs');
 const path = require('path');
-const sharp = require('sharp'); // Import sharp for image processing
-
 // Helper function to create filter functions from Mapbox filter syntax
 function mapFilter(filter) {
-  if (!filter) return "() => true";
+  if (!filter) return () => true;
 
+  // Example handling of equality filters
   if (filter[0] === "==") {
     const [_, property, value] = filter;
-    return `(z, f) => f.props && f.props['${property}'] === ${JSON.stringify(value)}`;
+    return (z, f) => f.props[property] === value;
   }
 
+  // Handle "all" filter (conjunction)
   if (filter[0] === "all") {
     const conditions = filter.slice(1).map(mapFilter);
-    return `(z, f) => ${conditions.map(cond => `(${cond})`).join(" && ")}`;
+    return (z, f) => conditions.every(cond => cond(z, f));
   }
 
-  return "() => true";
+  // Default to a function that allows all features through if unsupported
+  return () => true;
 }
 
-// Function to convert an image at a specific location to base64 using sharp
-async function encodeImageToBase64(spriteSheetPath, x, y, width, height) {
-  const buffer = await sharp(spriteSheetPath)
-    .extract({ left: x, top: y, width: width, height: height })
-    .toBuffer();
-  return `data:image/png;base64,${buffer.toString('base64')}`;
-}
+// Mock protomapsL for Node.js environment
+const protomapsL = {
+  IconSymbolizer: class {
+    constructor(options) {
+      this.options = options;
+    }
+  },
+  LineSymbolizer: class {
+    constructor(options) {
+      this.options = options;
+    }
+  },
+  PolygonSymbolizer: class {
+    constructor(options) {
+      this.options = options;
+    }
+  },
+  CenteredTextSymbolizer: class {
+    constructor(options) {
+      this.options = options;
+    }
+  },
+  Sheet: class {
+    constructor(svgContent) {
+      this.svgContent = svgContent;
+      this.loaded = false;
+    }
+    load() {
+      return new Promise((resolve) => {
+        // Simulate async loading
+        setTimeout(() => {
+          this.loaded = true;
+          resolve();
+        }, 100);
+      });
+    }
+  }
+};
 
 // Helper function to extract numeric values from paint properties
 function getNumericValue(property, defaultValue = 1) {
   if (typeof property === 'number') {
     return property;
   } else if (typeof property === 'object' && property.stops) {
+    // Use the last stop value for simplicity
     return property.stops[property.stops.length - 1][1];
   }
   return defaultValue;
 }
 
 // Function to generate pmtilesRules.js from mapbox.json
-const generatePmtilesRules = async (layers, spriteJson, spriteSheetPath) => {
-  let iconCounter = 0;
-  const iconIdMap = {};
-
-  const sheetContentPromises = Object.keys(spriteJson).map(async (key) => {
+const generatePmtilesRules = (layers, spriteJson, spriteSheetUrl) => {
+  const sheetContent = Object.keys(spriteJson).map(key => {
     const { x, y, width, height } = spriteJson[key];
-    const uniqueIconId = `icon_${iconCounter++}`;
-    iconIdMap[key] = uniqueIconId;
-
-    // Encode the sprite sheet region as base64
-    const base64Image = await encodeImageToBase64(spriteSheetPath, x, y, width, height);
-
-    // Generate SVG with the embedded base64 image
     return `
-    <svg id="${uniqueIconId}" width="${width}px" height="${height}px" xmlns="http://www.w3.org/2000/svg">
-      <image href="${base64Image}" width="${width}" height="${height}" />
+    <svg id="${key.replace(/[^a-zA-Z0-9_]/g, '_')}" width="${width}px" height="${height}px" xmlns="http://www.w3.org/2000/svg">
+      <use href="${spriteSheetUrl}#${key}" x="${x}" y="${y}" width="${width}" height="${height}" />
     </svg>`;
-  });
+  }).join('');
 
-  const sheetContent = await Promise.all(sheetContentPromises);
   const sheetDeclaration = `
 const sheet = new protomapsL.Sheet(\`
 <html>
   <body>
-    ${sheetContent.join('')}
+    ${sheetContent}
   </body>
 </html>
 \`);`;
@@ -73,45 +95,29 @@ const sheet = new protomapsL.Sheet(\`
   layers.forEach(layer => {
     const { filter, minzoom, maxzoom, layout, paint } = layer;
 
+    // Determine which symbolizer to use
     let symbolizerExpr;
     if (layer.type === 'line') {
       const lineWidth = getNumericValue(paint['line-width'], 1);
       symbolizerExpr = `new protomapsL.LineSymbolizer({ color: '${paint['line-color']}', width: ${lineWidth} })`;
     } else if (layer.type === 'fill') {
       symbolizerExpr = `new protomapsL.PolygonSymbolizer({ fill: '${paint['fill-color']}', outlineColor: '${paint['fill-outline-color'] || '#000000'}' })`;
-    } else if (layer.type === 'symbol' && layout['icon-image'] && layout['icon-image'].includes('{_len}') && layout['text-field']) {
-      const baseIconName = layout['icon-image'].replace(/{[^}]+}/g, '');
+    } else if (layer.type === 'symbol' && layout['icon-image']) {
+      const baseIconId = layout['icon-image'].replace(/{_len}/g, ''); // Remove _len placeholder
+
+      // Explicitly map icon ID to the length of the highway number (1-3 digits)
       for (let len = 1; len <= 3; len++) {
-        const iconId = iconIdMap[`${baseIconName}${len}`] || `icon_${iconCounter++}`;
-        symbolizerExpr = `new protomapsL.ShieldSymbolizer({
-          icon: '${iconId}',
-          labelProps: ['${layout['text-field'].replace(/[{}]/g, '')}'],
-          sheet: sheet,
-          font: '${layout['text-font'] ? layout['text-font'][0] : "Arial"} ${(layout['text-size'] || 12)}px',
-          fill: '${paint['text-color'] || "#000000"}',
-          halo: '${paint['text-halo-color'] || "#FFFFFF"}',
-          haloWidth: ${getNumericValue(paint['text-halo-width'], 1)}
-        })`;
-        labelRules.push(`
+        const iconId = `${baseIconId}${len}`;
+        const ruleString = `
           {
             dataLayer: '${layer['source-layer']}',
-            symbolizer: ${symbolizerExpr},
+            symbolizer: new protomapsL.IconSymbolizer({ name: '${iconId}', sheet: sheet }),
             minZoom: ${minzoom || 0},
             maxZoom: ${maxzoom || 24},
             filter: ${filter ? mapFilter(filter).toString() : "() => true"}
-          }`);
+          }`;
+        labelRules.push(ruleString);
       }
-    } else if (layer.type === 'symbol' && layout['icon-image']) {
-      const iconId = iconIdMap[layout['icon-image']] || `icon_${iconCounter++}`;
-      symbolizerExpr = `new protomapsL.IconSymbolizer({ name: '${iconId}', sheet: sheet })`;
-      labelRules.push(`
-        {
-          dataLayer: '${layer['source-layer']}',
-          symbolizer: ${symbolizerExpr},
-          minZoom: ${minzoom || 0},
-          maxZoom: ${maxzoom || 24},
-          filter: ${filter ? mapFilter(filter).toString() : "() => true"}
-        }`);
     } else if (layer.type === 'symbol' && layout['text-field']) {
       const fontSize = getNumericValue(layout['text-size'], 12);
       symbolizerExpr = `new protomapsL.CenteredTextSymbolizer({
@@ -121,27 +127,31 @@ const sheet = new protomapsL.Sheet(\`
         haloWidth: ${getNumericValue(paint['text-halo-width'], 1)},
         font: '${layout['text-font'] ? layout['text-font'][0] : "Arial"} ${fontSize}px'
       })`;
-      labelRules.push(`
+
+      const ruleString = `
         {
           dataLayer: '${layer['source-layer']}',
           symbolizer: ${symbolizerExpr},
           minZoom: ${minzoom || 0},
           maxZoom: ${maxzoom || 24},
           filter: ${filter ? mapFilter(filter).toString() : "() => true"}
-        }`);
+        }`;
+      labelRules.push(ruleString);
     }
 
     if (symbolizerExpr && layer.type !== 'symbol') {
-      paintRules.push(`
+      const ruleString = `
         {
           dataLayer: '${layer['source-layer']}',
           symbolizer: ${symbolizerExpr},
           minZoom: ${minzoom || 0},
           maxZoom: ${maxzoom || 24}
-        }`);
+        }`;
+      paintRules.push(ruleString);
     }
   });
 
+  // Generate the complete pmtilesRules.js content with promise-returning structure
   const output = `
 ${sheetDeclaration}
 
@@ -171,12 +181,12 @@ export { pmtilesRules, pmtilesRulesReady };
 async function main() {
   const mapboxFile = path.join(__dirname, 'mapbox.json');
   const spriteJsonFile = path.join(__dirname, 'sprite.json');
-  const spritePngPath = path.join(__dirname, 'sprite.png'); // Path of the sprite PNG file
+  const spritePngUrl = 'https://www.arcgis.com/sharing/rest/content/items/800d755712e8415aab301b9d55bc2800/resources/sprites/sprite-1728068500197.png';
 
   const mapboxData = JSON.parse(fs.readFileSync(mapboxFile, 'utf8'));
   const spriteJsonData = JSON.parse(fs.readFileSync(spriteJsonFile, 'utf8'));
 
-  const output = await generatePmtilesRules(mapboxData.layers, spriteJsonData, spritePngPath);
+  const output = generatePmtilesRules(mapboxData.layers, spriteJsonData, spritePngUrl);
   fs.writeFileSync(path.join(__dirname, 'pmtilesRules.js'), output);
 }
 

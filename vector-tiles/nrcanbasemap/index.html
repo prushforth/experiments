@@ -25,7 +25,7 @@
 
         /* Full viewport. */
         width: 100%;
-        height: 100%;
+        height: 50%;
 
         /* Remove default (native-like) border. */
         border: none;
@@ -73,7 +73,7 @@
   </head>
   <body>
 
-  <mapml-viewer projection="OSMTILE"  zoom="2" lat="61.438767493682825" lon="-91.58203125000001" controls controlslist="geolocation">
+  <mapml-viewer projection="OSMTILE"  zoom="2" lat="61.438767493682825" lon="-91.58203125000001" controls >
     <map-layer label="OpenStreetMap">
       <map-link rel="license" title="© OpenStreetMap contributors CC BY-SA" href="https://www.openstreetmap.org/copyright"></map-link>
       <map-extent units="OSMTILE" checked="checked">
@@ -94,6 +94,7 @@
         <map-link rel="tile" type="application/vnd.mapbox-vector-tile" tref= "https://tiles.arcgis.com/tiles/HsjBaDykC1mjhXz9/arcgis/rest/services/CBMT_CBCT_3857_V_OSM/VectorTileServer/tile/{z}/{y}/{x}.pbf"></map-link>
       </map-extent>
     </map-layer>
+
 
 
   </mapml-viewer>
