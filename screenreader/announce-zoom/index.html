@@ -10,12 +10,20 @@
     options.innerHTML = '{"announceMovement":true}';
     document.head.appendChild(options);
   </script>
-  <script type="module" src="../../dist/MapML.js/dist/mapml.js"></script>
+  <script type="module" src="../../dist/MapML-OpenLayers/dist/mapml-ol.js"></script>
 </head>
 <body>
   <mapml-viewer projection="OSMTILE" zoom="11" lat="48.8566" lon="2.3522" frameborder="0" controls controlslist="nofullscreen nolayer noreload search">
       <map-caption>Paris, the City of Light</map-caption>
-      <map-layer label="OpenStreetMap" src="../../refactoring-temporary/osm.mapml" checked></map-layer>
+      <map-layer label="OpenStreetMap" checked>
+        <map-link rel="license" href="https://www.openstreetmap.org/copyright" title="© OpenStreetMap contributors CC BY-SA"></map-link>
+      <map-extent units="OSMTILE"  checked="checked" hidden="hidden">
+      <map-input name="z" type="zoom"  value="18" min="0" max="18"></map-input>
+      <map-input name="x" type="location" units="tilematrix" axis="column" min="0"  max="262144" ></map-input>
+      <map-input name="y" type="location" units="tilematrix" axis="row" min="0"  max="262144" ></map-input>
+      <map-link rel="tile" type="image/png"tref="https://tile.openstreetmap.org/{z}/{x}/{y}.png" ></map-link>
+    </map-extent>
+    </map-layer>
   </mapml-viewer>
   <script src="../../shared/script/photon-search-handler.js"></script>
 </body>

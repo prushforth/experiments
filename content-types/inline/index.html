@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>MapML Features in-line as HTML layers</title>
-    <script type="module" src="../dist/MapML.js/dist/mapml.js"></script>
-    <link rel="stylesheet" href="../global.css">
+    <script type="module" src="../../dist/MapML-OpenLayers/dist/mapml-ol.js"></script>
+    <link rel="stylesheet" href="../../global.css">
     <style>
       mapml-viewer:defined {
         height: 50%;
@@ -51,7 +51,7 @@
     &lt;/map&gt;
       </pre>
     </div>
-    <mapml-viewer zoom="16" lon="-75.704540" lat="45.399918" controls controlslist="search" projection="CBMTILE">
+    <mapml-viewer zoom="16" lon="-75.704540" lat="45.399918" controls controlslist="search featureindex" projection="CBMTILE">
       <map-layer label="Canada Base Map - Transportation" checked hidden>
         <map-link rel="suggestions" tref="https://geogratis.gc.ca/services/geoname/en/geonames.json?q={searchTerms}*&num=20"></map-link>
         <map-link rel="search" tref="https://geogratis.gc.ca/services/geoname/en/geonames.json?q={searchTerms}&num=20"></map-link>
@@ -59,7 +59,7 @@
           <map-input  name="z" type="zoom" value="17" min="0" max="17"></map-input>
           <map-input  name="y" type="location" units="tilematrix" axis="row" min="29750" max="34475"></map-input>
           <map-input  name="x" type="location" units="tilematrix" axis="column" min="26484" max="32463"></map-input>
-          <map-link rel="tile" tref="https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT3978/MapServer/tile/{z}/{y}/{x}?m4h=t"></map-link>
+          <map-link rel="tile" type="image/png" tref="https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT3978/MapServer/tile/{z}/{y}/{x}?m4h=t"></map-link>
         </map-extent>
       </map-layer>
       <map-layer label="Booth Street" checked>
