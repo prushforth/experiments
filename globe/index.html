@@ -36,21 +36,22 @@
   </head>
   <body>
     <mapml-viewer view="globe" controls lat="64.1" lon="-101.3" zoom="2" bearing="0" pitch="0" controlslist="view search compass static featureindex geolocation">
-      <map-layer label="OpenStreetMap" checked>
+      <map-layer label="Canada Base Map (Transportation)" checked>
         <map-link rel="suggestions" tref="https://photon.komoot.io/api?q={searchTerms}"></map-link>
         <map-link rel="search" tref="https://photon.komoot.io/api?q={searchTerms}"></map-link>
-        <map-link rel="license" href="https://www.openstreetmap.org/copyright" title="© OpenStreetMap contributors (CC BY-SA 2.0)"></map-link>
-        <!-- <map-link rel="license" href="https://open.canada.ca/en/open-government-licence-canada" title="Open Government Licence - Canada"></map-link> -->
-        <!-- obtained from https://www.arcgis.com/sharing/rest/content/items/516e82031eee4e97a71652ebb0e94879/resources/styles/root.json 
-        <map-link rel="stylesheet" type="application/vnd.maplibre-style+json" href="./root.json"></map-link>-->
-        <map-link rel="stylesheet" type="application/vnd.maplibre-style+json" href="./svwd03style.json"></map-link>
+        <!-- <map-link rel="license" href="https://www.openstreetmap.org/copyright" title="© OpenStreetMap contributors (CC BY-SA 2.0)"></map-link> -->
+        <map-link rel="license" href="https://open.canada.ca/en/open-government-licence-canada" title="Open Government Licence - Canada"></map-link>
+        obtained from https://www.arcgis.com/sharing/rest/content/items/516e82031eee4e97a71652ebb0e94879/resources/styles/root.json 
+        <map-link media="(prefers-lang: fr)" rel="stylesheet" type="application/vnd.maplibre-style+json" href="./root-fr.json"></map-link>
+        <map-link media="(prefers-lang: en)" rel="stylesheet" type="application/vnd.maplibre-style+json" href="./root-en.json"></map-link>
+        <!-- <map-link rel="stylesheet" type="application/vnd.maplibre-style+json" href="./svwd03style.json"></map-link> -->
         <map-extent units="OSMTILE" checked>
           <map-input name="zed" type="zoom" min="0" max="18"></map-input>
           <map-input name="ex" type="location" axis="column" units="tilematrix"></map-input>
           <map-input name="why" type="location" axis="row" units="tilematrix"></map-input>
-          <map-link rel="tile" type="application/vnd.mapbox-vector-tile" tref="https://vector.openstreetmap.org/shortbread_v1/{zed}/{ex}/{why}.mvt"></map-link>
-          <!-- <map-link rel="tile" type="application/vnd.mapbox-vector-tile" 
-            tref="https://tiles.arcgis.com/tiles/HsjBaDykC1mjhXz9/arcgis/rest/services/CBMT_CBCT_3857_V_OSM/VectorTileServer/tile/{zed}/{why}/{ex}.pbf"></map-link> -->
+          <!-- <map-link rel="tile" type="application/vnd.mapbox-vector-tile" tref="https://vector.openstreetmap.org/shortbread_v1/{zed}/{ex}/{why}.mvt"></map-link> -->
+          <map-link rel="tile" type="application/vnd.mapbox-vector-tile" 
+            tref="https://tiles.arcgis.com/tiles/HsjBaDykC1mjhXz9/arcgis/rest/services/CBMT_CBCT_3857_V_OSM/VectorTileServer/tile/{zed}/{why}/{ex}.pbf"></map-link>
         </map-extent>
       </map-layer>
     </mapml-viewer>
