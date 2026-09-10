@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>index-map.html</title>
-    <script type="module" src="../../dist/MapML-OpenLayers/dist/mapml-ol.js"></script>
+    <script type="module" src="../../../dist/MapML-OpenLayers/dist/mapml-ol.js"></script>
     <style>
       html,
       body {
@@ -73,7 +73,7 @@
   </head>
   <body>
 
-  <mapml-viewer projection="OSMTILE" zoom="12" lat="44.436108753775116" lon="-103.75024795532228" controls controlslist="geolocation" static>
+  <mapml-viewer projection="OSMTILE" zoom="11" lat="44.436108753775116" lon="-103.75024795532228" controls controlslist="geolocation">
     <map-layer label="OpenStreetMap">
       <map-link rel="license" title="© OpenStreetMap contributors CC BY-SA" href="https://www.openstreetmap.org/copyright"></map-link>
       <map-extent units="OSMTILE" checked="checked">
@@ -83,11 +83,13 @@
         <map-link rel="tile" tref="https://tile.openstreetmap.org/{z}/{x}/{y}.png"></map-link>
       </map-extent>
     </map-layer>
-    <map-layer src="dark.mapml"></map-layer>
-    <map-layer checked>
-      <map-title>Protomaps' {z}/{x}/{y}.mvt API - light theme</map-title>
-      <map-link rel="stylesheet" type="application/pmtiles+stylesheet" href="lightTheme.js"></map-link>
+    <map-layer src="dark.mapml" checked></map-layer>
+    <map-layer>
+      <map-title>FIX ME Protomaps' {z}/{x}/{y}.mvt API - light theme</map-title>
+      <map-link rel="stylesheet" type="application/vnd.maplibre-style+json" href="light.json"></map-link>
       <map-link rel="license" title="© OpenStreetMap contributors CC BY-SA" href="https://www.openstreetmap.org/copyright"></map-link>
+      <!-- note to self: remove this layer and replace it with a .pmtiles archive of limited size 
+       around spearfish.  You can create this with pmtiles extract from the daily planet build. Because this is old, it returns CORS errors and renders nothing. -->
       <map-extent units="OSMTILE" checked="checked" hidden="hidden">
         <map-input name="z" type="zoom" value="18" min="0" max="18"></map-input>
         <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="262144"></map-input>
@@ -97,12 +99,12 @@
     </map-layer>
 
     <map-layer label='Custom MVT test' checked>
-      <map-link rel="stylesheet" type="application/pmtiles+stylesheet" href="pmtilesRules.js"></map-link>
+      <map-link rel="stylesheet" type="application/vnd.maplibre-style+json" href="spearfish-vectors.json"></map-link>
       <map-extent units="OSMTILE" label="Spearfish" checked="checked">
         <map-input name="z" type="zoom" value="18" min="0" max="18"></map-input>
         <map-input name="x" type="location" axis="column" units="tilematrix" min="55430" max="55616"></map-input>
         <map-input name="y" type="location" axis="row" units="tilematrix" min="94810" max="94944"></map-input>
-        <map-link id='mvt'  rel="tile" type="application/vnd.mapbox-vector-tile" tref="./tiles/{z}/{y}/{x}.mvt?format=application/vnd.mapbox-vector-tile" ></map-link>
+        <map-link id='mvt'  rel="tile" type="application/vnd.mapbox-vector-tile" tref="../tiles/{z}/{y}/{x}.mvt?format=application/vnd.mapbox-vector-tile" ></map-link>
 <!--        <map-input name="i" type="location" axis="i" units="tile"></map-input>
         <map-input name="j" type="location" axis="j" units="tile"></map-input>
         <map-link  rel="query" tref="http://localhost:8080/geoserver/gwc/service/wmts?request=GetFeatureInfo&format=image/jpeg&i={i}&j={j}&TileCol={x}&version=1.0.0&layer=spearfish&tilematrixset=OSMTILE&tilematrix={z}&TileRow={y}&service=WMTS&infoformat=text/mapml&feature_count=50&style="></map-link>-->

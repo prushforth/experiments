@@ -33,11 +33,15 @@ const pmtilesRulesReady = sheet.load().then(() => {
     { theme: { theme: 'light' } }
   );
   pmtilesRules.set(
-    'https://maps4html.org/experiments/vector-tiles/pmtiles/spearfish.pmtiles?theme=light',
+    decodeURI(
+      new URL('../spearfish.pmtiles?theme=light', import.meta.url).href
+    ),
     { theme: { theme: 'light' } }
   );
   pmtilesRules.set(
-    'https://maps4html.org/experiments/vector-tiles/pmtiles/spearfish.pmtiles?theme=dark',
+    decodeURI(
+      new URL('../spearfish.pmtiles?theme=dark', import.meta.url).href
+    ),
     { theme: { theme: 'dark' } }
   );
   pmtilesRules.set(
@@ -45,7 +49,12 @@ const pmtilesRulesReady = sheet.load().then(() => {
     { theme: { theme: 'light' } }
   );
   pmtilesRules.set(
-    'https://maps4html.org/experiments/vector-tiles/pmtiles/tiles/{z}/{y}/{x}.mvt?format=application/vnd.mapbox-vector-tile',
+    decodeURI(
+      new URL(
+        '../tiles/{z}/{y}/{x}.mvt?format=application/vnd.mapbox-vector-tile',
+        import.meta.url
+      ).href
+    ),
     {
       rules: {
         PAINT_RULES: [

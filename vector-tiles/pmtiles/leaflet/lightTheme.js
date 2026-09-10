@@ -9,12 +9,19 @@ const sheet = new protomapsL.Sheet(`
 `);
 const pmtilesRules = new Map();
 const pmtilesRulesReady = sheet.load().then(() => {
-  pmtilesRules.set('https://maps4html.org/experiments/vector-tiles/pmtiles/spearfish.pmtiles?theme=dark', {
-    theme: { theme: 'dark' }
-  });
   pmtilesRules.set(
     'https://data.source.coop/protomaps/openstreetmap/tiles/v3.pmtiles',
-    { theme: { theme: 'dark' } }
+    { theme: { theme: 'light' } }
+  );
+  pmtilesRules.set(
+    decodeURI(
+      new URL('../spearfish.pmtiles?theme=light', import.meta.url).href
+    ),
+    { theme: { theme: 'light' } }
+  );
+  pmtilesRules.set(
+    'https://api.protomaps.com/tiles/v3/{z}/{x}/{y}.mvt?key=41392fb7515533a5',
+    { theme: { theme: 'light' } }
   );
   return pmtilesRules;
 });
