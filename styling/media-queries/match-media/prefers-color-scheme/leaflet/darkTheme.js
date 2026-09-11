@@ -10,7 +10,12 @@ const sheet = new protomapsL.Sheet(`
 const pmtilesRules = new Map();
 const pmtilesRulesReady = sheet.load().then(() => {
   pmtilesRules.set(
-  'https://maps4html.org/experiments/vector-tiles/pmtiles/spearfish.pmtiles?theme=dark',
+    decodeURI(
+      new URL(
+        '../../../../../vector-tiles/pmtiles/spearfish.pmtiles?theme=dark',
+        import.meta.url
+      ).href
+    ),
     { theme: { theme: 'dark' } }
   );
   return pmtilesRules;

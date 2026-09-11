@@ -14,7 +14,12 @@ const pmtilesRulesReady = sheet.load().then(() => {
     { theme: { theme: 'light' } }
   );
   pmtilesRules.set(
-  'https://maps4html.org/experiments/vector-tiles/pmtiles/spearfish.pmtiles?theme=light',
+    decodeURI(
+      new URL(
+        '../../../../../vector-tiles/pmtiles/spearfish.pmtiles?theme=light',
+        import.meta.url
+      ).href
+    ),
     { theme: { theme: 'light' } }
   );
   pmtilesRules.set(

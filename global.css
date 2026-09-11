@@ -42,6 +42,6 @@ mapml-viewer:not(:defined) > * {
 supported, or if javascript is disabled. This needs to be defined separately
 from the above, because the `:not(:defined)` selector invalidates the entire
 declaration in browsers that do not support it. */
-map-layer {
+map-layer > * {
  display: none;
 }
