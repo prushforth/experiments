@@ -1,0 +1,15 @@
+{
+  "name": "experiments",
+  "version": "0.0.0",
+  "private": true,
+  "description": "MapML examples and experiments, served as a static multi-page site",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}

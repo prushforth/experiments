@@ -2,3 +2,7 @@
 !/dist/MapML.js/
 !/dist/MapML-MapLibre/
 !/dist/MapML-OpenLayers/
+
+# vite dev server artifacts (`npx vite` puts its cache here when there's no node_modules)
+/.vite/
+/node_modules/
