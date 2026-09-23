@@ -1,0 +1,47 @@
+<!doctype html>
+<!--
+  TEMPLATE: a use case / experiment, structured by CONTENT TYPE.
+
+  Copy this whole folder to the use case's folder. The structure is:
+
+    <use-case>/index.html          this page — links to the two content types
+    <use-case>/inline/index.html   three frames, MapML declared inline in HTML
+    <use-case>/inline/{leaflet,maplibre,ol}/index.html
+    <use-case>/remote/index.html   three frames, MapML fetched as XHTML documents
+    <use-case>/remote/{leaflet,maplibre,ol}/index.html + the .mapml documents
+    <use-case>/styles/             assets shared by both content types
+
+  Why the split: inline MapML is parsed as HTML and remote MapML as XHTML. They
+  are different code paths and an implementation may support one and not the
+  other, so each gets its own page. Why the per-implementation folders: each
+  library defines its own <mapml-viewer> and needs a separate browsing context,
+  hence the iframes, and the markup usually differs a little between them.
+
+  Drop either content type if it does not apply to the use case, and link the
+  ones you keep from the root index.html of the experiments site.
+
+  Fix the ONE relative path in each page (../templates/experiment.js) so that it
+  points at templates/experiment.js from wherever the copy lives.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Use case</title>
+    <script src="../experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../index.html">Experiments</a></p>
+      <h1>Use case</h1>
+      <p class="lede">
+        What this use case is about, in a sentence or two. Pick a content type: the
+        same content declared inline in HTML, or fetched as remote MapML documents.
+      </p>
+      <nav class="experiment-nav" aria-label="Content type">
+        <a href="inline/">Inline</a>
+        <a href="remote/">Remote</a>
+      </nav>
+    </header>
+  </body>
+</html>

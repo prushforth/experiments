@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vector tiles, inline MapML — three implementations compared</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Vector tiles declared inline</h1>
+      <p class="lede">
+        A <code>.pmtiles</code> archive and a <code>{z}/{y}/{x}.mvt</code> template, both
+        declared as <code>&lt;map-link rel="tile"&gt;</code> in the HTML page itself, so the
+        markup takes the HTML parsing code path. The same content is also available as
+        <a href="../remote/">remote MapML</a>, where the layers are fetched as XHTML.
+      </p>
+      <nav class="experiment-nav" aria-label="Content type">
+        <a href="./" aria-current="page">Inline</a>
+        <a href="../remote/">Remote</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="Inline vector tiles rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Styled with <code>type="application/pmtiles+stylesheet"</code> — a
+            protomaps-leaflet rules module. Its 512&nbsp;px tiles put the data one zoom
+            level ahead, which is why this map opens at zoom 12.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="Inline vector tiles rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Styled with a MapLibre style document
+            (<code>type="application/vnd.maplibre-style+json"</code>), the format the
+            renderer speaks natively.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="Inline vector tiles rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The same MapLibre style document, applied through <code>ol-mapbox-style</code>.
+            MVT tiles use the extent's 256&nbsp;px tile grid, so tilematrix zoom matches map
+            zoom and the map opens at zoom 11.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        Inline layers cannot offer the alternate-style switching the remote version does:
+        <code>rel="self style"</code> / <code>rel="style"</code> swap one MapML
+        <em>document</em> for another, which requires the layer to be a document.
+      </p>
+    </footer>
+  </body>
+</html>

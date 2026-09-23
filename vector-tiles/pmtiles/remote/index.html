@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vector tiles, remote MapML — three implementations compared</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Vector tiles from remote MapML documents</h1>
+      <p class="lede">
+        The same <code>.pmtiles</code> archive and <code>{z}/{y}/{x}.mvt</code> template, but
+        each layer is a <code>&lt;map-layer src&gt;</code> pointing at a MapML document that
+        is fetched and parsed as XHTML — a different code path from the
+        <a href="../inline/">inline version</a>, and one each implementation has to get right
+        separately.
+      </p>
+      <nav class="experiment-nav" aria-label="Content type">
+        <a href="../inline/">Inline</a>
+        <a href="./" aria-current="page">Remote</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="Remote vector tiles rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            <code>dark.mapml</code> carries the protomaps-leaflet rules module and the
+            archive; <code>mvt.mapml</code> carries the tile template. Open the layer control
+            to switch the basemap between the dark and light documents.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="Remote vector tiles rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Same documents, with a MapLibre style document as the stylesheet. The style
+            choice comes from <code>rel="self style"</code> and <code>rel="style"</code> links
+            in each document's <code>&lt;map-head&gt;</code>.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="Remote vector tiles rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Same documents again. Remote content is grafted into the layer's shadow root, so
+            the style link and the tile link are found on a different root than in the inline
+            version.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        The map markup in the page is nearly identical across the three — the differences are
+        inside the linked MapML documents, in the stylesheet type each implementation
+        understands.
+      </p>
+    </footer>
+  </body>
+</html>

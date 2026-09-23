@@ -1,0 +1,274 @@
+/*
+ * Layout for the experiment page templates. Loaded by templates/experiment.js
+ * together with global.css — do not link it directly.
+ *
+ * Two page shapes:
+ *   <body>                  a responsive grid of framed maps (.examples)
+ *   <body class="full-page"> one map filling the viewport
+ */
+
+:root {
+  --experiment-gap: 1.5rem;
+  --experiment-max-width: 80rem;
+  --experiment-border: #d0d7de;
+  --experiment-muted: #57606a;
+  --experiment-surface: #f6f8fa;
+}
+
+body {
+  color: #1f2328;
+}
+
+/* global.css pins body to the viewport height for full page maps. */
+body:not(.full-page) {
+  height: auto;
+  min-height: 100%;
+}
+
+/* Pre-style to avoid a flash of inline layer markup before upgrade. */
+map-layer {
+  display: none;
+}
+
+.visually-hidden:not(:focus):not(:active) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/*
+ * Page chrome
+ */
+.experiment-header,
+.experiment-footer {
+  max-width: var(--experiment-max-width);
+  margin-inline: auto;
+  padding: var(--experiment-gap) var(--experiment-gap) 0;
+}
+
+.experiment-footer {
+  padding-block: var(--experiment-gap);
+  color: var(--experiment-muted);
+}
+
+.experiment-header h1 {
+  margin: 0.25rem 0;
+}
+
+.experiment-header .lede {
+  margin: 0;
+  max-width: 68ch;
+  color: var(--experiment-muted);
+}
+
+.experiment-breadcrumb {
+  font-size: 0.875rem;
+}
+
+.experiment-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+}
+
+.experiment-nav a {
+  padding: 0.25rem 0.625rem;
+  border: 1px solid var(--experiment-border);
+  border-radius: 999px;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+}
+
+.experiment-nav a[aria-current] {
+  background: #1f2328;
+  border-color: #1f2328;
+  color: #fff;
+}
+
+/*
+ * Responsive grid of framed maps. `--example-min` is the breakpoint: columns
+ * are added only while each one can still be at least that wide, so the
+ * examples stack down the page on narrow viewports.
+ */
+.examples {
+  --example-min: 32rem;
+  display: grid;
+  gap: var(--experiment-gap);
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, var(--example-min)), 1fr)
+  );
+  max-width: var(--experiment-max-width);
+  margin-inline: auto;
+  padding: var(--experiment-gap);
+}
+
+.example {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.example h2 {
+  margin: 0;
+  font-size: 1.125rem;
+}
+
+.example-map {
+  height: clamp(16rem, 45vh, 30rem);
+  border: 1px solid var(--experiment-border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* A framed map is either an inline <mapml-viewer> or an <iframe> holding a
+   page built with another implementation. */
+.example-map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* The description below the map. */
+.example-description {
+  margin: 0;
+  max-width: 68ch;
+  color: var(--experiment-muted);
+}
+
+.example-description > :first-child {
+  margin-top: 0;
+}
+
+.example-description > :last-child {
+  margin-bottom: 0;
+}
+
+/*
+ * View / Hide code + Copy code
+ */
+.example-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.example-button {
+  font: inherit;
+  font-size: 0.875rem;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--experiment-border);
+  border-radius: 6px;
+  background: var(--experiment-surface);
+  color: inherit;
+  cursor: pointer;
+}
+
+.example-button:hover {
+  background: #eaeef2;
+}
+
+.example-status {
+  font-size: 0.875rem;
+  color: #1a7f37;
+}
+
+.example-link {
+  font-size: 0.875rem;
+  margin-inline-start: auto;
+}
+
+.example-code {
+  margin: 0;
+  padding: 0.875rem 1rem;
+  max-height: 60vh;
+  overflow: auto;
+  border: 1px solid var(--experiment-border);
+  border-radius: 6px;
+  background: var(--experiment-surface);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  tab-size: 2;
+}
+
+/*
+ * Full page map
+ */
+body.full-page {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+body.full-page .example {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  gap: 0;
+}
+
+body.full-page .example-map {
+  flex: 1;
+  min-height: 0;
+  height: auto;
+  border: none;
+  border-radius: 0;
+}
+
+/* Float the toolbar and the code panel over the map, between the map controls
+   in the four corners. */
+body.full-page .example-actions {
+  position: absolute;
+  z-index: 1000;
+  inset-block-start: 0.75rem;
+  inset-inline: 0;
+  justify-content: center;
+  pointer-events: none;
+}
+
+body.full-page .example-button,
+body.full-page .example-status {
+  pointer-events: auto;
+  background: rgb(255 255 255 / 90%);
+  box-shadow: rgb(0 0 0 / 30%) 0 1px 4px -1px;
+}
+
+body.full-page .example-status {
+  padding: 0.3rem 0.5rem;
+  border-radius: 6px;
+}
+
+body.full-page .example-code {
+  position: absolute;
+  z-index: 1000;
+  inset-block-start: 3.25rem;
+  inset-inline: 0.75rem;
+  width: min(60rem, calc(100% - 1.5rem));
+  margin-inline: auto;
+  max-height: calc(100% - 5rem);
+  background: rgb(255 255 255 / 95%);
+  box-shadow: rgb(0 0 0 / 30%) 0 1px 4px -1px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .example-code {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (max-width: 40rem) {
+  :root {
+    --experiment-gap: 1rem;
+  }
+}

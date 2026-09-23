@@ -1,0 +1,15 @@
+<mapml- xmlns="http://www.w3.org/1999/xhtml">
+  <map-head>
+    <map-title>Spearfish MVT tiles</map-title>
+    <map-link rel="stylesheet" type="application/vnd.maplibre-style+json" href="../../styles/spearfish-vectors.json"></map-link>
+    <map-link rel="license" title="© OpenStreetMap contributors CC BY-SA" href="https://www.openstreetmap.org/copyright"></map-link>
+  </map-head>
+  <map-body>
+    <map-extent units="OSMTILE" label="Spearfish" checked="checked">
+      <map-input name="z" type="zoom" value="18" min="0" max="18"></map-input>
+      <map-input name="x" type="location" axis="column" units="tilematrix" min="55430" max="55616"></map-input>
+      <map-input name="y" type="location" axis="row" units="tilematrix" min="94810" max="94944"></map-input>
+      <map-link rel="tile" type="application/vnd.mapbox-vector-tile" tref="../../tiles/{z}/{y}/{x}.mvt?format=application/vnd.mapbox-vector-tile"></map-link>
+    </map-extent>
+  </map-body>
+</mapml->

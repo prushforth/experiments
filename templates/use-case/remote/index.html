@@ -1,0 +1,67 @@
+<!doctype html>
+<!--
+  TEMPLATE: the REMOTE content type of a use case — the same three framed maps,
+  but each layer is a <map-layer src> pointing at a MapML document that is
+  fetched and parsed as XHTML.
+
+  Keep the .mapml documents beside the page that uses them (one set per
+  implementation, since the markup may differ), and shared assets in ../styles/.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Use case — remote MapML</title>
+    <script src="../../experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Use case, from remote MapML</h1>
+      <p class="lede">
+        What the reader should look for in the maps below, and what is specific to
+        fetching this content as MapML documents, which are parsed as XHTML.
+      </p>
+      <nav class="experiment-nav" aria-label="Content type">
+        <a href="../inline/">Inline</a>
+        <a href="./" aria-current="page">Remote</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="The use case rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>What is worth noticing in this implementation.</p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="The use case rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>What is worth noticing in this implementation.</p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="The use case rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>What is worth noticing in this implementation.</p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>Notes, references or links to related experiments go here.</p>
+    </footer>
+  </body>
+</html>

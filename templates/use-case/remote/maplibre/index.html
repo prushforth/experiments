@@ -1,0 +1,27 @@
+<!doctype html>
+<!--
+  One frame of the remote comparison. Built from templates/full-page/index.html:
+  the markup between the code markers is what the framing page shows and copies.
+  The layer content lives in osm.mapml beside this page.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Use case, remote — MapML-MapLibre</title>
+    <script src="../../../experiment.js" data-impl="maplibre"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">The use case, from remote MapML, rendered by MapML-MapLibre</h1>
+      <div class="example-map">
+        <!-- code -->
+        <mapml-viewer projection="OSMTILE" zoom="2" lat="0" lon="0" controls>
+          <map-caption>Describe the purpose of this map here.</map-caption>
+          <map-layer src="osm.mapml" checked></map-layer>
+        </mapml-viewer>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>

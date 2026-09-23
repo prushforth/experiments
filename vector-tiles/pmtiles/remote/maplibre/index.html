@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Remote vector tiles — MapML-MapLibre</title>
+    <script src="../../../../templates/experiment.js" data-impl="maplibre"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">Remote MapML vector tiles rendered by MapML-MapLibre</h1>
+      <div class="example-map">
+        <!-- code -->
+        <mapml-viewer projection="OSMTILE" zoom="11" lat="44.436108753775116" lon="-103.75024795532228" controls>
+          <map-caption>Spearfish, South Dakota, from vector tiles declared in remote MapML documents</map-caption>
+          <map-layer label="OpenStreetMap">
+            <map-link rel="license" title="© OpenStreetMap contributors CC BY-SA" href="https://www.openstreetmap.org/copyright"></map-link>
+            <map-extent units="OSMTILE" checked="checked">
+              <map-input name="z" type="zoom" value="18" min="0" max="18"></map-input>
+              <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="262144"></map-input>
+              <map-input name="y" type="location" units="tilematrix" axis="row" min="0" max="262144"></map-input>
+              <map-link rel="tile" tref="https://tile.openstreetmap.org/{z}/{x}/{y}.png"></map-link>
+            </map-extent>
+          </map-layer>
+          <map-layer src="dark.mapml" checked></map-layer>
+          <map-layer src="mvt.mapml" checked></map-layer>
+        </mapml-viewer>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>
