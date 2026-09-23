@@ -12,14 +12,41 @@
       <h1>Vector tiles: pmtiles archives and MVT tiles</h1>
       <p class="lede">
         A <code>.pmtiles</code> archive and a <code>{z}/{y}/{x}.mvt</code> template over
-        Spearfish, South Dakota, in MapML.js, MapML-MapLibre and MapML-OpenLayers. Pick a
-        content type — the markup is the same content either way, but inline and remote
-        MapML take different code paths in each implementation.
+        Spearfish, South Dakota, in MapML.js, MapML-MapLibre and MapML-OpenLayers. The same
+        content is published four ways: inline MapML is parsed as HTML and remote MapML as
+        XHTML, and either can be hosted by <code>&lt;mapml-viewer&gt;</code> or by the
+        customized built-in <code>&lt;map is="web-map"&gt;</code>. Each combination is a
+        different code path, so each gets its own three-way comparison.
       </p>
-      <nav class="experiment-nav" aria-label="Content type">
-        <a href="inline/">Inline</a>
-        <a href="remote/">Remote</a>
-      </nav>
     </header>
+
+    <main class="experiment-body">
+      <table class="variant-matrix">
+        <caption class="visually-hidden">Content type by root element</caption>
+        <thead>
+          <tr>
+            <td></td>
+            <th scope="col"><code>&lt;mapml-viewer&gt;</code></th>
+            <th scope="col"><code>&lt;map is="web-map"&gt;</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Inline</th>
+            <td><a href="inline/">All three implementations</a></td>
+            <td><a href="inline/web-map.html">MapML.js and MapML-OpenLayers</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Remote</th>
+            <td><a href="remote/">All three implementations</a></td>
+            <td><a href="remote/web-map.html">MapML.js and MapML-OpenLayers</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        MapML-MapLibre does not implement <code>&lt;map is="web-map"&gt;</code>, so it appears
+        in the viewer comparisons only.
+      </p>
+    </main>
   </body>
 </html>

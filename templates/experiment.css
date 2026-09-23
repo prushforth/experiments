@@ -45,6 +45,7 @@ map-layer {
  * Page chrome
  */
 .experiment-header,
+.experiment-body,
 .experiment-footer {
   max-width: var(--experiment-max-width);
   margin-inline: auto;
@@ -73,9 +74,31 @@ map-layer {
 .experiment-nav {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.5rem;
   margin-top: 0.75rem;
   font-size: 0.875rem;
+}
+
+.experiment-nav-label {
+  color: var(--experiment-muted);
+}
+
+/* Content type x root element, on a use case landing page. */
+.variant-matrix {
+  border-collapse: collapse;
+}
+
+.variant-matrix :is(th, td) {
+  border: 1px solid var(--experiment-border);
+  padding: 0.5rem 0.75rem;
+  text-align: start;
+  vertical-align: top;
+}
+
+.variant-matrix thead th,
+.variant-matrix tbody th {
+  background: var(--experiment-surface);
 }
 
 .experiment-nav a {
@@ -137,6 +160,22 @@ map-layer {
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+/* Stands in for the frame where an implementation does not support the variant. */
+.example-unavailable {
+  display: grid;
+  place-content: center;
+  padding: 1rem;
+  text-align: center;
+  color: var(--experiment-muted);
+  background: var(--experiment-surface);
+  border-style: dashed;
+}
+
+.example-unavailable p {
+  margin: 0;
+  max-width: 30ch;
 }
 
 /* The description below the map. */

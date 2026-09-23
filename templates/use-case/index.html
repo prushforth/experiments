@@ -1,24 +1,34 @@
 <!doctype html>
 <!--
-  TEMPLATE: a use case / experiment, structured by CONTENT TYPE.
+  TEMPLATE: a use case / experiment, structured by CONTENT TYPE and ROOT ELEMENT.
 
   Copy this whole folder to the use case's folder. The structure is:
 
-    <use-case>/index.html          this page — links to the two content types
-    <use-case>/inline/index.html   three frames, MapML declared inline in HTML
-    <use-case>/inline/{leaflet,maplibre,ol}/index.html
-    <use-case>/remote/index.html   three frames, MapML fetched as XHTML documents
-    <use-case>/remote/{leaflet,maplibre,ol}/index.html + the .mapml documents
-    <use-case>/styles/             assets shared by both content types
+    <use-case>/index.html              this page — the matrix of variants
+    <use-case>/inline/index.html       3 frames, MapML inline, <mapml-viewer>
+    <use-case>/inline/web-map.html     3 frames, MapML inline, <map is="web-map">
+    <use-case>/inline/{leaflet,maplibre,ol}/index.html   + web-map.html where it applies
+    <use-case>/remote/index.html       3 frames, MapML fetched as XHTML documents
+    <use-case>/remote/web-map.html
+    <use-case>/remote/{impl}/index.html + web-map.html + the .mapml documents
+    <use-case>/styles/                 assets shared by every variant
 
-  Why the split: inline MapML is parsed as HTML and remote MapML as XHTML. They
-  are different code paths and an implementation may support one and not the
-  other, so each gets its own page. Why the per-implementation folders: each
-  library defines its own <mapml-viewer> and needs a separate browsing context,
-  hence the iframes, and the markup usually differs a little between them.
+  TWO AXES, each one nav row in the header:
 
-  Drop either content type if it does not apply to the use case, and link the
-  ones you keep from the root index.html of the experiments site.
+  - Content type: inline MapML is parsed as HTML, remote MapML as XHTML. These
+    are different code paths and a library may support one and not the other.
+  - Root element: <mapml-viewer> or the customized built-in <map is="web-map">.
+    Same layer markup, different host element — and in the remote case, the
+    SAME .mapml documents, which is why the root element variant is a sibling
+    page inside the implementation folder rather than another folder level.
+
+  A THIRD axis, the implementation, is the columns: each library defines its own
+  <mapml-viewer> and needs a separate browsing context, hence the iframes.
+
+  Drop any variant that does not apply (delete the file and its nav link), and
+  link the pages you keep from the root index.html of the experiments site. Where
+  a library does not implement a variant, keep its column and show a note — see
+  inline/web-map.html for the data-unavailable pattern.
 
   Fix the ONE relative path in each page (../templates/experiment.js) so that it
   points at templates/experiment.js from wherever the copy lives.
@@ -35,13 +45,38 @@
       <p class="experiment-breadcrumb"><a data-home href="../../index.html">Experiments</a></p>
       <h1>Use case</h1>
       <p class="lede">
-        What this use case is about, in a sentence or two. Pick a content type: the
-        same content declared inline in HTML, or fetched as remote MapML documents.
+        What this use case is about, in a sentence or two, and why the variants below
+        differ in ways worth looking at.
       </p>
-      <nav class="experiment-nav" aria-label="Content type">
-        <a href="inline/">Inline</a>
-        <a href="remote/">Remote</a>
-      </nav>
     </header>
+
+    <main class="experiment-body">
+      <table class="variant-matrix">
+        <caption class="visually-hidden">Content type by root element</caption>
+        <thead>
+          <tr>
+            <td></td>
+            <th scope="col"><code>&lt;mapml-viewer&gt;</code></th>
+            <th scope="col"><code>&lt;map is="web-map"&gt;</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Inline</th>
+            <td><a href="inline/">All three implementations</a></td>
+            <td><a href="inline/web-map.html">MapML.js and MapML-OpenLayers</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Remote</th>
+            <td><a href="remote/">All three implementations</a></td>
+            <td><a href="remote/web-map.html">MapML.js and MapML-OpenLayers</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        MapML-MapLibre does not implement <code>&lt;map is="web-map"&gt;</code>, so it appears
+        in the viewer comparisons only.
+      </p>
+    </main>
   </body>
 </html>

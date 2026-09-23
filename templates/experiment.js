@@ -139,6 +139,9 @@
   let uid = 0;
 
   function enhance(example) {
+    // A cell of the comparison an implementation does not support: a note, not a map.
+    if (example.hasAttribute('data-unavailable')) return;
+
     const frame = example.querySelector('.example-map iframe');
     let source = frame ? '' : sourceOf(example);
     if (!frame && !source) return;

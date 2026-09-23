@@ -1,0 +1,35 @@
+<!doctype html>
+<!--
+  One frame of the inline comparison, hosted by <map is="web-map"> instead of
+  <mapml-viewer>. The layer markup is identical to index.html beside it — only
+  the root element differs.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Use case, inline web-map — MapML.js (Leaflet)</title>
+    <script src="../../../experiment.js" data-impl="leaflet"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">The use case, declared inline in a web-map element, rendered by MapML.js</h1>
+      <div class="example-map">
+        <!-- code -->
+        <map is="web-map" projection="OSMTILE" zoom="2" lat="0" lon="0" controls>
+          <map-caption>Describe the purpose of this map here.</map-caption>
+          <map-layer label="OpenStreetMap" checked>
+            <map-link rel="license" title="© OpenStreetMap contributors CC BY-SA" href="https://www.openstreetmap.org/copyright"></map-link>
+            <map-extent units="OSMTILE" checked>
+              <map-input name="z" type="zoom" value="18" min="0" max="18"></map-input>
+              <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="262144"></map-input>
+              <map-input name="y" type="location" units="tilematrix" axis="row" min="0" max="262144"></map-input>
+              <map-link rel="tile" tref="https://tile.openstreetmap.org/{z}/{x}/{y}.png"></map-link>
+            </map-extent>
+          </map-layer>
+        </map>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>

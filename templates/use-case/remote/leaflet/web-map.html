@@ -1,0 +1,26 @@
+<!doctype html>
+<!--
+  One frame of the remote comparison, hosted by <map is="web-map">. It reads the
+  same osm.mapml as index.html beside it — only the root element differs.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Use case, remote web-map — MapML.js (Leaflet)</title>
+    <script src="../../../experiment.js" data-impl="leaflet"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">The use case, from remote MapML in a web-map element, rendered by MapML.js</h1>
+      <div class="example-map">
+        <!-- code -->
+        <map is="web-map" projection="OSMTILE" zoom="2" lat="0" lon="0" controls>
+          <map-caption>Describe the purpose of this map here.</map-caption>
+          <map-layer src="osm.mapml" checked></map-layer>
+        </map>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>
