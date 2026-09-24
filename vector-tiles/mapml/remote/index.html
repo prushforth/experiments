@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MapML vector tiles, remote MapML — three implementations compared</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>MapML vector tiles from remote layer documents</h1>
+      <p class="lede">
+        The same tiles and the same stylesheet as the
+        <a href="./../inline/">inline version</a>, but each layer is now a MapML document of
+        its own, named by <code>&lt;map-layer src&gt;</code> and parsed as XHTML. The layer's
+        name in the layer control comes from the document's <code>&lt;map-title&gt;</code>,
+        and every <code>href</code> and <code>tref</code> in it resolves against the
+        document, not against this page.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="../inline/">Inline</a>
+        <a href="./" aria-current="page">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./" aria-current="page">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="Remote MapML vector tiles rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Two documents, one per projection, each offering the other as
+            <code>&lt;map-link rel="alternate"&gt;</code>: put either one in a map of the
+            other projection and the layer follows the map.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="Remote MapML vector tiles rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The renderer is Mercator only, so the WorldCRS84Quad map falls back to
+            <code>OSMTILE</code> — which is exactly what the WGS84 document's
+            <code>rel="alternate"</code> link is for. Feature colours still need
+            <code>&lt;map-link rel="stylesheet"&gt;</code>, which is not implemented there
+            yet.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="Remote MapML vector tiles rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The stylesheet arrives in the fetched document's <code>&lt;map-head&gt;</code>
+            and has to reach the sub-layer each tile's features are rendered into — the same
+            CSS-through-a-probe path as the inline version, one shadow root further away.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        Publishing the layer as a document is what makes projection negotiation possible:
+        the alternate is a <em>link</em>, so the client can pick the representation that
+        suits its map before anything is drawn.
+      </p>
+    </footer>
+  </body>
+</html>

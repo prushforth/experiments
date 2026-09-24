@@ -21477,7 +21477,7 @@ class ES extends wi {
     this._button.removeEventListener("click", this._onClick), document.removeEventListener("fullscreenchange", this._onFullscreenChange);
   }
   _update() {
-    const t = document.fullscreenElement === this._viewer, e = this._viewer.locale, n = t ? e.btnExitFullScreen : e.btnFullScreen;
+    const t = this._viewer.isFullScreen(), e = this._viewer.locale, n = t ? e.btnExitFullScreen : e.btnFullScreen;
     this._button.title = n, this._button.setAttribute("aria-label", n), this._button.classList.toggle("is-fullscreen", t);
   }
 }
@@ -22160,7 +22160,7 @@ class BS {
     var s;
     const t = (s = this._items) == null ? void 0 : s.find((r) => r.id === "fullscreen");
     if (!t) return;
-    const n = document.fullscreenElement === this._viewer ? this._locale.btnExitFullScreen : this._locale.btnFullScreen;
+    const n = this._viewer.isFullScreen() ? this._locale.btnExitFullScreen : this._locale.btnFullScreen;
     t.el.innerHTML = `<span>${n}</span><kbd>F</kbd>`;
   }
   // Read the clipboard and delegate to Util._pasteLayer, which appends a
@@ -37868,13 +37868,20 @@ const B_ = (i) => {
       }
     );
   }
+  // `document.fullscreenElement` is RETARGETED to the outermost shadow host,
+  // so it is not `this` when the viewer is used inside another custom
+  // element's shadow root — the `:fullscreen` flag is set on the viewer
+  // itself, which is what MapML.js tests via `getClosest(el, ':fullscreen')`.
+  isFullScreen() {
+    return this.matches(":fullscreen");
+  }
   // Fullscreen the whole viewer. MapML.js exposes this via Leaflet's
   // fullscreen plugin (`map.toggleFullscreen()`); OpenLayers ships no such
   // helper, so drive the standard Fullscreen API on the host element. The
   // top-left FullscreenButton and the context menu / keyboard all route here.
   toggleFullScreen() {
     var t, e;
-    document.fullscreenElement === this ? (t = document.exitFullscreen) == null || t.call(document) : (e = this.requestFullscreen) == null || e.call(this);
+    this.isFullScreen() ? (t = document.exitFullscreen) == null || t.call(document) : (e = this.requestFullscreen) == null || e.call(this);
   }
 };
 class A4 extends $_(HTMLElement) {
@@ -51422,13 +51429,14 @@ class g3 extends HTMLElement {
   // variables are resolved by name (functions are called, as Leaflet's
   // template does).
   _imageUrl(t, e, n) {
+    var u;
     const [s, r, o, a] = e, l = t.extent, h = {};
     h[l.width] = Math.round((o - s) / n), h[l.height] = Math.round((a - r) / n), h[l.left] = s, h[l.right] = o, h[l.top] = a, h[l.bottom] = r;
-    for (const c in l)
-      ["width", "height", "left", "right", "top", "bottom"].indexOf(c) < 0 && (h[c] = typeof l[c] == "function" ? l[c]() : l[c]);
-    return this.tref.replace(
+    for (const d in l)
+      ["width", "height", "left", "right", "top", "bottom"].indexOf(d) < 0 && (h[d] = typeof l[d] == "function" ? l[d]() : l[d]);
+    return (((u = this._templateVars) == null ? void 0 : u.template) ?? this.tref).replace(
       /{(.*?)}/g,
-      (c, u) => h[u] !== void 0 ? h[u] : c
+      (d, f) => h[f] !== void 0 ? h[f] : d
     );
   }
   // Port of MapML.js TemplatedImageLayer `_setUpExtentTemplateVars`: build an
@@ -51473,7 +51481,7 @@ class g3 extends HTMLElement {
   // built-in inversion (`getFullTileRange(z).getHeight() - y - 1`) is identical
   // to MapML.js's `_globalTileRange.max.y - coords.y`.
   _toOLTemplate(t, e) {
-    let n = t;
+    let n = decodeURI(new URL(t, this.getBase()));
     const s = this.tms ? "{-y}" : "{y}";
     for (const r of e) {
       const o = `{${r.name}}`;
@@ -51518,13 +51526,14 @@ class g3 extends HTMLElement {
   // its north/south northing. Port of MapML.js TemplatedTileLayer.getTileUrl +
   // `_tileMatrixToPCRSPosition`.
   _tileUrl(t, e, n) {
+    var f;
     const [s, r, o] = e, [a, l, h, c] = n.getTileCoordExtent(e), u = {};
     t.left && (u[t.left] = a), t.right && (u[t.right] = h), t.top && (u[t.top] = c), t.bottom && (u[t.bottom] = l), t.col && (u[t.col] = r), t.row && (u[t.row] = this.tms ? n.getFullTileRange(s).getHeight() - o - 1 : o), t.zoom && (u[t.zoom] = s);
-    for (const d in t.extras)
-      u[d] = t.extras[d]();
-    return this.tref.replace(
+    for (const m in t.extras)
+      u[m] = t.extras[m]();
+    return (((f = this._templateVars) == null ? void 0 : f.template) ?? this.tref).replace(
       /{(.*?)}/g,
-      (d, f) => u[f] !== void 0 ? u[f] : d
+      (m, p) => u[p] !== void 0 ? u[p] : m
     );
   }
   // Build attribution HTML from the owning layer's `<map-link rel="license">`
@@ -51557,7 +51566,9 @@ class g3 extends HTMLElement {
       c && (l.push(c), c.hasAttribute("type") && c.getAttribute("type").toLowerCase() === "zoom" && (s = c, n = !0));
     }
     r && a.length === l.length && (!n && e && (l.push(e), s = e), this._templateVars = {
-      template: r,
+      // Resolved here, so a relative tref in a remote layer document resolves
+      // against that document and not against the embedding page.
+      template: decodeURI(new URL(r, this.getBase())),
       values: l,
       zoom: s,
       projection: this.parentElement.units

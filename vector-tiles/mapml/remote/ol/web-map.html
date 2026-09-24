@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MapML vector tiles, remote, &lt;map is="web-map"&gt; — MapML-OpenLayers</title>
+    <script src="../../../../templates/experiment.js" data-impl="openlayers"></script>
+    <style>
+      /* The same content in two projections, one above the other, each map
+         filling half the height of the page (or of the frame holding it). */
+      .example-map {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+      }
+
+      .example-map > * {
+        display: block;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        border: 0;
+      }
+
+      .example-map > * + * {
+        border-top: 1px solid #d0d7de;
+      }
+    </style>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">MapML vector tiles from remote layer documents in a web-map element, rendered by MapML-OpenLayers</h1>
+      <div class="example-map">
+        <!-- code -->
+        <map is="web-map" projection="WGS84" zoom="0" lat="0" lon="0" controls>
+          <map-caption>World countries from WorldCRS84Quad MapML tiles, coloured by a CSS stylesheet</map-caption>
+          <map-layer src="../wgs84-tiles.mapml" checked></map-layer>
+        </map>
+        <map is="web-map" projection="OSMTILE" zoom="0" lat="0" lon="0" controls>
+          <map-caption>The same countries from WebMercatorQuad MapML tiles, over OpenStreetMap</map-caption>
+          <map-layer src="../osm.mapml" checked></map-layer>
+          <map-layer src="../osmtile-tiles.mapml" checked></map-layer>
+        </map>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>

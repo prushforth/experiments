@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MapML vector tiles, inline MapML in &lt;map is="web-map"&gt;</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>MapML vector tiles declared inline, in a <code>&lt;map is="web-map"&gt;</code></h1>
+      <p class="lede">
+        The same markup as the <a href="./"><code>&lt;mapml-viewer&gt;</code> version</a>,
+        hosted by the customized built-in <code>&lt;map is="web-map"&gt;</code>: a
+        WorldCRS84Quad tile set above, the WebMercatorQuad tile set of the same countries
+        over OpenStreetMap below.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="web-map.html" aria-current="page">Inline</a>
+        <a href="../remote/web-map.html">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html" aria-current="page">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/web-map.html" title="Inline MapML vector tiles in a web-map element, rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            <code>&lt;map&gt;</code> cannot host a shadow root, so the map chrome goes in a
+            child element — the layer markup is otherwise unchanged.
+          </p>
+        </div>
+      </article>
+
+      <article class="example" data-unavailable>
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map example-unavailable">
+          <p>MapML-MapLibre does not implement <code>&lt;map is="web-map"&gt;</code>.</p>
+        </div>
+        <div class="example-description">
+          <p>
+            Only <code>&lt;mapml-viewer&gt;</code> is available — see the
+            <a href="./">viewer version</a> of this page.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/web-map.html" title="Inline MapML vector tiles in a web-map element, rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The port shares one implementation between the two root elements, so this should
+            render exactly as the <a href="./">viewer version</a> does.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        <code>is=</code> is a customized built-in element, which Safari does not support; in
+        WebKit these frames fall back to the element's child content rather than a map.
+      </p>
+    </footer>
+  </body>
+</html>

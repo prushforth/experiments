@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MapML vector tiles, inline MapML — three implementations compared</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>MapML vector tiles declared inline</h1>
+      <p class="lede">
+        Natural Earth country polygons served as <code>text/mapml</code> tiles and coloured
+        by an ordinary CSS stylesheet, linked with
+        <code>&lt;map-link rel="stylesheet"&gt;</code>. Each frame holds the same content
+        twice: a WorldCRS84Quad (<code>WGS84</code>) tile set above, and the WebMercatorQuad
+        (<code>OSMTILE</code>) tile set of the same data over OpenStreetMap below.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="./" aria-current="page">Inline</a>
+        <a href="../remote/">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./" aria-current="page">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="Inline MapML vector tiles rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The reference implementation, and the reason the stylesheet is written the way
+            it is: features are rendered as SVG, so <code>g[data-fid="…"] &gt; path</code>
+            selects a feature's geometry directly.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="Inline MapML vector tiles rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Two gaps show here. <code>&lt;map-link rel="stylesheet"&gt;</code> is not
+            implemented yet — only <code>&lt;map-style&gt;</code> and the MapLibre style JSON
+            used by the <a href="../../pmtiles/inline/">pmtiles and MVT</a> layers are — so
+            the features draw with default styling. And the renderer is Mercator only: the
+            WorldCRS84Quad map falls back to <code>OSMTILE</code> and its tiles, which exist
+            in WGS84 alone, have nothing to draw.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="Inline MapML vector tiles rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            OpenLayers draws features to a canvas, so there is no per-feature DOM for CSS to
+            select. The same stylesheet still applies: the port resolves it against a hidden
+            SVG mirror of the MapML.js shape and converts the computed values to OpenLayers
+            styles.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        The layers are declared inline, but each tile is itself a MapML document fetched and
+        parsed as XHTML, holding the features clipped to that tile. The colours come from the
+        layer's stylesheet, keyed on each feature's <code>id</code>, so a country keeps its
+        colour across the tiles it is split over.
+      </p>
+    </footer>
+  </body>
+</html>

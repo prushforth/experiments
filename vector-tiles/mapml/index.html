@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MapML vector tiles styled with a CSS stylesheet</title>
+    <script src="../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../index.html">Experiments</a></p>
+      <h1>MapML vector tiles styled with a CSS stylesheet</h1>
+      <p class="lede">
+        Natural Earth country polygons published as <code>text/mapml</code> tiles
+        (<code>&lt;map-link rel="tile" type="text/mapml"&gt;</code>) and coloured by an
+        ordinary CSS stylesheet linked with <code>&lt;map-link rel="stylesheet"&gt;</code>.
+        The same data is tiled two ways, WorldCRS84Quad and WebMercatorQuad, so the two
+        maps on each page show the same countries in different projections.
+      </p>
+    </header>
+
+    <main class="experiment-body">
+      <table class="variant-matrix">
+        <caption class="visually-hidden">Content type by root element</caption>
+        <thead>
+          <tr>
+            <td></td>
+            <th scope="col"><code>&lt;mapml-viewer&gt;</code></th>
+            <th scope="col"><code>&lt;map is="web-map"&gt;</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Inline</th>
+            <td><a href="inline/">All three implementations</a></td>
+            <td><a href="inline/web-map.html">MapML.js and MapML-OpenLayers</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Remote</th>
+            <td><a href="remote/">All three implementations</a></td>
+            <td><a href="remote/web-map.html">MapML.js and MapML-OpenLayers</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        MapML-MapLibre does not implement <code>&lt;map is="web-map"&gt;</code>, so it appears
+        in the viewer comparisons only.
+      </p>
+      <p>
+        Inline or remote, the tiles themselves are always MapML documents fetched and parsed
+        as XHTML; what changes is whether the <em>layer</em> is markup in the page or a
+        document of its own. Only a document can offer
+        <code>&lt;map-link rel="alternate"&gt;</code>, which is how the remote version lets
+        one layer serve a map in either projection.
+      </p>
+    </main>
+  </body>
+</html>
