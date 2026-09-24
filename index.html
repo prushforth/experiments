@@ -15,7 +15,92 @@
         display: block;
         width: max-content;
       }
+
+      .tag-filter {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        /* negative inline margins cancel the body padding so the bar is full bleed */
+        margin: 0 -1rem 1rem;
+        padding: 0.5rem 1rem;
+        max-height: 45vh;
+        overflow: auto;
+        background: #fff;
+        border-bottom: 1px solid #d0d7de;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem 0.75rem;
+      }
+      .tag-filter p {
+        margin: 0;
+        font-size: 0.8125rem;
+        color: #57606a;
+      }
+      section[id] {
+        scroll-margin-top: 6rem;
+      }
+      .tag-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      .tag-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font: inherit;
+        font-size: 0.875rem;
+        padding: 0.25rem 0.675rem;
+        border: 1px solid #d0d7de;
+        border-radius: 999px;
+        background: #fff;
+        color: inherit;
+        cursor: pointer;
+      }
+      .tag-button[aria-pressed='true'] {
+        background: var(--tag-color);
+        border-color: var(--tag-color);
+        color: #fff;
+      }
+      .tag-button[disabled] {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .tag-button-dot {
+        width: 0.6rem;
+        height: 0.6rem;
+        border-radius: 50%;
+        background: var(--tag-color);
+        box-shadow: 0 0 0 1px rgb(0 0 0 / 20%);
+      }
+      .tag-button[aria-pressed='true'] .tag-button-dot {
+        background: #fff;
+      }
+      .tag-count {
+        font-variant-numeric: tabular-nums;
+        opacity: 0.7;
+      }
+      .tag-swatch {
+        display: inline-block;
+        width: 0.75rem;
+        height: 0.75rem;
+        margin-inline-start: 0.35rem;
+        border-radius: 3px;
+        background: var(--tag-color);
+      }
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+      }
     </style>
+    <script defer src="tags.js"></script>
   </head>
   <body>
     <aside>
@@ -23,38 +108,56 @@
         <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="none" viewBox="0 0 1024 1024"><defs/><path fill="#1B1F23" fill-rule="evenodd" d="M512 0A511.9 511.9 0 000 512c0 226.6 146.6 418 350 485.8 25.7 4.4 35.3-11 35.3-24.4 0-12.1-.7-52.4-.7-95.3-128.6 23.7-161.9-31.4-172.1-60.2-5.8-14.7-30.7-60.1-52.5-72.3-18-9.6-43.5-33.3-.6-34 40.3-.6 69 37.2 78.7 52.6 46 77.4 119.7 55.6 149.1 42.2 4.5-33.3 18-55.7 32.6-68.5-113.9-12.8-233-57-233-252.8 0-55.7 20-101.7 52.6-137.6-5.2-12.8-23-65.3 5-135.7 0 0 43-13.4 140.9 52.5a475 475 0 01128-17.3c43.5 0 87 5.8 128 17.3 97.9-66.5 140.8-52.5 140.8-52.5 28.1 70.4 10.2 123 5.1 135.7a198.1 198.1 0 0152.5 137.6c0 196.5-119.7 240-233.6 252.8 18.5 16 34.5 46.7 34.5 94.7 0 68.5-.6 123.6-.6 140.8 0 13.5 9.6 29.5 35.2 24.4A512.8 512.8 0 001024 512C1024 229.1 794.9 0 512 0z" clip-rule="evenodd"/></svg>
       </a>
     </aside>
+    <nav class="tag-filter" aria-labelledby="tag-filter-label">
+      <p id="tag-filter-label">Highlight experiments tagged:</p>
+      <div class="tag-buttons" data-tag-buttons>
+        <button type="button" data-tag="map-select">&lt;map-select&gt;</button>
+        <button type="button" data-tag="map-feature">&lt;map-feature&gt;</button>
+        <button type="button" data-tag="rel-features">&lt;map-link rel="features"&gt;</button>
+        <button type="button" data-tag="rel-tile-type-mapml">&lt;map-link rel=tile type=text/mapml&gt;</button>
+        <button type="button" data-tag="tms">tms attribute</button>
+        <button type="button" data-tag="hidden">hidden attribute</button>
+        <button type="button" data-tag="map-caption">&lt;map-caption&gt;</button>
+        <button type="button" data-tag="legends">Legends</button>
+        <button type="button" data-tag="rendering-order">Painter's model</button>
+        <button type="button" data-tag="alternate-styles">Basemap types</button>
+        <button type="button" data-tag="map-a">Map links</button>
+        <button type="button" data-tag="keyboard-access">Keyboard access</button>
+        <button type="button" data-tag="mapml-extension">mapml-extension</button>
+        <button type="button" data-tag="content-negotiation">Content negotiation</button>
+        <button type="button" data-tag="view">view attribute</button>
+        <button type="button" data-tag="progressive-enhancement">Progressive enhancement</button>
+        <button type="button" data-tag="graceful-degradation">Graceful degradation</button>
+        <button type="button" data-tag="non-geo">Non-geographic maps</button>
+        <button type="button" data-tag="wgs84">WGS84</button>
+        <button type="button" data-tag="defaults">Defaults</button>
+        <button type="button" data-tag="projections">Map projections</button>
+        <button type="button" data-tag="media-queries">Map media queries</button>
+        <button type="button" data-tag="shadow-root">Shadow roots</button>
+        <button type="button" data-tag="pwa">Progressive web apps</button>
+        <button type="button" data-tag="api">MapML API</button>
+        <button type="button" data-tag="fullscreen">Fullscreen maps</button>
+        <button type="button" data-tag="pmtiles">pmtiles archives</button>
+        <button type="button" data-tag="mvt">Mapbox vector tiles .mvt</button>
+      </div>
+    </nav>
     <main>
       <h1>Use Cases</h1>
-      <section id="content-types">
-        <h2>Content Types</h2>
-        <ul class="example">
-          <li><a href="content-types/inline/">Inline HTML-MapML layers</a></li>
-          <li><a href="content-types/remote/">Remote XHTML-MapML layers</a></li>
-        </ul>
-      </section>
-      <section id="map-link">
-        <h2>&lt;map-link&gt;</h2>
-        <ul class="example">
-          <li><a href="tms/maps/">OSGeo TMS OSMTILE example</a></li>
-        </ul>
-      </section>
-      <h1>Experiments</h1>
-      
       <section id="a11y">
         <h2>Screenreader / Accessibility validation</h2>
       <ul class="example">
-        <li><a href="screenreader/restaurants/">Restaurant locations in Ottawa</a>
-        <li><a href="screenreader/closest-restaurants/">Restaurant locations near Dows Lake</a>
-        <li><a href="tms/painting/">Non-geographic image map</a>
-        <li><a href="screenreader/announce-zoom/">Announce zoom</a>
-        <li><a href="screenreader/feature-index/">Feature index</a>
+        <li data-tags="rel-features map-feature keyboard-access hidden map-select"><a href="screenreader/restaurants/">Restaurant locations in Ottawa</a>
+        <li data-tags="rel-features map-feature  keyboard-access hidden"><a href="screenreader/closest-restaurants/">Restaurant locations near Dows Lake</a>
+        <li data-tags="tms non-geo wgs84 map-a map-feature keyboard-access rendering-order "><a href="tms/painting/">Non-geographic image map</a>
+        <li data-tags="mapml-extension map-caption hidden"><a href="screenreader/announce-zoom/">Announce zoom</a>
+        <li data-tags="mapml-extension map-feature rel-features map-caption keyboard-access hidden"><a href="screenreader/feature-index/">Feature index</a>
       </ul>
       </section>
       
       <section id="i18n">
         <h2>Internationalization / Localization validation</h2>
         <ul class="example">
-          <li><a href="i18n/map-chrome-i18n/">Localization of map UI</a>
+          <li data-tags="mapml-extension"><a href="i18n/map-chrome-i18n/">Localization of map UI</a>
           <li><a href="i18n/rtl/">Right-to-left text</a>
         </ul>
       </section>
@@ -68,19 +171,21 @@
       <section id="sensible-defaults">
         <h2>Defaults</h2>
         <ul class="example">
-          <li><a href="change-projection/default-projection/">Default map projection - Web Mercator</a></li>
+          <li data-tags="defaults projections rendering-order"><a href="change-projection/default-projection/">Default map projection - Web Mercator</a></li>
+          <!-- there should be more examples of default values used by MapML e.g. bounds, zoom coordinate systems 
+           for copying, not sure what else but lots. -->
         </ul>
       </section>
       <section id="georeferencing-api">
         <h2>Custom Projections aka the Georeferencing API</h2>
         <ul class="example">
-          <li><a href="custom-projections/Arctic-SDI/">Lambert Equal Area Azimuthal - laea</a>
-          <li><a href="custom-projections/Atlas-of-Canada/">Atlas of Canada Polar Wall Map - aeqd</a>
-          <li><a href="custom-projections/bc/">British Columbia Albers Equal Area</a>
-          <li><a href="custom-projections/BNG/">British National Grid</a>
-          <li><a href="change-projection/zoomin-zoomout/mapml-viewer/">Change projection on zoom change</a>
-          <li><a href="change-projection/projection-extent-fallback/">map-projectionchange event handling by map-extent</a>
-          <li><a href="change-projection/projection-negotiation/">Negotiate map resource projection</a>
+          <li data-tags="projections keyboard-access rendering-order"><a href="custom-projections/Arctic-SDI/">Lambert Equal Area Azimuthal - laea</a>
+          <li data-tags="projections rendering-order"><a href="custom-projections/Atlas-of-Canada/">Atlas of Canada Polar Wall Map - aeqd</a>
+          <li data-tags="projections map-feature keyboard-access rendering-order"><a href="custom-projections/bc/">British Columbia Albers Equal Area</a>
+          <li data-tags="projections"><a href="custom-projections/BNG/">British National Grid</a>
+          <li data-tags="projections media-queries content-negotiation"><a href="change-projection/zoomin-zoomout/mapml-viewer/">Change projection on zoom change</a>
+          <li data-tags="projections content-negotiation"><a href="change-projection/projection-extent-fallback/">map-projectionchange event handling by map-extent</a>
+          <li data-tags="projections content-negotiation"><a href="change-projection/projection-negotiation/">Negotiate map resource projection</a>
         </ul>
       </section>
       
@@ -89,57 +194,59 @@
         <section id="inputs">
         <h3>Inputs</h3>
         <ul class="example">
-          <li><a href="inputs/map-select/">(map-)select / (map-)option</a>
+          <li data-tags="map-select"><a href="inputs/map-select/">(map-)select / (map-)option</a>
         </ul>
         </section>
         <ul class="example">
-          <li><a href="api/custom-map-ui/">Custom Map UI</a>
-          <li><a href="progressive-enhancement/">Progressive Enhancement / Graceful Degradation</a>
+          <li data-tags="api"><a href="api/custom-map-ui/">Custom Map UI</a>
+          <li data-tags="progressive-enhancement graceful-degradation"><a href="progressive-enhancement/">Progressive Enhancement / Graceful Degradation</a>
         </ul>
 
         <h2>DOM API</h2>
         <ul class="example">
-          <li><a href="api/map-feature/">HTMLFeatureElement</a>
-          <li><a href="api/geojson/">GeoJSON to MapML (geojson2mapml)</a>
-          <li><a href="api/pwa/file-handling/">Progressive Web App - GeoJSON -> MapML</a>
+          <li data-tags="map-feature api"><a href="api/map-feature/">HTMLFeatureElement</a>
+          <li data-tags="api"><a href="api/geojson/">GeoJSON to MapML (geojson2mapml)</a>
+          <li data-tags="pwa shadow-root fullscreen"><a href="api/pwa/file-handling/">Progressive Web App - GeoJSON -> MapML</a>
+          <!-- need an example of using the map-change event -->
         </ul>
       </section>
       
       <section id="linking">
         <h2>Linking Spatial Data - GeoWeb</h2>
         <ul class="example">
-          <li><a href="styling/alternate-styles/">Alternate basemap styles</a>
-          <li><a href="linking/features/">Feature links</a>
-          <li><a href="shared/restaurants/restaurants.xml">Extension-rendered MapML (XML) document</a>
-          <li><a href="linking/zoomin-zoomout/mapml-viewer/">Layer content source varies by map zoom</a>
+          <li data-tags="alternate-styles content-negotiation"><a href="styling/alternate-styles/">Alternate basemap styles</a>
+          <li data-tags="map-feature map-a"><a href="linking/features/">Feature links</a>
+          <li data-tags="mapml-extension"><a href="shared/restaurants/restaurants.xml">Extension-rendered MapML (XML) document</a>
+          <li data-tags="content-negotiation"><a href="linking/zoomin-zoomout/mapml-viewer/">Layer content source varies by map zoom</a>
         </ul>
       </section>
       
       <section id="styling">
         <h2>Styling</h2>
       <ul class="example">
-        <li><a href="styling/alternate-styles/">Alternate basemap styles</a>
-        <li><a href="styling/media-queries/">Media / map container queries</a>
-        <li>Vector tiles styled with external CSS stylesheet <a href="vector-tiles/mapml/web-map/">&lt;map&gt;</a> <a href="vector-tiles/mapml/mapml-viewer/">&lt;mapml-viewer&gt;</a> </a>
-        <li>pmtiles (Protomaps) tile archive / individual mvt (Mapbox vector tiles) <a href="vector-tiles/pmtiles/inline/">inline</a> <a href="vector-tiles/pmtiles/remote/">remote</a>
-        <li><a href="styling/dark-mode/">Dark mode</a></li>
+        <li data-tags="content-negotiation"><a href="styling/alternate-styles/">Alternate basemap styles</a>
+        <li data-tags="pmtiles mvt media-queries"><a href="styling/media-queries/">Media / map container queries</a>
+        <li data-tags="rel-tile-type-mapml">Vector tiles styled with external CSS stylesheet <a href="vector-tiles/mapml/web-map/">&lt;map&gt;</a> <a href="vector-tiles/mapml/mapml-viewer/">&lt;mapml-viewer&gt;</a> </a>
+        <li data-tags="pmtiles mvt"><a href="vector-tiles/pmtiles/inline/">pmtiles (Protomaps) tile archive / individual mvt (Mapbox vector tiles)</a>
+        <li data-tags="pmtiles mvt"><a href="styling/dark-mode/">Dark mode</a></li>
       </ul>
     </section>
       
     <section id="rendering-engines">
       <h2>(Map) rendering engine interoperability</h2>
       <ul class="example">
-        <li><a href="globe/">Globe view</a>
-        <li><a href="rendering-engine/progressive-enhancement.html">Progressive enhancement</a>
-        <li><a href="rendering-engine/graceful-degradation.html">Graceful degradation</a>
+        <li data-tags="view"><a href="globe/">Globe view</a>
+        <li data-tags="view progressive-enhancement"><a href="rendering-engine/progressive-enhancement.html">Progressive enhancement</a>
+        <li data-tags="graceful-degradation"><a href="rendering-engine/graceful-degradation.html">Graceful degradation</a>
       </ul>
     </section>
 
     <section id="misc">
       <h2>Miscellaneous</h2>
       <ul class="example">
-        <li>Snow and Ice Probability: <a href="datacube/">Time Dimension &lt;select&gt;</a></li>
-        <li><a href="multiple-extents/">Multiple &lt;map-extent&gt; elements in a layer</a></li>
+        <li data-tags="map-select map-feature  rendering-order legends">Snow and Ice Probability: <a href="datacube/">Time Dimension &lt;select&gt;</a></li>
+        <li data-tags="map-select rendering-order"><a href="multiple-extents/">Multiple &lt;map-extent&gt; elements in a layer</a></li>
+        <li data-tags="tms"><a href="tms/maps/">OSGeo TMS support</a></li>
       </ul>
     </section>
   </body>
