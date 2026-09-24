@@ -36719,6 +36719,24 @@ var UF = /* @__PURE__ */ new Set([
   height: 30px;
 }
 
+/* Our 30px icon (above) is wider than MapLibre's stock 24px button, so
+   MapLibre's open-popover right padding (28px) leaves the right-most
+   link text underneath the icon. Widen it to clear the full 30px circle
+   plus a small gap. */
+.maplibregl-ctrl-bottom-right > .maplibregl-ctrl-attrib.maplibregl-compact-show,
+.maplibregl-ctrl-attrib.maplibregl-compact-show {
+  padding-right: 34px;
+}
+
+/* MapLibre pins the summary button to top:0, so when the map narrows and
+   the attribution links wrap to multiple lines the icon drifts to the
+   top of the pill. Pin it to the bottom-right corner instead so it stays
+   put as the text block grows upward. */
+.maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-button {
+  top: auto;
+  bottom: 0;
+}
+
 /* Geolocate button: replace MapLibre's compass-crosshair SVG with
    MapML.js's paper-airplane arrow (Material Design near_me — same
    silhouette as leaflet.locatecontrol's FontAwesome location-arrow).
