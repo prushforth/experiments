@@ -3,14 +3,50 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>National Geographic base map</title>
-    <script type="module" src="../../dist/MapML-OpenLayers/dist/mapml-ol.js"></script>
-    <link rel="stylesheet" href="../../global.css">
-    <script src="../../shared/script/photon-search-handler.js"></script>
+    <title>Alternate basemap styles</title>
+    <script src="../../templates/experiment.js"></script>
   </head>
   <body>
-    <mapml-viewer zoom="3" lon="0" lat="0" controls controlslist="search" projection="OSMTILE">
-      <map-layer  src="natgeo.mapml" checked></map-layer>
-    </mapml-viewer>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../index.html">Experiments</a></p>
+      <h1>Alternate basemap styles</h1>
+      <p class="lede">
+        A National Geographic basemap that also offers satellite imagery, with and without
+        place names, as alternate styles of the same layer. Each style is a MapML document
+        that links the whole set — itself as <code>&lt;map-link rel="self style"&gt;</code>,
+        the others as <code>&lt;map-link rel="style"&gt;</code> — so the layer control can
+        offer the choice and the layer can be swapped for the one the user picks.
+      </p>
+    </header>
+
+    <main class="experiment-body">
+      <table class="variant-matrix">
+        <caption class="visually-hidden">Content type by root element</caption>
+        <thead>
+          <tr>
+            <td></td>
+            <th scope="col"><code>&lt;mapml-viewer&gt;</code></th>
+            <th scope="col"><code>&lt;map is="web-map"&gt;</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Remote</th>
+            <td><a href="remote/">All three implementations</a></td>
+            <td><a href="remote/web-map.html">All three implementations</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        There is no inline variant: <code>rel="style"</code> names an alternate
+        <em>document</em> for the layer, so the layer has to be a document in the first
+        place. Inline markup can be styled, but it cannot be exchanged for a different
+        representation of itself.
+      </p>
+      <p>
+        All three implementations now provide both root elements, so the two columns compare
+        the same three libraries.
+      </p>
+    </main>
   </body>
 </html>

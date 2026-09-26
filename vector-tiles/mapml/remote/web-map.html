@@ -41,15 +41,16 @@
         </div>
       </article>
 
-      <article class="example" data-unavailable>
+      <article class="example">
         <h2>MapML-MapLibre</h2>
-        <div class="example-map example-unavailable">
-          <p>MapML-MapLibre does not implement <code>&lt;map is="web-map"&gt;</code>.</p>
+        <div class="example-map">
+          <iframe src="maplibre/web-map.html" title="Remote MapML vector tiles in a web-map element, rendered by MapML-MapLibre" loading="lazy"></iframe>
         </div>
         <div class="example-description">
           <p>
-            Only <code>&lt;mapml-viewer&gt;</code> is available — see the
-            <a href="./">viewer version</a> of this page.
+            Projection negotiation is a property of the layer document, so the WGS84 map here
+            follows <code>rel="alternate"</code> to the OSMTILE representation exactly as it
+            does in the viewer version.
           </p>
         </div>
       </article>

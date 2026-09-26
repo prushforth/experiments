@@ -27,8 +27,8 @@
 
   Drop any variant that does not apply (delete the file and its nav link), and
   link the pages you keep from the root index.html of the experiments site. Where
-  a library does not implement a variant, keep its column and show a note — see
-  inline/web-map.html for the data-unavailable pattern.
+  a library does not implement a variant, keep its column and show a note — the
+  data-unavailable pattern is described at the top of inline/web-map.html.
 
   Fix the ONE relative path in each page (../templates/experiment.js) so that it
   points at templates/experiment.js from wherever the copy lives.
@@ -64,18 +64,18 @@
           <tr>
             <th scope="row">Inline</th>
             <td><a href="inline/">All three implementations</a></td>
-            <td><a href="inline/web-map.html">MapML.js and MapML-OpenLayers</a></td>
+            <td><a href="inline/web-map.html">All three implementations</a></td>
           </tr>
           <tr>
             <th scope="row">Remote</th>
             <td><a href="remote/">All three implementations</a></td>
-            <td><a href="remote/web-map.html">MapML.js and MapML-OpenLayers</a></td>
+            <td><a href="remote/web-map.html">All three implementations</a></td>
           </tr>
         </tbody>
       </table>
       <p>
-        MapML-MapLibre does not implement <code>&lt;map is="web-map"&gt;</code>, so it appears
-        in the viewer comparisons only.
+        Note here anything an implementation does not support, so the empty cells of the
+        comparison are explained rather than mysterious.
       </p>
     </main>
   </body>

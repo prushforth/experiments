@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Alternate basemap styles — three implementations compared</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Alternate basemap styles</h1>
+      <p class="lede">
+        One <code>&lt;map-layer src&gt;</code> naming a MapML document that offers itself as
+        <code>&lt;map-link rel="self style"&gt;</code> and two siblings as
+        <code>&lt;map-link rel="style"&gt;</code>. The layer control turns those links into a
+        radio group, and choosing one swaps the layer's document for the alternate — the same
+        place, drawn from a different service, without touching the page.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./" aria-current="page">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="Alternate basemap styles rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The reference implementation: the style radios appear in the layer control under
+            the layer's name, and picking one rewrites the layer's <code>src</code>.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="Alternate basemap styles rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Same radio group, same document swap. Every style here is WebMercatorQuad
+            imagery, which is the one tiling this renderer can show.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="Alternate basemap styles rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The radios are grouped per layer, so two layers offering styles cannot collide.
+            Switching reloads the layer in place, keeping the promise an early
+            <code>whenReady()</code> was waiting on.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        Each document links every style in the set, including itself, so whichever one the
+        author names is a complete entry point — the client discovers the rest from the
+        document it was given. The same links are also what a user agent would need to
+        remember a style preference across visits.
+      </p>
+    </footer>
+  </body>
+</html>
