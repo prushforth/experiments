@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <title>Dark mode, inline MapML</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Dark mode, declared inline</h1>
+      <p class="lede">
+        Each map below holds two layers over the same vector tile archive: a dark-styled one
+        carrying <code>media="(prefers-color-scheme: dark)"</code> and a light-styled one
+        carrying <code>media="(prefers-color-scheme: light)"</code>. Change the colour scheme
+        your system or browser prefers and the maps follow, live — the layer that stops
+        matching takes itself off the map and out of the layer control.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="./" aria-current="page">Inline</a>
+        <a href="../remote/">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./" aria-current="page">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="Dark mode rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The reference implementation. Its pmtiles stylesheet is an ES module of
+            protomaps-leaflet paint rules keyed by tile URL, so the two themes ask for the
+            same archive under different query strings.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="Dark mode rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The stylesheet is a MapLibre style document, so the theme is data the renderer
+            already understands; both layers name the same archive and differ only in the
+            <code>rel="stylesheet"</code> they link.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="Dark mode rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Same MapLibre style documents, applied to an OpenLayers vector tile layer. The
+            matcher comes from the viewer's own <code>matchMedia()</code>, which is why a
+            map-scoped feature could gate a layer the same way a user preference does.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <h2>Trying it</h2>
+      <p>
+        Set the preference in the operating system, in the browser, or in developer tools:
+        in Chrome and Edge, DevTools &rarr; More tools &rarr; Rendering &rarr;
+        <em>Emulate CSS prefers-color-scheme</em>; in Firefox, the light/dark toggle at the
+        top of the Inspector.
+      </p>
+      <p>
+        <code>&lt;meta name="color-scheme" content="dark light"&gt;</code> in this page's
+        head is what lets the browser render the surrounding document dark as well, so the
+        map is not a bright rectangle in a dark page or the reverse.
+      </p>
+      <p>
+        Each map starts <code>static</code>, so scrolling past it does not zoom it. The lock
+        button — <code>controlslist="static"</code> — releases it for panning and zooming.
+      </p>
+    </footer>
+  </body>
+</html>

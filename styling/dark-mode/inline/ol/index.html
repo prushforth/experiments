@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <title>Dark mode, inline — MapML-OpenLayers</title>
+    <script src="../../../../templates/experiment.js" data-impl="openlayers"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">Inline media-gated dark and light layers rendered by MapML-OpenLayers</h1>
+      <div class="example-map">
+        <!-- code -->
+        <mapml-viewer projection="OSMTILE" zoom="11" lat="44.436108753775116" lon="-103.75024795532228" controls controlslist="static" static>
+          <map-caption>Spearfish, South Dakota, in the colour scheme the user prefers</map-caption>
+          <map-layer label="Basemap — dark theme" media="(prefers-color-scheme: dark)" checked>
+            <map-link rel="stylesheet" type="application/vnd.maplibre-style+json" href="../../../../vector-tiles/pmtiles/styles/dark.json"></map-link>
+            <map-link rel="license" title="© OpenStreetMap contributors CC BY-SA" href="https://www.openstreetmap.org/copyright"></map-link>
+            <map-extent units="OSMTILE" checked="checked" hidden="hidden">
+              <map-link rel="tile" type="application/pmtiles" tref="../../../../vector-tiles/pmtiles/spearfish.pmtiles"></map-link>
+            </map-extent>
+          </map-layer>
+          <map-layer label="Basemap — light theme" media="(prefers-color-scheme: light)" checked>
+            <map-link rel="stylesheet" type="application/vnd.maplibre-style+json" href="../../../../vector-tiles/pmtiles/styles/light.json"></map-link>
+            <map-link rel="license" title="© OpenStreetMap contributors CC BY-SA" href="https://www.openstreetmap.org/copyright"></map-link>
+            <map-extent units="OSMTILE" checked="checked" hidden="hidden">
+              <map-link rel="tile" type="application/pmtiles" tref="../../../../vector-tiles/pmtiles/spearfish.pmtiles"></map-link>
+            </map-extent>
+          </map-layer>
+        </mapml-viewer>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>

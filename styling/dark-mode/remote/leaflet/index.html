@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <title>Dark mode, remote — MapML.js (Leaflet)</title>
+    <script src="../../../../templates/experiment.js" data-impl="leaflet"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">Media-gated dark and light MapML documents rendered by MapML.js</h1>
+      <div class="example-map">
+        <!-- code -->
+        <mapml-viewer projection="OSMTILE" zoom="12" lat="44.436108753775116" lon="-103.75024795532228" controls controlslist="static" static>
+          <map-caption>Spearfish, South Dakota, in the colour scheme the user prefers</map-caption>
+          <map-layer media="(prefers-color-scheme: dark)" src="dark.mapml" checked></map-layer>
+          <map-layer media="(prefers-color-scheme: light)" src="light.mapml" checked></map-layer>
+        </mapml-viewer>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>

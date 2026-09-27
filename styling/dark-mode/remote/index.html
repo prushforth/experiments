@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <title>Dark mode, remote MapML</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Dark mode, from remote MapML documents</h1>
+      <p class="lede">
+        The same two themes, but each layer is a whole MapML document —
+        <code>&lt;map-layer media="(prefers-color-scheme: dark)" src="dark.mapml"&gt;</code>
+        and its light counterpart. The page names both and the user agent picks; the document
+        that does not match need never be fetched, which is what makes <code>media</code> more
+        than a way of hiding things after the fact.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="../inline/">Inline</a>
+        <a href="./" aria-current="page">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./" aria-current="page">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="Dark mode from remote MapML rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Each document supplies its own title, licence and pmtiles stylesheet, so the page
+            carries no theme-specific markup at all — only the media query that chooses
+            between the two documents.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="Dark mode from remote MapML rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Remote MapML is parsed as XHTML, so attributes such as
+            <code>checked="checked"</code> have to be spelled out in full; the layer's own
+            <code>&lt;map-title&gt;</code> names it in the layer control.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="Dark mode from remote MapML rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The fetched content lives in the layer's shadow root, so the media gate has to
+            tear the whole layer down and build it again when the preference changes.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        The two documents also link each other as <code>rel="style"</code> alternates, so a
+        reader who wants the other theme can still choose it from the layer control — the
+        media query supplies the default, not a restriction. That mechanism on its own is the
+        <a href="../../alternate-styles/">Alternate basemap styles</a> experiment.
+      </p>
+      <p>
+        Each map starts <code>static</code>, so scrolling past it does not zoom it. The lock
+        button — <code>controlslist="static"</code> — releases it for panning and zooming.
+      </p>
+    </footer>
+  </body>
+</html>
