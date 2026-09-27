@@ -116,6 +116,25 @@ map-layer {
   color: #fff;
 }
 
+/* Non-interactive counterpart to .experiment-nav, for an experiment that has
+   only one variant of an axis and so has nothing to switch between. */
+.experiment-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+}
+
+.experiment-tag {
+  padding: 0.25rem 0.625rem;
+  border: 1px solid var(--experiment-border);
+  border-radius: 999px;
+  background: var(--experiment-surface);
+  color: var(--experiment-muted);
+}
+
 /*
  * Responsive grid of framed maps. `--example-min` is the breakpoint: columns
  * are added only while each one can still be at least that wide, so the

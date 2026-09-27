@@ -2,105 +2,100 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Progressive Enhancement / Graceful Degradation</title>
-    <script type="module" src="../dist/MapML-OpenLayers/dist/mapml-ol.js"></script>
-    
-    <!-- Ignore these demo styles for the PE/GD note (they do not affect the map). -->
-    <style>.note{margin:0}.note::after{display:block;font-family:"system-ui"}.note::after{content:"View in a browser that supports customized built-in elements to experience Progressive Enhancement"}[is="web-map"]:not(:defined)~.note::after{content:""}[is="web-map"]:defined~.note::after{content:"Disable JavaScript to experience Graceful Degradation"}</style><noscript><style>[is="web-map"]:not(:defined)~.note::after{content:"Enable JavaScript to experience Progressive Enhancement"}</style></noscript>
-    
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Progressive enhancement / graceful degradation — three implementations compared</title>
+    <script src="../templates/experiment.js"></script>
     <style>
-      /* Pre-style to avoid Layout Shift. */
-      [is="web-map"]:not(:defined) {
-        display: inline-block;
-        contain: size;
-        contain-intrinsic-size: 304px 154px;
+      /* Each frame holds a 700x400 map, its fallback image and the note. */
+      .example-map {
+        height: 34rem;
       }
-      
-      /* Pre-style to avoid FOUC of inline map-layer and fallback content. */
-      [is="web-map"]:not(:defined) + img[usemap],
-      [is="web-map"]:not(:defined) > :not(area):not(.mapml-web-map) {
-        display: none;
-      }
-      [is="web-map"]:defined {
-        width: 700px;
-        height: 400px;
-      }
-      
-      /* Ensure inline layer content is hidden if built-in elements isn't supported,
-      or if javascript is disabled. This needs to be defined separately
-      from the above, because the `:not(:defined)` selector invalidates the entire
-      declaration in browsers that do not support it. */
-      map-layer {
-       display: none;
-      }
-    </style>
-    <noscript>
-      <style>
-        /* Ensure client-side image map fallbacks are displayed if built-in
-        elements is supported but javascript is disabled. */
-        [is="web-map"]:not(:defined) + img[usemap] {
-          display: initial;
-        }
-        
-        /* "Reset" the properties used to pre-style (to avoid Layout Shift) if
-        built-in elements is supported but javascript is disabled. */
-        [is="web-map"]:not(:defined) {
-          display: initial;
-          contain: initial;
-          contain-intrinsic-size: initial;
-        }
-      </style>
-    </noscript>
-    
-    <!-- Author styles -->
-    <style>
-      /* Do this! */
-      /* [is="web-map"]:defined {
-        border: 5px dotted;
-      }
-      */
-      /* Not this! */
-      /* [is="web-map"] {
-        border: 5px dotted;
-      }
-      */
     </style>
   </head>
   <body>
-    
-    <map name="dowslake" is="web-map" zoom="17" lat="45.398043" lon="-75.70683" controls>
-      <map-layer id="osm" src="../refactoring-temporary/osm.mapml" label="Open Street Map" checked></map-layer>
-      <!-- the HTML author can create MapML files and serve them as layers if they prefer -->
-      <map-layer id="marker" label="Marker layer" src="marker.mapml"></map-layer>
-      <!-- Inline layer content: how does this behave w/o scripting? -->
-      <map-layer label="Inline MapML" checked>
-        <map-feature zoom="17">
-          <map-meta name="projection" content="OSMTILE"></map-meta>
-        <map-featurecaption>Where The Wild Things Are</map-featurecaption>
-        <map-properties>
-            <h2>Where The Wild Things Are, by Maurice Sendak</h2>
-            <div style="text-align:center">-8427535 5684693</div>
-        </map-properties>
-        <map-geometry cs="pcrs">
-          <map-point>
-            <map-coordinates>-8427535 5684693</map-coordinates>
-          </map-point>
-        </map-geometry>
-      </map-feature></map-layer>
-      
-      <!-- you could do this more precisely with shape="poly" and appropriate coords, but I was too lazy -->
-      <area is="map-area" href="https://example.com/marker/" alt="Marker" coords="255,145,275,190" shape="rect" style="fill: none;stroke: blue;stroke-width: 3px">
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../index.html">Experiments</a></p>
+      <h1>Progressive enhancement / graceful degradation</h1>
+      <p class="lede">
+        A client-side image map that becomes an interactive map: the same
+        <code>&lt;map name="dowslake"&gt;</code> carries <code>&lt;area is="map-area"&gt;</code>
+        hotspots for the <code>&lt;img usemap&gt;</code> beneath it and
+        <code>&lt;map-layer&gt;</code> children for the map that replaces it. With scripting,
+        or in a browser that supports customized built-in elements, you get the map; without
+        either, you get the image and its links.
+      </p>
+      <p class="experiment-tags">
+        <span class="experiment-nav-label">Variants</span>
+        <span class="experiment-tag">Inline only</span>
+        <span class="experiment-tag">&lt;map is="web-map"&gt; only</span>
+      </p>
+    </header>
 
-      <area is="map-area" id="donut" alt="Circle" href="https://example.com/circle/" coords="250,250,25" shape="circle" style="fill: white; stroke: aqua; stroke-width: 5px;fill-opacity: 0.0">
-      <!-- the "hole" is not a link (no href), so it is not interactive -->
-      <area is="map-area" id="hole" coords="250,250,7" shape="circle" style="fill: blue; stroke: none;fill-opacity: 0.3;">
-      <area is="map-area" id="rect" href="https://example.com/rectangle/" alt="Rectangle" coords="345,290,415,320" shape="rect" style="fill: greenyellow; stroke: blue; stroke-width: 3px;fill-opacity: 0.4">
-      <area is="map-area" id="poly" href="https://example.com/polygon/" alt="Polygon" coords="392,116,430,100,441,128,405,145" shape="poly" style="fill: pink; stroke: blue; stroke-width: 3px;fill-opacity: 0.4">
-    </map>
-    
-    <img usemap="#dowslake" src="map1.png" alt="Dow's Lake area">
-    
-    <p class="note"></p>
+    <main class="examples" style="--example-min: 46rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/web-map.html" title="Progressive enhancement rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The reference implementation: the <code>&lt;map&gt;</code> hosts the map chrome on
+            a child <code>&lt;div class="mapml-web-map"&gt;</code>, hides the poster image, and
+            draws each <code>&lt;area&gt;</code> as a vector on top of the layers.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/web-map.html" title="Progressive enhancement rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Same markup, same fallback. The areas are hit-tested by the renderer rather than by
+            the browser's own image map, so an area with no <code>href</code> — the hole in the
+            donut — is inert in every implementation.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/web-map.html" title="Progressive enhancement rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The <code>&lt;area&gt;</code> element is its own style probe here, so the inline
+            <code>style</code> on each hotspot is resolved by the real CSS cascade, and the
+            <code>alt</code> text becomes the hover title.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        There is no <code>&lt;mapml-viewer&gt;</code> variant: progressive enhancement here
+        depends on <code>&lt;map name&gt;</code>, <code>&lt;area&gt;</code> and
+        <code>&lt;img usemap&gt;</code> — markup the browser already understands — and an
+        unknown element cannot be the target of a <code>usemap</code> attribute. There is no
+        remote variant either: what degrades is the markup in the page, and a fetched MapML
+        document is not there to degrade to when scripting is off.
+      </p>
+      <p>
+        Each framed page carries its own PE/GD stylesheet inline rather than relying on the
+        shared experiment styles, because with scripting off the script that loads those
+        styles never runs.
+      </p>
+      <p>
+        In WebKit, where customized built-ins are not implemented, the
+        <code>&lt;map&gt;</code> is <code>:defined</code> all the same — it is an ordinary
+        built-in element — so the note under each frame reports support from the host
+        <code>&lt;div class="mapml-web-map"&gt;</code> an upgraded map creates instead, and
+        says plainly that you are looking at the image map rather than a map.
+      </p>
+    </footer>
   </body>
 </html>

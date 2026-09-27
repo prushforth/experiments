@@ -1,0 +1,150 @@
+<!doctype html>
+<!--
+  Progressive enhancement / graceful degradation, one implementation per page.
+
+  The PE/GD styles below are deliberately INLINE. With scripting off,
+  ../../templates/experiment.js never runs, so neither global.css nor
+  experiment.css is loaded: this page has to hide its own inline layer markup
+  and reveal its own <img usemap> fallback without any help.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Progressive enhancement, &lt;map is="web-map"&gt; — MapML-MapLibre</title>
+    <script src="../../templates/experiment.js" data-impl="maplibre"></script>
+
+    <!-- The note tells the reader which half of the story they are seeing. -->
+    <style>
+      .note {
+        margin: 1rem 0 0;
+      }
+      .note::after {
+        display: block;
+        font-family: "system-ui";
+        content: "This browser does not support customized built-in elements: what you see is the fallback image map, not a map. View it in a browser that does to experience Progressive Enhancement";
+      }
+      [is="web-map"]:not(:defined) ~ .note::after {
+        content: "";
+      }
+      /* A <map> the browser will not customize is :defined like any other
+         built-in, so support is read from the host div an upgraded web-map
+         creates, not from :defined. */
+      body:has(.mapml-web-map) .note::after {
+        content: "Disable JavaScript to experience Graceful Degradation";
+      }
+    </style>
+    <noscript>
+      <style>
+        [is="web-map"]:not(:defined) ~ .note::after {
+          content: "Enable JavaScript to experience Progressive Enhancement";
+        }
+      </style>
+    </noscript>
+
+    <style>
+      /* Pre-style to avoid Layout Shift: the same box the width/height
+         attributes give the map once it upgrades. */
+      [is="web-map"]:not(:defined) {
+        display: inline-block;
+        contain: size;
+        contain-intrinsic-size: 700px 400px;
+      }
+
+      /* Pre-style to avoid FOUC of inline map-layer and fallback content. */
+      [is="web-map"]:not(:defined) + img[usemap],
+      [is="web-map"]:not(:defined) > :not(area):not(.mapml-web-map) {
+        display: none;
+      }
+
+      /* Ensure inline layer content is hidden if built-in elements isn't supported,
+      or if javascript is disabled. This needs to be defined separately
+      from the above, because the `:not(:defined)` selector invalidates the entire
+      declaration in browsers that do not support it. */
+      map-layer {
+        display: none;
+      }
+
+      /* The map keeps its intrinsic size, so scroll it inside the frame. */
+      .example-map {
+        display: block;
+        overflow: auto;
+        padding: 1rem;
+      }
+    </style>
+    <noscript>
+      <style>
+        /* Ensure client-side image map fallbacks are displayed if built-in
+        elements is supported but javascript is disabled. */
+        [is="web-map"]:not(:defined) + img[usemap] {
+          display: initial;
+        }
+
+        /* "Reset" the properties used to pre-style (to avoid Layout Shift) if
+        built-in elements is supported but javascript is disabled. */
+        [is="web-map"]:not(:defined) {
+          display: initial;
+          contain: initial;
+          contain-intrinsic-size: initial;
+        }
+      </style>
+    </noscript>
+
+    <!-- Author styles -->
+    <style>
+      /* Do this! */
+      /* [is="web-map"]:defined {
+        border: 5px dotted;
+      }
+      */
+      /* Not this! */
+      /* [is="web-map"] {
+        border: 5px dotted;
+      }
+      */
+    </style>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">Progressive enhancement and graceful degradation, rendered by MapML-MapLibre</h1>
+      <div class="example-map">
+        <!-- code -->
+        <map name="dowslake" is="web-map" zoom="17" lat="45.398043" lon="-75.70683" width="700" height="400" controls>
+          <map-layer id="osm" src="../../refactoring-temporary/osm.mapml" label="Open Street Map" checked></map-layer>
+          <!-- the HTML author can create MapML files and serve them as layers if they prefer -->
+          <map-layer id="marker" label="Marker layer" src="../marker.mapml"></map-layer>
+          <!-- Inline layer content: how does this behave w/o scripting? -->
+          <map-layer label="Inline MapML" checked>
+            <map-meta name="projection" content="OSMTILE"></map-meta>
+            <map-feature zoom="17">
+              <map-featurecaption>Where The Wild Things Are</map-featurecaption>
+              <map-properties>
+                <h2>Where The Wild Things Are, by Maurice Sendak</h2>
+                <div style="text-align:center">-8427535 5684693</div>
+              </map-properties>
+              <map-geometry cs="pcrs">
+                <map-point>
+                  <map-coordinates>-8427535 5684693</map-coordinates>
+                </map-point>
+              </map-geometry>
+            </map-feature>
+          </map-layer>
+
+          <!-- you could do this more precisely with shape="poly" and appropriate coords, but I was too lazy -->
+          <area is="map-area" href="https://example.com/marker/" alt="Marker" coords="255,145,275,190" shape="rect" style="fill: none;stroke: blue;stroke-width: 3px">
+
+          <area is="map-area" id="donut" alt="Circle" href="https://example.com/circle/" coords="250,250,25" shape="circle" style="fill: white; stroke: aqua; stroke-width: 5px;fill-opacity: 0.0">
+          <!-- the "hole" is not a link (no href), so it is not interactive -->
+          <area is="map-area" id="hole" coords="250,250,7" shape="circle" style="fill: blue; stroke: none;fill-opacity: 0.3;">
+          <area is="map-area" id="rect" href="https://example.com/rectangle/" alt="Rectangle" coords="345,290,415,320" shape="rect" style="fill: greenyellow; stroke: blue; stroke-width: 3px;fill-opacity: 0.4">
+          <area is="map-area" id="poly" href="https://example.com/polygon/" alt="Polygon" coords="392,116,430,100,441,128,405,145" shape="poly" style="fill: pink; stroke: blue; stroke-width: 3px;fill-opacity: 0.4">
+        </map>
+
+        <img usemap="#dowslake" src="../map1.png" alt="Dow's Lake area">
+        <!-- /code -->
+
+        <p class="note"></p>
+      </div>
+    </main>
+  </body>
+</html>

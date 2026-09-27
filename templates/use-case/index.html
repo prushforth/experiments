@@ -30,6 +30,12 @@
   a library does not implement a variant, keep its column and show a note — the
   data-unavailable pattern is described at the top of inline/web-map.html.
 
+  When only ONE variant of an axis applies, drop that axis entirely rather than
+  offering a one-item nav: if a single cell is left, this landing page is not
+  needed either — make the comparison page the use case's index.html and say
+  which variant it is with a `.experiment-tags` list of `.experiment-tag` pills
+  in the header (see progressive-enhancement/ for a worked example).
+
   Fix the ONE relative path in each page (../templates/experiment.js) so that it
   points at templates/experiment.js from wherever the copy lives.
 -->
