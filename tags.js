@@ -17,6 +17,16 @@
  * The swatches are decorative; the tag names go inside each of the item's
  * links as visually hidden text, so they become part of the link's accessible
  * name and a screen reader announces the link and then its tags.
+ *
+ * Prefer an existing tag over a new one, even if the fit is loose. A tag is
+ * not a label for what one experiment does; it is a logical grouping of the
+ * behaviour we expect a markup idiom to have across every experiment that
+ * uses it — so the set is reverse-engineered from those groupings, and its
+ * value comes from collecting several experiments under one name. Adding a
+ * tag that can only ever match a single use case costs a filter and finds
+ * nothing. `defaults`, for instance, covers every value MapML supplies when
+ * the author does not: the default projection, and the tile-sized extent a
+ * lone <map-point> feature gets.
  */
 (function () {
   'use strict';
