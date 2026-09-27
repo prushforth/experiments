@@ -31,7 +31,7 @@
       <h1 class="visually-hidden">MapML vector tiles declared inline, rendered by MapML.js</h1>
       <div class="example-map">
         <!-- code -->
-        <mapml-viewer projection="WGS84" zoom="0" lat="0" lon="0" controls>
+        <mapml-viewer projection="WGS84" zoom="0" lat="0" lon="0" controls controlslist="static" static>
           <map-caption>World countries from WorldCRS84Quad MapML tiles, coloured by a CSS stylesheet</map-caption>
           <map-layer label="Countries (WorldCRS84Quad)" checked>
             <map-link rel="stylesheet" href="../../styles/vector-tile.css"></map-link>
@@ -43,7 +43,7 @@
             </map-extent>
           </map-layer>
         </mapml-viewer>
-        <mapml-viewer projection="OSMTILE" zoom="0" lat="0" lon="0" controls>
+        <mapml-viewer projection="OSMTILE" zoom="0" lat="0" lon="0" controls controlslist="static" static>
           <map-caption>The same countries from WebMercatorQuad MapML tiles, over OpenStreetMap</map-caption>
           <map-layer label="OpenStreetMap" checked>
             <map-link rel="license" title="© OpenStreetMap contributors CC BY-SA" href="https://www.openstreetmap.org/copyright"></map-link>
