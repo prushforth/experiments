@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Feature index, remote MapML, &lt;map is="web-map"&gt;</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Feature index in a <code>&lt;map is="web-map"&gt;</code>, over features fetched as MapML</h1>
+      <p class="lede">
+        Two shadow roots now stand between the page and the captions being read: the fetched
+        layer's, and the one the map chrome is built in because an <code>&lt;map&gt;</code>
+        cannot host its own. The reader should not be able to tell — the same reticle, the
+        same numbered list, the same keys.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="../inline/web-map.html">Inline</a>
+        <a href="web-map.html" aria-current="page">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html" aria-current="page">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/web-map.html" title="Feature index over remote features in a web-map element, rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The reference implementation, by way of its second copy of the viewer. Everything
+            the index needs — the fetched captions, the reticle, the live region — has to be
+            present in both copies.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/web-map.html" title="Feature index over remote features in a web-map element, rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Customized built-in elements are not implemented in WebKit, so in Safari this
+            frame stays an inert <code>&lt;map&gt;</code>. Elsewhere it is the map beside it.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/web-map.html" title="Feature index over remote features in a web-map element, rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The viewer is a mixin shared by both root elements, so the overlay is written once
+            and reads the map's render root rather than assuming the element has a
+            <code>shadowRoot</code> of its own.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        Release the lock before panning — and before expecting the MapML.js frame to say
+        anything, since its index waits for the map to be focused and <code>static</code>
+        turns off the handler that makes it focusable.
+      </p>
+    </footer>
+  </body>
+</html>

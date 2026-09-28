@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Feature index, remote MapML</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Feature index, over features fetched as MapML</h1>
+      <p class="lede">
+        The page names a document — <code>&lt;map-layer src="restaurants.mapml"&gt;</code> —
+        and the eight features arrive after the map has drawn, into a shadow root the page
+        never sees. The index has to notice them there and start naming them, with no second
+        prompt from the reader: the first thing a screen reader user hears about this map is
+        produced by content that was not in the page when it loaded.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="../inline/">Inline</a>
+        <a href="./" aria-current="page">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./" aria-current="page">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="Feature index over remote features, rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The layer is named in the control by the document's own
+            <code>&lt;map-title&gt;</code>, and the licence link is the document's too —
+            attribution travels with the data, and so do the captions the index reads.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="Feature index over remote features, rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Remote MapML is parsed as XHTML, so the boolean attributes are spelled out in
+            full — <code>checked="checked"</code> — and a malformed document is a fatal error
+            rather than something the parser quietly repairs.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="Feature index over remote features, rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            A fetched layer keeps its content in a shadow root, which is exactly the boundary
+            a <code>:scope &gt;</code> selector does not cross. Several features of the port
+            have gone missing there without the map looking any different; the index says so
+            out loud.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <h2>Trying it</h2>
+      <p>
+        Each map starts <code>static</code>. Release the lock with the lock button to pan, and
+        the list under the reticle is re-read after each move; pan or zoom out and more of the
+        eight restaurants fall inside the box. The MapML.js frame lists nothing at all until
+        the lock is released and the map is focused: its index waits for focus, and
+        <code>static</code> turns off the handler that makes the map focusable.
+      </p>
+      <p>
+        Press <kbd>1</kbd>&ndash;<kbd>7</kbd> to open a listed feature, <kbd>9</kbd> for the
+        next page when more than seven are covered and <kbd>8</kbd> to go back, and Escape to
+        close a popup.
+      </p>
+      <p>
+        Only the restaurant layer is worth serving remotely for the purposes of this
+        experiment; the basemap is the shared
+        <a href="../../../refactoring-temporary/osm.mapml">osm.mapml</a> in both variants,
+        because it is <code>hidden</code> and carries nothing for the index to find.
+      </p>
+    </footer>
+  </body>
+</html>

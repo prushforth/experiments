@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Feature index, inline MapML</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Feature index, over features declared inline</h1>
+      <p class="lede">
+        Eight restaurants written in the page, and a reticle at the centre of each map naming
+        the ones it covers. The list is a live region, so it is re-read on every move; the
+        number beside a caption is the key that opens that feature. Nothing in the map markup
+        asks for any of this — the index is switched on by a
+        <code>&lt;map-options&gt;</code> preference, and what it can say is decided entirely
+        by whether the features have <code>&lt;map-featurecaption&gt;</code>s worth reading.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="./" aria-current="page">Inline</a>
+        <a href="../remote/">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./" aria-current="page">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="Feature index over inline features, rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The reference implementation, and the only one where the preference is the whole
+            interface: MapML.js has no control for the index, so a page either gets it from
+            the reader's settings or not at all. Its index is also focus-gated — nothing is
+            listed until the map is focused — and <code>static</code> turns off the very
+            handler that makes the map focusable, so this frame stays silent until the lock
+            is released.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="Feature index over inline features, rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            MapLibre added an optional megaphone control
+            (<code>controlslist="featureindex"</code>) for readers who want the index on one
+            map rather than all of them. It is not used here, so that the three frames are
+            switched on the same way.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="Feature index over inline features, rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Features are drawn to a canvas, so the index cannot be read off the document: it
+            is computed from the view extent each time the map settles, and the numbered keys
+            are bound to the map viewport rather than to any feature.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <h2>Trying it</h2>
+      <p>
+        Each map starts <code>static</code>, so scrolling past it does not zoom it. Two of the
+        three frames are already listing whatever the reticle covers; MapML.js is not, for the
+        reason above. Release the lock with the lock button, click or Tab into the map, and all
+        three agree. Pan, or zoom out, and more of the eight restaurants fall inside the box.
+      </p>
+      <p>
+        With the keyboard alone: Tab to a map, release the lock, then use the arrow keys to
+        pan. The list is re-read after each move. Press <kbd>1</kbd>&ndash;<kbd>7</kbd> to
+        open a listed feature, <kbd>9</kbd> for the next page when more than seven are
+        covered and <kbd>8</kbd> to go back, and Escape to close a popup.
+      </p>
+      <p>
+        Turn the preference off — remove the <code>&lt;map-options&gt;</code> script from the
+        framed page — and the maps are unchanged in every other respect. That is the point:
+        the index is the reader's, not the author's, and it has nothing to work with that a
+        pointer user was not already given.
+      </p>
+    </footer>
+  </body>
+</html>

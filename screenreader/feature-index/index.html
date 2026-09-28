@@ -1,23 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Feature Index Demo</title>
-  <link rel="stylesheet" href="../../global.css">
-  <script>
-    let options = document.createElement("map-options");
-    options.innerHTML = '{"featureIndexOverlayOption":true}';
-    document.head.appendChild(options);
-  </script>
-  <script type="module" src="../../dist/MapML-OpenLayers/dist/mapml-ol.js"></script>
-</head>
-<body>
-<mapml-viewer projection="OSMTILE" zoom="14" lat="45.406314" lon="-75.6883335" controls>
-  <map-layer label="OpenStreetMap" src="../../refactoring-temporary/osm.mapml" checked hidden></map-layer>
-  <map-layer label="Ottawa Restaurants" src="../../shared/restaurants/restaurants.mapml" checked></map-layer>
-</mapml-viewer>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Feature index</title>
+    <script src="../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../index.html">Experiments</a></p>
+      <h1>Feature index</h1>
+      <p class="lede">
+        A sighted reader finds out what is in the middle of a map by looking at it. The
+        feature index answers the same question out loud: a reticle is drawn at the map's
+        centre, and a live region lists the <code>&lt;map-featurecaption&gt;</code> of every
+        feature the reticle touches, numbered, so that pressing <kbd>1</kbd>&ndash;<kbd>7</kbd>
+        opens one. Pan, and the list is spoken again. It is the piece that turns panning from
+        a gesture into a query — and it is not author markup at all, but a user preference
+        the reader turns on, which is why every map on this site has to behave well when it
+        appears.
+      </p>
+    </header>
 
-
-</body>
+    <main class="experiment-body">
+      <table class="variant-matrix">
+        <caption class="visually-hidden">Content type by root element</caption>
+        <thead>
+          <tr>
+            <td></td>
+            <th scope="col"><code>&lt;mapml-viewer&gt;</code></th>
+            <th scope="col"><code>&lt;map is="web-map"&gt;</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Inline</th>
+            <td><a href="inline/">All three implementations</a></td>
+            <td><a href="inline/web-map.html">All three implementations</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Remote</th>
+            <td><a href="remote/">All three implementations</a></td>
+            <td><a href="remote/web-map.html">All three implementations</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        The preference is the same in all four cells and in all three implementations: a
+        <code>&lt;map-options&gt;</code> element carrying
+        <code>{"featureIndexOverlayOption":true}</code>, appended to <code>&lt;head&gt;</code>
+        from script because that is how the MapML browser extension injects it. No map on
+        these pages asks for the index; the reader does.
+      </p>
+      <p>
+        The content type is the restaurant layer's. Inline, its eight
+        <code>&lt;map-feature&gt;</code> elements are children of the page. Remote, they are
+        children of a document the layer fetches and keeps in a shadow root — and the index
+        has to find them there, after the map has already loaded, which is a different code
+        path in every implementation and the one worth watching.
+      </p>
+      <p>
+        Related: <a href="../restaurants/inline/">Restaurant locations in Ottawa</a> is the
+        same data reached by tabbing rather than by panning, and
+        <a href="../announce-zoom/inline/">Announce zoom</a> covers the other live region a
+        map keeps.
+      </p>
+    </main>
+  </body>
 </html>

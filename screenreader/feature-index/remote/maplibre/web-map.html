@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Feature index, remote, &lt;map is="web-map"&gt; — MapML-MapLibre</title>
+    <script src="../../../../templates/experiment.js" data-impl="maplibre"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">Feature index over remote features in a web-map element, rendered by MapML-MapLibre</h1>
+      <div class="example-map">
+        <!-- code -->
+        <script>
+          // The feature index is a user / UA preference, not author markup. This is
+          // what the MapML browser extension injects into every page; appending it
+          // from script guarantees it lands in <head>, where the viewer reads it.
+          const options = document.createElement('map-options');
+          options.innerHTML = '{"featureIndexOverlayOption":true}';
+          document.head.appendChild(options);
+        </script>
+        <map is="web-map" projection="OSMTILE" zoom="13" lat="45.4099" lon="-75.7025" controls controlslist="static" static>
+          <map-caption>Restaurants in central Ottawa</map-caption>
+          <map-layer src="../../../../refactoring-temporary/osm.mapml" checked hidden></map-layer>
+          <map-layer src="restaurants.mapml" checked></map-layer>
+        </map>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>

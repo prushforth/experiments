@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Feature index, inline — MapML.js (Leaflet)</title>
+    <script src="../../../../templates/experiment.js" data-impl="leaflet"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">Feature index over inline features, rendered by MapML.js</h1>
+      <div class="example-map">
+        <!-- code -->
+        <script>
+          // The feature index is a user / UA preference, not author markup. This is
+          // what the MapML browser extension injects into every page; appending it
+          // from script guarantees it lands in <head>, where the viewer reads it.
+          const options = document.createElement('map-options');
+          options.innerHTML = '{"featureIndexOverlayOption":true}';
+          document.head.appendChild(options);
+        </script>
+        <mapml-viewer projection="OSMTILE" zoom="13" lat="45.4099" lon="-75.7025" controls controlslist="static" static>
+          <map-caption>Restaurants in central Ottawa</map-caption>
+          <map-layer label="OpenStreetMap" checked hidden>
+            <map-link rel="license" title="© OpenStreetMap contributors CC BY-SA" href="https://www.openstreetmap.org/copyright"></map-link>
+            <map-extent units="OSMTILE" checked hidden>
+              <map-input name="z" type="zoom" value="18" min="0" max="18"></map-input>
+              <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="262144"></map-input>
+              <map-input name="y" type="location" units="tilematrix" axis="row" min="0" max="262144"></map-input>
+              <map-link rel="tile" tref="https://tile.openstreetmap.org/{z}/{x}/{y}.png"></map-link>
+            </map-extent>
+          </map-layer>
+          <map-layer label="Restaurants" checked>
+            <map-meta name="cs" content="gcrs"></map-meta>
+            <map-meta name="extent" content="top-left-easting=-8433179, top-left-northing=5689316, bottom-right-easting=-8420968, bottom-right-northing=5683139"></map-meta>
+            <map-feature zoom="18" id="prescott">
+              <map-featurecaption>The Prescott</map-featurecaption>
+              <map-geometry><map-point><map-coordinates>-75.7093517 45.4005727</map-coordinates></map-point></map-geometry>
+              <map-properties>
+                <table>
+                  <tbody>
+                    <tr><th scope="row">Address</th><td>379 Preston Street</td></tr>
+                  </tbody>
+                </table>
+              </map-properties>
+            </map-feature>
+            <map-feature zoom="18" id="banditos">
+              <map-featurecaption>Banditos</map-featurecaption>
+              <map-geometry><map-point><map-coordinates>-75.689609 45.405803</map-coordinates></map-point></map-geometry>
+              <map-properties>
+                <table>
+                  <tbody>
+                    <tr><th scope="row">Address</th><td>683 Bank Street</td></tr>
+                    <tr><th scope="row">Cuisine</th><td>Mexican</td></tr>
+                  </tbody>
+                </table>
+              </map-properties>
+            </map-feature>
+            <map-feature zoom="18" id="hareg">
+              <map-featurecaption>Hareg Cafe &amp; Variety</map-featurecaption>
+              <map-geometry><map-point><map-coordinates>-75.6910841 45.4079051</map-coordinates></map-point></map-geometry>
+              <map-properties>
+                <table>
+                  <tbody>
+                    <tr><th scope="row">Address</th><td>587 Bank Street</td></tr>
+                    <tr><th scope="row">Cuisine</th><td>African</td></tr>
+                  </tbody>
+                </table>
+              </map-properties>
+            </map-feature>
+            <map-feature zoom="18" id="hung-sum">
+              <map-featurecaption>Hung Sum Restaurant</map-featurecaption>
+              <map-geometry><map-point><map-coordinates>-75.7154340 45.4081950</map-coordinates></map-point></map-geometry>
+              <map-properties>
+                <table>
+                  <tbody>
+                    <tr><th scope="row">Address</th><td>939 Somerset Street West</td></tr>
+                    <tr><th scope="row">Cuisine</th><td>Chinese</td></tr>
+                  </tbody>
+                </table>
+              </map-properties>
+            </map-feature>
+            <map-feature zoom="18" id="phucket-royal">
+              <map-featurecaption>Phucket Royal</map-featurecaption>
+              <map-geometry><map-point><map-coordinates>-75.7078618 45.4107464</map-coordinates></map-point></map-geometry>
+              <map-properties>
+                <table>
+                  <tbody>
+                    <tr><th scope="row">Address</th><td>713 Somerset Street West</td></tr>
+                    <tr><th scope="row">Cuisine</th><td>Thai</td></tr>
+                  </tbody>
+                </table>
+              </map-properties>
+            </map-feature>
+            <map-feature zoom="18" id="sushi-88">
+              <map-featurecaption>Sushi 88</map-featurecaption>
+              <map-geometry><map-point><map-coordinates>-75.7064292 45.4110833</map-coordinates></map-point></map-geometry>
+              <map-properties>
+                <table>
+                  <tbody>
+                    <tr><th scope="row">Address</th><td>690 B Somerset Street West</td></tr>
+                    <tr><th scope="row">Cuisine</th><td>Sushi</td></tr>
+                  </tbody>
+                </table>
+              </map-properties>
+            </map-feature>
+            <map-feature zoom="18" id="big-daddys">
+              <map-featurecaption>Big Daddy's</map-featurecaption>
+              <map-geometry><map-point><map-coordinates>-75.6902755 45.4186807</map-coordinates></map-point></map-geometry>
+              <map-properties>
+                <table>
+                  <tbody>
+                    <tr><th scope="row">Address</th><td>180 Cooper Street</td></tr>
+                    <tr><th scope="row">Cuisine</th><td>Seafood</td></tr>
+                  </tbody>
+                </table>
+              </map-properties>
+            </map-feature>
+            <map-feature zoom="18" id="india-palace">
+              <map-featurecaption>India Palace</map-featurecaption>
+              <map-geometry><map-point><map-coordinates>-75.7019048 45.4191548</map-coordinates></map-point></map-geometry>
+              <map-properties>
+                <table>
+                  <tbody>
+                    <tr><th scope="row">Address</th><td>292 Albert Street</td></tr>
+                    <tr><th scope="row">Cuisine</th><td>Indian</td></tr>
+                  </tbody>
+                </table>
+              </map-properties>
+            </map-feature>
+          </map-layer>
+        </mapml-viewer>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>
