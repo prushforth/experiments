@@ -1,0 +1,86 @@
+<!doctype html>
+<!--
+  One frame of the map-bounding-box media-attribute comparison, built from
+  templates/full-page/index.html.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>map bounding box, media attribute — MapML-MapLibre</title>
+    <script src="../../../../../templates/experiment.js" data-impl="maplibre"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">A captured view rectangle gated by a bounding-box media attribute, rendered by MapML-MapLibre</h1>
+      <!-- code -->
+      <div class="example-controls">
+        <button type="button" class="capture">Capture this view</button>
+        <output>Capture a view, then zoom out past 14 and pan away from it.</output>
+      </div>
+      <div class="example-map">
+        <mapml-viewer projection="OSMTILE" zoom="14" lat="45.406314" lon="-75.6883335" controls controlslist="static">
+          <map-caption>A captured rectangle that appears only while it overlaps the map</map-caption>
+          <map-layer label="OpenStreetMap" checked>
+            <map-link rel="license" title="© OpenStreetMap contributors CC BY-SA" href="https://www.openstreetmap.org/copyright"></map-link>
+            <map-extent units="OSMTILE" checked hidden>
+              <map-input name="z" type="zoom" value="18" min="0" max="18"></map-input>
+              <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="262144"></map-input>
+              <map-input name="y" type="location" units="tilematrix" axis="row" min="0" max="262144"></map-input>
+              <map-link rel="tile" tref="https://tile.openstreetmap.org/{z}/{x}/{y}.png"></map-link>
+            </map-extent>
+          </map-layer>
+        </mapml-viewer>
+      </div>
+      <script>
+        const map = document.querySelector('mapml-viewer');
+        const capture = document.querySelector('.capture');
+        const status = document.querySelector('output');
+
+        capture.addEventListener('click', () => {
+          capture.disabled = true;
+
+          // The map's own extent, in projected coordinates — the same units the
+          // map-top-left-* / map-bottom-right-* media features are expressed in.
+          const extent = map.extent;
+          const left = Math.trunc(extent.topLeft.pcrs.horizontal);
+          const top = Math.trunc(extent.topLeft.pcrs.vertical);
+          const right = Math.trunc(extent.bottomRight.pcrs.horizontal);
+          const bottom = Math.trunc(extent.bottomRight.pcrs.vertical);
+
+          // Two rectangles overlap when each one starts before the other ends, on
+          // both axes. Written as a media query, that is four comparisons — and
+          // the extra (map-zoom < 14) means the capture only shows once you have
+          // zoomed out far enough to be looking for it.
+          const query =
+            `(map-projection: OSMTILE) and (map-zoom < 14)` +
+            ` and (map-top-left-easting < ${right}) and (map-bottom-right-easting > ${left})` +
+            ` and (map-bottom-right-northing < ${top}) and (map-top-left-northing > ${bottom})`;
+
+          // The query goes on the layer, and that is the whole of it: no matcher,
+          // no change handler, nothing left running once the layer is in the DOM.
+          const markup = `
+            <map-layer checked label="Captured view" media="${query}">
+              <map-meta name="projection" content="OSMTILE"></map-meta>
+              <map-meta name="cs" content="pcrs"></map-meta>
+              <map-feature>
+                <map-featurecaption>Captured view</map-featurecaption>
+                <map-properties><p>${query}</p></map-properties>
+                <map-geometry>
+                  <map-polygon>
+                    <map-coordinates>${left} ${top} ${right} ${top} ${right} ${bottom} ${left} ${bottom} ${left} ${top}</map-coordinates>
+                  </map-polygon>
+                </map-geometry>
+              </map-feature>
+            </map-layer>`;
+          map.appendChild(
+            new DOMParser().parseFromString(markup, 'text/html').querySelector('map-layer')
+          );
+
+          status.textContent = 'Captured. The layer now comes and goes on its own.';
+        });
+      </script>
+      <!-- /code -->
+    </main>
+  </body>
+</html>

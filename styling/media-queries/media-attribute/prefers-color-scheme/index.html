@@ -1,0 +1,73 @@
+<!doctype html>
+<!--
+  This variant is not duplicated here: declaring the two themed layers with
+  media="(prefers-color-scheme: …)" IS the Dark mode use case, which already
+  covers all three implementations across the inline/remote and
+  <mapml-viewer>/<map is="web-map"> axes. This page is the signpost, so the
+  matrix on ../../ stays complete.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>prefers-color-scheme — media attribute</title>
+    <script src="../../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb">
+        <a data-home href="../../../../index.html">Experiments</a> ›
+        <a href="../../">Media / map container queries</a>
+      </p>
+      <h1>Theming a basemap by <code>prefers-color-scheme</code>, with <code>media</code></h1>
+      <p class="lede">
+        This one has grown up and moved out. Two vector basemap layers over the same
+        <code>.pmtiles</code> archive, one styled dark and one light, each gated by
+        <code>&lt;map-layer media="(prefers-color-scheme: …)"&gt;</code> — no script, no theme
+        switcher — is the <a href="../../../dark-mode/">Dark mode</a> use case, where it is
+        worked through in more variants than this page could hold.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="mechanism-label">
+        <span class="experiment-nav-label" id="mechanism-label">Mechanism</span>
+        <a href="./" aria-current="page"><code>media</code> attribute</a>
+        <a href="../../match-media/prefers-color-scheme/"><code>matchMedia()</code> API</a>
+      </nav>
+    </header>
+
+    <main class="experiment-body">
+      <table class="variant-matrix">
+        <caption class="visually-hidden">Content type by root element, in the Dark mode use case</caption>
+        <thead>
+          <tr>
+            <td></td>
+            <th scope="col"><code>&lt;mapml-viewer&gt;</code></th>
+            <th scope="col"><code>&lt;map is="web-map"&gt;</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Inline</th>
+            <td><a href="../../../dark-mode/inline/">All three implementations</a></td>
+            <td><a href="../../../dark-mode/inline/web-map.html">All three implementations</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Remote</th>
+            <td><a href="../../../dark-mode/remote/">All three implementations</a></td>
+            <td><a href="../../../dark-mode/remote/web-map.html">All three implementations</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        The remote row is the one worth the trip: when the layer is a
+        <code>&lt;map-layer src&gt;</code>, a layer whose <code>media</code> does not match is
+        a document that never has to be fetched at all — which is the whole argument for the
+        declarative form, and something no <code>change</code> handler can claim.
+      </p>
+      <p>
+        The <a href="../../match-media/prefers-color-scheme/"><code>matchMedia()</code>
+        counterpart</a> stays here, because it is not covered there: it swaps the layer from a
+        <code>change</code> handler, and it is the honest measure of what the attribute saves.
+      </p>
+    </main>
+  </body>
+</html>

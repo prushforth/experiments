@@ -1,0 +1,79 @@
+<!doctype html>
+<!--
+  One frame of the map-zoom matchMedia comparison, built from
+  templates/full-page/index.html. The markup between the code markers is what
+  the framing page shows and copies.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>map-zoom, matchMedia — MapML-MapLibre</title>
+    <script src="../../../../../templates/experiment.js" data-impl="maplibre"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">A feature recoloured at every zoom level by matchMedia, rendered by MapML-MapLibre</h1>
+      <div class="example-map">
+        <!-- code -->
+        <mapml-viewer projection="OSMTILE" zoom="14" lat="45.406314" lon="-75.6883335" controls controlslist="static">
+          <map-caption>A feature whose colour is chosen by a (map-zoom: n) media query</map-caption>
+          <map-layer label="OpenStreetMap" checked>
+            <map-link rel="license" title="© OpenStreetMap contributors CC BY-SA" href="https://www.openstreetmap.org/copyright"></map-link>
+            <map-extent units="OSMTILE" checked hidden>
+              <map-input name="z" type="zoom" value="18" min="0" max="18"></map-input>
+              <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="262144"></map-input>
+              <map-input name="y" type="location" units="tilematrix" axis="row" min="0" max="262144"></map-input>
+              <map-link rel="tile" tref="https://tile.openstreetmap.org/{z}/{x}/{y}.png"></map-link>
+            </map-extent>
+          </map-layer>
+          <map-layer label="Colour by zoom" checked>
+            <map-style></map-style>
+            <map-meta name="projection" content="OSMTILE"></map-meta>
+            <map-feature zoom="15">
+              <map-featurecaption>Colour by zoom level</map-featurecaption>
+              <map-geometry cs="gcrs">
+                <map-point class="feature"><map-coordinates>-75.697180 45.415865</map-coordinates></map-point>
+              </map-geometry>
+            </map-feature>
+          </map-layer>
+        </mapml-viewer>
+        <script>
+          // One hue per zoom level. The media attribute cannot express this:
+          // there is no element to switch between, only a declaration to
+          // rewrite, so the query has to be asked from script.
+          const HUES = [
+            '#ff0000', '#ff4000', '#ff8000', '#ffbf00', '#ffff00', '#80ff00',
+            '#00ff00', '#00ff80', '#00ffff', '#0080ff', '#0000ff', '#4000ff',
+            '#8000ff', '#bf00ff', '#ff00ff', '#ff0080', '#ff0040', '#ff0000',
+            '#c00000'
+          ];
+          const map = document.querySelector('mapml-viewer');
+          const style = map.querySelector('map-style');
+
+          customElements
+            .whenDefined('mapml-viewer')
+            // whenReady() does not settle in every implementation, so the handler
+            // is not allowed to wait on it indefinitely.
+            .then(() => Promise.race([map.whenReady(), new Promise((go) => setTimeout(go, 1500))]))
+            .then(() => {
+            // Registered once, then left alone: each matcher fires `change` when
+            // the map enters or leaves its zoom level, exactly as a stylesheet's
+            // @media rules switch on and off as the viewport is resized.
+            const matchers = HUES.map((_, z) => map.matchMedia(`(map-zoom: ${z})`));
+
+            function paint() {
+              const zoom = matchers.findIndex((matcher) => matcher.matches);
+              if (zoom === -1) return;
+              style.textContent = `.feature { fill: ${HUES[zoom]}; stroke: ${HUES[zoom]} }`;
+            }
+
+            matchers.forEach((matcher) => matcher.addEventListener('change', paint));
+            paint();
+          });
+        </script>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>

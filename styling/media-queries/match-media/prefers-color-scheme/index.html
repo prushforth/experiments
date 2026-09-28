@@ -4,64 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="dark light">
-    <title>matchMedia API — prefers-color-scheme</title>
-    <link rel="stylesheet" href="../../../../global.css">
-    <style>
-      main {
-        max-width: 48rem;
-        margin: 0 auto;
-        padding: 2rem 1.5rem;
-      }
-
-      ul.variants {
-        list-style: none;
-        padding: 0;
-        display: grid;
-        gap: 1rem;
-      }
-
-      ul.variants a {
-        display: block;
-        padding: 1rem 1.25rem;
-        border: 1px solid currentColor;
-        border-radius: 8px;
-        text-decoration: none;
-        color: inherit;
-      }
-
-      ul.variants a:hover,
-      ul.variants a:focus {
-        outline: 2px solid currentColor;
-      }
-
-      ul.variants strong {
-        display: block;
-        font-size: 1.1rem;
-      }
-    </style>
+    <title>prefers-color-scheme — matchMedia API</title>
+    <script src="../../../../templates/experiment.js"></script>
   </head>
   <body>
-    <main>
-      <h1><code>prefers-color-scheme</code> — light / dark theme switching</h1>
-      <p>The same adaptive color-scheme experiment implemented two ways. Both run
-        on the OpenLayers build of the MapML polyfill; they differ only in how the
-        vector tiles are styled.</p>
-      <ul class="variants">
-        <li>
-          <a href="ol/index.html">
-            <strong>OpenLayers / MapLibre styles</strong>
-            Styles the vector tiles with a Mapbox/MapLibre style-spec document
-            (<code>application/vnd.maplibre-style+json</code>).
-          </a>
-        </li>
-        <li>
-          <a href="leaflet/index.html">
-            <strong>Leaflet / protomaps styles</strong>
-            Styles the vector tiles with the protomaps-leaflet rules
-            (<code>application/pmtiles+stylesheet</code>).
-          </a>
-        </li>
-      </ul>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb">
+        <a data-home href="../../../../index.html">Experiments</a> ›
+        <a href="../../">Media / map container queries</a>
+      </p>
+      <h1>Theming a basemap by <code>prefers-color-scheme</code>, with <code>matchMedia()</code></h1>
+      <p class="lede">
+        Two styles over one <code>.pmtiles</code> archive, one dark and one light. A
+        <code>(prefers-color-scheme: dark)</code> matcher decides which
+        <code>&lt;map-layer&gt;</code> is in the document, and swaps it on
+        <code>change</code> — so the map follows the colour scheme the reader asked their
+        operating system or browser for, the way the rest of the page does.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="mechanism-label">
+        <span class="experiment-nav-label" id="mechanism-label">Mechanism</span>
+        <a href="../../media-attribute/prefers-color-scheme/"><code>media</code> attribute</a>
+        <a href="./" aria-current="page"><code>matchMedia()</code> API</a>
+      </nav>
+      <p class="experiment-tags">
+        <span class="experiment-nav-label">Variants</span>
+        <span class="experiment-tag">Inline only</span>
+        <span class="experiment-tag">&lt;mapml-viewer&gt; only</span>
+      </p>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="prefers-color-scheme layer swap rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Styled with the protomaps-leaflet rules
+            (<code>application/pmtiles+stylesheet</code>), which is why this column's tile
+            template carries a <code>?theme=</code> — the rules are keyed by archive URL.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="prefers-color-scheme layer swap rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Styled with a MapLibre style-spec document
+            (<code>application/vnd.maplibre-style+json</code>) — its native format.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="prefers-color-scheme layer swap rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The same MapLibre style-spec document, compiled to OpenLayers styles. All three
+            columns read the one <code>spearfish.pmtiles</code> archive; only the stylesheet
+            differs.
+          </p>
+        </div>
+      </article>
     </main>
+
+    <footer class="experiment-footer">
+      <p>
+        To see it change, emulate the preference rather than restarting your desktop: in
+        Chrome or Edge, DevTools → <em>More tools</em> → <em>Rendering</em> → <em>Emulate CSS
+        prefers-color-scheme</em>; in Firefox, DevTools settings → <em>Emulate CSS
+        prefers-color-scheme</em>. The frames also honour a system-wide change with no reload.
+      </p>
+      <p>
+        This is the script-driven counterpart to
+        <a href="../../../dark-mode/">Dark mode</a>, where the same two layers are declared
+        with <code>media="(prefers-color-scheme: …)"</code> and the user agent chooses. Dark
+        mode is the better answer for a preference this stable; this page exists to show what
+        the handler has to do instead, and to leave the door open for the cases a static
+        attribute cannot cover.
+      </p>
+    </footer>
   </body>
 </html>
+

@@ -1,117 +1,95 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="color-scheme" content="dark light">
-    <title>Map Zoom</title>
-    <script type="module" src="../../../../../dist/MapML-OpenLayers/dist/mapml-ol.js"></script>
-    <link rel="stylesheet" href="../../../../../global.css">
-    <style>
-        body {
-            display: flex;
-        }
+    <title>map-zoom — media attribute on &lt;map-link rel="stylesheet"&gt;</title>
+    <script src="../../../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb">
+        <a data-home href="../../../../../index.html">Experiments</a> ›
+        <a href="../../../">Media / map container queries</a>
+      </p>
+      <h1>Styling a feature by <code>map-zoom</code>, with <code>media</code></h1>
+      <p class="lede">
+        Eighteen stylesheets, one per zoom level, each attached with
+        <code>&lt;map-link rel="stylesheet" media="(map-zoom: n)"&gt;</code>. Zoom the map
+        and the point changes hue — the same result as the
+        <a href="../../../match-media/map-zoom/"><code>matchMedia()</code> version</a>, with
+        no script at all, because the user agent applies the stylesheet whose query matches
+        and ignores the rest.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="mechanism-label">
+        <span class="experiment-nav-label" id="mechanism-label">Mechanism</span>
+        <a href="./" aria-current="page"><code>media</code> attribute</a>
+        <a href="../../../match-media/map-zoom/"><code>matchMedia()</code> API</a>
+      </nav>
+      <p class="experiment-tags">
+        <span class="experiment-nav-label">Variants</span>
+        <span class="experiment-tag">Inline only</span>
+        <span class="experiment-tag">&lt;mapml-viewer&gt; only</span>
+        <span class="experiment-tag">Gated element: &lt;map-link rel="stylesheet"&gt;</span>
+      </p>
+    </header>
 
-        mapml-viewer {
-            flex: 3;
-            height: 50vh;
-        }
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="Per-zoom media-gated stylesheets rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The reference implementation. A non-matching stylesheet link is disabled, so its
+            rules are not in the cascade and the file behind it is not requested.
+          </p>
+        </div>
+      </article>
 
-        .description {
-            padding: 20px;
-            flex: 1;
-        }
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="Per-zoom media-gated stylesheets rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The author's CSS is compiled to MapLibre paint properties, so enabling a different
+            stylesheet recompiles the layer's style rather than re-running the cascade.
+          </p>
+        </div>
+      </article>
 
-        @media (max-width: 768px) {
-            body {
-                display: block;
-            }
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="Per-zoom media-gated stylesheets rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The enabled stylesheets are injected into a hidden container holding one probe
+            element per feature, so the colour that wins is the one the real CSS cascade
+            picks, read back with <code>getComputedStyle</code>.
+          </p>
+        </div>
+      </article>
+    </main>
 
-            mapml-viewer {
-                height: 50vh !important;
-                width: 100%;
-            }
-
-            .description {
-                height: auto;
-                width: 100%;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <mapml-viewer projection="OSMTILE" zoom="14" lat="45.406314" lon="-75.6883335" controls=""
-        controlslist="geolocation">
-        <map-layer data-testid="osm-layer" label="OpenStreetMap" checked="">
-            <map-link rel="license" title="© OpenStreetMap contributors CC BY-SA"
-                href="https://www.openstreetmap.org/copyright"></map-link>
-            <map-extent units="OSMTILE" checked="checked">
-                <map-input name="z" type="zoom" value="18" min="0" max="18"></map-input>
-                <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="262144"></map-input>
-                <map-input name="y" type="location" units="tilematrix" axis="row" min="0" max="262144"></map-input>
-                <map-link rel="tile" tref="https://tile.openstreetmap.org/{z}/{x}/{y}.png"></map-link>
-            </map-extent>
-        </map-layer>
-        <map-layer label="Feature" checked="">
-          <map-link rel="stylesheet" href="1.css" media="(map-zoom: 0)"></map-link>
-          <map-link rel="stylesheet" href="2.css" media="(map-zoom: 1)"></map-link>
-          <map-link rel="stylesheet" href="3.css" media="(map-zoom: 2)"></map-link>
-          <map-link rel="stylesheet" href="4.css" media="(map-zoom: 3)"></map-link>
-          <map-link rel="stylesheet" href="5.css" media="(map-zoom: 4)"></map-link>
-          <map-link rel="stylesheet" href="6.css" media="(map-zoom: 5)"></map-link>
-          <map-link rel="stylesheet" href="7.css" media="(map-zoom: 6)"></map-link>
-          <map-link rel="stylesheet" href="8.css" media="(map-zoom: 7)"></map-link>
-          <map-link rel="stylesheet" href="9.css" media="(map-zoom: 8)"></map-link>
-          <map-link rel="stylesheet" href="10.css" media="(map-zoom: 9)"></map-link>
-          <map-link rel="stylesheet" href="11.css" media="(map-zoom: 10)"></map-link>
-          <map-link rel="stylesheet" href="12.css" media="(map-zoom: 11)"></map-link>
-          <map-link rel="stylesheet" href="13.css" media="(map-zoom: 12)"></map-link>
-          <map-link rel="stylesheet" href="14.css" media="(map-zoom: 13)"></map-link>
-          <map-link rel="stylesheet" href="15.css" media="(map-zoom: 14)"></map-link>
-          <map-link rel="stylesheet" href="16.css" media="(map-zoom: 15)"></map-link>
-          <map-link rel="stylesheet" href="17.css" media="(map-zoom: 16)"></map-link>
-          <map-link rel="stylesheet" href="18.css" media="(map-zoom: 17)"></map-link>
-          <map-meta name="projection" content="OSMTILE"></map-meta>
-          <map-feature zoom="15">
-              <map-featurecaption>location</map-featurecaption>
-              <map-geometry cs="gcrs">
-                  <map-point class="feature">
-                      <map-coordinates>-75.697180 45.415865</map-coordinates>
-                  </map-point>
-              </map-geometry>
-          </map-feature>
-        </map-layer>
-    </mapml-viewer>
-
-    <div class="description">
-        <h2>Dynamic Styling Based on Zoom Levels in <code>mapml-viewer</code></h2>
-        <p>This experiment demonstrates the dynamic styling capabilities of the <code>mapml-viewer</code> custom
-            element, where the appearance of map features adapts based on the current zoom level. Using a custom
-            <code>matchMedia</code> API, the zoom level is determined programmatically, simulating the behavior of the
-            CSS <code>@media</code> rule to provide responsive and interactive styling.
-        </p>
-        <p>The custom <code>matchMedia</code> API works similarly to <code>@media</code> in CSS because it evaluates
-            conditions dynamically. Instead of checking device properties like screen width or orientation, it evaluates
-            the zoom level of the map. When a zoom level condition is met, the corresponding styles are applied to map
-            features, creating a responsive and adaptive visualization experience.</p>
-        <p>The implementation uses a predefined color mapping that associates each zoom level (1 to 18) with a specific
-            hex color. Whenever the zoom level changes, the <code>map-style</code> element is dynamically updated with
-            the corresponding styling, ensuring a seamless and visually engaging user experience.</p>
-        <h3>How to Interact with the Map</h3>
-        <ul>
-            <li><strong>Zoom In/Out:</strong>
-                <ul>
-                    <li>Use the zoom controls on the map interface to change the zoom level.</li>
-                    <li>The feature color will dynamically update based on the current zoom level.</li>
-                </ul>
-            </li>
-        </ul>
-        <p>This page showcases how <code>mapml-viewer</code> integrates the custom <code>matchMedia</code> API to
-            dynamically style geospatial features based on zoom-level changes, emulating the responsiveness of CSS
-            <code>@media</code> rules.</p>
-    </div>
-</body>
-
+    <footer class="experiment-footer">
+      <p>
+        Eighteen files to say what one script says in four lines is the honest cost of the
+        declarative form; what it buys is that the map is correctly styled before any script
+        has run, and that a zoom level nobody visits costs nothing. The
+        <a href="../../../match-media/map-zoom/">script version</a> makes the opposite
+        trade.
+      </p>
+      <p>
+        The stylesheets (<code>1.css</code> … <code>18.css</code>) sit one folder up from the
+        framed pages and are shared by all three implementations — their contents are plain
+        CSS against the feature's <code>class</code>, and nothing in them is
+        implementation-specific.
+      </p>
+    </footer>
+  </body>
 </html>

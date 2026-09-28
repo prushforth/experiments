@@ -1,0 +1,59 @@
+<!doctype html>
+<!--
+  One frame of the map-projection media-attribute comparison, built from
+  templates/full-page/index.html. One layer, two extents; the tile templates
+  themselves carry the media query.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>map-projection on &lt;map-link&gt; — MapML-OpenLayers</title>
+    <script src="../../../../../../templates/experiment.js" data-impl="openlayers"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">Tile templates gated by a map-projection media attribute, rendered by MapML-OpenLayers</h1>
+      <!-- code -->
+      <div class="example-controls">
+        <button type="button" data-projection="OSMTILE" aria-pressed="true">Web Mercator</button>
+        <button type="button" data-projection="CBMTILE" aria-pressed="false">Lambert Conformal Conic</button>
+      </div>
+      <div class="example-map">
+        <mapml-viewer projection="OSMTILE" zoom="7" lat="50.1766337303461" lon="-97.19386326354089" controls controlslist="static">
+          <map-caption>The Canada Base Map, in whichever projection the map is currently in</map-caption>
+          <map-layer label="Canada Base Map — Transportation" checked>
+            <!-- One layer the reader can turn on and off, with a tile template per
+                 projection inside it. The query is on the template, so which tiles
+                 are fetched changes without the layer itself coming and going. -->
+            <map-extent units="OSMTILE" checked hidden>
+              <map-input name="z" type="zoom" value="15" min="0" max="15"></map-input>
+              <map-input name="y" type="location" units="tilematrix" axis="row" min="0" max="32768"></map-input>
+              <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="32768"></map-input>
+              <map-link media="(map-projection: OSMTILE)" rel="tile" tref="https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_CBCT_GEOM_3857/MapServer/tile/{z}/{y}/{x}"></map-link>
+              <map-link media="(map-projection: OSMTILE)" rel="tile" tref="https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3857/MapServer/tile/{z}/{y}/{x}"></map-link>
+            </map-extent>
+            <map-extent label="CBMT — Lambert" units="CBMTILE" checked hidden>
+              <map-input name="z" type="zoom" min="0" max="18"></map-input>
+              <map-input name="y" type="location" units="tilematrix" axis="row"></map-input>
+              <map-input name="x" type="location" units="tilematrix" axis="column"></map-input>
+              <map-link media="(map-projection: CBMTILE)" rel="tile" tref="https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT3978/MapServer/tile/{z}/{y}/{x}"></map-link>
+            </map-extent>
+          </map-layer>
+        </mapml-viewer>
+      </div>
+      <script>
+        const map = document.querySelector('mapml-viewer');
+        document.querySelectorAll('[data-projection]').forEach((button, _, buttons) => {
+          button.addEventListener('click', () => {
+            map.projection = button.dataset.projection;
+            buttons.forEach((other) => {
+              other.setAttribute('aria-pressed', String(other === button));
+            });
+          });
+        });
+      </script>
+      <!-- /code -->
+    </main>
+  </body>
+</html>

@@ -3,68 +3,123 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Media Queries</title>
-    <link rel="stylesheet" href="../../global.css">
-    <style>
-      body {
-       padding: 1rem;
-       height: unset;
-      }
-      .github-mark {
-        display: block;
-        width: max-content;
-      }
-    </style>
+    <title>Media / map container queries</title>
+    <script src="../../templates/experiment.js"></script>
   </head>
   <body>
-    <aside>
-      <a class="github-mark" href="https://github.com/Maps4HTML/experiments" title="Github repository">
-        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="none" viewBox="0 0 1024 1024"><defs/><path fill="#1B1F23" fill-rule="evenodd" d="M512 0A511.9 511.9 0 000 512c0 226.6 146.6 418 350 485.8 25.7 4.4 35.3-11 35.3-24.4 0-12.1-.7-52.4-.7-95.3-128.6 23.7-161.9-31.4-172.1-60.2-5.8-14.7-30.7-60.1-52.5-72.3-18-9.6-43.5-33.3-.6-34 40.3-.6 69 37.2 78.7 52.6 46 77.4 119.7 55.6 149.1 42.2 4.5-33.3 18-55.7 32.6-68.5-113.9-12.8-233-57-233-252.8 0-55.7 20-101.7 52.6-137.6-5.2-12.8-23-65.3 5-135.7 0 0 43-13.4 140.9 52.5a475 475 0 01128-17.3c43.5 0 87 5.8 128 17.3 97.9-66.5 140.8-52.5 140.8-52.5 28.1 70.4 10.2 123 5.1 135.7a198.1 198.1 0 0152.5 137.6c0 196.5-119.7 240-233.6 252.8 18.5 16 34.5 46.7 34.5 94.7 0 68.5-.6 123.6-.6 140.8 0 13.5 9.6 29.5 35.2 24.4A512.8 512.8 0 001024 512C1024 229.1 794.9 0 512 0z" clip-rule="evenodd"/></svg>
-      </a>
-    </aside>
-    <main>
-      <h1>Media Query Experiments</h1>
-    <section id="attribute">
-      <h2><code>media</code> attribute</h2>
-      <ul class="example">
-        <li>prefers-map-content:
-          <ul class="example">
-            <li><a href="media-attribute/prefers-map-content/map-layer/">&lt;map-layer&gt;</a></li>
-            <li><a href="media-attribute/prefers-map-content/map-link/">&lt;map-link&gt;</a>
-          </ul>
-        </li>
-        <li><a href="media-attribute/map-bounding-box/">map-top-left/bottom-right -easting/northing:</a>
-        <li>map-projection:
-          <ul class="example">
-            <li><a href="media-attribute/map-projection/map-layer/">&lt;map-layer&gt;</a></li>
-            <li><a href="media-attribute/map-projection/map-link/">&lt;map-link&gt;</a>
-          </ul>
-          
-        </li>
-        <li><a href="media-attribute/map-zoom/map-link-stylesheet/">map-zoom:</a>
-        <li><a href="media-attribute/prefers-color-scheme/">prefers-color-scheme:</a></li>
-        <li><a href="media-attribute/prefers-lang/">prefers-lang:</a></li>
-      </ul>
-    </section>
-      <section id="api">
-        <h2>matchMedia API</h2>
-      <ul class="example">
-        <li>prefers-map-content:
-          <ul class="example">
-            <li><a href="match-media/prefers-map-content/map-layer/">&lt;map-layer&gt;</a></li>
-            <li><a href="match-media/prefers-map-content/map-link/">&lt;map-link&gt;</a>
-          </ul>
-        </li>
-        
-        <li><a href="match-media/map-bounding-box/">map-top-left/bottom-right -easting/northing:</a>
-        <li><a href="match-media/map-projection/">map-projection:</a>
-        <li><a href="match-media/map-zoom/">map-zoom:</a>
-        <li><a href="match-media/prefers-color-scheme/">prefers-color-scheme:</a></li>
-        <li><a href="match-media/prefers-lang/">prefers-lang:</a></li>
-        
-      </ul>
-    </section>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../index.html">Experiments</a></p>
+      <h1>Media / map container queries</h1>
+      <p class="lede">
+        A map is an environment of its own: it has a projection, a zoom level and a bounding
+        box, and the reader may prefer one kind of map content over another. These experiments
+        query that environment the way CSS queries the viewport — with media features named
+        <code>map-projection</code>, <code>map-zoom</code>, <code>map-top-left-easting</code>
+        and friends, plus the preference features <code>prefers-map-content</code>,
+        <code>prefers-color-scheme</code> and <code>prefers-lang</code>.
+      </p>
+    </header>
 
+    <main class="experiment-body">
+      <h2>Mechanism by media feature</h2>
+      <p>
+        Every feature below is explored twice, because there are two ways to act on a map
+        media query and they are not equivalent. The <strong><code>media</code>
+        attribute</strong> is declarative: the author writes the query on the element and the
+        user agent decides whether that element participates at all. The
+        <strong><code>matchMedia()</code> API</strong> is procedural: the author registers the
+        query, listens for <code>change</code>, and does whatever they like in the handler —
+        including things the attribute cannot express.
+      </p>
+      <table class="variant-matrix">
+        <caption class="visually-hidden">Media feature by mechanism</caption>
+        <thead>
+          <tr>
+            <td></td>
+            <th scope="col"><code>media</code> attribute</th>
+            <th scope="col"><code>matchMedia()</code> API</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><code>prefers-map-content</code></th>
+            <td>
+              <a href="media-attribute/prefers-map-content/map-layer/">on <code>&lt;map-layer&gt;</code></a> ·
+              <a href="media-attribute/prefers-map-content/map-link/">on <code>&lt;map-link&gt;</code></a>
+            </td>
+            <td>
+              <a href="match-media/prefers-map-content/map-layer/">on <code>&lt;map-layer&gt;</code></a> ·
+              <a href="match-media/prefers-map-content/map-link/">on <code>&lt;map-link&gt;</code></a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <code>map-top-left-easting</code> /
+              <code>map-bottom-right-northing</code> …
+            </th>
+            <td><a href="media-attribute/map-bounding-box/">All three implementations</a></td>
+            <td><a href="match-media/map-bounding-box/">All three implementations</a></td>
+          </tr>
+          <tr>
+            <th scope="row"><code>map-projection</code></th>
+            <td>
+              <a href="media-attribute/map-projection/map-layer/">on <code>&lt;map-layer&gt;</code></a> ·
+              <a href="media-attribute/map-projection/map-link/">on <code>&lt;map-link&gt;</code></a>
+            </td>
+            <td><a href="match-media/map-projection/">All three implementations</a></td>
+          </tr>
+          <tr>
+            <th scope="row"><code>map-zoom</code></th>
+            <td><a href="media-attribute/map-zoom/map-link-stylesheet/">on <code>&lt;map-link rel="stylesheet"&gt;</code></a></td>
+            <td><a href="match-media/map-zoom/">All three implementations</a></td>
+          </tr>
+          <tr>
+            <th scope="row"><code>prefers-color-scheme</code></th>
+            <td><a href="media-attribute/prefers-color-scheme/">All three implementations</a></td>
+            <td><a href="match-media/prefers-color-scheme/">All three implementations</a></td>
+          </tr>
+          <tr>
+            <th scope="row"><code>prefers-lang</code></th>
+            <td><a href="media-attribute/prefers-lang/">All three implementations</a></td>
+            <td><a href="match-media/prefers-lang/">All three implementations</a></td>
+          </tr>
+        </tbody>
+      </table>
 
+      <h2>What the two mechanisms are for</h2>
+      <p>
+        The attribute is the better answer whenever the question is <em>which of several
+        equivalent representations suits this map</em>, because a non-matching element is
+        really disabled: it is absent from the map, absent from the layer control, and — when
+        it is a <code>&lt;map-layer src&gt;</code> or a templated <code>&lt;map-link&gt;</code>
+        — never fetched. Nothing has to run for that to be true.
+      </p>
+      <p>
+        The API earns its keep when the response is not “use this element instead of that
+        one”: rewriting a <code>&lt;map-style&gt;</code> as the zoom changes, computing a query
+        string from the current extent, or swapping a page stylesheet — none of which an
+        element-scoped attribute can do. Most of the pairs above are deliberately the same
+        experiment written both ways, so the cost of each can be read off directly.
+      </p>
+      <p>
+        <code>prefers-color-scheme</code> is also explored inline and remote, as the
+        <a href="../dark-mode/">Dark mode</a> use case; and a projection media query drives
+        <a href="../../change-projection/zoomin-zoomout/mapml-viewer/">change projection on zoom
+        change</a>.
+      </p>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        <code>prefers-lang</code> is under review: language selection is what
+        <code>hreflang</code> is for, and a language is arguably not a media feature at all.
+        The two <code>prefers-lang</code> pages are kept as the record of that experiment.
+      </p>
+      <p>
+        See the
+        <a href="https://maps4html.org/web-map-doc/docs/api/mapml-viewer-api#matchmediamediaquerystring"><code>matchMedia()</code> documentation</a>.
+      </p>
+    </footer>
   </body>
 </html>
+

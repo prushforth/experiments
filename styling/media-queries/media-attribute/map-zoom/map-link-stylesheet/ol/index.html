@@ -1,0 +1,65 @@
+<!doctype html>
+<!--
+  One frame of the map-zoom media-attribute comparison, built from
+  templates/full-page/index.html. The per-zoom stylesheets live one folder up,
+  shared by all three implementations.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>map-zoom, media attribute — MapML-OpenLayers</title>
+    <script src="../../../../../../templates/experiment.js" data-impl="openlayers"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">A feature recoloured at every zoom level by media-gated stylesheets, rendered by MapML-OpenLayers</h1>
+      <div class="example-map">
+        <!-- code -->
+        <mapml-viewer projection="OSMTILE" zoom="14" lat="45.406314" lon="-75.6883335" controls controlslist="static">
+          <map-caption>A feature whose colour is chosen by a (map-zoom: n) media query</map-caption>
+          <map-layer label="OpenStreetMap" checked>
+            <map-link rel="license" title="© OpenStreetMap contributors CC BY-SA" href="https://www.openstreetmap.org/copyright"></map-link>
+            <map-extent units="OSMTILE" checked hidden>
+              <map-input name="z" type="zoom" value="18" min="0" max="18"></map-input>
+              <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="262144"></map-input>
+              <map-input name="y" type="location" units="tilematrix" axis="row" min="0" max="262144"></map-input>
+              <map-link rel="tile" tref="https://tile.openstreetmap.org/{z}/{x}/{y}.png"></map-link>
+            </map-extent>
+          </map-layer>
+          <map-layer label="Colour by zoom" checked>
+            <!-- One stylesheet per zoom level, exactly as <link media> has always
+                 worked: the user agent applies the one whose query matches. No
+                 script, and no stylesheet fetched for a zoom nobody visits. -->
+            <map-link rel="stylesheet" href="../1.css" media="(map-zoom: 0)"></map-link>
+            <map-link rel="stylesheet" href="../2.css" media="(map-zoom: 1)"></map-link>
+            <map-link rel="stylesheet" href="../3.css" media="(map-zoom: 2)"></map-link>
+            <map-link rel="stylesheet" href="../4.css" media="(map-zoom: 3)"></map-link>
+            <map-link rel="stylesheet" href="../5.css" media="(map-zoom: 4)"></map-link>
+            <map-link rel="stylesheet" href="../6.css" media="(map-zoom: 5)"></map-link>
+            <map-link rel="stylesheet" href="../7.css" media="(map-zoom: 6)"></map-link>
+            <map-link rel="stylesheet" href="../8.css" media="(map-zoom: 7)"></map-link>
+            <map-link rel="stylesheet" href="../9.css" media="(map-zoom: 8)"></map-link>
+            <map-link rel="stylesheet" href="../10.css" media="(map-zoom: 9)"></map-link>
+            <map-link rel="stylesheet" href="../11.css" media="(map-zoom: 10)"></map-link>
+            <map-link rel="stylesheet" href="../12.css" media="(map-zoom: 11)"></map-link>
+            <map-link rel="stylesheet" href="../13.css" media="(map-zoom: 12)"></map-link>
+            <map-link rel="stylesheet" href="../14.css" media="(map-zoom: 13)"></map-link>
+            <map-link rel="stylesheet" href="../15.css" media="(map-zoom: 14)"></map-link>
+            <map-link rel="stylesheet" href="../16.css" media="(map-zoom: 15)"></map-link>
+            <map-link rel="stylesheet" href="../17.css" media="(map-zoom: 16)"></map-link>
+            <map-link rel="stylesheet" href="../18.css" media="(map-zoom: 17)"></map-link>
+            <map-meta name="projection" content="OSMTILE"></map-meta>
+            <map-feature zoom="15">
+              <map-featurecaption>Colour by zoom level</map-featurecaption>
+              <map-geometry cs="gcrs">
+                <map-point class="feature"><map-coordinates>-75.697180 45.415865</map-coordinates></map-point>
+              </map-geometry>
+            </map-feature>
+          </map-layer>
+        </mapml-viewer>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>

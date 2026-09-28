@@ -204,6 +204,46 @@ map-layer {
   color: var(--experiment-muted);
 }
 
+/*
+ * A control bar for an experiment the reader has to drive: buttons, preference
+ * toggles, anything that acts on the map beside it. It goes inside the frame,
+ * above .example-map, because it acts on that page's own map element.
+ */
+.example-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--experiment-border);
+}
+
+.example-controls button {
+  font: inherit;
+  font-size: 0.875rem;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--experiment-border);
+  border-radius: 6px;
+  background: var(--experiment-surface);
+  color: inherit;
+  cursor: pointer;
+}
+
+.example-controls button:hover {
+  background: #eaeef2;
+}
+
+.example-controls button[aria-pressed='true'] {
+  background: #1f2328;
+  border-color: #1f2328;
+  color: #fff;
+}
+
+.example-controls output {
+  font-size: 0.875rem;
+  color: var(--experiment-muted);
+}
+
 .example-description > :first-child {
   margin-top: 0;
 }
@@ -317,6 +357,16 @@ body.full-page .example-code {
   max-height: calc(100% - 5rem);
   background: rgb(255 255 255 / 95%);
   box-shadow: rgb(0 0 0 / 30%) 0 1px 4px -1px;
+}
+
+/* Clear the control bar, which the floating toolbar would otherwise cover. */
+body.full-page .example:has(.example-controls) .example-actions {
+  inset-block-start: 4.25rem;
+}
+
+body.full-page .example:has(.example-controls) .example-code {
+  inset-block-start: 6.75rem;
+  max-height: calc(100% - 8.5rem);
 }
 
 @media (prefers-reduced-motion: no-preference) {

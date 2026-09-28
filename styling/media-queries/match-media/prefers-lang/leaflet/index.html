@@ -1,0 +1,93 @@
+<!doctype html>
+<!--
+  One frame of the prefers-lang matchMedia comparison, built from
+  templates/full-page/index.html.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>prefers-lang, matchMedia — MapML.js (Leaflet)</title>
+    <script src="../../../../../templates/experiment.js" data-impl="leaflet"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">A basemap chosen by a prefers-lang matchMedia query, rendered by MapML.js</h1>
+      <div class="example-map">
+        <!-- code -->
+        <mapml-viewer projection="OSMTILE" zoom="4" lat="52.07950600379697" lon="-85.61090083272045" controls controlslist="static" static>
+          <map-caption>A basemap labelled in the language the reader asked for</map-caption>
+          <!-- All three start hidden and unchecked: the handler decides. Nothing in
+               the markup says which one belongs on this map. -->
+          <map-layer lang="en" hidden>
+            <map-title>Canada Base Map — Transportation (CBMT)</map-title>
+            <map-extent units="OSMTILE" checked hidden>
+              <map-input name="z" type="zoom" value="15" min="0" max="15"></map-input>
+              <map-input name="y" type="location" units="tilematrix" axis="row" min="0" max="32768"></map-input>
+              <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="32768"></map-input>
+              <map-link rel="tile" tref="https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3857/MapServer/tile/{z}/{y}/{x}?m4h=t"></map-link>
+              <map-link rel="tile" tref="https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3857/MapServer/tile/{z}/{y}/{x}?m4h=t"></map-link>
+            </map-extent>
+          </map-layer>
+          <map-layer lang="fr" hidden>
+            <map-title>La carte de base du Canada — transport</map-title>
+            <map-extent units="OSMTILE" checked hidden>
+              <map-input name="z" type="zoom" value="15" min="0" max="15"></map-input>
+              <map-input name="y" type="location" units="tilematrix" axis="row" min="0" max="32768"></map-input>
+              <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="32768"></map-input>
+              <map-link rel="tile" tref="https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3857/MapServer/tile/{z}/{y}/{x}?m4h=t"></map-link>
+              <map-link rel="tile" tref="https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBCT_TXT_3857/MapServer/tile/{z}/{y}/{x}?m4h=t"></map-link>
+            </map-extent>
+          </map-layer>
+          <map-layer id="fallback" label="OpenStreetMap" hidden>
+            <map-link rel="license" title="© OpenStreetMap contributors CC BY-SA" href="https://www.openstreetmap.org/copyright"></map-link>
+            <map-extent units="OSMTILE" checked hidden>
+              <map-input name="z" type="zoom" value="18" min="0" max="18"></map-input>
+              <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="262144"></map-input>
+              <map-input name="y" type="location" units="tilematrix" axis="row" min="0" max="262144"></map-input>
+              <map-link rel="tile" tref="https://tile.openstreetmap.org/{z}/{x}/{y}.png"></map-link>
+            </map-extent>
+          </map-layer>
+        </mapml-viewer>
+        <script>
+          const map = document.querySelector('mapml-viewer');
+          const english = map.querySelector('[lang=en]');
+          const french = map.querySelector('[lang=fr]');
+          const fallback = map.querySelector('#fallback');
+          const basemaps = [english, french, fallback];
+
+          customElements
+            .whenDefined('mapml-viewer')
+            // whenReady() does not settle in every implementation, so the handler
+            // is not allowed to wait on it indefinitely.
+            .then(() => Promise.race([map.whenReady(), new Promise((go) => setTimeout(go, 1500))]))
+            .then(() => {
+            const prefersEnglish = map.matchMedia('(prefers-lang: en)');
+            const prefersFrench = map.matchMedia('(prefers-lang: fr)');
+
+            // The fallback is the `else` branch of the other two — which the
+            // attribute version has to spell out as a negated query, because an
+            // attribute has nowhere to put an `else`.
+            function chooseBasemap() {
+              const wanted = prefersEnglish.matches
+                ? english
+                : prefersFrench.matches
+                  ? french
+                  : fallback;
+              basemaps.forEach((layer) => {
+                layer.hidden = layer !== wanted;
+                layer.checked = layer === wanted;
+              });
+            }
+
+            [prefersEnglish, prefersFrench].forEach((matcher) =>
+              matcher.addEventListener('change', chooseBasemap)
+            );
+            chooseBasemap();
+          });
+        </script>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>

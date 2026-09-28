@@ -1,0 +1,112 @@
+<!doctype html>
+<!--
+  One frame of the prefers-map-content matchMedia comparison, built from
+  templates/full-page/index.html. The layer documents (msi.mapml and friends)
+  live one folder up, shared by all three implementations.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>prefers-map-content on &lt;map-layer&gt;, matchMedia — MapML.js (Leaflet)</title>
+    <script src="../../../../../../templates/experiment.js" data-impl="leaflet"></script>
+    <style>
+      /* The map and the table are two representations of one thing, so only one
+         of them is ever shown. The table lives outside .example-map so the code
+         toolbar does not mistake it for a framed map. */
+      body.full-page .example .table-view {
+        flex: 1;
+        min-height: 0;
+        width: 100%;
+        border: 0;
+        background: #fff;
+      }
+      .example-map[hidden],
+      .table-view[hidden] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">Layers chosen by a prefers-map-content matchMedia query, rendered by MapML.js</h1>
+      <!-- code -->
+      <div class="example-controls">
+        <button type="button" data-type="image" aria-pressed="false">Images</button>
+        <button type="button" data-type="tile" aria-pressed="false">Tiles</button>
+        <button type="button" data-type="feature" aria-pressed="false">Features</button>
+        <button type="button" data-type="table" aria-pressed="false">Tables</button>
+        <output>No preference expressed.</output>
+      </div>
+      <div class="example-map">
+        <mapml-viewer projection="CBMTILE" zoom="4" lat="60" lon="-90" controls controlslist="static" static>
+          <map-caption>Minimum annual snow and ice over Canada, in whichever form the reader prefers</map-caption>
+          <map-layer label="Minimum snow and ice — WMS GetMap" src="../msi.mapml" checked
+            data-media="((prefers-map-content: image) and (not (prefers-map-content: tile))) or (not ((prefers-map-content: tile) or (prefers-map-content: feature) or (prefers-map-content: table) or (prefers-map-content: image)))"></map-layer>
+          <map-layer label="Permanent snow and ice (94% or more) — WMS GetMap" src="../msi-94-plus.mapml" checked
+            data-media="((prefers-map-content: image) and (not (prefers-map-content: tile))) or (not ((prefers-map-content: tile) or (prefers-map-content: feature) or (prefers-map-content: table) or (prefers-map-content: image)))"></map-layer>
+          <map-layer label="Minimum snow and ice — tiled WMS GetMap" src="../msi-tiles.mapml" checked
+            data-media="(prefers-map-content: tile)"></map-layer>
+          <map-layer label="Permanent snow and ice (94% or more) — tiled WMS GetMap" src="../msi-94-plus-tiles.mapml" checked
+            data-media="(prefers-map-content: tile)"></map-layer>
+          <map-layer label="Provinces and territories of Canada" src="../features.mapml" checked
+            data-media="(prefers-map-content: feature)"></map-layer>
+        </mapml-viewer>
+      </div>
+      <iframe class="table-view" src="../../msi-tables/2000/map-features-2000-08-15.html"
+        title="Minimum snow and ice described by province and territory" hidden></iframe>
+      <script>
+        const map = document.querySelector('mapml-viewer');
+        const mapView = document.querySelector('.example-map');
+        const buttons = [...document.querySelectorAll('[data-type]')];
+        const report = document.querySelector('output');
+        const tableView = document.querySelector('.table-view');
+        // data-media, not media: on this page nothing is declarative, so the
+        // query is inert markup until the handler reads it.
+        const layers = [...map.querySelectorAll('map-layer[data-media]')];
+
+        function applyPreferences() {
+          const preferences = M.options.contentPreference;
+          report.textContent = preferences.length
+            ? `Preferred: ${preferences.join(', ')}`
+            : 'No preference expressed.';
+
+          layers.forEach((layer) => {
+            const matches = map.matchMedia(layer.dataset.media).matches;
+            layer.checked = matches;
+            layer.hidden = !matches;
+          });
+
+          // A table is not map content, so no map element could carry this one
+          // even if we wanted it to: it is the page that has to change.
+          const prefersTable = map.matchMedia('(prefers-map-content: table)').matches;
+          mapView.hidden = prefersTable;
+          tableView.hidden = !prefersTable;
+        }
+
+        customElements
+          .whenDefined('mapml-viewer')
+          // whenReady() does not settle in every implementation, so the handler
+          // is not allowed to wait on it indefinitely.
+          .then(() => Promise.race([map.whenReady(), new Promise((go) => setTimeout(go, 1500))]))
+          .then(() => {
+          M.options.contentPreference = M.options.contentPreference || [];
+
+          buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+              const preferences = M.options.contentPreference;
+              const at = preferences.indexOf(button.dataset.type);
+              if (at === -1) preferences.push(button.dataset.type);
+              else preferences.splice(at, 1);
+              button.setAttribute('aria-pressed', String(at === -1));
+              applyPreferences();
+            });
+          });
+
+          applyPreferences();
+        });
+      </script>
+      <!-- /code -->
+    </main>
+  </body>
+</html>

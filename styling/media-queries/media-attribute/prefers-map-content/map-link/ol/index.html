@@ -1,0 +1,147 @@
+<!doctype html>
+<!--
+  One frame of the prefers-map-content media-attribute comparison, built from
+  templates/full-page/index.html. One layer, one extent, and a templated link
+  per representation; the shared query documents live two folders up.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>prefers-map-content on &lt;map-link&gt;, media attribute — MapML-OpenLayers</title>
+    <script src="../../../../../../templates/experiment.js" data-impl="openlayers"></script>
+    <style>
+      body.full-page .example .table-view {
+        flex: 1;
+        min-height: 0;
+        width: 100%;
+        border: 0;
+        background: #fff;
+      }
+      .example-map[hidden],
+      .table-view[hidden] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">Templated links gated by a prefers-map-content media attribute, rendered by MapML-OpenLayers</h1>
+      <!-- code -->
+      <div class="example-controls">
+        <button type="button" data-type="image" aria-pressed="false">Images</button>
+        <button type="button" data-type="tile" aria-pressed="false">Tiles</button>
+        <button type="button" data-type="feature" aria-pressed="false">Features</button>
+        <button type="button" data-type="table" aria-pressed="false">Tables</button>
+        <output>No preference expressed.</output>
+      </div>
+      <div class="example-map">
+        <mapml-viewer projection="CBMTILE" zoom="4" lat="60" lon="-90" controls controlslist="static" static>
+          <map-caption>Minimum annual snow and ice over Canada, in whichever form the reader prefers</map-caption>
+          <map-layer checked>
+            <map-title>Probability of the presence of the annual minimum snow and ice, 15 August</map-title>
+            <map-link href="https://datacube.services.geo.ca/ows/msi?SERVICE=WMS&amp;REQUEST=GetCapabilities&amp;VERSION=1.3.0" rel="license" title="Open Government Licence"></map-link>
+            <map-link rel="legend" href="https://datacube.services.geo.ca/assets/legend/legend_msi_color.png" sizes="150x33" height="33" width="150" title="legend" type="image/png"></map-link>
+            <map-extent units="CBMTILE" checked>
+              <map-input name="z" type="zoom" value="25" min="4" max="25"></map-input>
+              <map-input name="xmin" type="location" rel="map" position="top-left" axis="easting" units="pcrs" min="-6105785.728719063" max="6174630.753072981"></map-input>
+              <map-input name="ymin" type="location" rel="map" position="bottom-left" axis="northing" units="pcrs" min="-1692155.9568245453" max="4482681.2054050295"></map-input>
+              <map-input name="xmax" type="location" rel="map" position="top-right" axis="easting" units="pcrs" min="-6105785.728719063" max="6174630.753072981"></map-input>
+              <map-input name="ymax" type="location" rel="map" position="top-left" axis="northing" units="pcrs" min="-1692155.9568245453" max="4482681.2054050295"></map-input>
+              <map-input name="w" type="width" min="0" max="10000"></map-input>
+              <map-input name="h" type="height" min="0" max="10000"></map-input>
+              <map-input name="txmin" type="location" rel="tile" position="top-left" axis="easting" units="tilematrix" min="-6105785.728719063" max="6174630.753072981"></map-input>
+              <map-input name="tymin" type="location" rel="tile" position="bottom-left" axis="northing" units="tilematrix" min="-1692155.9568245453" max="4482681.2054050295"></map-input>
+              <map-input name="txmax" type="location" rel="tile" position="top-right" axis="easting" units="tilematrix" min="-6105785.728719063" max="6174630.753072981"></map-input>
+              <map-input name="tymax" type="location" rel="tile" position="top-left" axis="northing" units="tilematrix" min="-1692155.9568245453" max="4482681.2054050295"></map-input>
+              <map-select id="time" name="time">
+                <map-option>2000-08-15T00:00:00Z</map-option>
+                <map-option>2001-08-15T00:00:00Z</map-option>
+                <map-option>2002-08-15T00:00:00Z</map-option>
+                <map-option>2003-08-15T00:00:00Z</map-option>
+                <map-option>2004-08-15T00:00:00Z</map-option>
+                <map-option>2005-08-15T00:00:00Z</map-option>
+                <map-option>2006-08-15T00:00:00Z</map-option>
+                <map-option>2007-08-15T00:00:00Z</map-option>
+                <map-option>2008-08-15T00:00:00Z</map-option>
+                <map-option>2009-08-15T00:00:00Z</map-option>
+                <map-option>2010-08-15T00:00:00Z</map-option>
+                <map-option>2011-08-15T00:00:00Z</map-option>
+                <map-option>2012-08-15T00:00:00Z</map-option>
+                <map-option>2013-08-15T00:00:00Z</map-option>
+                <map-option>2014-08-15T00:00:00Z</map-option>
+                <map-option>2015-08-15T00:00:00Z</map-option>
+                <map-option>2016-08-15T00:00:00Z</map-option>
+                <map-option>2017-08-15T00:00:00Z</map-option>
+                <map-option>2018-08-15T00:00:00Z</map-option>
+                <map-option>2019-08-15T00:00:00Z</map-option>
+                <map-option>2020-08-15T00:00:00Z</map-option>
+              </map-select>
+              <!-- The same data as a WMS GetMap image, as tiled GetMap requests, or
+                   as features: one layer, one identity in the layer control, and a
+                   templated link per representation. -->
+              <map-link rel="image" media="((prefers-map-content: image) and (not (prefers-map-content: tile))) or (not ((prefers-map-content: tile) or (prefers-map-content: feature) or (prefers-map-content: table) or (prefers-map-content: image)))" tref="https://datacube.services.geo.ca/ows/msi?SERVICE=WMS&amp;REQUEST=GetMap&amp;FORMAT=image/png&amp;TRANSPARENT=TRUE&amp;STYLES=msi-color&amp;VERSION=1.3.0&amp;LAYERS=msi&amp;WIDTH={w}&amp;HEIGHT={h}&amp;CRS=EPSG:3978&amp;BBOX={xmin},{ymin},{xmax},{ymax}&amp;TIME={time}"></map-link>
+              <map-link rel="image" media="((prefers-map-content: image) and (not (prefers-map-content: tile))) or (not ((prefers-map-content: tile) or (prefers-map-content: feature) or (prefers-map-content: table) or (prefers-map-content: image)))" tref="https://datacube.services.geo.ca/ows/msi?SERVICE=WMS&amp;REQUEST=GetMap&amp;FORMAT=image/png&amp;TRANSPARENT=TRUE&amp;STYLES=msi-binary&amp;VERSION=1.3.0&amp;LAYERS=msi-94-or-more&amp;WIDTH={w}&amp;HEIGHT={h}&amp;CRS=EPSG:3978&amp;BBOX={xmin},{ymin},{xmax},{ymax}&amp;TIME={time}"></map-link>
+              <map-link rel="tile" media="(prefers-map-content: tile)" tref="https://datacube.services.geo.ca/ows/msi?SERVICE=WMS&amp;REQUEST=GetMap&amp;FORMAT=image/png&amp;TRANSPARENT=TRUE&amp;STYLES=msi-color&amp;VERSION=1.3.0&amp;LAYERS=msi&amp;WIDTH=256&amp;HEIGHT=256&amp;CRS=EPSG:3978&amp;BBOX={txmin},{tymin},{txmax},{tymax}&amp;TIME={time}"></map-link>
+              <map-link rel="tile" media="(prefers-map-content: tile)" tref="https://datacube.services.geo.ca/ows/msi?SERVICE=WMS&amp;REQUEST=GetMap&amp;FORMAT=image/png&amp;TRANSPARENT=TRUE&amp;STYLES=msi-binary&amp;VERSION=1.3.0&amp;LAYERS=msi-94-or-more&amp;WIDTH=256&amp;HEIGHT=256&amp;CRS=EPSG:3978&amp;BBOX={txmin},{tymin},{txmax},{tymax}&amp;TIME={time}"></map-link>
+              <map-link rel="features" media="(prefers-map-content: feature)" tref="../../canada.xml?zoom={z}&amp;TIME={time}"></map-link>
+              <map-link rel="query" tref="../../legend_query_msi-94-plus.mapml?BBOX={xmin},{ymin},{xmax},{ymax}&amp;TIME={time}"></map-link>
+            </map-extent>
+          </map-layer>
+        </mapml-viewer>
+      </div>
+      <iframe class="table-view" src="../../msi-tables/2000/map-features-2000-08-15.html"
+        title="Minimum snow and ice described by province and territory" hidden></iframe>
+      <script>
+        const map = document.querySelector('mapml-viewer');
+        const mapView = document.querySelector('.example-map');
+        const buttons = [...document.querySelectorAll('[data-type]')];
+        const report = document.querySelector('output');
+        const tableView = document.querySelector('.table-view');
+
+        function applyPreferences() {
+          const preferences = M.options.contentPreference;
+          report.textContent = preferences.length
+            ? `Preferred: ${preferences.join(', ')}`
+            : 'No preference expressed.';
+
+          // Nothing here touches a link: each one re-reads its own media
+          // attribute. A content preference has no change event of its own yet,
+          // so the map is told to re-evaluate rather than waiting for a move.
+          map.dispatchEvent(new CustomEvent('map-moveend', { detail: { target: map } }));
+
+          // The exception, and the reason this page still has a handler: a table
+          // is not map content, so there is no element to put the query on. The
+          // commented-out rel="" link in the original experiment is the open
+          // question of what that element would even be.
+          const prefersTable = map.matchMedia('(prefers-map-content: table)').matches;
+          mapView.hidden = prefersTable;
+          tableView.hidden = !prefersTable;
+        }
+
+        customElements
+          .whenDefined('mapml-viewer')
+          // whenReady() does not settle in every implementation, so the handler
+          // is not allowed to wait on it indefinitely.
+          .then(() => Promise.race([map.whenReady(), new Promise((go) => setTimeout(go, 1500))]))
+          .then(() => {
+          M.options.contentPreference = M.options.contentPreference || [];
+
+          buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+              const preferences = M.options.contentPreference;
+              const at = preferences.indexOf(button.dataset.type);
+              if (at === -1) preferences.push(button.dataset.type);
+              else preferences.splice(at, 1);
+              button.setAttribute('aria-pressed', String(at === -1));
+              applyPreferences();
+            });
+          });
+
+          applyPreferences();
+        });
+      </script>
+      <!-- /code -->
+    </main>
+  </body>
+</html>

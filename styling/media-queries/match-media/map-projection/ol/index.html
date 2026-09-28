@@ -1,0 +1,85 @@
+<!doctype html>
+<!--
+  One frame of the map-projection matchMedia comparison, built from
+  templates/full-page/index.html. The buttons belong inside the frame because
+  they act on this page's own <mapml-viewer>.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>map-projection, matchMedia — MapML-OpenLayers</title>
+    <script src="../../../../../templates/experiment.js" data-impl="openlayers"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">Layers swapped on a map-projection matchMedia change, rendered by MapML-OpenLayers</h1>
+      <!-- code -->
+      <div class="example-controls">
+        <button type="button" data-projection="OSMTILE" aria-pressed="true">Web Mercator</button>
+        <button type="button" data-projection="CBMTILE" aria-pressed="false">Lambert Conformal Conic</button>
+      </div>
+      <div class="example-map">
+        <mapml-viewer projection="OSMTILE" zoom="7" lat="50.1766337303461" lon="-97.19386326354089" controls controlslist="static">
+          <map-caption>The Canada Base Map, in whichever projection the map is currently in</map-caption>
+          <map-layer id="web-mercator" label="CBMT — Web Mercator" checked>
+            <map-extent units="OSMTILE" checked hidden>
+              <map-input name="z" type="zoom" value="15" min="0" max="15"></map-input>
+              <map-input name="y" type="location" units="tilematrix" axis="row" min="0" max="32768"></map-input>
+              <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="32768"></map-input>
+              <map-link rel="tile" tref="https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_CBCT_GEOM_3857/MapServer/tile/{z}/{y}/{x}"></map-link>
+              <map-link rel="tile" tref="https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3857/MapServer/tile/{z}/{y}/{x}"></map-link>
+            </map-extent>
+          </map-layer>
+          <map-layer id="lambert" label="CBMT — Lambert Conformal Conic" checked>
+            <map-extent units="CBMTILE" checked hidden>
+              <map-input name="z" type="zoom" min="0" max="18"></map-input>
+              <map-input name="y" type="location" units="tilematrix" axis="row"></map-input>
+              <map-input name="x" type="location" units="tilematrix" axis="column"></map-input>
+              <map-link rel="tile" tref="https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT3978/MapServer/tile/{z}/{y}/{x}"></map-link>
+            </map-extent>
+          </map-layer>
+        </mapml-viewer>
+      </div>
+      <script>
+        const map = document.querySelector('mapml-viewer');
+        const mercatorLayer = map.querySelector('#web-mercator');
+        const lambertLayer = map.querySelector('#lambert');
+        const buttons = document.querySelectorAll('[data-projection]');
+
+        buttons.forEach((button) => {
+          button.addEventListener('click', () => {
+            map.projection = button.dataset.projection;
+          });
+        });
+
+        customElements
+          .whenDefined('mapml-viewer')
+          // whenReady() does not settle in every implementation, so the handler
+          // is not allowed to wait on it indefinitely.
+          .then(() => Promise.race([map.whenReady(), new Promise((go) => setTimeout(go, 1500))]))
+          .then(() => {
+          // The two tile collections have different URL shapes and different tile
+          // grids, so they are different layers, not one layer reprojected. The
+          // query says which of them the map is currently able to draw.
+          const isMercator = map.matchMedia('(map-projection: OSMTILE)');
+
+          function chooseSource() {
+            const mercator = isMercator.matches;
+            mercatorLayer.hidden = !mercator;
+            mercatorLayer.checked = mercator;
+            lambertLayer.hidden = mercator;
+            lambertLayer.checked = !mercator;
+            buttons.forEach((button) => {
+              button.setAttribute('aria-pressed', String(button.dataset.projection === map.projection));
+            });
+          }
+
+          isMercator.addEventListener('change', chooseSource);
+          chooseSource();
+        });
+      </script>
+      <!-- /code -->
+    </main>
+  </body>
+</html>
