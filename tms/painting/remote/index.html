@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Non-geographic image map, remote MapML</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Non-geographic image map, from remote MapML</h1>
+      <p class="lede">
+        The same painting and figures, except that the page says only
+        <code>&lt;map-layer src="painting.mapml"&gt;</code> and
+        <code>&lt;map-layer src="people.mapml"&gt;</code>. The tile template with its
+        <code>tms</code> attribute, the zoom range that permits scaling past the last tiles,
+        and the four linked figures are all in documents — which is how a collection would
+        publish a tiled artwork for anyone to put on a page.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="../inline/">Inline</a>
+        <a href="./" aria-current="page">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./" aria-current="page">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 26rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="A painting as a map from remote MapML, rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Each document names itself with <code>&lt;map-title&gt;</code>, so the layer
+            control reads <em>Painting</em> and <em>People</em> without the page saying so.
+          </p>
+        </div>
+      </article>
+
+      <article class="example" data-unavailable>
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map example-unavailable">
+          <p>
+            MapLibre renders Web Mercator only, so the <code>WGS84</code> painting is
+            unsupported however it is delivered.
+          </p>
+        </div>
+        <div class="example-description">
+          <p>
+            Remote MapML is XHTML, so the bare <code>tms</code> attribute has to be written
+            <code>tms="tms"</code> — the same declaration, spelled the way an XML parser
+            requires.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="A painting as a map from remote MapML, rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The figures' fragment links still navigate the map that is hosting them: a
+            <code>&lt;map-a href="#zoom,lon,lat"&gt;</code> in a fetched document is about the
+            map it has been added to, not about the document it came from.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        Splitting the artwork from the annotations is the point of the two documents: the
+        tiles are one publication and the figures identified in them are another, and a page
+        can take one, the other, or both. Remove <em>People</em> from the layer control and
+        what is left is a picture; put it back and the picture has content in it again.
+      </p>
+    </footer>
+  </body>
+</html>

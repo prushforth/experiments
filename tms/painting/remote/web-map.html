@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Non-geographic image map, remote MapML, &lt;map is="web-map"&gt;</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Non-geographic image map, remote MapML in a <code>&lt;map is="web-map"&gt;</code></h1>
+      <p class="lede">
+        A <code>&lt;map&gt;</code> with two URLs in it. These frames fetch the very same
+        <code>painting.mapml</code> and <code>people.mapml</code> as the
+        <code>&lt;mapml-viewer&gt;</code> page beside them — a tiled artwork and the figures
+        found in it do not care which element ends up showing them.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="../inline/web-map.html">Inline</a>
+        <a href="web-map.html" aria-current="page">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html" aria-current="page">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 26rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/web-map.html" title="A painting as a map from remote MapML in a web-map element, rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The linked figures arrive in the layer's shadow root, inside a
+            <code>&lt;map&gt;</code> that keeps its chrome in another one, and are still
+            ordinary links to tab through.
+          </p>
+        </div>
+      </article>
+
+      <article class="example" data-unavailable>
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map example-unavailable">
+          <p>
+            MapLibre renders Web Mercator only, and in WebKit the customized built-in
+            <code>&lt;map&gt;</code> does not upgrade — no projection, no root element, and
+            nothing in the page to fall back to.
+          </p>
+        </div>
+        <div class="example-description">
+          <p>
+            The most fragile of the four cells, and the one worth knowing about before
+            shipping it.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/web-map.html" title="A painting as a map from remote MapML in a web-map element, rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Both root elements share one viewer here, so the TMS row flip, the zoom-ranged
+            features and the link handling are the same code in this frame as in the other
+            three cells.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        Related: <a href="../../maps/">TMS maps</a> uses the same attribute on geographic
+        content, where the row flip is the only thing you notice.
+      </p>
+    </footer>
+  </body>
+</html>

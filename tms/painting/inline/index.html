@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Non-geographic image map, inline MapML</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Non-geographic image map, declared inline</h1>
+      <p class="lede">
+        Henri Rousseau's <cite>The Banks of the Bièvre near Bicêtre</cite>, cut into TMS tiles
+        and treated as a map. Nothing in it is on the Earth: WGS84 is being used as a flat
+        coordinate system for a canvas, which is what makes the painting's figures
+        addressable. Each figure is a <code>&lt;map-feature&gt;</code> whose geometry is
+        wrapped in a <code>&lt;map-a&gt;</code>, so the feature <em>is</em> a link — styled
+        link-blue by default, focusable, and announced as a link.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="./" aria-current="page">Inline</a>
+        <a href="../remote/">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./" aria-current="page">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 26rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="A painting as a map, rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The reference implementation of the <code>tms</code> attribute: the same template
+            with the row axis counted from the bottom instead of the top, which is the whole
+            difference between a TMS tile set and a WMTS one.
+          </p>
+        </div>
+      </article>
+
+      <article class="example" data-unavailable>
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map example-unavailable">
+          <p>
+            MapLibre renders Web Mercator only. The viewer warns that the
+            <code>WGS84</code> projection is unsupported and falls back to
+            <code>OSMTILE</code>, which no amount of tiles of a painting can survive.
+          </p>
+        </div>
+        <div class="example-description">
+          <p>
+            The gap is the finding: a map of something that is not the Earth needs a renderer
+            that will accept a coordinate system it was given rather than one it assumes.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="A painting as a map, rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Two features occupy the same girl: one for zooms 2 to 4, one for 5 to 8. Only one
+            of them is ever drawn, ever hit-tested and ever a tab stop — the same detail that
+            decides what a screen reader finds at each scale.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <h2>What to try</h2>
+      <ul>
+        <li>
+          Tab into the map and onto <em>Girl</em>, <em>Boy</em> or <em>Parents</em>, then press
+          Enter. The children's links are fragments —
+          <code>href="#5,-158.518400,-74.697610"</code> — so they navigate <em>within</em> this
+          map, zooming to a place in the painting rather than leaving it.
+        </li>
+        <li>
+          Zoom in past 5 and press Enter on the girl again: it is a different feature now, and
+          its <code>&lt;map-a href="https://example.org/" type="text/html"&gt;</code> leaves for
+          a document. Same figure, different representation, different behaviour.
+        </li>
+        <li>
+          Zoom past 4, where the tiles run out and the image is scaled instead — a declarative
+          version of a responsive image that the layer, not the page, decides.
+        </li>
+      </ul>
+      <p>
+        The tiles come from
+        <a href="https://maps4html.org/TiledArt-Rousseau/">TiledArt-Rousseau</a> and are served
+        <a href="https://wiki.osgeo.org/wiki/Tile_Map_Service_Specification">TMS</a>-style,
+        which is what the bare <code>tms</code> attribute on the
+        <code>&lt;map-link rel="tile"&gt;</code> declares.
+      </p>
+    </footer>
+  </body>
+</html>

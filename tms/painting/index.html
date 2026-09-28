@@ -1,92 +1,92 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Painting Example</title>
-    <script type="module" src="../../dist/MapML-OpenLayers/dist/mapml-ol.js"></script>
-    <link rel="stylesheet" href="../../global.css">
-    <style>
-      body {
-        padding: 0 1rem;
-      }
-      mapml-viewer:defined {
-       height: 65%;
-      }
-    </style>
-    <style>
-      .map-a {
-        fill: green;
-      }
-    </style>
+    <title>Non-geographic image map</title>
+    <script src="../../templates/experiment.js"></script>
   </head>
   <body>
-      <p>This example illustrates a few features of the &lt;mapml-viewer&gt;, as well as some concepts from MapML that it supports:</p>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../index.html">Experiments</a></p>
+      <h1>Non-geographic image map</h1>
+      <p class="lede">
+        Henri Rousseau's <cite>The Banks of the Bièvre near Bicêtre</cite>, cut into
+        <a href="https://wiki.osgeo.org/wiki/Tile_Map_Service_Specification">TMS</a> tiles and
+        treated as a map. Nothing in it is on the Earth: WGS84 is being used as a flat
+        coordinate system for a canvas, which is what makes the figures in the painting
+        addressable. Each figure is a <code>&lt;map-feature&gt;</code> whose geometry is
+        wrapped in a <code>&lt;map-a&gt;</code>, so the feature <em>is</em> a link — link-blue
+        by default, focusable, announced as a link — and the girl on the path is two features,
+        one for the zooms where she is a shape and another for the zooms where she is a person.
+      </p>
+    </header>
+
+    <main class="experiment-body">
+      <table class="variant-matrix">
+        <caption class="visually-hidden">Content type by root element</caption>
+        <thead>
+          <tr>
+            <td></td>
+            <th scope="col"><code>&lt;mapml-viewer&gt;</code></th>
+            <th scope="col"><code>&lt;map is="web-map"&gt;</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Inline</th>
+            <td><a href="inline/">All three implementations</a></td>
+            <td><a href="inline/web-map.html">All three implementations</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Remote</th>
+            <td><a href="remote/">All three implementations</a></td>
+            <td><a href="remote/web-map.html">All three implementations</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        The remote variant splits the work the way a collection would publish it: the tiled
+        artwork is one document, the figures identified in it are another, and the page only
+        names them. It is also where the <code>tms</code> attribute has to be spelled
+        <code>tms="tms"</code>, because remote MapML is parsed as XML.
+      </p>
+      <p>
+        MapML-MapLibre has no column in any of the four cells: it renders Web Mercator only,
+        warns that <code>WGS84</code> is unsupported and falls back to <code>OSMTILE</code>.
+        A map of something that is not the Earth needs a renderer that will accept the
+        coordinate system it is given rather than assume one.
+      </p>
+      <p>
+        What the four cells are for, between them:
+      </p>
       <ul>
-        <li>Making whole features into map links: &lt;map-geometry&gt;&lt;map-a href="..."&gt;...&lt;/map-a&gt;&lt;/map-geometry&gt;</li>
-        <li>Linking to a location within the current map using a URL fragment like href="#zoom,longitude,latitude"</li>
-        <li>Different representations of the same feature at different zoom levels / scales.</li>
-        <li>Declarative scaling of features and tiles beyond their 'native' zoom level, to support extremely responsive images (&lt;map-meta name="zoom" content="min=0,max=7"&gt;)</li>
-        <li>Default link style for map-a element (hyperlink <a href="#">blue</a>)</li>
-        <li>Support for the <a href="https://wiki.osgeo.org/wiki/Tile_Map_Service_Specification">tms</a> link attribute: &lt;link rel="tile" tms tref="..."&gt;</li>
+        <li>
+          <strong>TMS tiles</strong> — <code>&lt;map-link tms rel="tile"&gt;</code>, one
+          attribute that counts tile rows from the bottom instead of the top.
+        </li>
+        <li>
+          <strong>A whole feature as a link</strong> —
+          <code>&lt;map-geometry&gt;&lt;map-a href="…"&gt;…&lt;/map-a&gt;&lt;/map-geometry&gt;</code>,
+          including <code>href="#zoom,longitude,latitude"</code>, which navigates within the
+          map it is in rather than leaving the page.
+        </li>
+        <li>
+          <strong>Different representations at different scales</strong> — two features for
+          the same girl, each with its own zoom range, only ever one of them drawn, hit-tested
+          or focusable.
+        </li>
+        <li>
+          <strong>Declarative scaling past the last tile</strong> —
+          <code>&lt;map-meta name="zoom" content="min=0,max=7"&gt;</code> over a tile set that
+          stops at 4: a responsive image the layer decides about, not the page.
+        </li>
       </ul>
-      <mapml-viewer projection="WGS84" zoom="2" lon="-111.062839" lat="-8.059046" controls controlslist="noscale">
-        <map-layer label="Painting" checked>
-          <map-meta name="zoom" content="min=0,max=7"></map-meta>
-          <map-extent units="WGS84" checked hidden>
-              <map-input  name="zoomLevel" type="zoom" value="1" min="0" max="4"></map-input>
-              <map-input  name="row" type="location" axis="row" units="tilematrix" min="0" max="2"></map-input>
-              <map-input  name="col" type="location" axis="column" units="tilematrix" min="0" max="2"></map-input>
-              <map-link tms rel="tile" tref="https://maps4html.org/TiledArt-Rousseau/TheBanksOfTheBièvreNearBicêtre/{zoomLevel}/{col}/{row}.png"></map-link>
-          </map-extent>
-          </map-layer>
-          <map-layer label="People" checked>
-            <map-meta name="projection" content="WGS84"></map-meta>
-            <map-feature id="girl2" class="child" zoom="2" min="2" max="4">
-              <map-featurecaption>Girl - zoom=2</map-featurecaption>
-              <map-geometry>
-                <map-a href="#5,-158.518400,-74.697610">
-                  <map-polygon>
-                    <map-coordinates>-158.561948 -69.558455 -159.440739 -70.832538 -162.384689 -75.709198 -160.890744 -78.916371 -159.371228 -80.304936 -154.563449 -79.751115 -157.683157 -69.646323 -158.561948 -69.558455</map-coordinates>
-                  </map-polygon>
-                </map-a>
-              </map-geometry>
-              <map-properties></map-properties>
-            </map-feature>
-            <map-feature id="girl5" class="child" zoom="5" min="5" max="8">
-              <map-featurecaption>Girl - zoom=5</map-featurecaption>
-              <map-geometry>
-                <map-a href="https://example.org/" type="text/html">
-                  <map-polygon>
-                    <map-coordinates>-158.561948 -69.558455 -159.440739 -70.832538 -162.384689 -75.709198 -160.890744 -78.916371 -159.371228 -80.304936 -154.563449 -79.751115 -157.683157 -69.646323 -158.561948 -69.558455</map-coordinates>
-                  </map-polygon>
-                </map-a>
-              </map-geometry>
-              <map-properties></map-properties>
-            </map-feature>
-            <map-feature id="boy" class="child" zoom="5" max="8">
-              <map-featurecaption>Boy</map-featurecaption>
-              <map-geometry>
-                <map-a href="#6,-161.021739,-66.656315">
-                  <map-polygon>
-                    <map-coordinates>-159.659797 -70.786203 -159.659797 -62.175162 -162.296170 -62.175162 -162.296170 -70.786203 -159.659797 -70.786203</map-coordinates>
-                  </map-polygon>
-                </map-a>
-              </map-geometry>
-              <map-properties></map-properties>
-            </map-feature>
-            <map-feature id="couple" class="parents" zoom="5" max="8">
-              <map-featurecaption>Parents</map-featurecaption>
-              <map-geometry>
-                <map-a href="#6,-157.815362,-54.619839">
-                  <map-polygon>
-                    <map-coordinates>-160.012339 -51.105128 -155.706263 -51.280864 -155.047170 -58.969293 -160.363856 -58.749623 -160.012339 -51.105128</map-coordinates>
-                  </map-polygon>
-                </map-a>
-              </map-geometry>
-              <map-properties></map-properties>
-            </map-feature>
-        </map-layer>
-      </mapml-viewer>
-    </body>
+      <p>
+        Related: <a href="../maps/">TMS maps</a> applies the same attribute to geographic
+        content, and <a href="../../progressive-enhancement/">Progressive enhancement</a> is
+        the <code>&lt;area&gt;</code>-based image map this is the opposite number of.
+      </p>
+    </main>
+  </body>
 </html>

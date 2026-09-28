@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Non-geographic image map, remote, &lt;map is="web-map"&gt; — MapML-OpenLayers</title>
+    <script src="../../../../templates/experiment.js" data-impl="openlayers"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">A painting as a non-geographic map, from remote MapML in a web-map element, rendered by MapML-OpenLayers</h1>
+      <div class="example-map">
+        <!-- code -->
+        <map is="web-map" projection="WGS84" zoom="2" lon="-143" lat="-55" controls controlslist="noscale">
+          <map-caption>The Banks of the Bièvre near Bicêtre, by Henri Rousseau, as a map</map-caption>
+          <map-layer src="painting.mapml" checked></map-layer>
+          <map-layer src="people.mapml" checked></map-layer>
+        </map>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>

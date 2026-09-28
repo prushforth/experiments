@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Non-geographic image map, remote — MapML.js (Leaflet)</title>
+    <script src="../../../../templates/experiment.js" data-impl="leaflet"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">A painting as a non-geographic map, from remote MapML, rendered by MapML.js</h1>
+      <div class="example-map">
+        <!-- code -->
+        <mapml-viewer projection="WGS84" zoom="2" lon="-143" lat="-55" controls controlslist="noscale">
+          <map-caption>The Banks of the Bièvre near Bicêtre, by Henri Rousseau, as a map</map-caption>
+          <map-layer src="painting.mapml" checked></map-layer>
+          <map-layer src="people.mapml" checked></map-layer>
+        </mapml-viewer>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>
