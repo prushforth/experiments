@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Локалізований інтерфейс мапи, віддалений MapML — MapML-OpenLayers</title>
+    <script src="../../../../templates/experiment.js" data-impl="openlayers"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">Мапа України з віддаленого MapML, український інтерфейс, MapML-OpenLayers</h1>
+      <!-- code -->
+      <div class="example-map">
+        <script src="../../uk-locale.js"></script>
+        <mapml-viewer projection="OSMTILE" zoom="6" lat="49.066668" lon="31.135254" controls controlslist="search static" static>
+          <map-caption>Мапа України</map-caption>
+          <map-layer src="un-clearmap.mapml" checked></map-layer>
+        </mapml-viewer>
+      </div>
+      <!-- /code -->
+    </main>
+  </body>
+</html>

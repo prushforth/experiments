@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Localization of map UI, inline MapML, &lt;map is="web-map"&gt;</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Localization of map UI, declared inline in a <code>&lt;map is="web-map"&gt;</code></h1>
+      <p class="lede">
+        The same Ukrainian chrome, hosted by the customized built-in <code>&lt;map&gt;</code>.
+        Worth its own page because the chrome has to be built somewhere else: a
+        <code>&lt;map&gt;</code> cannot have a shadow root of its own, so the viewer puts its
+        controls on a child element instead. If the buttons, the layer control and the context
+        menus are still in Ukrainian, the locale lookup followed the map rather than the shadow
+        root it usually lives in.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="web-map.html" aria-current="page">Inline</a>
+        <a href="../remote/web-map.html">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html" aria-current="page">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/web-map.html" title="A web-map element with a Ukrainian user interface, rendered by MapML.js" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            <code>web-map.js</code> is a near-duplicate of the autonomous viewer upstream,
+            including its own copy of the <code>:lang()</code> lookup — so this frame is a real
+            second implementation of the same rule, not the same code twice.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/web-map.html" title="A web-map element with a Ukrainian user interface, rendered by MapML-MapLibre" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Customized built-ins are not implemented in WebKit, so in Safari this frame stays an
+            inert <code>&lt;map&gt;</code>: no map, and no chrome to translate. Everywhere else it
+            resolves Ukrainian from its own bundle, as in the
+            <a href="./"><code>&lt;mapml-viewer&gt;</code> variant</a>.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/web-map.html" title="A web-map element with a Ukrainian user interface, rendered by MapML-OpenLayers" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            One viewer implementation shared by both root elements, and the locale is resolved
+            from the element the author wrote — which is the <code>&lt;map&gt;</code> here and the
+            <code>&lt;mapml-viewer&gt;</code> next door. Asking the wrong element for
+            <code>:lang()</code> is exactly the bug this page would catch.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        <code>:lang()</code> is inherited, so no element here carries a <code>lang</code> attribute
+        of its own: the map is Ukrainian because the <em>document</em> is, which is the behaviour an
+        author would expect from any other localized widget. Put a
+        <code>&lt;map is="web-map" lang="fr"&gt;</code> inside an English page and only that map
+        turns French.
+      </p>
+      <p>
+        The <a href="../remote/web-map.html">remote variant</a> moves the layer's name out of the
+        page and into the layer's own document, which is the only part of a map's text a server can
+        negotiate.
+      </p>
+    </footer>
+  </body>
+</html>

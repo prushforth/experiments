@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Localization of map UI, remote MapML, &lt;map is="web-map"&gt;</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Localization of map UI, remote MapML in a <code>&lt;map is="web-map"&gt;</code></h1>
+      <p class="lede">
+        A <code>&lt;map&gt;</code> with one URL in it, chrome the viewer has to build outside its
+        own shadow root, and a layer name that arrives from a second shadow root entirely. Three
+        places the text could quietly come out English; if the whole control is still Ukrainian,
+        none of them did.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="../inline/web-map.html">Inline</a>
+        <a href="web-map.html" aria-current="page">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html" aria-current="page">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/web-map.html" title="A web-map element with a Ukrainian user interface and a remote layer, rendered by MapML.js" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Two shadow roots: the one the <code>&lt;map&gt;</code> builds for its chrome, and the
+            one the layer keeps its fetched document in. The layer control is written into the
+            first and reads its label out of the second.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/web-map.html" title="A web-map element with a Ukrainian user interface and a remote layer, rendered by MapML-MapLibre" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Customized built-ins are not implemented in WebKit, so in Safari this frame stays an
+            inert <code>&lt;map&gt;</code> and never fetches the document at all.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/web-map.html" title="A web-map element with a Ukrainian user interface and a remote layer, rendered by MapML-OpenLayers" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The hardest cell of the matrix, and the most ordinary-looking result: a layer named in
+            Ukrainian by its server, inside a control named in Ukrainian by the page, inside a
+            <code>&lt;map&gt;</code> element that cannot host either of them itself.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        The layer name comes from <code>&lt;map-title&gt;</code> in
+        <a href="leaflet/un-clearmap.mapml">un-clearmap.mapml</a>; everything else in the control —
+        the sub-layer's name, the opacity slider, both context menus — comes from the page's
+        <code>&lt;map-options&gt;</code> table, or, in MapML-MapLibre, from its own bundled
+        Ukrainian.
+      </p>
+    </footer>
+  </body>
+</html>

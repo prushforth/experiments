@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Локалізований інтерфейс мапи — MapML-OpenLayers</title>
+    <script src="../../../../templates/experiment.js" data-impl="openlayers"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">Мапа України з українським інтерфейсом, MapML-OpenLayers</h1>
+      <!-- code -->
+      <div class="example-map">
+        <script src="../../uk-locale.js"></script>
+        <mapml-viewer projection="OSMTILE" zoom="6" lat="49.066668" lon="31.135254" controls controlslist="search static" static>
+          <map-caption>Мапа України</map-caption>
+          <map-layer label="Картографічний сервіс веб-тайлів Організації Об'єднаних Націй" checked>
+            <map-link rel="suggestions" tref="https://photon.komoot.io/api?q={searchTerms}"></map-link>
+            <map-link rel="search" tref="https://photon.komoot.io/api?q={searchTerms}"></map-link>
+            <map-link rel="license" href="https://www.un.org/geospatial/mapsgeo/webservices" title="Підготовлено Геопросторовою службою Організації Об'єднаних Націй"></map-link>
+            <map-extent units="OSMTILE" checked>
+              <map-input name="TileMatrix" type="zoom" value="12" min="0" max="12"></map-input>
+              <map-input name="TileCol" type="location" units="tilematrix" axis="column" min="0" max="262144"></map-input>
+              <map-input name="TileRow" type="location" units="tilematrix" axis="row" min="0" max="262144"></map-input>
+              <map-link rel="tile" type="image/png" tref="https://geoservices.un.org/arcgis/rest/services/ClearMap_WebTopo/MapServer/tile/{TileMatrix}/{TileRow}/{TileCol}"></map-link>
+            </map-extent>
+          </map-layer>
+        </mapml-viewer>
+      </div>
+      <!-- /code -->
+    </main>
+  </body>
+</html>

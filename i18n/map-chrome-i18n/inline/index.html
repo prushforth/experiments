@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Localization of map UI, inline MapML</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Localization of map UI, declared inline</h1>
+      <p class="lede">
+        A map is chrome as much as it is content: zoom buttons, a layer control, a context
+        menu, a search box, an opacity slider, and the words a screen reader reads out of all
+        of them. None of that is in the page's markup, so none of it can be translated by
+        translating the page. These three maps are in Ukrainian — a document that says
+        <code>&lt;html lang="uk"&gt;</code> and hands the library a table of Ukrainian strings
+        through <code>&lt;map-options&gt;</code>.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="./" aria-current="page">Inline</a>
+        <a href="../remote/">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./" aria-current="page">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="A map with a Ukrainian user interface, rendered by MapML.js" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The reference implementation reads <code>&lt;map-options&gt;</code> out of
+            <code>&lt;head&gt;</code> exactly once, as the library initializes, and merges it
+            over <code>M.options</code>. The viewer then asks itself whether it matches
+            <code>:lang(fr)</code> or <code>:lang(en)</code> — only those two are bundled — and
+            <code>lang="uk"</code> matches neither, so it falls through to the page's table.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="A map with a Ukrainian user interface, rendered by MapML-MapLibre" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Same language, different source: this implementation bundles Ukrainian alongside
+            English, French, Japanese and Swedish, so <code>:lang(uk)</code> matches a built-in
+            and the page's <code>&lt;map-options&gt;</code> is never consulted here. Worth
+            knowing before concluding that a partial table "worked" — the missing keys would
+            have come from the bundle, not from the page.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="A map with a Ukrainian user interface, rendered by MapML-OpenLayers" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The same two-step as MapML.js, ported: <code>:lang()</code> first, the page's table
+            as the fallback. One viewer implementation serves both root elements, so whatever
+            these strings do here they also do in the
+            <a href="web-map.html"><code>&lt;map is="web-map"&gt;</code> variant</a>.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <h2>What to try</h2>
+      <ul>
+        <li>
+          Each map starts <code>static</code>. Release the lock first — its own button is one of
+          the strings being translated (<code>btnStatic</code>), and while the map is locked it
+          does not take keyboard pan and zoom either.
+        </li>
+        <li>
+          Open the layer control. The layer is named by its <code>label</code> attribute, which
+          is page content and always was translatable; its sub-layer is <em>not</em> named by
+          the page at all, so the control has to call it something —
+          <code>dfExtent</code>, "Підтип шару".
+        </li>
+        <li>
+          Open each of the three context menus: on the map, on the layer, and on the sub-layer.
+          That is the largest block of chrome text a map has, and none of it is in the DOM until
+          you ask for it.
+        </li>
+        <li>
+          Hover the zoom buttons, the reload button, the fullscreen button and the search box
+          for their tooltips; they are the same strings a screen reader announces as accessible
+          names.
+        </li>
+        <li>
+          Search for somewhere — <span lang="uk">Київ</span>, <span lang="uk">Львів</span>,
+          <span lang="uk">Одеса</span>. The placeholder, the close button and the "no name" label
+          for an unnamed result are all localized; the results themselves come from the gazetteer
+          and are in whatever language it returns.
+        </li>
+        <li>
+          Look for the bits that are still English. All three leave the layer control's own
+          toggle button ("Layers") and the scale bar's reading ("0.8 centimeters to 100
+          kilometers") untranslated — there is no key for either in the table. MapML.js also
+          labels its reload button <code>aria-label="Reload"</code> over the localized tooltip,
+          and names the map landmark "Interactive map"; MapML-MapLibre names it "Map". A screen
+          reader user gets those in English whatever the page says.
+        </li>
+        <li>
+          Compare with the <a href="../remote/">remote variant</a>, where the layer's name arrives
+          from its own document rather than from the page.
+        </li>
+      </ul>
+      <p>
+        <code>&lt;map-options&gt;</code> is not part of the MapML vocabulary; it is how these
+        implementations let a page set <code>M.options</code> before any map is built. It has to be
+        created by script and appended to <code>&lt;head&gt;</code>, because the HTML parser moves
+        unknown elements written in <code>&lt;head&gt;</code> out into the body — where nothing
+        looks for it. A standard version of this would more likely negotiate the language with the
+        user's browser than have the author state it.
+      </p>
+      <p>
+        Related: <a href="../../rtl/">Right-to-left text</a> is the other half of localizing a map —
+        the strings are only half the problem if the controls are laid out left to right regardless.
+      </p>
+    </footer>
+  </body>
+</html>

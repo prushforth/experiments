@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Localization of map UI, remote MapML</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Localization of map UI, from remote MapML</h1>
+      <p class="lede">
+        The page now says only <code>&lt;map-layer src="un-clearmap.mapml"&gt;</code>, and the
+        layer's name in the control is no longer a <code>label</code> the page wrote — it is the
+        <code>&lt;map-title&gt;</code> of the fetched document. So the text of a map splits in
+        two: the chrome, which the library supplies and the page localizes with
+        <code>&lt;map-options&gt;</code>, and the content, which the server supplies and can
+        therefore negotiate.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="../inline/">Inline</a>
+        <a href="./" aria-current="page">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./" aria-current="page">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="A map with a Ukrainian user interface and a remote layer, rendered by MapML.js" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The layer control builds its label from <code>&lt;map-title&gt;</code> if the document
+            has one, and from the locale's <code>dfLayer</code> — "Шар" — if it does not. Delete
+            the title from the document and the control still names the layer, just less usefully.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="A map with a Ukrainian user interface and a remote layer, rendered by MapML-MapLibre" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The fetched document lives in the layer's shadow root, a different one from the
+            viewer's, and the control has to look into it for the title. The chrome around that
+            title comes from this implementation's own bundled Ukrainian rather than from the
+            page's table.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="A map with a Ukrainian user interface and a remote layer, rendered by MapML-OpenLayers" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The sub-layer inside the fetched document is unnamed on purpose, so the two sources of
+            text sit next to each other in one control: a Ukrainian title from the server, and a
+            Ukrainian <code>dfExtent</code> from the page's table.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <h2>What to try</h2>
+      <ul>
+        <li>
+          Open the layer control and compare it with the <a href="../inline/">inline variant</a>.
+          The chrome is identical; only where the layer's name came from has changed.
+        </li>
+        <li>
+          Open the layer's context menu and the sub-layer's. Every item in them is chrome, so this
+          is the part of a map a server cannot localize for you however good its content
+          negotiation is.
+        </li>
+        <li>
+          View the source of <a href="leaflet/un-clearmap.mapml">un-clearmap.mapml</a>. The
+          attribution and the search service travel with the layer too, so a layer arrives already
+          named, already credited, and already searchable.
+        </li>
+        <li>
+          Release the <code>static</code> lock, then search for
+          <span lang="uk">Харків</span> or <span lang="uk">Чернівці</span>.
+        </li>
+      </ul>
+      <p>
+        These three documents are byte-identical copies, one per implementation folder, so that each
+        frame fetches a same-origin document of its own and nothing is shared but the idea.
+      </p>
+    </footer>
+  </body>
+</html>
