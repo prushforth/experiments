@@ -3,104 +3,70 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Ottawa Restaurants</title>
-    <script type="module" src="../../dist/MapML-OpenLayers/dist/mapml-ol.js"></script>
-    <link rel="stylesheet" href="../../global.css">
-    <script src="../../shared/script/photon-search-handler.js"></script>
+    <title>Restaurant locations in Ottawa</title>
+    <script src="../../templates/experiment.js"></script>
   </head>
   <body>
-<!--    <mapml-viewer projection="CBMTILE" zoom="17" lat="45.4069740362364" lon="-75.70155300710053" >
-      <map-layer label="CBMT" src="/experiments/refactoring-temporary/cbmtile-cbmt.mapml" checked hidden></map-layer>-->
-    <mapml-viewer projection="OSMTILE" zoom="14" lat="45.406314" lon="-75.6883335" controls controlslist="geolocation search">
-      <map-caption>Ottawa Restaurants Map</map-caption>
-      <!-- the osm.mapml includes search and suggestions links to photon,
-           and this page relies on the default search/suggestions handler -->
-      <map-layer label="OpenStreetMap" src="../../refactoring-temporary/osm.mapml" checked hidden></map-layer>
-      <map-layer id="restaurant" label="Restaurants" checked>
-        <map-meta name="cs" content="gcrs" ></map-meta>
-        <map-meta name="extent" content="top-left-easting=-8433179, top-left-northing=5689316, bottom-right-easting=-8420968, bottom-right-northing=5683139"></map-meta>
-        <map-extent units="OSMTILE" checked >
-           <map-select id="restaurants" name="cusine">
-              <map-option value="restaurants" selected>All cuisines</map-option>
-              <map-option value="african">African</map-option>
-              <map-option value="asian">Asian</map-option>
-              <map-option value="cajun">Cajun</map-option>
-              <map-option value="indian">Indian</map-option>
-              <map-option value="italian">Italian</map-option>
-              <map-option value="mexican">Mexican</map-option>
-            </map-select>
-            <map-link tref="../../shared/restaurants/{cusine}.mapml" rel="features"></map-link>
-          </map-extent>
-      </map-layer>
-    </mapml-viewer>
-<!-- <script>
-  const map = document.getElementById('map');
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../index.html">Experiments</a></p>
+      <h1>Restaurant locations in Ottawa</h1>
+      <p class="lede">
+        A layer of restaurants over a basemap, filtered by cuisine. Everything a pointer user
+        does here is markup that a keyboard and a screen reader can reach as well: the
+        restaurants are <code>&lt;map-feature&gt;</code> elements fetched through a
+        <code>&lt;map-link rel="features"&gt;</code> template, each a tab stop named by its
+        <code>&lt;map-featurecaption&gt;</code> and describable by its
+        <code>&lt;map-properties&gt;</code> table; the cuisine filter is a
+        <code>&lt;map-select&gt;</code> in the layer control, which is an ordinary
+        <code>&lt;select&gt;</code> as far as assistive technology is concerned; and the
+        basemap layer is <code>hidden</code>, so the layer control offers only the layer there
+        is something to do with.
+      </p>
+    </header>
 
-  // Keep a reference to the results layer so we can replace it on each search
-  let resultsLayer = null;
-
-  map.addEventListener('mapsearch', (e) => {
-    e.preventDefault(); // suppress the default results dropdown
-
-    // Clear the suggestions list
-    const results = map._map._container.querySelector('.mapml-search-results');
-    if (results) results.innerHTML = '';
-
-    // Remove the previous results layer
-    if (resultsLayer) {
-      resultsLayer.remove();
-      resultsLayer = null;
-    }
-
-    // Merge GeoJSON features from all responding layers into one collection
-    const features = [];
-    for (const { data } of e.detail.responses) {
-      if (data?.features) features.push(...data.features);
-    }
-    if (features.length === 0) return;
-
-    const fc = { type: 'FeatureCollection', features };
-
-    // geojson2mapml converts to <map-feature> elements and adds the layer
-    resultsLayer = map.geojson2mapml(fc, {
-      label: 'Search Results',
-      projection: 'OSMTILE',
-      caption: (feature) => {
-        const p = feature.properties || {};
-        const parts = [p.name];
-        for (const k of ['city', 'county', 'state', 'country']) {
-          if (p[k] && p[k] !== p.name) parts.push(p[k]);
-        }
-        return parts.filter(Boolean).join(', ') || 'Unnamed';
-      },
-      properties: (feature) => {
-        const p = feature.properties || {};
-        const dl = document.createElement('dl');
-        if (p.name) {
-          dl.innerHTML += `<dt>Name</dt><dd>${p.name}</dd>`;
-        }
-        if (p.osm_key) {
-          dl.innerHTML += `<dt>Type</dt><dd>${p.osm_key}${p.osm_value ? ': ' + p.osm_value : ''}</dd>`;
-        }
-        if (p.city) dl.innerHTML += `<dt>City</dt><dd>${p.city}</dd>`;
-        if (p.state) dl.innerHTML += `<dt>State</dt><dd>${p.state}</dd>`;
-        if (p.country) dl.innerHTML += `<dt>Country</dt><dd>${p.country}</dd>`;
-        return dl;
-      }
-    });
-
-    // Navigate to the first result
-    const first = features[0];
-    const bbox = first.bbox
-      || (first.properties?.extent?.length === 4 ? first.properties.extent : null);
-    if (bbox) {
-      const [west, south, east, north] = bbox;
-      map.zoomTo(south, west, north - south, east - west);
-    } else if (first.geometry?.coordinates) {
-      const [lon, lat] = first.geometry.coordinates;
-      map.zoomTo(lat, lon, 0, 0);
-    }
-  });
-</script> -->
+    <main class="experiment-body">
+      <table class="variant-matrix">
+        <caption class="visually-hidden">Content type by root element</caption>
+        <thead>
+          <tr>
+            <td></td>
+            <th scope="col"><code>&lt;mapml-viewer&gt;</code></th>
+            <th scope="col"><code>&lt;map is="web-map"&gt;</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Inline</th>
+            <td><a href="inline/">All three implementations</a></td>
+            <td><a href="inline/web-map.html">All three implementations</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Remote</th>
+            <td><a href="remote/">All three implementations</a></td>
+            <td><a href="remote/web-map.html">All three implementations</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        The content type matters to more than the parser here. Inline, the
+        <code>&lt;map-select&gt;</code> and its template are children of the page. Remote, they
+        are children of a fetched document that the layer keeps in a shadow root, and the
+        layer control has to reach across that boundary to build the same form controls — a
+        place where a filter has more than once gone missing without the map looking any
+        different.
+      </p>
+      <p>
+        All four cells request the same feature documents from <code>shared/restaurants/</code>
+        — one per cuisine, plus
+        <a href="../../shared/restaurants/restaurants.mapml">restaurants.mapml</a> for all of
+        them — so what varies is only how the map is declared, never the data.
+      </p>
+      <p>
+        Related: <a href="../closest-restaurants/">Restaurant locations near Dows Lake</a>
+        asks what "nearest" should mean to a keyboard user, and
+        <a href="../feature-index/">Feature index</a> announces what lies under the map's
+        centre.
+      </p>
+    </main>
   </body>
 </html>

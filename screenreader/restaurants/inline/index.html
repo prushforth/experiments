@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Restaurant locations in Ottawa, inline MapML</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Restaurant locations in Ottawa, declared inline</h1>
+      <p class="lede">
+        The restaurant layer is written in the page: a <code>&lt;map-select&gt;</code> naming
+        the <code>cuisine</code> variable, and a <code>&lt;map-link rel="features"&gt;</code>
+        whose <code>tref</code> spends it. Tab into a map and the features are reachable one
+        by one; each announces its <code>&lt;map-featurecaption&gt;</code>, and Enter opens the
+        properties table. Change the cuisine in the layer control and the template is
+        re-requested — the same interaction, from the keyboard, that a pointer user gets from
+        the <code>&lt;select&gt;</code>.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="./" aria-current="page">Inline</a>
+        <a href="../remote/">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./" aria-current="page">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="Restaurant locations in Ottawa rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The reference implementation. Each feature is an SVG <code>&lt;g&gt;</code> in the
+            document, so the focus order, the accessible name and the popup are the browser's
+            own — the map is a document, not a picture of one.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="Restaurant locations in Ottawa rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            MapLibre draws to a canvas, so the tab stops are a parallel layer of focusable
+            elements the renderer keeps in step with what is on screen. What the reader hears
+            should not give that away.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="Restaurant locations in Ottawa rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Also a canvas renderer, and also a proxy per in-view feature: one tab stop takes
+            you into the features, the arrow keys move between them nearest-first, and Escape
+            returns to the map.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <h2>Trying it</h2>
+      <p>
+        With the keyboard alone: Tab to a map, Tab again to reach the features, arrow between
+        them, Enter for the properties, Escape back to the map, then Tab on to the layer
+        control and its cuisine <code>&lt;select&gt;</code>. Nothing here needs a pointer, and
+        nothing needs the page's script.
+      </p>
+      <p>
+        The basemap layer carries <code>hidden</code>, so it never appears in the layer
+        control: it is scenery, not a choice, and a reader tabbing through the control should
+        not have to dismiss it. Its <code>&lt;map-extent&gt;</code> is <code>hidden</code> too.
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Restaurant locations in Ottawa, inline MapML, &lt;map is="web-map"&gt;</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Restaurant locations in Ottawa, declared inline in a <code>&lt;map is="web-map"&gt;</code></h1>
+      <p class="lede">
+        The same layers, the same cuisine filter, hosted by the customized built-in
+        <code>&lt;map is="web-map"&gt;</code> instead of <code>&lt;mapml-viewer&gt;</code>. The
+        root element is the one part of this the reader should never notice: the features are
+        the same tab stops with the same names, and the layer control is the same set of form
+        controls.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="web-map.html" aria-current="page">Inline</a>
+        <a href="../remote/web-map.html">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html" aria-current="page">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/web-map.html" title="Restaurant locations in Ottawa in a web-map element, rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            An <code>&lt;map&gt;</code> cannot host a shadow root, so the map chrome is built
+            on a child <code>&lt;div class="mapml-web-map"&gt;</code>. The features and the
+            layer control are otherwise identical to the <code>&lt;mapml-viewer&gt;</code>
+            page.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/web-map.html" title="Restaurant locations in Ottawa in a web-map element, rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Customized built-in elements are not implemented in WebKit, so in Safari this
+            frame stays an inert <code>&lt;map&gt;</code> and the note is the only thing to
+            read. Elsewhere it is the same map as the frame beside it.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/web-map.html" title="Restaurant locations in Ottawa in a web-map element, rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            One implementation of the viewer serves both root elements here, so
+            <code>&lt;map is="web-map"&gt;</code> gets the feature tab stops, the
+            <code>&lt;map-select&gt;</code> and the rest without a second code path to keep
+            accessible.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        <code>&lt;map&gt;</code> is a known element, so a browser that does not upgrade it
+        still renders its contents' fallback rather than nothing — which is the subject of
+        <a href="../../../progressive-enhancement/">Progressive enhancement / graceful
+        degradation</a>. Here the point is narrower: the accessibility of the map must not
+        depend on which element hosts it.
+      </p>
+    </footer>
+  </body>
+</html>

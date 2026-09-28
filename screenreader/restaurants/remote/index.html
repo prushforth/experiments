@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Restaurant locations in Ottawa, remote MapML</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Restaurant locations in Ottawa, from remote MapML documents</h1>
+      <p class="lede">
+        The page names two documents and nothing else:
+        <code>&lt;map-layer src="restaurants.mapml"&gt;</code> and the basemap beside it. The
+        cuisine <code>&lt;map-select&gt;</code>, the
+        <code>&lt;map-link rel="features"&gt;</code> template and the layer's own title all
+        arrive from the server, and the layer keeps them in its shadow root — so the layer
+        control has to reach across that boundary to build the same form controls, and the
+        features have to become the same tab stops, as when the markup is in the page.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="../inline/">Inline</a>
+        <a href="./" aria-current="page">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./" aria-current="page">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="Restaurant locations in Ottawa from remote MapML, rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The layer is named in the control by the document's own
+            <code>&lt;map-title&gt;</code>, and its licence link is the document's, not the
+            page's — attribution travels with the data.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="Restaurant locations in Ottawa from remote MapML, rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Remote MapML is parsed as XHTML, so the boolean attributes are spelled out in
+            full — <code>checked="checked"</code>, <code>selected="selected"</code> — and a
+            malformed document is a fatal error rather than something the parser repairs.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="Restaurant locations in Ottawa from remote MapML, rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The <code>tref</code> in the fetched document is relative to that document, not to
+            this page, which is what lets the same <code>restaurants.mapml</code> be served
+            from anywhere and still find its feature documents.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        Only the restaurant layer is worth serving remotely for the purposes of this
+        experiment; the basemap is a shared document
+        (<a href="../../../refactoring-temporary/osm.mapml">osm.mapml</a>) in both variants,
+        because it is <code>hidden</code> and there is nothing in it for a reader to reach.
+      </p>
+      <p>
+        The feature documents themselves — <code>african.mapml</code> and the rest — are
+        remote in both content types: what <em>rel="features"</em> fetches is always a
+        document. The axis on this page is whether the <em>layer</em> is one too.
+      </p>
+    </footer>
+  </body>
+</html>

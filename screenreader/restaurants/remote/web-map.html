@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Restaurant locations in Ottawa, remote MapML, &lt;map is="web-map"&gt;</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Restaurant locations in Ottawa, remote MapML in a <code>&lt;map is="web-map"&gt;</code></h1>
+      <p class="lede">
+        The same two <code>&lt;map-layer src&gt;</code> declarations, hosted by the customized
+        built-in <code>&lt;map&gt;</code>. These frames load the very same
+        <code>restaurants.mapml</code> as the <code>&lt;mapml-viewer&gt;</code> page beside
+        them — a MapML document says nothing about the element that will host it, which is why
+        the root element is a variant of the page and not of the data.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="../inline/web-map.html">Inline</a>
+        <a href="web-map.html" aria-current="page">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html" aria-current="page">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/web-map.html" title="Restaurant locations in Ottawa from remote MapML in a web-map element, rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Two shadow roots are in play: the one the <code>&lt;map&gt;</code> puts its chrome
+            in, and the one each layer keeps its fetched document in. Neither should be
+            visible in the reading order.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/web-map.html" title="Restaurant locations in Ottawa from remote MapML in a web-map element, rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            In WebKit, where customized built-ins are not implemented, this frame stays an
+            inert <code>&lt;map&gt;</code> — and because the layers are remote, there is not
+            even markup in the page to fall back to.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/web-map.html" title="Restaurant locations in Ottawa from remote MapML in a web-map element, rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The viewer is one implementation shared by both root elements, so the
+            <code>&lt;map-select&gt;</code> that has to be found inside the layer's shadow
+            root is found the same way here as in the <code>&lt;mapml-viewer&gt;</code> frame.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        This is the cell with the least markup in the page and the most work for the
+        implementation: an element the browser only partly understands, hosting layers whose
+        content it has not fetched yet. If the features are still tab stops with names and the
+        cuisine filter is still a <code>&lt;select&gt;</code>, the accessibility of MapML is
+        in the vocabulary rather than in any one way of writing it down.
+      </p>
+    </footer>
+  </body>
+</html>
