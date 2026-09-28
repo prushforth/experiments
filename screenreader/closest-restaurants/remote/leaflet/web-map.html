@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Closest restaurants, remote, &lt;map is="web-map"&gt; — MapML.js (Leaflet)</title>
+    <script src="../../../../templates/experiment.js" data-impl="leaflet"></script>
+    <link rel="stylesheet" href="../../search.css">
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">Restaurants near a searched place, from remote MapML in a web-map element, rendered by MapML.js</h1>
+      <!-- code -->
+      <div class="example-controls">
+        <form class="place-search" role="search">
+          <label for="query">Find a place in Canada</label>
+          <input type="search" id="query" name="query" autocomplete="off" placeholder="Dows Lake">
+          <button type="submit">Search</button>
+          <ul id="results" class="search-results"></ul>
+        </form>
+        <button type="button" id="add-restaurants">Add restaurants</button>
+        <output id="results-count" for="query"></output>
+      </div>
+      <div class="example-map">
+        <map is="web-map" projection="OSMTILE" zoom="4" lat="58.276703" lon="-103.710938" controls>
+          <map-caption>Places in Canada, and the restaurants near the one you choose</map-caption>
+          <map-layer label="OpenStreetMap" src="../../../../refactoring-temporary/osm.mapml" checked></map-layer>
+        </map>
+      </div>
+      <template id="restaurant-layer">
+        <map-layer id="restaurants" src="restaurants.mapml" checked></map-layer>
+      </template>
+      <script src="../../search.js" defer></script>
+      <!-- /code -->
+    </main>
+  </body>
+</html>

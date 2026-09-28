@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Restaurant locations near Dows Lake, remote MapML</title>
+    <script src="../../../templates/experiment.js"></script>
+    <style>
+      /* Room for the control bar above each framed map. */
+      .example-map {
+        height: clamp(20rem, 55vh, 32rem);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Restaurant locations near Dows Lake, from remote MapML</h1>
+      <p class="lede">
+        The same search and the same runtime layer, except that the restaurant layer in the
+        <code>&lt;template&gt;</code> is one line —
+        <code>&lt;map-layer src="restaurants.mapml"&gt;</code> — and everything else about it
+        arrives from the server when the reader asks for it. Appending a layer and fetching a
+        layer now happen in that order, so the tab stops appear a moment after the button is
+        pressed rather than with it.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="../inline/">Inline</a>
+        <a href="./" aria-current="page">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./" aria-current="page">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 28rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="Restaurants near a searched place from remote MapML, rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Two layers arrive from documents here — the basemap and the restaurants — and one
+            is built in the browser from GeoJSON. All three end up as the same kind of thing
+            in the layer control.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="Restaurants near a searched place from remote MapML, rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The fetched document names itself with <code>&lt;map-title&gt;</code>, which is
+            why the template does not have to carry a <code>label</code>: a remote layer knows
+            what it is called.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="Restaurants near a searched place from remote MapML, rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The <code>tref</code> inside <code>restaurants.mapml</code> is relative to that
+            document, so the cuisine documents are found from wherever the layer is served —
+            not from wherever it happens to be used.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        A layer that is a URL is a layer a page can offer without knowing anything about it.
+        That is the interesting part of the remote variant here: the page's only claim about
+        the restaurants is where to get them, and it still has to be true that what comes back
+        is reachable by keyboard and named for a screen reader.
+      </p>
+    </footer>
+  </body>
+</html>

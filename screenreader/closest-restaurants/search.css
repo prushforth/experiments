@@ -1,0 +1,63 @@
+/*
+ * The place-search UI of the "closest restaurants" experiment. It lives in the
+ * frame's .example-controls bar rather than floating over the map, so it is in
+ * the reading order ahead of the map it drives and does not cover it.
+ */
+
+.place-search {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.place-search label {
+  font-size: 0.875rem;
+}
+
+.place-search input {
+  font: inherit;
+  font-size: 0.875rem;
+  padding: 0.3rem 0.5rem;
+  min-width: 10rem;
+  flex: 1;
+  border: 1px solid var(--experiment-border);
+  border-radius: 6px;
+}
+
+/* The results drop over the map rather than growing the control bar, which
+   would push the frame's floating View code toolbar onto them. */
+.search-results {
+  position: absolute;
+  z-index: 1001;
+  inset-block-start: calc(100% + 0.25rem);
+  inset-inline-start: 0;
+  width: min(24rem, 100%);
+  display: grid;
+  gap: 0.25rem;
+  max-height: 12rem;
+  overflow: auto;
+  margin: 0;
+  padding: 0.25rem;
+  list-style: none;
+  background: #fff;
+  border: 1px solid var(--experiment-border);
+  border-radius: 6px;
+  box-shadow: rgb(0 0 0 / 30%) 0 1px 4px -1px;
+}
+
+.search-results:empty {
+  display: none;
+}
+
+.search-results button {
+  width: 100%;
+  text-align: start;
+}
+
+.result-description {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--experiment-muted);
+}

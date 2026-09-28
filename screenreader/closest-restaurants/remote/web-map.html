@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Restaurant locations near Dows Lake, remote MapML, &lt;map is="web-map"&gt;</title>
+    <script src="../../../templates/experiment.js"></script>
+    <style>
+      /* Room for the control bar above each framed map. */
+      .example-map {
+        height: clamp(20rem, 55vh, 32rem);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Restaurant locations near Dows Lake, remote MapML in a <code>&lt;map is="web-map"&gt;</code></h1>
+      <p class="lede">
+        The cell with the least in the page: a <code>&lt;map&gt;</code> the browser only
+        partly understands, a basemap and a restaurant layer that are both just URLs, and a
+        place layer that does not exist until someone searches for it. If the features are
+        still named tab stops afterwards, none of that mattered.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="../inline/web-map.html">Inline</a>
+        <a href="web-map.html" aria-current="page">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html" aria-current="page">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 28rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/web-map.html" title="Restaurants near a searched place from remote MapML in a web-map element, rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Each remote layer keeps its fetched document in its own shadow root, inside a
+            <code>&lt;map&gt;</code> whose chrome lives in another one. Neither should show up
+            in the reading order.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/web-map.html" title="Restaurants near a searched place from remote MapML in a web-map element, rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            No customized built-ins in WebKit, and no inline markup to fall back to — the most
+            fragile of the four cells, and the one worth knowing about before shipping it.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/web-map.html" title="Restaurants near a searched place from remote MapML in a web-map element, rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            <code>geojson2mapml()</code> is a method of the viewer as well as a function on
+            <code>M</code>, and the <code>&lt;map&gt;</code> gets it from the same mixin the
+            <code>&lt;mapml-viewer&gt;</code> does.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        Related: <a href="../../restaurants/inline/">Restaurant locations in Ottawa</a> is the
+        same restaurant data without the search, where the cuisine
+        <code>&lt;map-select&gt;</code> is offered in the layer control instead of hidden.
+      </p>
+    </footer>
+  </body>
+</html>

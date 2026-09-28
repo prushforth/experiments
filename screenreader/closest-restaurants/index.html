@@ -1,227 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GeoName Search</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Restaurant locations near Dows Lake</title>
+    <script src="../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../index.html">Experiments</a></p>
+      <h1>Restaurant locations near Dows Lake</h1>
+      <p class="lede">
+        Two things a page asks a map to do after it has loaded: go somewhere the reader named,
+        and show what is around it. A place search over the NRCan GeoNames service turns a
+        result into <code>&lt;map-feature&gt;</code> elements with
+        <code>M.geojson2mapml()</code> and asks the new layer to
+        <code>zoomTo()</code> itself; a button then clones a restaurant
+        <code>&lt;map-layer&gt;</code> into the map, whose
+        <code>&lt;map-link rel="features"&gt;</code> fetches whatever falls in the view. Both
+        layers have to become named, focusable content the instant they are appended — which
+        is the part that is easy to get wrong and impossible to see in a screenshot.
+      </p>
+    </header>
 
-    <script type="module" src="../../dist/MapML-OpenLayers/dist/mapml-ol.js"></script>
-    <link href="../../shared/css/geo-search.css" rel="stylesheet">
-</head>
-<body>
-  <template>
-    <map-layer id="restaurant" label="Restaurants" checked>
-      <map-meta name="cs" content="gcrs" ></map-meta>
-      <map-meta name="extent" content="top-left-easting=-8433179, top-left-northing=5689316, bottom-right-easting=-8420968, bottom-right-northing=5683139"></map-meta>
-      <map-extent units="OSMTILE" checked hidden>
-         <map-select id="restaurants" name="cusine">
-            <map-option value="restaurants" selected>All cuisines</map-option>
-            <map-option value="african">African</map-option>
-            <map-option value="asian">Asian</map-option>
-            <map-option value="cajun">Cajun</map-option>
-            <map-option value="indian">Indian</map-option>
-            <map-option value="italian">Italian</map-option>
-            <map-option value="mexican">Mexican</map-option>
-          </map-select>
-          <map-link tref="../../shared/restaurants/{cusine}.mapml" rel="features"></map-link>
-        </map-extent>
-    </map-layer>
-  </template>
-    
-    <div class="search" role="search">
-        <!--<h2>GeoName Search</h2>-->
-
-        <input type="search" class="search_input" id="query" placeholder="Locations in Canada" autofocus autocomplete="off" name="query" size="20%" oninput="displaySuggestions()"/>
-        <button onclick="updateSearchResults()" class="search_button btn btn-primary btn-sm" id="searchBtn">Search</button>
-        
-        <br>
-        <output id="results_count" for="query"></output>
-        <div id="results" role="grid" class="results_container"></div>
-    </div>
-
-    <div class="options">
-        <button class="content-button" onclick="displayRestaurants()">
-            <img alt="Restaurants" draggable="false" src="//www.gstatic.com/images/icons/material/system_gm/1x/restaurant_black_18dp.png">
-            Restaurants
-        </button>
-    </div>
-
-    <mapml-viewer projection="OSMTILE" zoom="4" lat="58.276703" lon="-103.710938" controls controlslist="nofullscreen" id="map">
-        <map-layer label="OpenStreetMap" src="../../refactoring-temporary/osm.mapml" checked></map-layer>
-    </mapml-viewer>
-    
-    <script>
-        // Handling Enter on focused search results divs
-        function handleEnter(e) {
-            let keycode = (e.keyCode ? e.keyCode : e.which);
-            if (keycode === Number.parseInt("13")) {
-                document.activeElement.click();
-            }
-        }
-
-        // Handling enter on the input search box, the search button is clicked
-        let input = document.getElementById("query");
-        input.addEventListener("keyup", function(event) {
-            if (event.keyCode === 13) {
-                event.preventDefault();
-                document.getElementById("searchBtn").click();
-            }
-        });
-
-        // Accessibility option to use arrow keys to go through results
-        let container = document.getElementById("results");
-        container.onkeydown = function(event) {
-            if (event.keyCode === 38) {
-                let currentfocus = event.target.id.split('');
-                let newfocus = "item" + (parseInt(currentfocus.slice(4).join('')) - 1);
-                if (newfocus === "item-1") {
-                    newfocus = "query";
-                }
-                document.getElementById(newfocus).focus(); 
-            }
-            else if (event.keyCode === 40) {
-                let currentfocus = event.target.id.split('');
-                let newfocus = "item" + (parseInt(currentfocus.slice(4).join('')) + 1);
-                try {
-                    document.getElementById(newfocus).focus(); 
-                } catch {}
-            }
-        };
-        let searchBox = document.getElementById("query");
-        searchBox.onkeydown = function(event) {
-            if (event.keyCode === 40) {
-                try {
-                    document.getElementById("item0").focus();
-                } catch {}
-            }
-        };
-
-        // Select the mapml-viewer
-        let mapp = document.querySelector("#map");
-
-        // Will store the json search results
-        let searchResults = ""; 
-
-        function displayRestaurants() {
-            let restaurants = document.querySelector('template').content.cloneNode(true)
-            // only add restaurant layer if it does not already exist in the map
-            if (mapp.querySelectorAll("#restaurant").length === 0) {
-                mapp.appendChild(restaurants);
-            }
-        }
-
-        // Displays a new layer and pans the map to the layer
-        // mapPane: Int -> None
-        // Effects: Changes map's zoom and location. Also creates and adds a new layer to the map
-        async function mapPane(id) {
-            // Disable search results display panel and results found display
-            document.getElementById("results").style.display = "none";
-            document.getElementById("results_count").style.display = "none";
-
-            // Getting the geojson link for the selected feature
-            let featureGeojson = searchResults[id].feature.links.self.href + ".geojson";
-
-            // removing the previous layer which was displayed on search, if any
-            if (mapp.querySelector('#layer') != null) {
-                mapp.removeChild(mapp.querySelector("#layer"));
-            }
-
-            let response = await fetch(featureGeojson);
-            let data = await response.json();
-            if (searchResults[id].bbox) {
-                data.bbox = searchResults[id].bbox;
-            }
-
-            let layer = M.geojson2mapml(data, {caption:"label_en"});
-            layer.setAttribute("id", "layer");
-            layer.setAttribute("label", data.properties.label_en);
-
-            // Adding Attribution to layer
-            let parser = new DOMParser();
-            let attributeString = "<map-link rel='license' title='NRCan Geoname Service' href='https://www.nrcan.gc.ca/maps-tools-and-publications/maps/geographical-names-canada/application-programming-interface-api/9249'></map-link>";
-            let attributeElement = parser.parseFromString(attributeString, "text/html");
-            layer.appendChild(attributeElement.querySelector('map-link'));
-            
-            // Add the newly created layer to mapmlviewer
-            mapp.appendChild(layer);
-
-            // zooming to location
-            layer.zoomTo();
-            // if a point zooms to the max zoom -> zoom out
-            if (mapp.zoom === "24") {
-                mapp.zoomTo(mapp.lat, mapp.lon, 10);
-            }
-            
-            // Focusing on the map after a new layer is added
-            document.getElementById('map').tabIndex = 0;
-            document.getElementById('map').focus();
-            
-        }
-
-        // Display Search Results based on the search key term
-        // displayResults: JSON -> None
-        // Effects: Populates the results container with search results
-        function displayResults(obj) {
-            // Reset the results
-            document.querySelector("#results").innerHTML = "";
-            
-            // Enable display panel
-            document.getElementById("results").style.display = "block";
-
-            for (let i=0; i < obj.length; i++) {
-                document.querySelector("#results").innerHTML = document.querySelector("#results").innerHTML + "<div id = 'item" + i + "' class='result' role='row' tabindex='0' onkeypress='handleEnter(event)' onclick='mapPane(" + i + ")'>" + obj[i].name + "<div class='result_description'>" + obj[i].concise.code + " (" + obj[i].decision + ")</div></div>";
-            }
-        }
-
-        // Display Search Result suggestions based on the search key term
-        // displaySuggestions: None -> None
-        // Effects: Populates the results container with suggestions
-        function displaySuggestions() {
-
-            let searchPhrase = document.getElementById("query").value;
-
-            if (searchPhrase != "") {
-                fetch('https://geogratis.gc.ca/services/geoname/en/geonames.json?q=' + searchPhrase + '*&num=3')
-                    .then(response => response.json())
-                    .then(json => {
-                        // Reset the results
-                        document.querySelector("#results").innerHTML = "";
-                        document.getElementById("results_count").style.display = "none";
-
-                        // Enable display panel
-                        document.getElementById("results").style.display = "block";
-                        for (let i=0; i < json.items.length; i++) {
-                            document.querySelector("#results").innerHTML = document.querySelector("#results").innerHTML + "<div id = 'item" + i + "' class='result' role='row' tabindex='0' onkeypress='handleEnter(event)' onclick='mapPane(" + i + ")'>" + json.items[i].name + "<div class='result_description'>" + json.items[i].concise.code + " (" + json.items[i].decision + ")</div></div>";
-                        }
-                        searchResults = json.items;
-                    })
-            }
-        }
-
-        // update Search Results based on the search Item, initiated when the "Search" button is pressed, makes an API call to the GeoName Service API
-        // updateSearchResults: None -> None
-        // Effects: Makes an API Call to update global variable (searchResults) with JSON results, and updates the count of results found
-        function updateSearchResults() {
-            // Reset the results
-            document.querySelector("#results").innerHTML = "";
-
-            let searchPhrase = document.getElementById("query").value;
-
-            fetch('https://geogratis.gc.ca/services/geoname/en/geonames.json?q=' + searchPhrase + "*")
-                .then(response => response.json())
-                .then(json => {
-                    document.getElementById("results_count").style.display = "block";
-                    document.querySelector("#results_count").innerHTML = json.items.length + " results found.";
-
-                    displayResults(json.items);
-                    searchResults = json.items;
-                })
-        }
-
-    </script>
-</body>
+    <main class="experiment-body">
+      <table class="variant-matrix">
+        <caption class="visually-hidden">Content type by root element</caption>
+        <thead>
+          <tr>
+            <td></td>
+            <th scope="col"><code>&lt;mapml-viewer&gt;</code></th>
+            <th scope="col"><code>&lt;map is="web-map"&gt;</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Inline</th>
+            <td><a href="inline/">All three implementations</a></td>
+            <td><a href="inline/web-map.html">All three implementations</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Remote</th>
+            <td><a href="remote/">All three implementations</a></td>
+            <td><a href="remote/web-map.html">All three implementations</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        The content type is the restaurant layer's: inline, the
+        <code>&lt;template&gt;</code> holds the whole layer, extent, cuisine
+        <code>&lt;map-select&gt;</code> and feature template; remote, it holds a single
+        <code>&lt;map-layer src="restaurants.mapml"&gt;</code> and the rest is fetched when
+        the reader asks for it. The place layer is built from GeoJSON at runtime in every
+        cell — a third kind of content that is neither written in the page nor fetched as
+        MapML.
+      </p>
+      <p>
+        Every cell is driven by the same
+        <a href="search.js">search.js</a>, which finds its map with
+        <code>mapml-viewer, map[is="web-map"]</code> and then uses nothing but the DOM.
+      </p>
+      <p>
+        Related: <a href="../restaurants/inline/">Restaurant locations in Ottawa</a> is the
+        same restaurant data without the search, and
+        <a href="../feature-index/">Feature index</a> announces what lies under the map's
+        centre once you are there.
+      </p>
+    </main>
+  </body>
 </html>
