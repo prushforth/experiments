@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Announce zoom, inline — MapML.js (Leaflet)</title>
+    <script src="../../../../templates/experiment.js" data-impl="leaflet"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">A map that announces its zoom level, rendered by MapML.js</h1>
+      <!-- code -->
+      <script>
+        // The HTML parser moves unknown elements out of <head>, so <map-options>
+        // has to be put there by script; M.options is read from document.head.
+        const options = document.createElement('map-options');
+        options.textContent = '{"announceMovement": true}';
+        document.head.appendChild(options);
+      </script>
+      <div class="example-map">
+        <mapml-viewer projection="OSMTILE" zoom="11" lat="48.8566" lon="2.3522" controls controlslist="nofullscreen nolayer noreload search">
+          <map-caption>Paris, the City of Light</map-caption>
+          <map-layer label="OpenStreetMap" checked>
+            <map-link rel="suggestions" tref="https://photon.komoot.io/api?q={searchTerms}"></map-link>
+            <map-link rel="search" tref="https://photon.komoot.io/api?q={searchTerms}"></map-link>
+            <map-link rel="license" href="https://www.openstreetmap.org/copyright" title="© OpenStreetMap contributors CC BY-SA"></map-link>
+            <map-extent units="OSMTILE" checked hidden>
+              <map-input name="z" type="zoom" value="18" min="0" max="18"></map-input>
+              <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="262144"></map-input>
+              <map-input name="y" type="location" units="tilematrix" axis="row" min="0" max="262144"></map-input>
+              <map-link rel="tile" type="image/png" tref="https://tile.openstreetmap.org/{z}/{x}/{y}.png"></map-link>
+            </map-extent>
+          </map-layer>
+        </mapml-viewer>
+      </div>
+      <!-- /code -->
+    </main>
+  </body>
+</html>

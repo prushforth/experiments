@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Announce zoom, remote MapML, &lt;map is="web-map"&gt;</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Announce zoom, remote MapML in a <code>&lt;map is="web-map"&gt;</code></h1>
+      <p class="lede">
+        A <code>&lt;map&gt;</code> with one URL in it, a search box it gets from that URL's
+        document, and a live region the viewer has to build somewhere other than its own
+        shadow root. Three things that could each quietly not happen; if searching still moves
+        the map and the move is still announced, none of them did.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="../inline/web-map.html">Inline</a>
+        <a href="web-map.html" aria-current="page">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html" aria-current="page">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/web-map.html" title="A web-map element that announces its zoom level, from remote MapML, rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Two shadow roots: the one the <code>&lt;map&gt;</code> builds for its chrome and
+            live region, and the one the layer keeps its fetched document in. The search
+            control has to look into the second from the first.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/web-map.html" title="A web-map element that announces its zoom level, from remote MapML, rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            In WebKit, where customized built-ins are not implemented, this frame stays an
+            inert <code>&lt;map&gt;</code>: nothing to search, and nothing to announce.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/web-map.html" title="A web-map element that announces its zoom level, from remote MapML, rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The announcement handler asks the viewer for its render root rather than assuming
+            a shadow root, which is why the <code>&lt;output&gt;</code> ends up somewhere a
+            screen reader can still find it.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        Related: <a href="../../feature-index/">Feature index</a> announces what is under the
+        map's centre as you move, which is the other half of knowing where you are.
+      </p>
+    </footer>
+  </body>
+</html>

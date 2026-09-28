@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Announce zoom, inline MapML</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Announce zoom, declared inline</h1>
+      <p class="lede">
+        A map that says where it has got to. With
+        <code>&lt;map-options&gt;{"announceMovement": true}&lt;/map-options&gt;</code> the
+        viewer keeps a visually hidden <code>&lt;output role="status"&gt;</code> and writes
+        into it whenever the map settles: the new zoom level, or which edge of the content you
+        have run off. A sighted user reads the map; a screen reader user is told the same thing
+        in words, which is otherwise the part of panning and zooming that simply does not
+        arrive.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="./" aria-current="page">Inline</a>
+        <a href="../remote/">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./" aria-current="page">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="A map that announces its zoom level, rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The reference implementation: a Leaflet handler on the map's own
+            <code>moveend</code>, which is why the announcement comes after the move rather
+            than with every frame of it.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="A map that announces its zoom level, rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The live region is part of the viewer, not of the renderer, so the wording comes
+            from the same localized strings in all three — what differs is only which event
+            the renderer calls "settled".
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="A map that announces its zoom level, rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            OpenLayers can settle on a fractional zoom, so the announcement rounds before it
+            speaks: "zoom level 11.4" would be true and useless.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <h2>What to try</h2>
+      <ul>
+        <li>
+          Turn on a screen reader, Tab into a map, and zoom with <kbd>+</kbd> and
+          <kbd>&minus;</kbd> or the buttons. Each settled zoom is announced once.
+        </li>
+        <li>
+          Without a screen reader, the same text is in the DOM: the first
+          <code>&lt;output&gt;</code> in the map's shadow root reads
+          <em>zoom level 12</em> and so on. Browser accessibility inspectors show it as a
+          <code>status</code> live region.
+        </li>
+        <li>
+          Focus the map and listen for its name — <code>&lt;map-caption&gt;Paris, the City of
+          Light&lt;/map-caption&gt;</code> is what makes the map a named thing rather than
+          "graphic".
+        </li>
+        <li>
+          Search for somewhere and pick a result. Being moved somewhere you did not pan to is
+          the case where an announcement matters most, and it is the reason this page declares
+          <code>&lt;map-link rel="search"&gt;</code> and
+          <code>&lt;map-link rel="suggestions"&gt;</code> on its layer: the search box is drawn
+          by <code>controlslist="search"</code>, but it has somewhere to ask only because the
+          layer says where.
+        </li>
+      </ul>
+      <p>
+        The results list and the move to the chosen place are the implementations' own default
+        handling of <code>mapsearch</code> / <code>mapsuggestions</code>. No page script is
+        involved; an author who wants their own results UI calls
+        <code>preventDefault()</code> on those events and renders
+        <code>event.detail.responses</code> instead.
+      </p>
+      <p>
+        <code>&lt;map-options&gt;</code> is not part of the MapML vocabulary; it is how these
+        implementations let a page set <code>M.options</code> before the map is built. It has
+        to be created by script and appended to <code>&lt;head&gt;</code>, because the HTML
+        parser moves unknown elements written in <code>&lt;head&gt;</code> out into the body —
+        where the viewer does not look for it. A standard version of this would more likely be
+        a preference the user sets than a switch the author flips.
+      </p>
+      <p>
+        Related: <a href="../feature-index/">Feature index</a> announces what is under the map's
+        centre as you move, which is the other half of knowing where you are.
+      </p>
+    </footer>
+  </body>
+</html>

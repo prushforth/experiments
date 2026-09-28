@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Announce zoom, remote, &lt;map is="web-map"&gt; — MapML-MapLibre</title>
+    <script src="../../../../templates/experiment.js" data-impl="maplibre"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">A web-map element that announces its zoom level, from remote MapML, rendered by MapML-MapLibre</h1>
+      <!-- code -->
+      <script>
+        // The HTML parser moves unknown elements out of <head>, so <map-options>
+        // has to be put there by script; M.options is read from document.head.
+        const options = document.createElement('map-options');
+        options.textContent = '{"announceMovement": true}';
+        document.head.appendChild(options);
+      </script>
+      <div class="example-map">
+        <map is="web-map" projection="OSMTILE" zoom="11" lat="48.8566" lon="2.3522" controls controlslist="nofullscreen nolayer noreload search">
+          <map-caption>Paris, the City of Light</map-caption>
+          <map-layer src="osm.mapml" checked></map-layer>
+        </map>
+      </div>
+      <!-- /code -->
+    </main>
+  </body>
+</html>

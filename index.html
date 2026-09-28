@@ -141,6 +141,8 @@
         <button type="button" data-tag="pmtiles">pmtiles archives</button>
         <button type="button" data-tag="mvt">Mapbox vector tiles .mvt</button>
         <button type="button" data-tag="css">CSS</button>
+        <button type="button" data-tag="default-search-handler">Default search handler</button>
+        <button type="button" data-tag="custom-search-handler">Custom search handler</button>
       </div>
     </nav>
     <main>
@@ -151,7 +153,7 @@
         <li data-tags="rel-features map-feature keyboard-access hidden map-select"><a href="screenreader/restaurants/inline/">Restaurant locations in Ottawa</a>
         <li data-tags="rel-features map-feature  keyboard-access hidden"><a href="screenreader/closest-restaurants/inline/">Restaurant locations near Dows Lake</a>
         <li data-tags="tms non-geo wgs84 map-a map-feature keyboard-access rendering-order "><a href="tms/painting/inline/">Non-geographic image map</a>
-        <li data-tags="mapml-extension map-caption hidden"><a href="screenreader/announce-zoom/">Announce zoom</a>
+        <li data-tags="mapml-extension map-caption hidden default-search-handler"><a href="screenreader/announce-zoom/inline/">Announce zoom</a>
         <li data-tags="mapml-extension map-feature rel-features map-caption keyboard-access hidden"><a href="screenreader/feature-index/">Feature index</a>
       </ul>
       </section>
@@ -159,8 +161,8 @@
       <section id="i18n">
         <h2>Internationalization / Localization validation</h2>
         <ul class="example">
-          <li data-tags="mapml-extension"><a href="i18n/map-chrome-i18n/">Localization of map UI</a>
-          <li><a href="i18n/rtl/">Right-to-left text</a>
+          <li data-tags="mapml-extension custom-search-handler"><a href="i18n/map-chrome-i18n/">Localization of map UI</a>
+          <li data-tags="custom-search-handler"><a href="i18n/rtl/">Right-to-left text</a>
         </ul>
       </section>
       
@@ -184,7 +186,7 @@
           <li data-tags="projections keyboard-access rendering-order api"><a href="custom-projections/Arctic-SDI/">Lambert Equal Area Azimuthal - laea</a>
           <li data-tags="projections rendering-order api"><a href="custom-projections/Atlas-of-Canada/">Atlas of Canada Polar Wall Map - aeqd</a>
           <li data-tags="projections map-feature keyboard-access rendering-order"><a href="custom-projections/bc/">British Columbia Albers Equal Area</a>
-          <li data-tags="projections api"><a href="custom-projections/BNG/">British National Grid</a>
+          <li data-tags="projections api custom-search-handler"><a href="custom-projections/BNG/">British National Grid</a>
           <li data-tags="projections media-queries content-negotiation api"><a href="change-projection/zoomin-zoomout/mapml-viewer/">Change projection on zoom change</a>
           <li data-tags="projections content-negotiation api extent"><a href="change-projection/projection-extent-fallback/">map-projectionchange event handling by map-extent</a>
           <li data-tags="projections content-negotiation api"><a href="change-projection/projection-negotiation/">Negotiate map resource projection</a>
@@ -196,7 +198,7 @@
         <section id="inputs">
         <h3>Inputs</h3>
         <ul class="example">
-          <li data-tags="map-select"><a href="inputs/map-select/">(map-)select / (map-)option</a>
+          <li data-tags="map-select custom-search-handler"><a href="inputs/map-select/">(map-)select / (map-)option</a>
         </ul>
         </section>
         <ul class="example">
@@ -208,7 +210,7 @@
         <ul class="example">
           <li data-tags="map-feature api"><a href="api/map-feature/">HTMLFeatureElement</a>
           <li data-tags="api"><a href="api/geojson/">GeoJSON to MapML (geojson2mapml)</a>
-          <li data-tags="pwa shadow-root fullscreen"><a href="api/pwa/file-handling/">Progressive Web App - GeoJSON -> MapML</a>
+          <li data-tags="pwa shadow-root fullscreen custom-search-handler"><a href="api/pwa/file-handling/">Progressive Web App - GeoJSON -&gt; MapML</a>
           <!-- need an example of using the map-change event -->
         </ul>
       </section>
