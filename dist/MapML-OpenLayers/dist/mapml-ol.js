@@ -21855,6 +21855,16 @@ const PS = (
   outline: 2px solid var(--mapml-focus-ring-color);
   outline-offset: -2px;
 }
+
+/* Frozen map (static attribute): match Leaflet's .leaflet-disabled zoom buttons. */
+.ol-zoom button.ol-zoom-in:disabled,
+.ol-zoom button.ol-zoom-out:disabled,
+.ol-zoom button.ol-zoom-in[aria-disabled='true'],
+.ol-zoom button.ol-zoom-out[aria-disabled='true'] {
+  color: #bbb;
+  background-color: #f4f4f4;
+  cursor: default;
+}
 `
 );
 class OS {
@@ -37546,14 +37556,15 @@ const U_ = (i) => {
   }
   // Reflect the `static` state onto the (optional) zoom control's buttons. OL's
   // ol/control/Zoom has no disable() (unlike Leaflet's zoom control), so we
-  // toggle the `disabled` property on its two buttons. Called from
-  // _toggleStatic and after (re)creating the zoom control, since it may be
-  // installed while the map is already static.
+  // toggle the `disabled` property on its two buttons and mirror Leaflet's
+  // `leaflet-disabled` styling hook via `aria-disabled` (see zoomControl.css.js).
+  // Called from _toggleStatic and after (re)creating the zoom control, since it
+  // may be installed while the map is already static.
   _syncZoomControlStatic() {
     if (!this._zoomControl) return;
     const t = this.hasAttribute("static");
     this._zoomControl.element.querySelectorAll("button").forEach((e) => {
-      e.disabled = t;
+      e.disabled = t, e.setAttribute("aria-disabled", String(t));
     });
   }
   // The controlslist DOMTokenList (mirrors MapML.js's `controlsList` property).
