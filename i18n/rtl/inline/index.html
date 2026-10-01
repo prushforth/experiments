@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Right-to-left text &mdash; inline MapML</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Right-to-left text, declared inline</h1>
+      <p class="lede">
+        Three maps, same markup, <code>dir="rtl"</code> on each. The page's own words have not
+        moved; what has to move is everything the map draws for itself.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="./" aria-current="page">Inline</a>
+        <a href="../remote/">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./" aria-current="page">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="A right-to-left map of Ottawa restaurants, rendered by MapML.js" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>The reference implementation, and the layout the other two are measured against.</p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="A right-to-left map of Ottawa restaurants, rendered by MapML-MapLibre" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>Watch the buttons this library supplies itself, rather than the ones MapML adds.</p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="A right-to-left map of Ottawa restaurants, rendered by MapML-OpenLayers" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>One viewer serves both root elements, so anything here is also in the web-map version.</p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <h2>What to try</h2>
+      <ul>
+        <li>
+          Each map starts locked. Find the button that unlocks it — it should be on the right
+          now, with the rest of the buttons on the left.
+        </li>
+        <li>
+          Open the layer list, open the cuisine menu inside it, and drag the opacity slider.
+          Arrows, checkboxes and the slider should all run the other way.
+        </li>
+        <li>
+          Right-click the map, a layer and the cuisine menu for their menus, and open the search
+          box. Menus should open from the right, and typing in the box should fill from the right.
+        </li>
+        <li>
+          Compare the three. Nothing here asks for a different layout in each, so any difference
+          is the map library's doing.
+        </li>
+      </ul>
+      <p>
+        Related: <a href="../../map-chrome-i18n/inline/">Localization of map UI</a>, which is
+        about translating the same words rather than turning them round.
+      </p>
+    </footer>
+  </body>
+</html>

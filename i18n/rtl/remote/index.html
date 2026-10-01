@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Right-to-left text &mdash; remote MapML</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Right-to-left text, from remote MapML</h1>
+      <p class="lede">
+        The same map, but each layer is a separate document the map fetches. The page says only
+        <code>&lt;map-layer src="cbmt.mapml"&gt;</code>; the layer's name, its licence, its tiles
+        and its cuisine menu all come out of the fetched document.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="../inline/">Inline</a>
+        <a href="./" aria-current="page">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./" aria-current="page">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="A right-to-left map of Ottawa restaurants from remote MapML, rendered by MapML.js" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>The reference implementation, and the layout the other two are measured against.</p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="A right-to-left map of Ottawa restaurants from remote MapML, rendered by MapML-MapLibre" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>Watch the buttons this library supplies itself, rather than the ones MapML adds.</p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="A right-to-left map of Ottawa restaurants from remote MapML, rendered by MapML-OpenLayers" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>One viewer serves both root elements, so anything here is also in the web-map version.</p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <h2>What to try</h2>
+      <ul>
+        <li>
+          Open the layer list and compare it with <a href="../inline/">the same map written in
+          the page</a>. The layers should be named "CBMT" and "Ottawa Restaurants" either way —
+          here those names are read out of the documents, and they have to land in the right
+          place in a right-to-left list.
+        </li>
+        <li>
+          Change the cuisine. The menu is in the fetched document too, and the file it then asks
+          for is named relative to that document, not to this page.
+        </li>
+        <li>
+          Unlock the map, open the menus, use the search box. Everything the maps draw should
+          still be mirrored.
+        </li>
+      </ul>
+    </footer>
+  </body>
+</html>

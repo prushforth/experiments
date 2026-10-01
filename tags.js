@@ -122,6 +122,47 @@
         button.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'
       );
       render();
+      syncSelectAll();
     });
   });
+
+  // One button for both directions: it offers whichever of All / None would
+  // change something. Tags with no matches are disabled, so "all" means all of
+  // the ones that can be pressed.
+  const selectAll = document.querySelector('[data-tag-select]');
+  const selectable = buttons.filter(function (button) {
+    return !button.disabled;
+  });
+
+  function allSelected() {
+    return (
+      selectable.length > 0 &&
+      selectable.every(function (button) {
+        return button.getAttribute('aria-pressed') === 'true';
+      })
+    );
+  }
+
+  function syncSelectAll() {
+    if (!selectAll) return;
+    const on = allSelected();
+    selectAll.textContent = on ? 'None' : 'All';
+    selectAll.setAttribute(
+      'aria-label',
+      on ? 'Select none of the tags' : 'Select all tags'
+    );
+  }
+
+  if (selectAll) {
+    selectAll.disabled = !selectable.length;
+    selectAll.addEventListener('click', function () {
+      const next = allSelected() ? 'false' : 'true';
+      selectable.forEach(function (button) {
+        button.setAttribute('aria-pressed', next);
+      });
+      render();
+      syncSelectAll();
+    });
+    syncSelectAll();
+  }
 })();

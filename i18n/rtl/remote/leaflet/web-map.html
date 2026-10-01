@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Right-to-left text, remote web-map &mdash; MapML.js (Leaflet)</title>
+    <script src="../../../../templates/experiment.js" data-impl="leaflet"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">A right-to-left map of Ottawa restaurants, from remote MapML in a web-map element, rendered by MapML.js</h1>
+      <div class="example-map">
+        <!-- code -->
+        <map is="web-map" dir="rtl" projection="OSMTILE" zoom="15" lat="45.4069740362364" lon="-75.70155300710053" controls controlslist="search static" static>
+          <map-caption>Restaurants in central Ottawa, by cuisine</map-caption>
+          <map-layer src="cbmt.mapml" checked></map-layer>
+          <map-layer src="restaurants.mapml" checked></map-layer>
+        </map>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>

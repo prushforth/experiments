@@ -40,6 +40,23 @@
       section[id] {
         scroll-margin-top: 6rem;
       }
+      /* flex-basis 100% puts the row on a line of its own in the wrapping bar */
+      .tag-select {
+        flex-basis: 100%;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .tag-select-button {
+        font: inherit;
+        font-size: 0.875rem;
+        padding: 0.25rem 0.675rem;
+        border: 1px solid #d0d7de;
+        border-radius: 999px;
+        background: #fff;
+        color: inherit;
+        cursor: pointer;
+      }
       .tag-buttons {
         display: flex;
         flex-wrap: wrap;
@@ -110,6 +127,10 @@
     </aside>
     <nav class="tag-filter" aria-labelledby="tag-filter-label">
       <p id="tag-filter-label">Highlight experiments tagged:</p>
+      <div class="tag-select">
+        <p>Select:</p>
+        <button type="button" class="tag-select-button" data-tag-select>All</button>
+      </div>
       <div class="tag-buttons" data-tag-buttons>
         <button type="button" data-tag="map-select">&lt;map-select&gt;</button>
         <button type="button" data-tag="map-feature">&lt;map-feature&gt;</button>
@@ -163,7 +184,7 @@
         <h2>Internationalization / Localization validation</h2>
         <ul class="example">
           <li data-tags="locale mapml-extension map-caption default-search-handler"><a href="i18n/map-chrome-i18n/inline/">Localization of map UI</a>
-          <li data-tags="locale custom-search-handler"><a href="i18n/rtl/">Right-to-left text</a>
+          <li data-tags="locale map-caption map-select rel-features default-search-handler"><a href="i18n/rtl/inline/">Right-to-left text</a>
         </ul>
       </section>
       

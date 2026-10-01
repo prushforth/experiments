@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Right-to-left text &mdash; remote MapML in &lt;map is="web-map"&gt;</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Right-to-left text, from remote MapML, in a <code>&lt;map is="web-map"&gt;</code></h1>
+      <p class="lede">
+        The same fetched documents as the <a href="./"><code>&lt;mapml-viewer&gt;</code>
+        version</a>, on the old <code>&lt;map&gt;</code> element. It is built differently inside,
+        so it is worth checking that it mirrors anyway.
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="../inline/web-map.html">Inline</a>
+        <a href="web-map.html" aria-current="page">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html" aria-current="page">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/web-map.html" title="A right-to-left map of Ottawa restaurants from remote MapML in a web-map element, rendered by MapML.js" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>The reference implementation, and the layout the other two are measured against.</p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/web-map.html" title="A right-to-left map of Ottawa restaurants from remote MapML in a web-map element, rendered by MapML-MapLibre" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>Watch the buttons this library supplies itself, rather than the ones MapML adds.</p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/web-map.html" title="A right-to-left map of Ottawa restaurants from remote MapML in a web-map element, rendered by MapML-OpenLayers" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>The same viewer as the <code>&lt;mapml-viewer&gt;</code> version, on a different element.</p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        This form of <code>&lt;map&gt;</code> only works in Chrome and Edge, so these frames are
+        empty in Safari and Firefox.
+      </p>
+    </footer>
+  </body>
+</html>

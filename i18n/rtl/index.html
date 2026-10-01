@@ -3,71 +3,52 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Right-to-left text (Ottawa Restaurants)</title>
-    <script type="module" src="../../dist/MapML-OpenLayers/dist/mapml-ol.js"></script>
-    <link rel="stylesheet" href="../../global.css">
-    <script>
-async function waitForMapLayersAndCheckExtents() {
-  // Wait for the map-layer custom element to be defined
-  await customElements.whenDefined('map-layer');
-  
-  // Query all map-layer elements in the document
-  const mapLayers = document.querySelectorAll('map-layer');
-  
-  // Collect promises from each layer's whenReady function
-  const readyPromises = Array.from(mapLayers).map(layer => layer.whenReady());
-  
-  // Wait for all layers to be ready
-  await Promise.all(readyPromises);
-  
-  // Loop through each layer and set checked attribute on map-extent elements
-  // because geogratis is a bit out of date and its map-extents don't have checked
-  for (const layer of mapLayers) {
-    if (layer.shadowRoot) {
-      const mapExtents = layer.shadowRoot.querySelectorAll('map-extent');
-      mapExtents.forEach(extent => {
-        extent.setAttribute('checked', '');
-        extent.setAttribute('hidden', '');
-      });
-    }
-  }
-}
-
-waitForMapLayersAndCheckExtents().catch(console.error);
-
-    </script>
+    <title>Right-to-left text</title>
+    <script src="../../templates/experiment.js"></script>
   </head>
   <body>
-    <mapml-viewer dir="rtl" projection="OSMTILE" zoom="15" lat="45.4069740362364" lon="-75.70155300710053" controls controlslist="search">
-      <map-layer label="CBMT" checked>
-        <map-link rel="license" href="https://open.canada.ca/en/open-government-licence-canada" title="Open Government License Canada"></map-link>
-        <map-link rel="suggestions" tref="https://photon.komoot.io/api?q={searchTerms}"></map-link>
-        <map-link rel="search" tref="https://photon.komoot.io/api?q={searchTerms}"></map-link>
-        <map-extent units="OSMTILE" checked hidden>
-          <map-input name="z" type="zoom" value="15" min="0" max="15"></map-input>
-          <map-input name="y" type="location" units="tilematrix" axis="row" min="0" max="32768"></map-input>
-          <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="32768"></map-input>
-          <map-link rel="tile" tref="https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3857/MapServer/tile/{z}/{y}/{x}?m4h=t"></map-link>
-          <map-link rel="tile" tref="https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3857/MapServer/tile/{z}/{y}/{x}?m4h=t"></map-link>
-        </map-extent>
-      </map-layer>
-      <map-layer id="restaurant" label="Ottawa Restaurants" checked>
-        <map-meta name="cs" content="gcrs" ></map-meta>
-        <map-meta name="extent" content="top-left-easting=-8433179, top-left-northing=5689316, bottom-right-easting=-8420968, bottom-right-northing=5683139"></map-meta>
-        <map-extent units="OSMTILE" checked hidden>
-           <map-select id="restaurants" name="cusine">
-              <map-option value="restaurants" selected>All cuisines</map-option>
-              <map-option value="african">African</map-option>
-              <map-option value="asian">Asian</map-option>
-              <map-option value="cajun">Cajun</map-option>
-              <map-option value="indian">Indian</map-option>
-              <map-option value="italian">Italian</map-option>
-              <map-option value="mexican">Mexican</map-option>
-            </map-select>
-            <map-link tref="../../shared/restaurants/{cusine}.mapml" rel="features"></map-link>
-          </map-extent>
-      </map-layer>
-    </mapml-viewer>
-    <script src="../../shared/script/photon-search-handler.js"></script>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../index.html">Experiments</a></p>
+      <h1>Right-to-left text</h1>
+      <p class="lede">
+        A page can ask for a right-to-left layout with <code>dir="rtl"</code>. But a map's
+        buttons, layer list, menus and search box are drawn by the map library, not written in
+        the page, so whether they turn round is the library's decision.
+      </p>
+    </header>
+
+    <main class="experiment-body">
+      <table class="variant-matrix">
+        <caption class="visually-hidden">Content type by root element</caption>
+        <thead>
+          <tr>
+            <td></td>
+            <th scope="col"><code>&lt;mapml-viewer&gt;</code></th>
+            <th scope="col"><code>&lt;map is="web-map"&gt;</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Inline</th>
+            <td><a href="inline/">All three implementations</a></td>
+            <td><a href="inline/web-map.html">All three implementations</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Remote</th>
+            <td><a href="remote/">All three implementations</a></td>
+            <td><a href="remote/web-map.html">All three implementations</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        The map is the same in all four: a basemap, a restaurant layer with a cuisine menu, a
+        search box, and the map locked to begin with, so the first thing to find is the button
+        that unlocks it.
+      </p>
+      <p>
+        Related: <a href="../map-chrome-i18n/inline/">Localization of map UI</a>, which is about
+        translating the same words rather than turning them round.
+      </p>
+    </main>
   </body>
 </html>
