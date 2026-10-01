@@ -22,6 +22,9 @@
  * between `<!-- code -->` and `<!-- /code -->` or its map element.
  *
  * Inside a frame the toolbar is suppressed: the framing page provides it.
+ *
+ * A `<p class="experiment-feature-tags" data-tags="...">` is filled with one
+ * pill per tag, coloured as the tag filter on the index page colours it.
  */
 (function () {
   'use strict';
@@ -136,6 +139,50 @@
     return ok ? Promise.resolve() : Promise.reject(new Error('copy failed'));
   }
 
+  // Feature tags for a use case, drawn in the colour the tag filter on the
+  // index page gives each tag. The tag list, its order and therefore its
+  // colours live only on that page (see tags.js), so they are read from there
+  // rather than copied into every experiment.
+  function featureTags() {
+    const hosts = document.querySelectorAll('.experiment-feature-tags[data-tags]');
+    if (!hosts.length) return;
+
+    fetch(new URL('index.html', projectRoot).href)
+      .then(function (response) {
+        if (!response.ok) throw new Error(response.status);
+        return response.text();
+      })
+      .then(function (text) {
+        const index = new DOMParser().parseFromString(text, 'text/html');
+        const buttons = Array.prototype.slice.call(
+          index.querySelectorAll('[data-tag-buttons] button[data-tag]')
+        );
+        hosts.forEach(function (host) {
+          host.dataset.tags
+            .split(/\s+/)
+            .filter(Boolean)
+            .forEach(function (name) {
+              const i = buttons.findIndex(function (button) {
+                return button.dataset.tag === name;
+              });
+              if (i === -1) return;
+              const tag = document.createElement('span');
+              tag.className = 'experiment-feature-tag';
+              // The golden angle hue steps tags.js uses, so the two match.
+              tag.style.setProperty(
+                '--tag-color',
+                'hsl(' + ((i * 137.508) % 360) + ' 65% 38%)'
+              );
+              tag.textContent = buttons[i].textContent.trim();
+              host.append(tag);
+            });
+        });
+      })
+      .catch(function (error) {
+        console.warn('Could not read the tag list from the index page', error);
+      });
+  }
+
   let uid = 0;
 
   function enhance(example) {
@@ -235,6 +282,7 @@
     document.querySelectorAll('a[data-home]').forEach(function (a) {
       a.href = new URL('index.html', projectRoot).href;
     });
+    featureTags();
     document.querySelectorAll('[data-impl-name]').forEach(function (el) {
       el.textContent = library.label;
     });

@@ -135,6 +135,25 @@ map-layer {
   color: var(--experiment-muted);
 }
 
+/* Which tags of the index page's filter this experiment is an example of.
+   templates/experiment.js fills these in, in the filter's own colours. */
+.experiment-feature-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+}
+
+.experiment-feature-tag {
+  padding: 0.25rem 0.625rem;
+  border: 1px solid var(--tag-color);
+  border-radius: 999px;
+  background: var(--tag-color);
+  color: #fff;
+}
+
 /*
  * Responsive grid of framed maps. `--example-min` is the breakpoint: columns
  * are added only while each one can still be at least that wide, so the

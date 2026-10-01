@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Default map projection, inline &mdash; MapML.js (Leaflet)</title>
+    <script src="../../../../templates/experiment.js" data-impl="leaflet"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">A map of Canada with no projection declared, declared inline, rendered by MapML.js</h1>
+      <div class="example-map">
+        <!-- code -->
+        <mapml-viewer zoom="4" lat="47.5" lon="-80" controls controlslist="search static" static>
+          <map-caption>Topographic map of Canada</map-caption>
+          <map-layer label="Topo base" checked>
+            <map-meta name="extent" content="top-left-easting=-19959237, top-left-northing=13854059, bottom-right-easting=-1174073, bottom-right-northing=4647371"></map-meta>
+            <map-link rel="suggestions" tref="https://photon.komoot.io/api?q={searchTerms}"></map-link>
+            <map-link rel="search" tref="https://photon.komoot.io/api?q={searchTerms}"></map-link>
+            <map-extent units="OSMTILE" label="Toporama - Mercator" checked>
+              <map-input name="z" type="zoom" value="18" min="4" max="22"></map-input>
+              <map-input name="w" type="width"></map-input>
+              <map-input name="h" type="height"></map-input>
+              <map-input name="xmin" type="location" units="pcrs" position="top-left" axis="easting"></map-input>
+              <map-input name="ymin" type="location" units="pcrs" position="bottom-left" axis="northing"></map-input>
+              <map-input name="xmax" type="location" units="pcrs" position="top-right" axis="easting"></map-input>
+              <map-input name="ymax" type="location" units="pcrs" position="top-left" axis="northing"></map-input>
+              <map-link rel="image" tref="https://maps.geogratis.gc.ca/wms/toporama_en?SERVICE=WMS&REQUEST=GetMap&FORMAT=image/jpeg&TRANSPARENT=FALSE&STYLES=&VERSION=1.3.0&LAYERS=WMS-Toporama&WIDTH={w}&HEIGHT={h}&CRS=EPSG:3857&BBOX={xmin},{ymin},{xmax},{ymax}&m4h=t"></map-link>
+            </map-extent>
+            <map-extent units="CBMTILE" label="CBMT - Lambert" checked>
+              <map-input name="z" type="zoom" min="0" max="18"></map-input>
+              <map-input name="y" type="location" units="tilematrix" axis="row"></map-input>
+              <map-input name="x" type="location" units="tilematrix" axis="column"></map-input>
+              <map-link rel="tile" tref="https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT3978/MapServer/tile/{z}/{y}/{x}?m4h=t"></map-link>
+            </map-extent>
+          </map-layer>
+          <map-layer label="Projection not specified" checked>
+            <map-feature zoom="14">
+              <map-featurecaption>Copied OSMTILE pcrs location</map-featurecaption>
+              <map-properties>
+                <h2>Copied OSMTILE pcrs location</h2>
+                <div style="text-align:center">-8427531 5684678</div>
+              </map-properties>
+              <map-geometry cs="pcrs">
+                <map-point>
+                  <map-coordinates>-8427531 5684678</map-coordinates>
+                </map-point>
+              </map-geometry>
+            </map-feature>
+          </map-layer>
+        </mapml-viewer>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>

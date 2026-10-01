@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Default map projection, remote web-map &mdash; MapML-MapLibre</title>
+    <script src="../../../../templates/experiment.js" data-impl="maplibre"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">A map of Canada with no projection declared, from remote MapML in a web-map element, rendered by MapML-MapLibre</h1>
+      <div class="example-map">
+        <!-- code -->
+        <map is="web-map" zoom="4" lat="47.5" lon="-80" controls controlslist="search static" static>
+          <map-caption>Topographic map of Canada</map-caption>
+          <map-layer src="topo.mapml" checked></map-layer>
+          <map-layer src="point.mapml" checked></map-layer>
+        </map>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>

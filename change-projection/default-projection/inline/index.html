@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Default map projection &mdash; inline MapML</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Default map projection, declared inline</h1>
+      <p class="lede">
+        No <code>projection</code> on the map, and nothing about one on the point layer: both
+        get Web Mercator.
+      </p>
+      <p class="experiment-feature-tags" data-tags="defaults projections rendering-order default-search-handler">
+        <span class="experiment-nav-label">Feature tags</span>
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="./" aria-current="page">Inline</a>
+        <a href="../remote/">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./" aria-current="page">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="A map of Canada with no projection declared, rendered by MapML.js" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>The reference implementation.</p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="A map of Canada with no projection declared, rendered by MapML-MapLibre" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>Web Mercator is the only projection this renderer draws.</p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="A map of Canada with no projection declared, rendered by MapML-OpenLayers" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>One viewer serves both root elements, so anything here is also in the web-map version.</p>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

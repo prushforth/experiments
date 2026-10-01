@@ -1,0 +1,20 @@
+<mapml- xmlns="http://www.w3.org/1999/xhtml">
+  <map-head>
+    <map-title>Projection not specified</map-title>
+    <map-meta charset="utf-8"></map-meta>
+  </map-head>
+  <map-body>
+    <map-feature zoom="14">
+      <map-featurecaption>Copied OSMTILE pcrs location</map-featurecaption>
+      <map-properties>
+        <h2>Copied OSMTILE pcrs location</h2>
+        <div style="text-align:center">-8427531 5684678</div>
+      </map-properties>
+      <map-geometry cs="pcrs">
+        <map-point>
+          <map-coordinates>-8427531 5684678</map-coordinates>
+        </map-point>
+      </map-geometry>
+    </map-feature>
+  </map-body>
+</mapml->
