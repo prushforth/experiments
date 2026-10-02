@@ -176,7 +176,17 @@ probably the better default with fractional as an opt-in.
    chooses its projection from the zoom in an infinite switch loop. (This
    experiment is the reproduction.)
 2. Both: decide what a projection change preserves — zoom number or scale — and
-   say so. Proposal: nearest matching scale.
-3. Vocabulary: add a `map-scale` media feature alongside `map-zoom`.
+   say so. Proposal: nearest matching scale. Being taken up first in
+   MapML-OpenLayers, where the `View` takes the view state as a constructor
+   input so the intent can be stated declaratively.
+3. Vocabulary: add a `map-scale` media feature alongside `map-zoom`. Separate
+   issue, to be done across all three implementations if possible — it only
+   makes sense once 2 is settled, since a rule is safe to key on a quantity
+   only if the action the rule takes preserves that quantity.
 4. Both: allow non-integer client zoom, decoupled from the integer tile matrix
    levels that `<map-input type="zoom">` describes.
+5. MapML-OpenLayers: `_changeProjection` guards only on
+   `newValue !== this._currentProjection`, assigned before
+   `await Promise.allSettled(layersReady)`. A second change arriving mid-rebuild
+   starts a second pass whose `removeChild`/`appendChild` interleaves with the
+   first. Latent — nothing re-triggers it today because the zoom does not drift.

@@ -36993,7 +36993,14 @@ const U_ = (i) => {
   "top-right",
   "bottom-left",
   "bottom-right"
-], H_ = (i) => class extends i {
+];
+function I4(i, t) {
+  let e = 0;
+  for (let n = 1; n < i.length; n++)
+    Math.abs(Math.log(i[n] / t)) < Math.abs(Math.log(i[e] / t)) && (e = n);
+  return e;
+}
+const H_ = (i) => class extends i {
   static get observedAttributes() {
     return [
       "lat",
@@ -37807,29 +37814,36 @@ const U_ = (i) => {
   // NEW View and `map.setView` it, rather than mutating `map.options.crs` in
   // place as Leaflet does. This is less fragile than the Leaflet original, which
   // fights the framework's per-zoom scale compensation (Leaflet #2553).
+  //
+  // The View takes the view state as a constructor input, so what the switch
+  // preserves is a stated decision rather than something restored afterwards:
+  // the SCALE is held, landing on the level of the new projection nearest the
+  // resolution in use. A zoom level number means a different ground resolution
+  // in every projection, so carrying the number across would move the map
+  // (OSMTILE z3 is 19568 m/px, CBMTILE z3 is 7938).
   async _changeProjection(t) {
-    var d;
+    var f;
     if (!this._map || t === this._currentProjection) return;
-    const e = this.lat, n = this.lon, s = this.zoom, r = window.M[t], o = $i(r), a = Je([n, e], "EPSG:4326", o.getCode()), l = new Pi({
+    const e = this.lat, n = this.lon, s = this._view.getResolution(), r = window.M[t], o = $i(r), a = Je([n, e], "EPSG:4326", o.getCode()), l = I4(r.options.resolutions, s), h = new Pi({
       projection: o,
       center: a,
-      zoom: s,
+      zoom: l,
       resolutions: r.options.resolutions,
       multiWorld: !0
     });
-    this._map.setView(l), this._view = l, this._currentProjection = t, this._lastZoom = Math.round(l.getZoom());
-    const h = !!this._announceMovement;
-    h && this._announceMovement.disable();
-    const c = [];
-    for (const f of this.layers) {
-      f.removeAttribute("disabled"), f._createReadyPromise();
-      const m = this.removeChild(f);
-      this.appendChild(m), c.push(m.whenReady());
+    this._map.setView(h), this._view = h, this._currentProjection = t, this._lastZoom = Math.round(h.getZoom());
+    const c = !!this._announceMovement;
+    c && this._announceMovement.disable();
+    const u = [];
+    for (const m of this.layers) {
+      m.removeAttribute("disabled"), m._createReadyPromise();
+      const p = this.removeChild(m);
+      this.appendChild(p), u.push(p.whenReady());
     }
-    await Promise.allSettled(c);
-    const u = this.layers;
-    if (u.length === 1 && u[0].extent && (l.setMinZoom(u[0].extent.zoom.minZoom), l.setMaxZoom(u[0].extent.zoom.maxZoom)), this.zoomTo(e, n, s), h && this._announceMovement.enable(), this._debug) for (let f = 0; f < 2; f++) this.toggleDebug();
-    (d = this._history) == null || d.reset(), setTimeout(() => {
+    await Promise.allSettled(u);
+    const d = this.layers;
+    if (d.length === 1 && d[0].extent && (h.setMinZoom(d[0].extent.zoom.minZoom), h.setMaxZoom(d[0].extent.zoom.maxZoom)), this.zoomTo(e, n, l), c && this._announceMovement.enable(), this._debug) for (let m = 0; m < 2; m++) this.toggleDebug();
+    (f = this._history) == null || f.reset(), setTimeout(() => {
       this.dispatchEvent(new CustomEvent("map-projectionchange"));
     }, 0);
   }
@@ -37898,11 +37912,11 @@ const U_ = (i) => {
     this.isFullScreen() ? (t = document.exitFullscreen) == null || t.call(document) : (e = this.requestFullscreen) == null || e.call(this);
   }
 };
-class I4 extends H_(HTMLElement) {
+class R4 extends H_(HTMLElement) {
 }
-customElements.get("mapml-viewer") || customElements.define("mapml-viewer", I4);
+customElements.get("mapml-viewer") || customElements.define("mapml-viewer", R4);
 const Oc = "web-map-default-style";
-class R4 extends H_(HTMLMapElement) {
+class P4 extends H_(HTMLMapElement) {
   // The `<map-layer>` children (ported from MapML.js web-map.js `get layers`,
   // which uses getElementsByTagName). Overrides the autonomous viewer's
   // `:scope > map-layer` because web-map wraps its shadow host in a child div.
@@ -37987,8 +38001,8 @@ class R4 extends H_(HTMLMapElement) {
     this._webMapRoot = null, this._renderRoot = null;
   }
 }
-customElements.get("web-map") || customElements.define("web-map", R4, { extends: "map" });
-const P4 = 1e3, ia = /* @__PURE__ */ new WeakMap();
+customElements.get("web-map") || customElements.define("web-map", P4, { extends: "map" });
+const k4 = 1e3, ia = /* @__PURE__ */ new WeakMap();
 function Pp(i, t) {
   return i.map.forEachFeatureAtPixel(
     t,
@@ -37996,11 +38010,11 @@ function Pp(i, t) {
     { layerFilter: (e) => e === i.layer, hitTolerance: 4 }
   );
 }
-function k4(i) {
+function O4(i) {
   let t = ia.get(i);
   if (t) return t;
   const e = i.map, n = new Ih({ source: new Rh() });
-  return n.setZIndex(P4), e.addLayer(n), t = { map: e, layer: n, source: n.getSource(), count: 0, hovered: null }, t.onPointerMove = (s) => {
+  return n.setZIndex(k4), e.addLayer(n), t = { map: e, layer: n, source: n.getSource(), count: 0, hovered: null }, t.onPointerMove = (s) => {
     if (s.dragging) return;
     const r = Pp(t, s.pixel);
     if (r === t.hovered) return;
@@ -38012,11 +38026,11 @@ function k4(i) {
     return (r = Pp(t, s.pixel)) == null ? void 0 : r._activate();
   }, e.on("pointermove", t.onPointerMove), e.on("singleclick", t.onSingleClick), ia.set(i, t), t;
 }
-function O4(i) {
+function N4(i) {
   const t = ia.get(i);
   !t || t.count > 0 || (t.map.un("pointermove", t.onPointerMove), t.map.un("singleclick", t.onSingleClick), t.map.removeLayer(t.layer), ia.delete(i));
 }
-class N4 extends HTMLAreaElement {
+class F4 extends HTMLAreaElement {
   static get observedAttributes() {
     return ["coords", "alt", "href", "shape", "rel", "type", "target"];
   }
@@ -38076,7 +38090,7 @@ class N4 extends HTMLAreaElement {
   }
   disconnectedCallback() {
     const t = this._viewer && ia.get(this._viewer);
-    t && this._feature && (t.source.removeFeature(this._feature), t.count--, t.hovered === this && (t.hovered = null), O4(this._viewer)), this._feature = null, this._viewer = null;
+    t && this._feature && (t.source.removeFeature(this._feature), t.count--, t.hovered === this && (t.hovered = null), N4(this._viewer)), this._feature = null, this._viewer = null;
   }
   _attachedToMap() {
     this._map = this._viewer.map, this._map && this._render();
@@ -38092,7 +38106,7 @@ class N4 extends HTMLAreaElement {
     const t = this._geometry();
     if (t) {
       if (!this._feature) {
-        const s = k4(this._viewer);
+        const s = O4(this._viewer);
         this._feature = new Xn(), this._feature._areaEl = this, s.source.addFeature(this._feature), s.count++;
       }
       this._feature.setGeometry(t), this._feature.setStyle(C_(this, "polygon"));
@@ -38147,10 +38161,10 @@ class N4 extends HTMLAreaElement {
     return n;
   }
 }
-customElements.get("map-area") || customElements.define("map-area", N4, { extends: "area" });
-let F4 = 0;
+customElements.get("map-area") || customElements.define("map-area", F4, { extends: "area" });
+let G4 = 0;
 function Ur() {
-  return ++F4;
+  return ++G4;
 }
 const Nc = "http://www.w3.org/2000/svg";
 function X_() {
@@ -38191,7 +38205,7 @@ function K_(i, t) {
     };
   };
 }
-function G4(i, t) {
+function D4(i, t) {
   var v;
   const e = ke(i), n = document.createElement("fieldset");
   n.className = "mapml-layer-item", n.setAttribute("aria-grabbed", "false"), n._layerControlElement = i;
@@ -38303,14 +38317,14 @@ function Nn(i, t, e) {
   }
   i.insertAt(r, t);
 }
-function D4(i) {
+function z4(i) {
   const t = i.getArray(), e = t.slice().sort((s, r) => (s._getPos ? s._getPos() : 0) - (r._getPos ? r._getPos() : 0));
   if (e.some((s, r) => s !== t[r])) {
     for (const s of e) i.remove(s);
     for (const s of e) i.push(s);
   }
 }
-function z4(i, t) {
+function B4(i, t) {
   return (
     /**
      * @param {import("./tilecoord.js").TileCoord} tileCoord Tile Coordinate.
@@ -38331,13 +38345,13 @@ function z4(i, t) {
     })
   );
 }
-function B4(i, t) {
+function j4(i, t) {
   const e = i.length, n = new Array(e);
   for (let s = 0; s < e; ++s)
-    n[s] = z4(i[s], t);
-  return j4(n);
+    n[s] = B4(i[s], t);
+  return q4(n);
 }
-function j4(i) {
+function q4(i) {
   return i.length === 1 ? i[0] : (
     /**
      * @param {import("./tilecoord.js").TileCoord} tileCoord Tile Coordinate.
@@ -38453,7 +38467,7 @@ class Fh extends O_ {
     this.urls = t;
     const e = t.join(`
 `);
-    this.generateTileUrlFunction_ ? this.setTileUrlFunction(B4(t, this.tileGrid), e) : this.setKey(e);
+    this.generateTileUrlFunction_ ? this.setTileUrlFunction(j4(t, this.tileGrid), e) : this.setKey(e);
   }
   /**
    * @param {import("../tilecoord.js").TileCoord} tileCoord Tile coordinate.
@@ -38475,7 +38489,7 @@ class Y_ extends Fh {
       projection: t.projection,
       state: t.state,
       tileGrid: t.tileGrid,
-      tileLoadFunction: t.tileLoadFunction ? t.tileLoadFunction : q4,
+      tileLoadFunction: t.tileLoadFunction ? t.tileLoadFunction : U4,
       tilePixelRatio: t.tilePixelRatio,
       tileUrlFunction: t.tileUrlFunction,
       url: t.url,
@@ -38637,7 +38651,7 @@ class Y_ extends Fh {
     }
   }
 }
-function q4(i, t) {
+function U4(i, t) {
   if (ii) {
     const e = i.getCrossOrigin();
     let n = "same-origin", s = "same-origin";
@@ -38663,7 +38677,7 @@ function q4(i, t) {
   }
   i.getImage().src = t;
 }
-const U4 = 256;
+const Z4 = 256;
 class zu extends lf {
   constructor(t = {}) {
     const e = window.M[t.projection], n = $i(e), s = t.nativeZoom ?? 0, r = e.options.resolutions, o = new Y_({
@@ -38672,7 +38686,7 @@ class zu extends lf {
         extent: n.getExtent(),
         origin: e.options.origin,
         resolutions: [r[s] ?? r[0]],
-        tileSize: U4
+        tileSize: Z4
       })
     });
     super({ source: o }), this._projection = t.projection, this._nativeZoom = s, this._tileGrid = Br(e), this._mapTiles = t.mapTiles || [], this._tileMap = {}, this._buildTileMap(), o.setTileUrlFunction((a) => {
@@ -38738,7 +38752,7 @@ class zu extends lf {
     this.layerBounds = t, this.zoomBounds = e;
   }
 }
-class Z4 extends HTMLElement {
+class $4 extends HTMLElement {
   static get observedAttributes() {
     return ["label", "checked", "hidden", "opacity", "src", "media"];
   }
@@ -39094,7 +39108,7 @@ class Z4 extends HTMLElement {
   _reorderExtentGroups() {
     var e;
     const t = (e = this._layerGroup) == null ? void 0 : e.getLayers();
-    t && D4(t);
+    t && z4(t);
   }
   // Lazily create the layer's static-feature vector layer (the `_mapmlvectors`
   // member, MapML.js MapLayer). One per <map-layer>; child <map-feature>
@@ -39183,7 +39197,7 @@ class Z4 extends HTMLElement {
   // ported createLayerControlForLayer.js builder (kept standalone to diff 1:1
   // against MapML.js).
   getLayerControlHTML(t) {
-    return G4(this, t);
+    return D4(this, t);
   }
   // Disable this layer when every one of its extents / sublayers is disabled
   // (out of view/zoom or projection-mismatched), enable it otherwise; then
@@ -39300,7 +39314,7 @@ See more here - https://maps4html.org/web-map-doc/docs/elements/meta/`;
     return e;
   }
 }
-function $4(i, t) {
+function W4(i, t) {
   var b;
   const e = document.createElement("fieldset");
   e.className = "mapml-layer-extent", e.setAttribute("aria-grabbed", "false"), e._layerControlElement = i;
@@ -39361,7 +39375,7 @@ function $4(i, t) {
     }
   }), e;
 }
-class W4 extends HTMLElement {
+class V4 extends HTMLElement {
   static get observedAttributes() {
     return ["units", "checked", "hidden", "opacity"];
   }
@@ -39572,7 +39586,7 @@ class W4 extends HTMLElement {
   // ported createLayerControlForExtent.js builder (kept standalone to diff 1:1
   // against MapML.js).
   getLayerControlHTML(t) {
-    return $4(this, t);
+    return W4(this, t);
   }
   // Re-apply this extent's templated links (tile/image/features) so a changed
   // template variable takes effect. Ported from MapML.js map-select.js, where
@@ -39601,7 +39615,7 @@ class W4 extends HTMLElement {
     });
   }
 }
-class V4 extends HTMLElement {
+class H4 extends HTMLElement {
   static get observedAttributes() {
     return ["name", "type", "axis", "units", "min", "max", "value"];
   }
@@ -39658,7 +39672,7 @@ class V4 extends HTMLElement {
     return O.getClosest(this, "map-layer,layer-");
   }
 }
-class H4 extends HTMLElement {
+class X4 extends HTMLElement {
   static get observedAttributes() {
     return ["name", "id"];
   }
@@ -39738,7 +39752,7 @@ class H4 extends HTMLElement {
     });
   }
 }
-class X4 extends sf {
+class K4 extends sf {
   /**
    * @param {import("../../layer/Image.js").default} imageLayer Image layer.
    */
@@ -39840,7 +39854,7 @@ class X4 extends sf {
     return this.postRender(this.context, t), b && x.restore(), x.imageSmoothingEnabled = !0, this.container;
   }
 }
-class K4 extends va {
+class Y4 extends va {
   /**
    * @param {Options<ImageSourceType>} [options] Layer options.
    */
@@ -39848,7 +39862,7 @@ class K4 extends va {
     t = t || {}, super(t);
   }
 }
-class Y4 extends K4 {
+class J4 extends Y4 {
   /**
    * @param {import("./BaseImage.js").Options<ImageSourceType>} [options] Layer options.
    */
@@ -39859,7 +39873,7 @@ class Y4 extends K4 {
    * @override
    */
   createRenderer() {
-    return new X4(this);
+    return new K4(this);
   }
   /**
    * Get data for a pixel location.  A four element RGBA array will be returned.  For requests outside the
@@ -39881,7 +39895,7 @@ class Y4 extends K4 {
     return super.getData(t);
   }
 }
-class J4 extends Y_ {
+class Q4 extends Y_ {
   /**
    * @param {Options} [options] XYZ options.
    */
@@ -39925,7 +39939,7 @@ class J4 extends Y_ {
 function Bu(i) {
   return Array.isArray(i) ? Math.min(...i) : i;
 }
-class Q4 extends v0 {
+class tL extends v0 {
   /**
    * @param {import("../proj/Projection.js").default} sourceProj Source projection (of the data).
    * @param {import("../proj/Projection.js").default} targetProj Target projection.
@@ -40054,7 +40068,7 @@ const Qa = 4, Fc = {
    */
   IMAGELOADERROR: "imageloaderror"
 };
-class tL extends Di {
+class eL extends Di {
   /**
    * @param {string} type Type.
    * @param {import("../Image.js").default} image The image.
@@ -40063,7 +40077,7 @@ class tL extends Di {
     super(t), this.image = e;
   }
 }
-class eL extends rf {
+class iL extends rf {
   /**
    * @param {Options} options Single image source options.
    */
@@ -40117,7 +40131,7 @@ class eL extends rf {
         return this.reprojectedImage_;
       this.reprojectedImage_.dispose(), this.reprojectedImage_ = null;
     }
-    return this.reprojectedImage_ = new Q4(
+    return this.reprojectedImage_ = new tL(
       r,
       s,
       t,
@@ -40138,7 +40152,7 @@ class eL extends rf {
    */
   getImageInternal(t, e, n, s) {
     if (this.loader) {
-      const r = iL(t, e, n, 1), o = this.findNearestResolution(e);
+      const r = nL(t, e, n, 1), o = this.findNearestResolution(e);
       if (this.image && (this.static_ || this.wantedProjection_ === s && (this.wantedExtent_ && fi(this.wantedExtent_, r) || fi(this.image.getExtent(), r)) && (this.wantedResolution_ && Bu(this.wantedResolution_) === o || Bu(this.image.getResolution()) === o)))
         return this.image;
       this.wantedProjection_ = s, this.wantedExtent_ = r, this.wantedResolution_ = o, this.image = new v0(
@@ -40177,17 +40191,17 @@ class eL extends rf {
       default:
         return;
     }
-    this.hasListener(n) && this.dispatchEvent(new tL(n, e));
+    this.hasListener(n) && this.dispatchEvent(new eL(n, e));
   }
 }
-function iL(i, t, e, n) {
+function nL(i, t, e, n) {
   const s = t / e, r = xi(i), o = Fn(ct(i) / s, Qa), a = Fn($t(i) / s, Qa), l = Fn((n - 1) * o / 2, Qa), h = o + 2 * l, c = Fn((n - 1) * a / 2, Qa), u = a + 2 * c;
   return Cl(r, s, 0, [
     h,
     u
   ]);
 }
-function nL(i, t) {
+function sL(i, t) {
   return i.replace(/\{ *([\w_ -]+) *\}/g, (e, n) => {
     let s = t[n];
     return s === void 0 ? e : (typeof s == "function" && (s = s()), s);
@@ -40290,7 +40304,7 @@ class J_ {
     ];
     for (const u in l)
       c.indexOf(u) < 0 && (h[u] = typeof l[u] == "function" ? l[u]() : l[u]);
-    return nL(this._template.template, h);
+    return sL(this._template.template, h);
   }
   async _load() {
     const t = this._loadToken = (this._loadToken || 0) + 1;
@@ -40371,8 +40385,8 @@ class J_ {
     return e;
   }
 }
-const sL = 256, rL = 128;
-class oL extends J_ {
+const rL = 256, oL = 128;
+class aL extends J_ {
   constructor(t, e, n) {
     super(t, e, n), this._tileGrid = Br(window.M[n.projection]), this._tileVars = t._setUpTileTemplateVars(e), this._docCache = /* @__PURE__ */ new Map();
   }
@@ -40400,7 +40414,7 @@ class oL extends J_ {
     const r = this._tileGrid.getTileRangeForExtentAndZ(s, t), o = [];
     for (let a = r.minY; a <= r.maxY; a++)
       for (let l = r.minX; l <= r.maxX; l++) {
-        if (o.length >= rL) return o;
+        if (o.length >= oL) return o;
         o.push([t, l, a]);
       }
     return o;
@@ -40419,7 +40433,7 @@ class oL extends J_ {
       const c = new DOMParser().parseFromString(h, "application/xml");
       return c.querySelector("parsererror") ? null : c;
     }).catch((h) => (console.log(h), null));
-    return this._docCache.size >= sL && this._docCache.delete(this._docCache.keys().next().value), this._docCache.set(r, l), l;
+    return this._docCache.size >= rL && this._docCache.delete(this._docCache.keys().next().value), this._docCache.set(r, l), l;
   }
   // @override — one fetch PER TILE instead of one per view.
   async _load() {
@@ -40439,7 +40453,7 @@ class oL extends J_ {
     super.destroy(), this._docCache.clear();
   }
 }
-const aL = {
+const lL = {
   image: ["Polygon", "Circle", "LineString", "Image", "Text"],
   hybrid: ["Polygon", "LineString"],
   vector: []
@@ -40447,7 +40461,7 @@ const aL = {
   hybrid: ["Image", "Text", "Default"],
   vector: ["Polygon", "Circle", "LineString", "Image", "Text", "Default"]
 };
-class lL extends I_ {
+class hL extends I_ {
   /**
    * @param {import("../../layer/VectorTile.js").default} layer VectorTile layer.
    * @param {import("./TileLayer.js").Options} options Options.
@@ -41033,13 +41047,13 @@ class lL extends I_ {
         w,
         0,
         !0,
-        aL[n.getRenderMode()],
+        lL[n.getRenderMode()],
         null
       );
     s.renderedTileResolution = t.wantedResolution;
   }
 }
-class hL extends jd {
+class cL extends jd {
   /**
    * @param {Options<VectorTileSourceType, FeatureType>} [options] Options.
    */
@@ -41061,7 +41075,7 @@ class hL extends jd {
    * @override
    */
   createRenderer() {
-    return new lL(this, {
+    return new hL(this, {
       cacheSize: this.cacheSize_
     });
   }
@@ -41152,7 +41166,7 @@ class hL extends jd {
   }
 }
 const Op = [];
-class cL extends La {
+class uL extends La {
   /**
    * @param {import("./tilecoord.js").TileCoord} tileCoord Tile coordinate.
    * @param {import("./TileState.js").default} state State.
@@ -41214,7 +41228,7 @@ class cL extends La {
     this.context_ && (_a(this.context_), Op.push(this.context_.canvas), this.context_ = null), this.removeSourceTiles_(this), this.sourceTiles.length = 0, super.release();
   }
 }
-let uL = class extends La {
+let dL = class extends La {
   /**
    * @param {import("./tilecoord.js").TileCoord} tileCoord Tile coordinate.
    * @param {import("./TileState.js").default} state State.
@@ -41307,14 +41321,14 @@ class Q_ extends Fh {
       projection: e,
       state: t.state,
       tileGrid: s,
-      tileLoadFunction: t.tileLoadFunction ? t.tileLoadFunction : dL,
+      tileLoadFunction: t.tileLoadFunction ? t.tileLoadFunction : fL,
       tileUrlFunction: t.tileUrlFunction,
       url: t.url,
       urls: t.urls,
       wrapX: t.wrapX === void 0 ? !0 : t.wrapX,
       transition: t.transition,
       zDirection: t.zDirection === void 0 ? 1 : t.zDirection
-    }), this.format_ = t.format ? t.format : null, this.tileKeysBySourceTileUrl_ = {}, this.sourceTiles_ = {}, this.overlaps_ = t.overlaps == null ? !0 : t.overlaps, this.tileClass = t.tileClass ? t.tileClass : uL, this.tileGrids_ = {};
+    }), this.format_ = t.format ? t.format : null, this.tileKeysBySourceTileUrl_ = {}, this.sourceTiles_ = {}, this.overlaps_ = t.overlaps == null ? !0 : t.overlaps, this.tileClass = t.tileClass ? t.tileClass : dL, this.tileGrids_ = {};
   }
   /**
    * @return {boolean} The source can have overlapping geometries.
@@ -41439,7 +41453,7 @@ class Q_ extends Fh {
         }
       );
     }
-    const d = this.tileUrlFunction, f = new cL(
+    const d = this.tileUrlFunction, f = new uL(
       o,
       u ? z.EMPTY : z.IDLE,
       a,
@@ -41506,7 +41520,7 @@ class Q_ extends Fh {
     this.overlaps_ = t, this.changed();
   }
 }
-function dL(i, t) {
+function fL(i, t) {
   i.setLoader(
     /**
      * @param {import("../extent.js").Extent} extent Extent.
@@ -41526,8 +41540,8 @@ function dL(i, t) {
     }
   );
 }
-const Np = 65536 * 65536, fL = 12, Fp = typeof TextDecoder > "u" ? null : new TextDecoder("utf-8"), mL = 0, pL = 1, Gp = 2, gL = 5;
-class _L {
+const Np = 65536 * 65536, mL = 12, Fp = typeof TextDecoder > "u" ? null : new TextDecoder("utf-8"), pL = 0, gL = 1, Gp = 2, _L = 5;
+class yL {
   /**
    * @param {Uint8Array | ArrayBuffer} buf
    */
@@ -41586,7 +41600,7 @@ class _L {
     const e = this.buf, n = e[this.pos++];
     if (n < 128) return n;
     let s = n & 127, r;
-    return r = e[this.pos++], s |= (r & 127) << 7, r < 128 || (r = e[this.pos++], s |= (r & 127) << 14, r < 128) || (r = e[this.pos++], s |= (r & 127) << 21, r < 128) ? s : (r = e[this.pos], s |= (r & 15) << 28, yL(s, t, this));
+    return r = e[this.pos++], s |= (r & 127) << 7, r < 128 || (r = e[this.pos++], s |= (r & 127) << 14, r < 128) || (r = e[this.pos++], s |= (r & 127) << 21, r < 128) ? s : (r = e[this.pos], s |= (r & 15) << 28, vL(s, t, this));
   }
   readSVarint() {
     const t = this.readVarint();
@@ -41597,7 +41611,7 @@ class _L {
   }
   readString() {
     const t = this.readVarint() + this.pos, e = this.pos;
-    return this.pos = t, t - e >= fL && Fp ? Fp.decode(this.buf.subarray(e, t)) : vL(this.buf, e, t);
+    return this.pos = t, t - e >= mL && Fp ? Fp.decode(this.buf.subarray(e, t)) : xL(this.buf, e, t);
   }
   readBytes() {
     const t = this.readVarint() + this.pos, e = this.buf.subarray(this.pos, t);
@@ -41676,15 +41690,15 @@ class _L {
   /** @param {number} val */
   skip(t) {
     const e = t & 7;
-    if (e === mL) for (; this.buf[this.pos++] > 127; )
+    if (e === pL) for (; this.buf[this.pos++] > 127; )
       ;
     else if (e === Gp) this.pos = this.readVarint() + this.pos;
-    else if (e === gL) this.pos += 4;
-    else if (e === pL) this.pos += 8;
+    else if (e === _L) this.pos += 4;
+    else if (e === gL) this.pos += 8;
     else throw new Error(`Unimplemented type: ${e}`);
   }
 }
-function yL(i, t, e) {
+function vL(i, t, e) {
   const n = e.buf;
   let s, r;
   if (r = n[e.pos++], s = (r & 112) >> 4, r < 128 || (r = n[e.pos++], s |= (r & 127) << 3, r < 128) || (r = n[e.pos++], s |= (r & 127) << 10, r < 128) || (r = n[e.pos++], s |= (r & 127) << 17, r < 128) || (r = n[e.pos++], s |= (r & 127) << 24, r < 128) || (r = n[e.pos++], s |= (r & 1) << 31, r < 128)) return ir(i, s, t);
@@ -41693,7 +41707,7 @@ function yL(i, t, e) {
 function ir(i, t, e) {
   return e ? t * 4294967296 + (i >>> 0) : (t >>> 0) * 4294967296 + (i >>> 0);
 }
-function vL(i, t, e) {
+function xL(i, t, e) {
   let n = "", s = t;
   for (; s < e; ) {
     const r = i[s];
@@ -41704,7 +41718,7 @@ function vL(i, t, e) {
   }
   return n;
 }
-class xL {
+class bL {
   constructor() {
     this.dataProjection = void 0, this.defaultFeatureProjection = void 0, this.featureClass = /** @type {FeatureToFeatureClass<FeatureType>} */
     Xn, this.supportedMediaTypes = null;
@@ -41829,7 +41843,7 @@ class xL {
     return ft();
   }
 }
-function bL(i, t, e) {
+function wL(i, t, e) {
   const n = e ? Gt(e.featureProjection) : null, s = e ? Gt(e.dataProjection) : null;
   let r = i;
   if (n && s && !_e(n, s)) {
@@ -41838,7 +41852,7 @@ function bL(i, t, e) {
   }
   return r;
 }
-class ty extends xL {
+class ty extends bL {
   /**
    * @param {Options<FeatureType>} [options] Options.
    */
@@ -41907,7 +41921,7 @@ class ty extends xL {
       []
     );
     this.readRawGeometry_(t, e, l, h);
-    const c = SL(s, h.length);
+    const c = AL(s, h.length);
     if (this.featureClass === je)
       r = new /** @type {import('./Feature.js').FeatureToFeatureClass<RenderFeature>} */
       this.featureClass(c, l, h, 2, o, a), r.transform(n.dataProjection);
@@ -41923,7 +41937,7 @@ class ty extends xL {
         this.featureClass
       );
       r = new d(), this.geometryName_ && r.setGeometryName(this.geometryName_);
-      const f = bL(u, !1, n);
+      const f = wL(u, !1, n);
       r.setGeometry(f), a !== void 0 && r.setId(a), r.setProperties(o, !0);
     }
     return (
@@ -41952,17 +41966,17 @@ class ty extends xL {
     e = this.adaptOptions(e);
     const s = Gt(e.dataProjection);
     s.setWorldExtent(e.extent), e.dataProjection = s;
-    const r = new _L(
+    const r = new yL(
       /** @type {ArrayBuffer} */
       t
-    ), o = r.readFields(wL, {}), a = [];
+    ), o = r.readFields(EL, {}), a = [];
     for (const l in o) {
       if (n && !n.includes(l))
         continue;
       const h = o[l], c = h ? [0, 0, h.extent, h.extent] : null;
       s.setExtent(c);
       for (let u = 0, d = h.length; u < d; ++u) {
-        const f = CL(r, h, u), m = this.createFeature_(r, f, e);
+        const f = SL(r, h, u), m = this.createFeature_(r, f, e);
         m !== null && a.push(m);
       }
     }
@@ -41991,17 +42005,17 @@ class ty extends xL {
     this.layers_ = t;
   }
 }
-function wL(i, t, e) {
+function EL(i, t, e) {
   if (i === 3) {
     const n = {
       keys: [],
       values: [],
       features: []
     }, s = e.readVarint() + e.pos;
-    e.readFields(EL, n, s), n.length = n.features.length, n.length && (t[n.name] = n);
+    e.readFields(ML, n, s), n.length = n.features.length, n.length && (t[n.name] = n);
   }
 }
-function EL(i, t, e) {
+function ML(i, t, e) {
   if (i === 15)
     t.version = e.readVarint();
   else if (i === 1)
@@ -42020,7 +42034,7 @@ function EL(i, t, e) {
     t.values.push(n);
   }
 }
-function ML(i, t, e) {
+function CL(i, t, e) {
   if (i == 1)
     t.id = e.readVarint();
   else if (i == 2) {
@@ -42031,20 +42045,20 @@ function ML(i, t, e) {
     }
   } else i == 3 ? t.type = e.readVarint() : i == 4 && (t.geometry = e.pos);
 }
-function CL(i, t, e) {
+function SL(i, t, e) {
   i.pos = t.features[e];
   const n = i.readVarint() + i.pos, s = {
     layer: t,
     type: 0,
     properties: {}
   };
-  return i.readFields(ML, s, n), s;
+  return i.readFields(CL, s, n), s;
 }
-function SL(i, t) {
+function AL(i, t) {
   let e;
   return i === 1 ? e = t === 1 ? "Point" : "MultiPoint" : i === 2 ? e = t === 1 ? "LineString" : "MultiLineString" : i === 3 && (e = "Polygon"), e;
 }
-var ei = Uint8Array, vr = Uint16Array, AL = Int32Array, ey = new ei([
+var ei = Uint8Array, vr = Uint16Array, TL = Int32Array, ey = new ei([
   0,
   0,
   0,
@@ -42113,16 +42127,16 @@ var ei = Uint8Array, vr = Uint16Array, AL = Int32Array, ey = new ei([
   /* unused */
   0,
   0
-]), TL = new ei([16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15]), ny = function(i, t) {
+]), LL = new ei([16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15]), ny = function(i, t) {
   for (var e = new vr(31), n = 0; n < 31; ++n)
     e[n] = t += 1 << i[n - 1];
-  for (var s = new AL(e[30]), n = 1; n < 30; ++n)
+  for (var s = new TL(e[30]), n = 1; n < 30; ++n)
     for (var r = e[n]; r < e[n + 1]; ++r)
       s[r] = r - e[n] << 5 | n;
   return { b: e, r: s };
-}, sy = ny(ey, 2), ry = sy.b, LL = sy.r;
-ry[28] = 258, LL[258] = 28;
-var IL = ny(iy, 0), RL = IL.b, ju = new vr(32768);
+}, sy = ny(ey, 2), ry = sy.b, IL = sy.r;
+ry[28] = 258, IL[258] = 28;
+var RL = ny(iy, 0), PL = RL.b, ju = new vr(32768);
 for (var Bt = 0; Bt < 32768; ++Bt) {
   var Rn = (Bt & 43690) >> 1 | (Bt & 21845) << 1;
   Rn = (Rn & 52428) >> 2 | (Rn & 13107) << 2, Rn = (Rn & 61680) >> 4 | (Rn & 3855) << 4, ju[Bt] = ((Rn & 65280) >> 8 | (Rn & 255) << 8) >> 1;
@@ -42157,7 +42171,7 @@ for (var Bt = 280; Bt < 288; ++Bt)
 var oy = new ei(32);
 for (var Bt = 0; Bt < 32; ++Bt)
   oy[Bt] = 5;
-var PL = /* @__PURE__ */ No(Pa, 9, 1), kL = /* @__PURE__ */ No(oy, 5, 1), Gc = function(i) {
+var kL = /* @__PURE__ */ No(Pa, 9, 1), OL = /* @__PURE__ */ No(oy, 5, 1), Gc = function(i) {
   for (var t = i[0], e = 1; e < i.length; ++e)
     i[e] > t && (t = i[e]);
   return t;
@@ -42167,11 +42181,11 @@ var PL = /* @__PURE__ */ No(Pa, 9, 1), kL = /* @__PURE__ */ No(oy, 5, 1), Gc = f
 }, Dc = function(i, t) {
   var e = t / 8 | 0;
   return (i[e] | i[e + 1] << 8 | i[e + 2] << 16) >> (t & 7);
-}, OL = function(i) {
+}, NL = function(i) {
   return (i + 7) / 8 | 0;
-}, NL = function(i, t, e) {
+}, FL = function(i, t, e) {
   return (e == null || e > i.length) && (e = i.length), new ei(i.subarray(t, e));
-}, FL = [
+}, GL = [
   "unexpected EOF",
   "invalid block type",
   "invalid length/literal",
@@ -42189,7 +42203,7 @@ var PL = /* @__PURE__ */ No(Pa, 9, 1), kL = /* @__PURE__ */ No(oy, 5, 1), Gc = f
   "invalid zip data"
   // determined by unknown compression method
 ], Xe = function(i, t, e) {
-  var n = new Error(t || FL[i]);
+  var n = new Error(t || GL[i]);
   if (n.code = i, Error.captureStackTrace && Error.captureStackTrace(n, Xe), !e)
     throw n;
   return n;
@@ -42212,12 +42226,12 @@ var PL = /* @__PURE__ */ No(Pa, 9, 1), kL = /* @__PURE__ */ No(oy, 5, 1), Gc = f
       var x = Li(i, u + 1, 3);
       if (u += 3, x)
         if (x == 1)
-          f = PL, m = kL, p = 9, g = 5;
+          f = kL, m = OL, p = 9, g = 5;
         else if (x == 2) {
           var w = Li(i, u, 31) + 257, E = Li(i, u + 10, 15) + 4, C = w + Li(i, u + 5, 31) + 1;
           u += 14;
           for (var S = new ei(C), A = new ei(19), R = 0; R < E; ++R)
-            A[TL[R]] = Li(i, u + R * 3, 7);
+            A[LL[R]] = Li(i, u + R * 3, 7);
           u += E * 3;
           for (var N = Gc(A), T = (1 << N) - 1, P = No(A, N, 1), R = 0; R < C; ) {
             var D = P[Li(i, u, T)];
@@ -42236,7 +42250,7 @@ var PL = /* @__PURE__ */ No(Pa, 9, 1), kL = /* @__PURE__ */ No(oy, 5, 1), Gc = f
         } else
           Xe(1);
       else {
-        var b = OL(u) + 4, y = i[b - 4] | i[b - 3] << 8, v = b + y;
+        var b = NL(u) + 4, y = i[b - 4] | i[b - 3] << 8, v = b + y;
         if (v > s) {
           l && Xe(0);
           break;
@@ -42269,7 +42283,7 @@ var PL = /* @__PURE__ */ No(Pa, 9, 1), kL = /* @__PURE__ */ No(oy, 5, 1), Gc = f
         }
         var _t = m[Dc(i, u) & Y], ut = _t >> 4;
         _t || Xe(3), u += _t & 15;
-        var V = RL[ut];
+        var V = PL[ut];
         if (ut > 3) {
           var ht = iy[ut];
           V += Dc(i, u) & (1 << ht) - 1, u += ht;
@@ -42291,39 +42305,39 @@ var PL = /* @__PURE__ */ No(Pa, 9, 1), kL = /* @__PURE__ */ No(oy, 5, 1), Gc = f
     }
     t.l = f, t.p = I, t.b = d, t.f = c, f && (c = 1, t.m = p, t.d = m, t.n = g);
   } while (!c);
-  return d != e.length && o ? NL(e, 0, d) : e.subarray(0, d);
-}, GL = /* @__PURE__ */ new ei(0), DL = function(i) {
+  return d != e.length && o ? FL(e, 0, d) : e.subarray(0, d);
+}, DL = /* @__PURE__ */ new ei(0), zL = function(i) {
   (i[0] != 31 || i[1] != 139 || i[2] != 8) && Xe(6, "invalid gzip data");
   var t = i[3], e = 10;
   t & 4 && (e += (i[10] | i[11] << 8) + 2);
   for (var n = (t >> 3 & 1) + (t >> 4 & 1); n > 0; n -= !i[e++])
     ;
   return e + (t & 2);
-}, zL = function(i) {
+}, BL = function(i) {
   var t = i.length;
   return (i[t - 4] | i[t - 3] << 8 | i[t - 2] << 16 | i[t - 1] << 24) >>> 0;
-}, BL = function(i, t) {
+}, jL = function(i, t) {
   return ((i[0] & 15) != 8 || i[0] >> 4 > 7 || (i[0] << 8 | i[1]) % 31) && Xe(6, "invalid zlib data"), (i[1] >> 5 & 1) == 1 && Xe(6, "invalid zlib data: " + (i[1] & 32 ? "need" : "unexpected") + " dictionary"), (i[1] >> 3 & 4) + 2;
 };
-function jL(i, t) {
+function qL(i, t) {
   return gf(i, { i: 2 }, t, t);
 }
-function qL(i, t) {
-  var e = DL(i);
-  return e + 8 > i.length && Xe(6, "invalid gzip data"), gf(i.subarray(e, -8), { i: 2 }, new ei(zL(i)), t);
-}
 function UL(i, t) {
-  return gf(i.subarray(BL(i), -4), { i: 2 }, t, t);
+  var e = zL(i);
+  return e + 8 > i.length && Xe(6, "invalid gzip data"), gf(i.subarray(e, -8), { i: 2 }, new ei(BL(i)), t);
 }
 function ZL(i, t) {
-  return i[0] == 31 && i[1] == 139 && i[2] == 8 ? qL(i, t) : (i[0] & 15) != 8 || i[0] >> 4 > 7 || (i[0] << 8 | i[1]) % 31 ? jL(i, t) : UL(i, t);
+  return gf(i.subarray(jL(i), -4), { i: 2 }, t, t);
 }
-var $L = typeof TextDecoder < "u" && /* @__PURE__ */ new TextDecoder(), WL = 0;
+function $L(i, t) {
+  return i[0] == 31 && i[1] == 139 && i[2] == 8 ? UL(i, t) : (i[0] & 15) != 8 || i[0] >> 4 > 7 || (i[0] << 8 | i[1]) % 31 ? qL(i, t) : ZL(i, t);
+}
+var WL = typeof TextDecoder < "u" && /* @__PURE__ */ new TextDecoder(), VL = 0;
 try {
-  $L.decode(GL, { stream: !0 }), WL = 1;
+  WL.decode(DL, { stream: !0 }), VL = 1;
 } catch {
 }
-var VL = Object.defineProperty, HL = Math.pow, Pt = (i, t) => VL(i, "name", { value: t, configurable: !0 }), ge = (i, t, e) => new Promise((n, s) => {
+var HL = Object.defineProperty, XL = Math.pow, Pt = (i, t) => HL(i, "name", { value: t, configurable: !0 }), ge = (i, t, e) => new Promise((n, s) => {
   var r = (l) => {
     try {
       a(e.next(l));
@@ -42361,11 +42375,11 @@ Pt((i, t) => {
   }, "_removeTile") });
   return new s(t);
 }, "leafletRasterLayer");
-var XL = Pt((i) => (t, e) => {
+var KL = Pt((i) => (t, e) => {
   if (e instanceof AbortController) return i(t, e);
   let n = new AbortController();
   return i(t, n).then((s) => e(void 0, s.data, s.cacheControl || "", s.expires || ""), (s) => e(s)).catch((s) => e(s)), { cancel: Pt(() => n.abort(), "cancel") };
-}, "v3compat"), KL = class {
+}, "v3compat"), YL = class {
   constructor(t) {
     this.tilev4 = Pt((e, n) => ge(this, null, function* () {
       if (e.type === "json") {
@@ -42389,7 +42403,7 @@ var XL = Pt((i) => (t, e) => {
         return { data: new Uint8Array() };
       }
       return { data: null };
-    }), "tilev4"), this.tile = XL(this.tilev4), this.tiles = /* @__PURE__ */ new Map(), this.metadata = (t == null ? void 0 : t.metadata) || !1, this.errorOnMissingTile = (t == null ? void 0 : t.errorOnMissingTile) || !1;
+    }), "tilev4"), this.tile = KL(this.tilev4), this.tiles = /* @__PURE__ */ new Map(), this.metadata = (t == null ? void 0 : t.metadata) || !1, this.errorOnMissingTile = (t == null ? void 0 : t.errorOnMissingTile) || !1;
   }
   add(t) {
     this.tiles.set(t.source.getKey(), t);
@@ -42398,7 +42412,7 @@ var XL = Pt((i) => (t, e) => {
     return this.tiles.get(t);
   }
 };
-Pt(KL, "Protocol");
+Pt(YL, "Protocol");
 function ay(i, t) {
   return (t >>> 0) * 4294967296 + (i >>> 0);
 }
@@ -42434,7 +42448,7 @@ function cy(i) {
   return t < 4294967296 ? 31 - Math.clz32(t) : 63 - Math.clz32(t / 4294967296);
 }
 Pt(cy, "tileIdToZ");
-function YL(i) {
+function JL(i) {
   let t = cy(i) >> 1;
   if (t > 26) throw new Error("Tile zoom level exceeds max safe number limit (26)");
   let e = ((1 << t) * (1 << t) - 1) / 3, n = i - e, s = 0, r = 0, o = 1 << t;
@@ -42444,13 +42458,13 @@ function YL(i) {
   }
   return [t, s, r];
 }
-Pt(YL, "tileIdToZxy");
-var JL = ((i) => (i[i.Unknown = 0] = "Unknown", i[i.None = 1] = "None", i[i.Gzip = 2] = "Gzip", i[i.Brotli = 3] = "Brotli", i[i.Zstd = 4] = "Zstd", i))(JL || {});
+Pt(JL, "tileIdToZxy");
+var QL = ((i) => (i[i.Unknown = 0] = "Unknown", i[i.None = 1] = "None", i[i.Gzip = 2] = "Gzip", i[i.Brotli = 3] = "Brotli", i[i.Zstd = 4] = "Zstd", i))(QL || {});
 function Gh(i, t) {
   return ge(this, null, function* () {
     if (t === 1 || t === 0) return i;
     if (t === 2) {
-      if (typeof globalThis.DecompressionStream > "u") return ZL(new Uint8Array(i));
+      if (typeof globalThis.DecompressionStream > "u") return $L(new Uint8Array(i));
       let e = new Response(i).body;
       if (!e) throw new Error("Failed to read response stream");
       let n = e.pipeThrough(new globalThis.DecompressionStream("gzip"));
@@ -42460,12 +42474,12 @@ function Gh(i, t) {
   });
 }
 Pt(Gh, "defaultDecompress");
-var QL = ((i) => (i[i.Unknown = 0] = "Unknown", i[i.Mvt = 1] = "Mvt", i[i.Png = 2] = "Png", i[i.Jpeg = 3] = "Jpeg", i[i.Webp = 4] = "Webp", i[i.Avif = 5] = "Avif", i[i.Mlt = 6] = "Mlt", i))(QL || {});
+var tI = ((i) => (i[i.Unknown = 0] = "Unknown", i[i.Mvt = 1] = "Mvt", i[i.Png = 2] = "Png", i[i.Jpeg = 3] = "Jpeg", i[i.Webp = 4] = "Webp", i[i.Avif = 5] = "Avif", i[i.Mlt = 6] = "Mlt", i))(tI || {});
 function uy(i) {
   return i === 1 ? ".mvt" : i === 2 ? ".png" : i === 3 ? ".jpg" : i === 4 ? ".webp" : i === 5 ? ".avif" : i === 6 ? ".mlt" : "";
 }
 Pt(uy, "tileTypeExt");
-var tI = 127;
+var eI = 127;
 function dy(i, t) {
   let e = 0, n = i.length - 1;
   for (; e <= n; ) {
@@ -42477,7 +42491,7 @@ function dy(i, t) {
   return n >= 0 && (i[n].runLength === 0 || t - i[n].tileId < i[n].runLength) ? i[n] : null;
 }
 Pt(dy, "findTile");
-var eI = class {
+var iI = class {
   constructor(t) {
     this.file = t;
   }
@@ -42490,7 +42504,7 @@ var eI = class {
     });
   }
 };
-Pt(eI, "FileSource");
+Pt(iI, "FileSource");
 var fy = class {
   constructor(t, e = new Headers(), n = void 0) {
     var s, r;
@@ -42531,10 +42545,10 @@ var fy = class {
   }
 };
 Pt(fy, "FetchSource");
-var iI = fy;
+var nI = fy;
 function li(i, t) {
   let e = i.getUint32(t + 4, !0), n = i.getUint32(t + 0, !0);
-  return e * HL(2, 32) + n;
+  return e * XL(2, 32) + n;
 }
 Pt(li, "getUint64");
 function my(i, t) {
@@ -42566,7 +42580,7 @@ function vf(i, t) {
   return ge(this, null, function* () {
     let e = yield i.getBytes(0, 16384);
     if (new DataView(e.data).getUint16(0, !0) !== 19792) throw new Error("Wrong magic number for PMTiles archive");
-    let n = e.data.slice(0, tI), s = my(n, e.etag), r = e.data.slice(s.rootDirectoryOffset, s.rootDirectoryOffset + s.rootDirectoryLength), o = `${i.getKey()}|${s.etag || ""}|${s.rootDirectoryOffset}|${s.rootDirectoryLength}`, a = yf(yield t(r, s.internalCompression));
+    let n = e.data.slice(0, eI), s = my(n, e.etag), r = e.data.slice(s.rootDirectoryOffset, s.rootDirectoryOffset + s.rootDirectoryLength), o = `${i.getKey()}|${s.etag || ""}|${s.rootDirectoryOffset}|${s.rootDirectoryLength}`, a = yf(yield t(r, s.internalCompression));
     return [s, [o, a.length, a]];
   });
 }
@@ -42579,7 +42593,7 @@ function xf(i, t, e, n, s, r) {
   });
 }
 Pt(xf, "getDirectory");
-var nI = class {
+var sI = class {
   constructor(t = 100, e = !0, n = Gh) {
     this.cache = /* @__PURE__ */ new Map(), this.maxCacheEntries = t, this.counter = 1, this.decompress = n;
   }
@@ -42613,7 +42627,7 @@ var nI = class {
     });
   }
 };
-Pt(nI, "ResolvedValueCache");
+Pt(sI, "ResolvedValueCache");
 var gy = class {
   constructor(t = 100, e = !0, n = Gh) {
     this.cache = /* @__PURE__ */ new Map(), this.invalidations = /* @__PURE__ */ new Map(), this.pendingFetches = /* @__PURE__ */ new Map(), this.maxCacheEntries = t, this.counter = 1, this.decompress = n;
@@ -42682,9 +42696,9 @@ var gy = class {
   }
 };
 Pt(gy, "SharedPromiseCache");
-var sI = gy, _y = class {
+var rI = gy, _y = class {
   constructor(t, e, n) {
-    typeof t == "string" ? this.source = new iI(t) : this.source = t, n ? this.decompress = n : this.decompress = Gh, e ? this.cache = e : this.cache = new sI();
+    typeof t == "string" ? this.source = new nI(t) : this.source = t, n ? this.decompress = n : this.decompress = Gh, e ? this.cache = e : this.cache = new rI();
   }
   getHeader() {
     return ge(this, null, function* () {
@@ -42745,14 +42759,14 @@ var sI = gy, _y = class {
   }
 };
 Pt(_y, "PMTiles");
-var th = _y, yy = Object.defineProperty, Dp = Object.getOwnPropertySymbols, rI = Object.prototype.hasOwnProperty, oI = Object.prototype.propertyIsEnumerable, zp = (i, t, e) => t in i ? yy(i, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : i[t] = e, eh = (i, t) => {
+var th = _y, yy = Object.defineProperty, Dp = Object.getOwnPropertySymbols, oI = Object.prototype.hasOwnProperty, aI = Object.prototype.propertyIsEnumerable, zp = (i, t, e) => t in i ? yy(i, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : i[t] = e, eh = (i, t) => {
   for (var e in t || (t = {}))
-    rI.call(t, e) && zp(i, e, t[e]);
+    oI.call(t, e) && zp(i, e, t[e]);
   if (Dp)
     for (var e of Dp(t))
-      oI.call(t, e) && zp(i, e, t[e]);
+      aI.call(t, e) && zp(i, e, t[e]);
   return i;
-}, Dh = (i, t) => yy(i, "name", { value: t, configurable: !0 }), aI = (i, t, e) => new Promise((n, s) => {
+}, Dh = (i, t) => yy(i, "name", { value: t, configurable: !0 }), lI = (i, t, e) => new Promise((n, s) => {
   var r = (l) => {
     try {
       a(e.next(l));
@@ -42767,7 +42781,7 @@ var th = _y, yy = Object.defineProperty, Dp = Object.getOwnPropertySymbols, rI =
     }
   }, a = (l) => l.done ? n(l.value) : Promise.resolve(l.value).then(r, o);
   a((e = e.apply(i, t)).next());
-}), lI = class extends cf {
+}), hI = class extends cf {
   constructor(t) {
     super(eh(eh({}, t), {
       state: "loading"
@@ -42784,7 +42798,7 @@ var th = _y, yy = Object.defineProperty, Dp = Object.getOwnPropertySymbols, rI =
         minZoom: n.minZoom,
         maxZoom: n.maxZoom,
         tileSize: t.tileSize
-      }), this.setLoader((r, o, a) => aI(this, null, function* () {
+      }), this.setLoader((r, o, a) => lI(this, null, function* () {
         const l = yield e.getZxy(r, o, a);
         if (!l)
           return new Uint8Array();
@@ -42794,7 +42808,7 @@ var th = _y, yy = Object.defineProperty, Dp = Object.getOwnPropertySymbols, rI =
     });
   }
 };
-Dh(lI, "PMTilesRasterSource");
+Dh(hI, "PMTilesRasterSource");
 var vy = class extends Q_ {
   constructor(t) {
     super(eh(eh({}, t), {
@@ -42837,7 +42851,7 @@ var vy = class extends Q_ {
   }
 };
 Dh(vy, "PMTilesVectorSource");
-var hI = vy, cI = {
+var cI = vy, uI = {
   $version: 8,
   $root: {
     version: {
@@ -45500,7 +45514,7 @@ var hI = vy, cI = {
     }
   }
 };
-const Bp = cI, uI = [
+const Bp = uI, dI = [
   "type",
   "source",
   "source-layer",
@@ -45509,21 +45523,21 @@ const Bp = cI, uI = [
   "filter",
   "layout"
 ];
-function dI(i, t) {
+function fI(i, t) {
   const e = {};
   for (const n in i) n !== "ref" && (e[n] = i[n]);
-  return uI.forEach((n) => {
+  return dI.forEach((n) => {
     n in t && (e[n] = t[n]);
   }), e;
 }
-function fI(i) {
+function mI(i) {
   i = i.slice();
   const t = /* @__PURE__ */ Object.create(null);
   for (let e = 0; e < i.length; e++) t[i[e].id] = i[e];
-  for (let e = 0; e < i.length; e++) "ref" in i[e] && (i[e] = dI(i[e], t[i[e].ref]));
+  for (let e = 0; e < i.length; e++) "ref" in i[e] && (i[e] = fI(i[e], t[i[e].ref]));
   return i;
 }
-const zh = { kind: "null" }, U = { kind: "number" }, it = { kind: "string" }, lt = { kind: "boolean" }, Xi = { kind: "color" }, Bh = { kind: "projectionDefinition" }, Ts = { kind: "object" }, rt = { kind: "value" }, mI = { kind: "error" }, jh = { kind: "collator" }, qh = { kind: "formatted" }, Uh = { kind: "padding" }, na = { kind: "colorArray" }, Zh = { kind: "numberArray" }, ka = { kind: "resolvedImage" }, $h = { kind: "variableAnchorOffsetCollection" };
+const zh = { kind: "null" }, U = { kind: "number" }, it = { kind: "string" }, lt = { kind: "boolean" }, Xi = { kind: "color" }, Bh = { kind: "projectionDefinition" }, Ts = { kind: "object" }, rt = { kind: "value" }, pI = { kind: "error" }, jh = { kind: "collator" }, qh = { kind: "formatted" }, Uh = { kind: "padding" }, na = { kind: "colorArray" }, Zh = { kind: "numberArray" }, ka = { kind: "resolvedImage" }, $h = { kind: "variableAnchorOffsetCollection" };
 function Te(i, t) {
   return {
     kind: "array",
@@ -45537,7 +45551,7 @@ function Vt(i) {
     return typeof i.N == "number" ? `array<${t}, ${i.N}>` : i.itemType.kind === "value" ? "array" : `array<${t}>`;
   } else return i.kind;
 }
-const pI = [
+const gI = [
   zh,
   U,
   it,
@@ -45560,7 +45574,7 @@ function sa(i, t) {
   } else {
     if (i.kind === t.kind) return null;
     if (i.kind === "value") {
-      for (const e of pI) if (!sa(e, t)) return null;
+      for (const e of gI) if (!sa(e, t)) return null;
     }
   }
   return `Expected ${Vt(i)} but found ${Vt(t)} instead.`;
@@ -45574,7 +45588,7 @@ function Ls(i, t) {
 function Pn(i, t) {
   return i.kind === "array" && t.kind === "array" ? i.itemType.kind === t.itemType.kind && typeof i.N == "number" : i.kind === t.kind;
 }
-const xy = 0.96422, by = 1, wy = 0.82521, Ey = 4 / 29, Tr = 6 / 29, My = 3 * Tr * Tr, gI = Tr * Tr * Tr, _I = Math.PI / 180, yI = 180 / Math.PI;
+const xy = 0.96422, by = 1, wy = 0.82521, Ey = 4 / 29, Tr = 6 / 29, My = 3 * Tr * Tr, _I = Tr * Tr * Tr, yI = Math.PI / 180, vI = 180 / Math.PI;
 function Cy(i) {
   return i = i % 360, i < 0 && (i += 360), i;
 }
@@ -45595,7 +45609,7 @@ function zc(i) {
   return i <= 0.04045 ? i / 12.92 : Math.pow((i + 0.055) / 1.055, 2.4);
 }
 function Bc(i) {
-  return i > gI ? Math.pow(i, 1 / 3) : i / My + Ey;
+  return i > _I ? Math.pow(i, 1 / 3) : i / My + Ey;
 }
 function Ay([i, t, e, n]) {
   let s = (i + 16) / 116, r = isNaN(t) ? s : s + t / 500, o = isNaN(e) ? s : s - e / 200;
@@ -45612,24 +45626,24 @@ function jc(i) {
 function qc(i) {
   return i > Tr ? i * i * i : My * (i - Ey);
 }
-function vI(i) {
+function xI(i) {
   const [t, e, n, s] = Sy(i), r = Math.sqrt(e * e + n * n);
   return [
-    Math.round(r * 1e4) ? Cy(Math.atan2(n, e) * yI) : NaN,
+    Math.round(r * 1e4) ? Cy(Math.atan2(n, e) * vI) : NaN,
     r,
     t,
     s
   ];
 }
-function xI([i, t, e, n]) {
-  return i = isNaN(i) ? 0 : i * _I, Ay([
+function bI([i, t, e, n]) {
+  return i = isNaN(i) ? 0 : i * yI, Ay([
     e,
     Math.cos(i) * t,
     Math.sin(i) * t,
     n
   ]);
 }
-function bI([i, t, e, n]) {
+function wI([i, t, e, n]) {
   i = Cy(i), t /= 100, e /= 100;
   function s(r) {
     const o = (r + i / 30) % 12, a = t * Math.min(e, 1 - e);
@@ -45642,20 +45656,20 @@ function bI([i, t, e, n]) {
     n
   ];
 }
-const wI = Object.hasOwn || function(t, e) {
+const EI = Object.hasOwn || function(t, e) {
   return Object.prototype.hasOwnProperty.call(t, e);
 };
 function Ty(i, t) {
-  return wI(i, t) ? i[t] : void 0;
+  return EI(i, t) ? i[t] : void 0;
 }
-function EI(i) {
+function MI(i) {
   if (i = i.toLowerCase().trim(), i === "transparent") return [
     0,
     0,
     0,
     0
   ];
-  const t = Ty(MI, i);
+  const t = Ty(CI, i);
   if (t) {
     const [n, s, r] = t;
     return [
@@ -45716,7 +45730,7 @@ function EI(i) {
         lr(+l, 0, 100),
         c ? jp(+c, u) : 1
       ];
-      if (qp(f)) return bI(f);
+      if (qp(f)) return wI(f);
     }
   }
 }
@@ -45732,7 +45746,7 @@ function lr(i, t, e) {
 function qp(i) {
   return !i.some(Number.isNaN);
 }
-const MI = {
+const CI = {
   aliceblue: [
     240,
     248,
@@ -46512,7 +46526,7 @@ var fe, ae = (fe = class {
   static parse(t) {
     if (t instanceof fe) return t;
     if (typeof t != "string") return;
-    const e = EI(t);
+    const e = MI(t);
     if (e) return new fe(...e, !1);
   }
   /**
@@ -46535,7 +46549,7 @@ var fe, ae = (fe = class {
   * @returns Gien color, with reversed alpha blending, in HCL color space.
   */
   get hcl() {
-    return this.overwriteGetter("hcl", vI(this.rgb));
+    return this.overwriteGetter("hcl", xI(this.rgb));
   }
   /**
   * Used in color interpolation.
@@ -46600,7 +46614,7 @@ var fe, ae = (fe = class {
           let b = h - r;
           h > r && b > 180 ? b -= 360 : h < r && r - h > 180 && (b += 360), f = r + n * b;
         } else isNaN(r) ? isNaN(h) ? f = NaN : (f = h, (a === 1 || a === 0) && (m = c)) : (f = r, (u === 1 || u === 0) && (m = o));
-        const [p, g, _, x] = xI([
+        const [p, g, _, x] = bI([
           f,
           m ?? Is(o, c, n),
           Is(a, u, n),
@@ -46615,7 +46629,7 @@ var fe, ae = (fe = class {
     }
   }
 }, fe.black = new fe(0, 0, 0, 1), fe.white = new fe(1, 1, 1, 1), fe.transparent = new fe(0, 0, 0, 0), fe.red = new fe(1, 0, 0, 1), fe);
-const CI = [
+const SI = [
   "bottom",
   "center",
   "top"
@@ -46758,7 +46772,7 @@ var Uu = class {
     return this.message;
   }
 };
-const SI = /* @__PURE__ */ new Set([
+const AI = /* @__PURE__ */ new Set([
   "center",
   "left",
   "right",
@@ -46778,7 +46792,7 @@ var Qr = class gl {
     if (!(!Array.isArray(t) || t.length < 1 || t.length % 2 !== 0)) {
       for (let e = 0; e < t.length; e += 2) {
         const n = t[e], s = t[e + 1];
-        if (typeof n != "string" || !SI.has(n) || !Array.isArray(s) || s.length !== 2 || typeof s[0] != "number" || typeof s[1] != "number") return;
+        if (typeof n != "string" || !AI.has(n) || !Array.isArray(s) || s.length !== 2 || typeof s[0] != "number" || typeof s[1] != "number") return;
       }
       return new gl(t);
     }
@@ -46926,7 +46940,7 @@ var oa = class Ry {
     return !0;
   }
 };
-const AI = [
+const TI = [
   "Unknown",
   "Point",
   "LineString",
@@ -46940,7 +46954,7 @@ var Py = class {
     return this.feature && "id" in this.feature ? this.feature.id : null;
   }
   geometryType() {
-    return this.feature ? typeof this.feature.type == "number" ? AI[this.feature.type] : this.feature.type : null;
+    return this.feature ? typeof this.feature.type == "number" ? TI[this.feature.type] : this.feature.type : null;
   }
   geometry() {
     return this.feature && "geometry" in this.feature ? this.feature.geometry : null;
@@ -47007,7 +47021,7 @@ var Oy = class Ny {
     return this.outputs.every((t) => t.outputDefined());
   }
 };
-function TI(i, t, e, n) {
+function LI(i, t, e, n) {
   const s = 3 * i, r = 3 * (e - i) - s, o = 1 - s - r, a = 3 * t, l = 3 * (n - t) - a, h = 1 - a - l;
   return function(u, d = 1e-6) {
     if (u <= 0) return 0;
@@ -47042,7 +47056,7 @@ var Rs = class Zu {
     else if (t.name === "linear") r = Uc(e, 1, n, s);
     else if (t.name === "cubic-bezier") {
       const o = t.controlPoints;
-      r = TI(o[0], o[1], o[2], o[3])(Uc(e, 1, n, s));
+      r = LI(o[0], o[1], o[2], o[3])(Uc(e, 1, n, s));
     }
     return r;
   }
@@ -47137,7 +47151,7 @@ function Uc(i, t, e, n) {
   const s = n - e, r = i - e;
   return s === 0 ? 0 : t === 1 ? r / s : (Math.pow(t, r) - 1) / (Math.pow(t, s) - 1);
 }
-var LI = class Fy {
+var II = class Fy {
   constructor(t) {
     this.type = qh, this.sections = t;
   }
@@ -47162,7 +47176,7 @@ var LI = class Fy {
           return null;
         let u = null;
         if (a["vertical-align"]) {
-          if (typeof a["vertical-align"] == "string" && !CI.includes(a["vertical-align"])) return e.error(`'vertical-align' must be one of: 'bottom', 'center', 'top' but found '${a["vertical-align"]}' instead.`);
+          if (typeof a["vertical-align"] == "string" && !SI.includes(a["vertical-align"])) return e.error(`'vertical-align' must be one of: 'bottom', 'center', 'top' but found '${a["vertical-align"]}' instead.`);
           if (u = e.parse(a["vertical-align"], 1, it), !u) return null;
         }
         const d = s[s.length - 1];
@@ -47198,17 +47212,17 @@ var LI = class Fy {
     return !1;
   }
 };
-function II(i, t) {
+function RI(i, t) {
   if (i.length <= 1) return [i];
   const e = [];
   let n, s;
   for (const r of i) {
-    const o = RI(r);
+    const o = PI(r);
     o !== 0 && (r.area = Math.abs(o), s === void 0 && (s = o < 0), s === o < 0 ? (n && e.push(n), n = [r]) : n.push(r));
   }
   return n && e.push(n), e;
 }
-function RI(i) {
+function PI(i) {
   let t = 0;
   for (let e = 0, n = i.length, s = n - 1, r, o; e < n; s = e++)
     r = i[e], o = i[s], t += (o.x - r.x) * (r.y + o.y);
@@ -47418,7 +47432,7 @@ var xr = class Dy {
   outputDefined() {
     return !1;
   }
-}, PI = class Uy {
+}, kI = class Uy {
   constructor(t, e, n, s) {
     this.type = t, this.index = e, this.input = n, this.key = s;
   }
@@ -47442,7 +47456,7 @@ var xr = class Dy {
   outputDefined() {
     return !1;
   }
-}, kI = class Zy {
+}, OI = class Zy {
   constructor(t, e, n) {
     this.needle = t, this.haystack = e, this.key = n, this.type = lt;
   }
@@ -47475,7 +47489,7 @@ var xr = class Dy {
   outputDefined() {
     return !0;
   }
-}, OI = class $u {
+}, NI = class $u {
   constructor(t, e, n, s) {
     this.needle = t, this.haystack = e, this.key = n, this.fromIndex = s, this.type = U;
   }
@@ -47518,7 +47532,7 @@ var xr = class Dy {
   outputDefined() {
     return !1;
   }
-}, NI = class $y {
+}, FI = class $y {
   constructor(t, e, n, s, r, o) {
     this.inputType = t, this.type = e, this.input = n, this.cases = s, this.outputs = r, this.otherwise = o;
   }
@@ -47562,7 +47576,7 @@ var xr = class Dy {
   outputDefined() {
     return this.outputs.every((t) => t.outputDefined()) && this.otherwise.outputDefined();
   }
-}, FI = class Wy {
+}, GI = class Wy {
   constructor(t, e, n) {
     this.type = t, this.branches = e, this.otherwise = n;
   }
@@ -47596,7 +47610,7 @@ var xr = class Dy {
   outputDefined() {
     return this.branches.every(([t, e]) => e.outputDefined()) && this.otherwise.outputDefined();
   }
-}, GI = class Wu {
+}, DI = class Wu {
   constructor(t, e, n, s, r) {
     this.type = t, this.input = e, this.beginIndex = n, this.key = s, this.endIndex = r;
   }
@@ -47661,40 +47675,40 @@ var xr = class Dy {
 function Zp(i, t) {
   return i === "==" || i === "!=" ? t.kind === "boolean" || t.kind === "string" || t.kind === "number" || t.kind === "null" || t.kind === "value" : t.kind === "string" || t.kind === "number" || t.kind === "value";
 }
-function DI(i, t, e) {
+function zI(i, t, e) {
   return t === e;
 }
-function zI(i, t, e) {
+function BI(i, t, e) {
   return t !== e;
 }
-function BI(i, t, e) {
+function jI(i, t, e) {
   return t < e;
 }
-function jI(i, t, e) {
+function qI(i, t, e) {
   return t > e;
 }
-function qI(i, t, e) {
+function UI(i, t, e) {
   return t <= e;
 }
-function UI(i, t, e) {
+function ZI(i, t, e) {
   return t >= e;
 }
 function Hy(i, t, e, n) {
   return n.compare(t, e) === 0;
 }
-function ZI(i, t, e, n) {
+function $I(i, t, e, n) {
   return !Hy(i, t, e, n);
 }
-function $I(i, t, e, n) {
+function WI(i, t, e, n) {
   return n.compare(t, e) < 0;
 }
-function WI(i, t, e, n) {
+function VI(i, t, e, n) {
   return n.compare(t, e) > 0;
 }
-function VI(i, t, e, n) {
+function HI(i, t, e, n) {
   return n.compare(t, e) <= 0;
 }
-function HI(i, t, e, n) {
+function XI(i, t, e, n) {
   return n.compare(t, e) >= 0;
 }
 function io(i, t, e) {
@@ -47741,7 +47755,7 @@ function io(i, t, e) {
     }
   };
 }
-const XI = io("==", DI, Hy), KI = io("!=", zI, ZI), YI = io("<", BI, $I), JI = io(">", jI, WI), QI = io("<=", qI, VI), tR = io(">=", UI, HI);
+const KI = io("==", zI, Hy), YI = io("!=", BI, $I), JI = io("<", jI, WI), QI = io(">", qI, VI), tR = io("<=", UI, HI), eR = io(">=", ZI, XI);
 var Ky = class Yy {
   constructor(t, e, n) {
     this.type = jh, this.locale = n, this.caseSensitive = t, this.diacriticSensitive = e;
@@ -47766,7 +47780,7 @@ var Ky = class Yy {
   outputDefined() {
     return !1;
   }
-}, eR = class Jy {
+}, iR = class Jy {
   constructor(t, e, n, s, r, o) {
     this.type = it, this.number = t, this.locale = e, this.currency = n, this.unit = s, this.minFractionDigits = r, this.maxFractionDigits = o;
   }
@@ -47807,7 +47821,7 @@ var Ky = class Yy {
   outputDefined() {
     return !1;
   }
-}, iR = class Qy {
+}, nR = class Qy {
   constructor(t) {
     this.type = ka, this.input = t;
   }
@@ -47826,7 +47840,7 @@ var Ky = class Yy {
   outputDefined() {
     return !1;
   }
-}, nR = class t1 {
+}, sR = class t1 {
   constructor(t, e) {
     this.input = t, this.key = e, this.type = U;
   }
@@ -47849,24 +47863,24 @@ var Ky = class Yy {
   }
 };
 const Ki = 8192;
-function sR(i, t) {
-  const e = rR(i[0]), n = aR(i[1]), s = Math.pow(2, t.z);
+function rR(i, t) {
+  const e = oR(i[0]), n = lR(i[1]), s = Math.pow(2, t.z);
   return [Math.round(e * s * Ki), Math.round(n * s * Ki)];
 }
 function Ef(i, t) {
   const e = Math.pow(2, t.z), n = (i[0] / Ki + t.x) / e, s = (i[1] / Ki + t.y) / e;
-  return [oR(n), lR(s)];
-}
-function rR(i) {
-  return (180 + i) / 360;
+  return [aR(n), hR(s)];
 }
 function oR(i) {
-  return i * 360 - 180;
+  return (180 + i) / 360;
 }
 function aR(i) {
-  return (180 - 180 / Math.PI * Math.log(Math.tan(Math.PI / 4 + i * Math.PI / 360))) / 360;
+  return i * 360 - 180;
 }
 function lR(i) {
+  return (180 - 180 / Math.PI * Math.log(Math.tan(Math.PI / 4 + i * Math.PI / 360))) / 360;
+}
+function hR(i) {
   return 360 / Math.PI * Math.atan(Math.exp((180 - i * 360) * Math.PI / 180)) - 90;
 }
 function Na(i, t) {
@@ -47875,43 +47889,43 @@ function Na(i, t) {
 function aa(i, t) {
   return !(i[0] <= t[0] || i[2] >= t[2] || i[1] <= t[1] || i[3] >= t[3]);
 }
-function hR(i, t, e) {
+function cR(i, t, e) {
   return t[1] > i[1] != e[1] > i[1] && i[0] < (e[0] - t[0]) * (i[1] - t[1]) / (e[1] - t[1]) + t[0];
 }
-function cR(i, t, e) {
+function uR(i, t, e) {
   const n = i[0] - t[0], s = i[1] - t[1], r = i[0] - e[0], o = i[1] - e[1];
   return n * o - r * s === 0 && n * r <= 0 && s * o <= 0;
 }
 function Wh(i, t, e, n) {
   const s = [t[0] - i[0], t[1] - i[1]];
-  return mR([n[0] - e[0], n[1] - e[1]], s) === 0 ? !1 : !!($p(i, t, e, n) && $p(e, n, i, t));
+  return pR([n[0] - e[0], n[1] - e[1]], s) === 0 ? !1 : !!($p(i, t, e, n) && $p(e, n, i, t));
 }
-function uR(i, t, e) {
+function dR(i, t, e) {
   for (const n of e) for (let s = 0; s < n.length - 1; ++s) if (Wh(i, t, n[s], n[s + 1])) return !0;
   return !1;
 }
 function no(i, t, e = !1) {
   let n = !1;
   for (const s of t) for (let r = 0; r < s.length - 1; r++) {
-    if (cR(i, s[r], s[r + 1])) return e;
-    hR(i, s[r], s[r + 1]) && (n = !n);
+    if (uR(i, s[r], s[r + 1])) return e;
+    cR(i, s[r], s[r + 1]) && (n = !n);
   }
   return n;
 }
-function dR(i, t) {
+function fR(i, t) {
   for (const e of t) if (no(i, e)) return !0;
   return !1;
 }
 function e1(i, t) {
   for (const e of i) if (!no(e, t)) return !1;
-  for (let e = 0; e < i.length - 1; ++e) if (uR(i[e], i[e + 1], t)) return !1;
+  for (let e = 0; e < i.length - 1; ++e) if (dR(i[e], i[e + 1], t)) return !1;
   return !0;
 }
-function fR(i, t) {
+function mR(i, t) {
   for (const e of t) if (e1(i, e)) return !0;
   return !1;
 }
-function mR(i, t) {
+function pR(i, t) {
   return i[0] * t[1] - i[1] * t[0];
 }
 function $p(i, t, e, n) {
@@ -47923,7 +47937,7 @@ function Mf(i, t, e) {
   for (let s = 0; s < i.length; s++) {
     const r = [];
     for (let o = 0; o < i[s].length; o++) {
-      const a = sR(i[s][o], e);
+      const a = rR(i[s][o], e);
       Na(t, a), r.push(a);
     }
     n.push(r);
@@ -47946,7 +47960,7 @@ function n1(i, t, e, n) {
   }
   Na(t, i);
 }
-function pR(i) {
+function gR(i) {
   i[0] = i[1] = 1 / 0, i[2] = i[3] = -1 / 0;
 }
 function Wp(i, t, e, n) {
@@ -47968,12 +47982,12 @@ function Vp(i, t, e, n) {
     o.push(l);
   }
   if (t[2] - t[0] <= s / 2) {
-    pR(t);
+    gR(t);
     for (const a of o) for (const l of a) n1(l, t, e, s);
   }
   return o;
 }
-function gR(i, t) {
+function _R(i, t) {
   const e = [
     1 / 0,
     1 / 0,
@@ -47993,11 +48007,11 @@ function gR(i, t) {
   if (t.type === "MultiPolygon") {
     const r = i1(t.coordinates, n, s), o = Wp(i.geometry(), e, n, s);
     if (!aa(e, n)) return !1;
-    for (const a of o) if (!dR(a, r)) return !1;
+    for (const a of o) if (!fR(a, r)) return !1;
   }
   return !0;
 }
-function _R(i, t) {
+function yR(i, t) {
   const e = [
     1 / 0,
     1 / 0,
@@ -48017,7 +48031,7 @@ function _R(i, t) {
   if (t.type === "MultiPolygon") {
     const r = i1(t.coordinates, n, s), o = Vp(i.geometry(), e, n, s);
     if (!aa(e, n)) return !1;
-    for (const a of o) if (!fR(a, r)) return !1;
+    for (const a of o) if (!mR(a, r)) return !1;
   }
   return !0;
 }
@@ -48048,8 +48062,8 @@ var Cf = class _l {
   }
   evaluate(t) {
     if (t.geometry() != null && t.canonicalID() != null) {
-      if (t.geometryType() === "Point") return gR(t, this.geometries);
-      if (t.geometryType() === "LineString") return _R(t, this.geometries);
+      if (t.geometryType() === "Point") return _R(t, this.geometries);
+      if (t.geometryType() === "LineString") return yR(t, this.geometries);
     }
     return !1;
   }
@@ -48093,10 +48107,10 @@ var Cf = class _l {
     t[i] = s;
   }
 };
-const yR = 6378.137, vR = 0.0066943799901413165, Hp = Math.PI / 180;
+const vR = 6378.137, xR = 0.0066943799901413165, Hp = Math.PI / 180;
 var Sf = class {
   constructor(i) {
-    const t = Hp * yR * 1e3, e = Math.cos(i * Hp), n = 1 / (1 - vR * (1 - e * e)), s = Math.sqrt(n);
+    const t = Hp * vR * 1e3, e = Math.cos(i * Hp), n = 1 / (1 - xR * (1 - e * e)), s = Math.sqrt(n);
     this.kx = t * s * e, this.ky = t * s * n * 0.9933056200098587;
   }
   /**
@@ -48209,7 +48223,7 @@ function Tf(i, t, e, n, s) {
   const r = Math.min(ws(i, [e, n], s), ws(t, [e, n], s)), o = Math.min(ws(e, [i, t], s), ws(n, [i, t], s));
   return Math.min(r, o);
 }
-function xR(i, t, e, n, s) {
+function bR(i, t, e, n, s) {
   if (!(vn(t, i.length) && vn(n, e.length))) return 1 / 0;
   let r = 1 / 0;
   for (let o = t[0]; o < t[1]; ++o) {
@@ -48222,14 +48236,14 @@ function xR(i, t, e, n, s) {
   }
   return r;
 }
-function bR(i, t, e, n, s) {
+function wR(i, t, e, n, s) {
   if (!(vn(t, i.length) && vn(n, e.length))) return NaN;
   let r = 1 / 0;
   for (let o = t[0]; o <= t[1]; ++o) for (let a = n[0]; a <= n[1]; ++a)
     if (r = Math.min(r, s.distance(i[o], e[a])), r === 0) return r;
   return r;
 }
-function wR(i, t, e) {
+function ER(i, t, e) {
   if (no(i, t, !0)) return 0;
   let n = 1 / 0;
   for (const s of t) {
@@ -48241,7 +48255,7 @@ function wR(i, t, e) {
   }
   return n;
 }
-function ER(i, t, e, n) {
+function MR(i, t, e, n) {
   if (!vn(t, i.length)) return NaN;
   for (let r = t[0]; r <= t[1]; ++r) if (no(i[r], e, !0)) return 0;
   let s = 1 / 0;
@@ -48259,7 +48273,7 @@ function Kp(i, t) {
   for (const e of i) for (const n of e) if (no(n, t, !0)) return !0;
   return !1;
 }
-function MR(i, t, e, n = 1 / 0) {
+function CR(i, t, e, n = 1 / 0) {
   const s = Ju(i), r = Ju(t);
   if (n !== 1 / 0 && Af(s, r, e) >= n) return n;
   if (aa(s, r)) {
@@ -48309,11 +48323,11 @@ function nh(i, t, e, n, s = 1 / 0) {
     if (ih(h) <= c) {
       if (!vn(h, i.length)) return NaN;
       if (t) {
-        const u = ER(i, h, e, n);
+        const u = MR(i, h, e, n);
         if (isNaN(u) || u === 0) return u;
         r = Math.min(r, u);
       } else for (let u = h[0]; u <= h[1]; ++u) {
-        const d = wR(i[u], e, n);
+        const d = ER(i[u], e, n);
         if (r = Math.min(r, d), r === 0) return 0;
       }
     } else {
@@ -48339,7 +48353,7 @@ function sh(i, t, e, n, s, r = 1 / 0) {
       if (!vn(h, i.length) && vn(c, e.length)) return NaN;
       let f;
       if (t && n)
-        f = xR(i, h, e, c, s), o = Math.min(o, f);
+        f = bR(i, h, e, c, s), o = Math.min(o, f);
       else if (t && !n) {
         const m = i.slice(h[0], h[1] + 1);
         for (let p = c[0]; p <= c[1]; ++p)
@@ -48349,7 +48363,7 @@ function sh(i, t, e, n, s, r = 1 / 0) {
         for (let p = h[0]; p <= h[1]; ++p)
           if (f = ws(i[p], m, s), o = Math.min(o, f), o === 0) return o;
       } else
-        f = bR(i, h, e, c, s), o = Math.min(o, f);
+        f = wR(i, h, e, c, s), o = Math.min(o, f);
     } else {
       const f = Ku(h, t), m = Ku(c, n);
       il(a, o, s, i, e, f[0], m[0]), il(a, o, s, i, e, f[0], m[1]), il(a, o, s, i, e, f[1], m[0]), il(a, o, s, i, e, f[1], m[1]);
@@ -48357,7 +48371,7 @@ function sh(i, t, e, n, s, r = 1 / 0) {
   }
   return o;
 }
-function CR(i, t) {
+function SR(i, t) {
   const e = i.geometry(), n = e.flat().map((o) => Ef([o.x, o.y], i.canonical));
   if (e.length === 0) return NaN;
   const s = new Sf(n[0][1]);
@@ -48377,7 +48391,7 @@ function CR(i, t) {
   }
   return r;
 }
-function SR(i, t) {
+function AR(i, t) {
   const e = i.geometry(), n = e.flat().map((o) => Ef([o.x, o.y], i.canonical));
   if (e.length === 0) return NaN;
   const s = new Sf(n[0][1]);
@@ -48397,10 +48411,10 @@ function SR(i, t) {
   }
   return r;
 }
-function AR(i, t) {
+function TR(i, t) {
   const e = i.geometry();
   if (e.length === 0 || e[0].length === 0) return NaN;
-  const n = II(e).map((o) => o.map((a) => a.map((l) => Ef([l.x, l.y], i.canonical)))), s = new Sf(n[0][0][0][1]);
+  const n = RI(e).map((o) => o.map((a) => a.map((l) => Ef([l.x, l.y], i.canonical)))), s = new Sf(n[0][0][0][1]);
   let r = 1 / 0;
   for (const o of t) for (const a of n) {
     switch (o.type) {
@@ -48411,7 +48425,7 @@ function AR(i, t) {
         r = Math.min(r, nh(o.coordinates, !0, a, s, r));
         break;
       case "Polygon":
-        r = Math.min(r, MR(a, o.coordinates, s, r));
+        r = Math.min(r, CR(a, o.coordinates, s, r));
     }
     if (r === 0) return r;
   }
@@ -48445,9 +48459,9 @@ var Lf = class yl {
   }
   evaluate(t) {
     if (t.geometry() != null && t.canonicalID() != null) {
-      if (t.geometryType() === "Point") return CR(t, this.geometries);
-      if (t.geometryType() === "LineString") return SR(t, this.geometries);
-      if (t.geometryType() === "Polygon") return AR(t, this.geometries);
+      if (t.geometryType() === "Point") return SR(t, this.geometries);
+      if (t.geometryType() === "LineString") return AR(t, this.geometries);
+      if (t.geometryType() === "Polygon") return TR(t, this.geometries);
     }
     return NaN;
   }
@@ -48456,7 +48470,7 @@ var Lf = class yl {
   outputDefined() {
     return !0;
   }
-}, TR = class o1 {
+}, LR = class o1 {
   constructor(t) {
     let e = null;
     for (const n of t) if (!e) e = n.type;
@@ -48506,34 +48520,34 @@ var Lf = class yl {
   }
 };
 const Vh = {
-  "==": XI,
-  "!=": KI,
-  ">": JI,
-  "<": YI,
-  ">=": tR,
-  "<=": QI,
+  "==": KI,
+  "!=": YI,
+  ">": QI,
+  "<": JI,
+  ">=": eR,
+  "<=": tR,
   array: mn,
-  at: PI,
+  at: kI,
   boolean: mn,
-  case: FI,
+  case: GI,
   coalesce: Vy,
   collator: Ky,
-  format: LI,
-  image: iR,
-  in: kI,
-  "index-of": OI,
+  format: II,
+  image: nR,
+  in: OI,
+  "index-of": NI,
   interpolate: Rs,
   "interpolate-hcl": Rs,
   "interpolate-lab": Rs,
-  length: nR,
+  length: sR,
   let: zy,
   literal: oa,
-  match: NI,
+  match: FI,
   number: mn,
-  "number-format": eR,
+  "number-format": iR,
   object: mn,
-  semiliteral: TR,
-  slice: GI,
+  semiliteral: LR,
+  slice: DI,
   step: Oy,
   string: mn,
   "to-boolean": xr,
@@ -48549,7 +48563,7 @@ var qi = class extends Error {
   constructor(i, t) {
     super(t), this.message = t, this.key = i;
   }
-}, LR = class l1 {
+}, IR = class l1 {
   constructor(t, e = []) {
     this.parent = t, this.bindings = {};
     for (const [n, s] of e) this.bindings[n] = s;
@@ -48566,7 +48580,7 @@ var qi = class extends Error {
     return this.bindings[t] ? !0 : this.parent ? this.parent.has(t) : !1;
   }
 }, h1 = class c1 {
-  constructor(t, e, n = [], s, r = new LR(), o = []) {
+  constructor(t, e, n = [], s, r = new IR(), o = []) {
     this.registry = t, this.path = n, this.key = n.map((a) => `[${a}]`).join(""), this.scope = r, this.errors = o, this.expectedType = s, this._isConstant = e;
   }
   /**
@@ -48707,7 +48721,7 @@ var qi = class extends Error {
     }
     if (a.length === 1) e.errors.push(...l.errors);
     else {
-      const h = (a.length ? a : o).map(([u]) => RR(u)).join(" | "), c = [];
+      const h = (a.length ? a : o).map(([u]) => PR(u)).join(" | "), c = [];
       for (let u = 1; u < t.length; u++) {
         const d = e.parse(t[u], 1 + c.length);
         if (!d) return null;
@@ -48735,7 +48749,7 @@ function $c(i, t) {
   const e = t[i];
   return typeof e > "u" ? null : e;
 }
-function IR(i, t, e, n) {
+function RR(i, t, e, n) {
   for (; e <= n; ) {
     const s = e + n >> 1;
     if (t[s] === i) return !0;
@@ -48748,7 +48762,7 @@ function hs(i) {
 }
 Jn.register(Vh, {
   error: [
-    mI,
+    pI,
     [it],
     (i, [t], e) => {
       throw new zt(t.evaluate(i), e);
@@ -49089,7 +49103,7 @@ Jn.register(Vh, {
   "filter-in-large": [
     lt,
     [it, Te(rt)],
-    (i, [t, e]) => IR(i.properties()[t.value], e.value, 0, e.value.length - 1)
+    (i, [t, e]) => RR(i.properties()[t.value], e.value, 0, e.value.length - 1)
   ],
   all: {
     type: lt,
@@ -49149,7 +49163,7 @@ Jn.register(Vh, {
     (i, [t]) => t.evaluate(i).resolvedLocale()
   ]
 });
-function RR(i) {
+function PR(i) {
   return Array.isArray(i) ? `(${i.map(Vt).join(", ")})` : `(${Vt(i.type)}...)`;
 }
 function rh(i) {
@@ -49201,13 +49215,13 @@ function kf(i, t) {
     e && !kf(n, t) && (e = !1);
   }), e;
 }
-function PR(i) {
+function kR(i) {
   return i["property-type"] === "data-driven" || i["property-type"] === "cross-faded-data-driven";
 }
-function kR(i) {
+function OR(i) {
   return !!i.expression && i.expression.parameters.indexOf("zoom") > -1;
 }
-function OR(i) {
+function NR(i) {
   return !!i.expression && i.expression.interpolated;
 }
 function vl(i) {
@@ -49225,9 +49239,9 @@ function cr(i) {
     value: i
   };
 }
-var NR = class {
+var FR = class {
   constructor(i, t, e, n) {
-    this.expression = i, this._warningHistory = {}, this._evaluator = new Py(), this._defaultValue = e ? zR(e) : null, this._enumValues = e && e.type === "enum" ? e.values : null, this._globalState = n, this._rootKey = t;
+    this.expression = i, this._warningHistory = {}, this._evaluator = new Py(), this._defaultValue = e ? BR(e) : null, this._enumValues = e && e.type === "enum" ? e.values : null, this._globalState = n, this._rootKey = t;
   }
   evaluateWithoutErrorHandling(i, t, e, n, s, r) {
     return this._globalState && (i = $r(i, this._globalState)), this._evaluator.globals = i, this._evaluator.feature = t, this._evaluator.featureState = e, this._evaluator.canonical = n, this._evaluator.availableImages = s || null, this._evaluator.formattedSection = r, this.expression.evaluate(this._evaluator);
@@ -49241,23 +49255,23 @@ var NR = class {
       return o;
     } catch (o) {
       const a = o instanceof zt ? o.path : "", l = `${a}|${o.message}`;
-      return this._warningHistory[l] || (this._warningHistory[l] = !0, typeof console < "u" && console.warn(FR(this._rootKey, a, o.message, this._defaultValue))), this._defaultValue;
+      return this._warningHistory[l] || (this._warningHistory[l] = !0, typeof console < "u" && console.warn(GR(this._rootKey, a, o.message, this._defaultValue))), this._defaultValue;
     }
   }
 };
-function FR(i, t, e, n) {
+function GR(i, t, e, n) {
   return `${i}${t}: ${e}${n == null ? "" : ` Falling back to ${String(n)}.`}`;
 }
-function GR(i) {
+function DR(i) {
   if (!i) throw new Error('rootKey must identify the location of the expression in the style JSON, e.g. "layers[3].paint.line-width".');
 }
 function nl(i) {
   return Array.isArray(i) && i.length > 0 && typeof i[0] == "string" && i[0] in Vh;
 }
 function u1(i, t, e, n) {
-  GR(t);
-  const s = new h1(Vh, rh, [], e ? DR(e) : void 0), r = s.parse(i, void 0, void 0, void 0, e && e.type === "string" ? { typeAnnotation: "coerce" } : void 0);
-  return r ? Qu(new NR(r, t, e, n)) : cr(s.errors);
+  DR(t);
+  const s = new h1(Vh, rh, [], e ? zR(e) : void 0), r = s.parse(i, void 0, void 0, void 0, e && e.type === "string" ? { typeAnnotation: "coerce" } : void 0);
+  return r ? Qu(new FR(r, t, e, n)) : cr(s.errors);
 }
 var tg = class {
   constructor(i, t, e) {
@@ -49287,13 +49301,13 @@ function ig(i, t, e, n) {
   const s = u1(i, t, e, n);
   if (s.result === "error") return s;
   const r = s.value.expression, o = Rf(r);
-  if (!o && !PR(e)) return cr([new qi("", "data expressions not supported")]);
+  if (!o && !kR(e)) return cr([new qi("", "data expressions not supported")]);
   const a = kf(r, ["zoom"]);
-  if (!a && !kR(e)) return cr([new qi("", "zoom expressions not supported")]);
+  if (!a && !OR(e)) return cr([new qi("", "zoom expressions not supported")]);
   const l = xl(r);
   if (!l && !a) return cr([new qi("", '"zoom" expression may only be used as input to a top-level "step" or "interpolate" expression.')]);
   if (l instanceof qi) return cr([l]);
-  if (l instanceof Rs && !OR(e)) return cr([new qi("", '"interpolate" expressions cannot be used with this property')]);
+  if (l instanceof Rs && !NR(e)) return cr([new qi("", '"interpolate" expressions cannot be used with this property')]);
   if (!l) return Qu(o ? new tg("constant", s.value, n) : new tg("source", s.value, n));
   const h = l instanceof Rs ? l.interpolation : void 0;
   return Qu(o ? new eg("camera", s.value, l.labels, h, n) : new eg("composite", s.value, l.labels, h, n));
@@ -49315,7 +49329,7 @@ function Hh(i, t = /* @__PURE__ */ new Set()) {
     Hh(e, t);
   }), t;
 }
-function DR(i) {
+function zR(i) {
   const t = {
     color: Xi,
     string: it,
@@ -49332,7 +49346,7 @@ function DR(i) {
   };
   return i.type === "array" ? Te(t[i.value] || rt, i.length) : t[i.type];
 }
-function zR(i) {
+function BR(i) {
   if (i.type === "color" && vl(i.default)) return new ae(0, 0, 0, 0);
   switch (i.type) {
     case "color":
@@ -49363,7 +49377,7 @@ function $r(i, t) {
     globalState: t
   };
 }
-function BR(i) {
+function jR(i) {
   let t = !1;
   for (const e of i) {
     const n = d1(e);
@@ -49394,7 +49408,7 @@ function d1(i) {
       return "legacy";
     case "any":
     case "all":
-      return BR(i.slice(1));
+      return jR(i.slice(1));
     default:
       return "expression";
   }
@@ -49405,7 +49419,7 @@ function f1(i) {
 function ng(i) {
   return i === "$type" ? ["geometry-type"] : i === "$id" ? ["id"] : ["get", i];
 }
-function jR(i) {
+function qR(i) {
   switch (i[0]) {
     case "==":
     case "!=":
@@ -49438,9 +49452,9 @@ function jR(i) {
       return null;
   }
 }
-function qR(i) {
+function UR(i) {
   if ((i[0] === "<" || i[0] === "<=" || i[0] === ">" || i[0] === ">=") && i[1] === "$type") return `"$type" cannot be use with operator "${i[0]}"`;
-  const t = jR(i);
+  const t = qR(i);
   return t ? `Mixing deprecated filter syntax with expression syntax is not supported. Replace ${JSON.stringify(i)} with ${JSON.stringify(t)}.` : `Mixing deprecated filter syntax with expression syntax is not supported. Convert ${JSON.stringify(i)} to expression syntax.`;
 }
 function Wc(i, t, e) {
@@ -49474,13 +49488,13 @@ function m1(i, t = []) {
   }
   return null;
 }
-function UR(i, t) {
+function ZR(i, t) {
   const e = m1(i);
   if (!e || typeof console > "u") return;
   const n = e.path.map((s) => `[${s}]`).join("");
-  console.warn(`${t}${n}: ${qR(e.legacyFilter)}`);
+  console.warn(`${t}${n}: ${UR(e.legacyFilter)}`);
 }
-const ZR = {
+const $R = {
   type: "boolean",
   default: !1,
   transition: !1,
@@ -49490,14 +49504,14 @@ const ZR = {
     parameters: ["zoom", "feature"]
   }
 };
-function $R(i, t, e) {
+function WR(i, t, e) {
   if (i == null) return {
     filter: () => !0,
     needGeometry: !1,
     getGlobalStateRefs: () => /* @__PURE__ */ new Set()
   };
-  f1(i) ? UR(i, t) : i = oh(i);
-  const n = u1(i, t, ZR, e);
+  f1(i) ? ZR(i, t) : i = oh(i);
+  const n = u1(i, t, $R, e);
   if (n.result === "error") throw new Error(n.value.map((s) => `${s.key}: ${s.message}`).join(", "));
   return {
     filter: (s, r, o) => n.value.evaluate(s, r, {}, o),
@@ -49505,7 +49519,7 @@ function $R(i, t, e) {
     getGlobalStateRefs: () => Hh(n.value.expression)
   };
 }
-function WR(i, t) {
+function VR(i, t) {
   return i < t ? -1 : i > t ? 1 : 0;
 }
 function p1(i) {
@@ -49517,7 +49531,7 @@ function p1(i) {
 function oh(i) {
   if (!i) return !0;
   const t = i[0];
-  return i.length <= 1 ? t !== "any" : t === "==" ? Vc(i[1], i[2], "==") : t === "!=" ? sl(Vc(i[1], i[2], "==")) : t === "<" || t === ">" || t === "<=" || t === ">=" ? Vc(i[1], i[2], t) : t === "any" ? VR(i.slice(1)) : t === "all" ? ["all"].concat(i.slice(1).map(oh)) : t === "none" ? ["all"].concat(i.slice(1).map(oh).map(sl)) : t === "in" ? sg(i[1], i.slice(2)) : t === "!in" ? sl(sg(i[1], i.slice(2))) : t === "has" ? rg(i[1]) : t === "!has" ? sl(rg(i[1])) : !0;
+  return i.length <= 1 ? t !== "any" : t === "==" ? Vc(i[1], i[2], "==") : t === "!=" ? sl(Vc(i[1], i[2], "==")) : t === "<" || t === ">" || t === "<=" || t === ">=" ? Vc(i[1], i[2], t) : t === "any" ? HR(i.slice(1)) : t === "all" ? ["all"].concat(i.slice(1).map(oh)) : t === "none" ? ["all"].concat(i.slice(1).map(oh).map(sl)) : t === "in" ? sg(i[1], i.slice(2)) : t === "!in" ? sl(sg(i[1], i.slice(2))) : t === "has" ? rg(i[1]) : t === "!has" ? sl(rg(i[1])) : !0;
 }
 function Vc(i, t, e) {
   switch (i) {
@@ -49533,7 +49547,7 @@ function Vc(i, t, e) {
       ];
   }
 }
-function VR(i) {
+function HR(i) {
   return ["any"].concat(i.map(oh));
 }
 function sg(i, t) {
@@ -49547,7 +49561,7 @@ function sg(i, t) {
       return t.length > 200 && !t.some((e) => typeof e != typeof t[0]) ? [
         "filter-in-large",
         i,
-        ["literal", t.sort(WR)]
+        ["literal", t.sort(VR)]
       ] : [
         "filter-in-small",
         i,
@@ -49573,11 +49587,11 @@ function la(i) {
 }
 function og(i, t) {
   let e = i.stops;
-  if (!e) return HR(i, t);
+  if (!e) return XR(i, t);
   const n = e && typeof e[0][0] == "object", s = n || i.property !== void 0, r = n || !s;
-  return e = e.map((o) => !s && t.tokens && typeof o[1] == "string" ? [o[0], JR(o[1])] : [o[0], la(o[1])]), n ? XR(i, t, e) : r ? YR(i, t, e) : td(i, t, e);
+  return e = e.map((o) => !s && t.tokens && typeof o[1] == "string" ? [o[0], QR(o[1])] : [o[0], la(o[1])]), n ? KR(i, t, e) : r ? JR(i, t, e) : td(i, t, e);
 }
-function HR(i, t) {
+function XR(i, t) {
   const e = ["get", i.property];
   if (i.default === void 0) return t.type === "string" ? ["string", e] : e;
   if (t.type === "enum") return [
@@ -49606,7 +49620,7 @@ function Of(i) {
       return "interpolate";
   }
 }
-function XR(i, t, e) {
+function KR(i, t, e) {
   const n = {}, s = {}, r = [];
   for (let o = 0; o < e.length; o++) {
     const a = e[o], l = a[0].zoom;
@@ -49631,12 +49645,12 @@ function XR(i, t, e) {
     return Nf(o), o;
   }
 }
-function KR(i, t) {
+function YR(i, t) {
   if (i !== void 0) return i;
   if (t !== void 0) return t;
 }
 function ag(i, t) {
-  const e = la(KR(i.default, t.default));
+  const e = la(YR(i.default, t.default));
   return e === void 0 && t.type === "resolvedImage" ? "" : e;
 }
 function td(i, t, e) {
@@ -49685,7 +49699,7 @@ function td(i, t, e) {
     ];
   } else throw new Error(`Unknown property function type ${n}`);
 }
-function YR(i, t, e, n = ["zoom"]) {
+function JR(i, t, e, n = ["zoom"]) {
   const s = Ff(i, t);
   let r, o = !1;
   if (s === "interval")
@@ -49710,7 +49724,7 @@ function Lr(i, t, e, n) {
 function Ff(i, t) {
   return i.type ? i.type : t.expression.interpolated ? "exponential" : "interval";
 }
-function JR(i) {
+function QR(i) {
   const t = ["concat"], e = /{([^{}]+)}/g;
   let n = 0;
   for (let s = e.exec(i); s !== null; s = e.exec(i)) {
@@ -49726,7 +49740,7 @@ function lg(i, t) {
   const e = t[0].evaluate(i), n = t[1].evaluate(i), s = t[2].evaluate(i), r = t[3] ? t[3].evaluate(i) : 1;
   return ae.parse(`hsla(${e}, ${n}%, ${s}%, ${r})`);
 }
-function QR(i) {
+function t3(i) {
   const t = i[0] / 255, e = i[1] / 255, n = i[2] / 255, s = i[3], r = Math.max(t, e, n), o = Math.min(t, e, n), a = (r + o) / 2;
   let l, h;
   if (r === o)
@@ -49791,7 +49805,7 @@ Jn.register(Vh, {
   "to-hsla": [
     { kind: "array", itemType: { kind: "number" }, N: 4 },
     [{ kind: "string" }],
-    (i, [t]) => QR(wh(t.evaluate(i)))
+    (i, [t]) => t3(wh(t.evaluate(i)))
   ],
   hsl: [
     { kind: "color" },
@@ -49871,25 +49885,25 @@ function dg(i, t, e) {
   return n[0] + fo + n[1] + fo + t + "px" + (e ? "/" + e : "") + fo + n[2];
 }
 const ed = Object.freeze({}), fg = {}, mg = {};
-let t3 = 0;
+let e3 = 0;
 function Gf(i) {
-  return i.id || (i.id = t3++), i.id;
+  return i.id || (i.id = e3++), i.id;
 }
-function e3(i, t) {
+function i3(i, t) {
   return Gf(i) + "." + at(t);
 }
-function i3(i) {
+function n3(i) {
   let t = fg[i.id];
   return t || (t = {}, fg[Gf(i)] = t), t;
 }
-function n3(i) {
+function s3(i) {
   let t = mg[i.id];
   return t || (t = {}, mg[Gf(i)] = t), t;
 }
 function Hc(i) {
   return i * Math.PI / 180;
 }
-const s3 = (function() {
+const r3 = (function() {
   const i = [];
   for (let t = 78271.51696402048; i.length <= 24; t /= 2)
     i.push(t);
@@ -49904,7 +49918,7 @@ function Xh(i, t) {
   const e = document.createElement("canvas");
   return e.width = i, e.height = t, e;
 }
-function r3(i, t) {
+function o3(i, t) {
   let e = 0;
   const n = t.length;
   for (; e < n; ++e)
@@ -49946,7 +49960,7 @@ function pg(i, t, e, n) {
     }
   return o.fill(), r;
 }
-function o3(i, t, e) {
+function a3(i, t, e) {
   const n = Math.max(0, Math.min(1, (e - i) / (t - i)));
   return n * n * (3 - 2 * n);
 }
@@ -49966,17 +49980,17 @@ function gg(i, t, e) {
   const r = s.getImageData(0, 0, t.width, t.height), o = r.data;
   for (let a = 0, l = r.width; a < l; ++a)
     for (let h = 0, c = r.height; h < c; ++h) {
-      const u = (h * l + a) * 4, d = o[u + 3] / 255, f = 0.75, m = 0.1, p = o3(f - m, f + m, d);
+      const u = (h * l + a) * 4, d = o[u + 3] / 255, f = 0.75, m = 0.1, p = a3(f - m, f + m, d);
       p > 0 ? (o[u + 0] = Math.round(255 * e.r * p), o[u + 1] = Math.round(255 * e.g * p), o[u + 2] = Math.round(255 * e.b * p), o[u + 3] = Math.round(255 * p)) : o[u + 3] = 0;
     }
   return s.putImageData(r, 0, 0), n;
 }
-const a3 = Array(256).join(" ");
+const l3 = Array(256).join(" ");
 function id(i, t) {
   if (t >= 0.05) {
     let e = "";
     const n = i.split(`
-`), s = a3.slice(
+`), s = l3.slice(
       0,
       Math.round(t / 0.1)
     );
@@ -50046,14 +50060,14 @@ function nd(i, t, e, n) {
   }
   return r;
 }
-const l3 = {
+const h3 = {
   Point: 1,
   MultiPoint: 1,
   LineString: 2,
   MultiLineString: 2,
   Polygon: 3,
   MultiPolygon: 3
-}, h3 = {
+}, c3 = {
   center: [0.5, 0.5],
   left: [0, 0.5],
   right: [1, 0.5],
@@ -50168,10 +50182,10 @@ function yg(i, t, e, n) {
     n
   ) ? "none" : "obstacle" : "declutter";
 }
-function c3(i, t, e, n) {
+function u3(i, t, e, n) {
   if (n || console.warn("No filterCache provided to evaluateFilter()"), !(i in n))
     try {
-      n[i] = $R(
+      n[i] = WR(
         t,
         `layers[${i}].filter`
       ).filter;
@@ -50194,9 +50208,9 @@ function us(i, t) {
   }
   return i;
 }
-const u3 = /\{[^{}}]*\}/g;
+const d3 = /\{[^{}}]*\}/g;
 function Yc(i, t) {
-  return i.replace(u3, function(e) {
+  return i.replace(d3, function(e) {
     return t[e.slice(1, -1)] || "";
   });
 }
@@ -50204,8 +50218,8 @@ function vg(i, t) {
   let e = i.split(":")[0];
   return e === i && (e = "default"), t[e];
 }
-const d3 = {};
-function f3(i, t, e, n = s3, s = void 0, r = void 0, o = void 0, a = void 0) {
+const f3 = {};
+function m3(i, t, e, n = r3, s = void 0, r = void 0, o = void 0, a = void 0) {
   if (typeof t == "string" && (t = JSON.parse(t)), t.schema)
     for (const b in t.schema) {
       const y = t.schema[b];
@@ -50213,7 +50227,7 @@ function f3(i, t, e, n = s3, s = void 0, r = void 0, o = void 0, a = void 0) {
     }
   if (t.version != 8)
     throw new Error("glStyle version 8 required.");
-  d3[e3(t, i)] = Array.from(arguments);
+  f3[i3(t, i)] = Array.from(arguments);
   const l = {};
   (typeof r == "string" || r instanceof Request || r instanceof Response || r instanceof Promise) && (r = { default: r });
   for (const b in r) {
@@ -50255,7 +50269,7 @@ function f3(i, t, e, n = s3, s = void 0, r = void 0, o = void 0, a = void 0) {
       }
     });
   }
-  const h = fI(t.layers), c = {}, u = [], d = {}, f = {}, m = i3(t), p = n3(t);
+  const h = mI(t.layers), c = {}, u = [], d = {}, f = {}, m = n3(t), p = s3(t);
   let g;
   for (let b = 0, y = h.length; b < y; ++b) {
     const v = h[b], w = v.id;
@@ -50293,8 +50307,8 @@ function f3(i, t, e, n = s3, s = void 0, r = void 0, o = void 0, a = void 0) {
     if (!C)
       return;
     let S = n.indexOf(y);
-    S == -1 && (S = r3(y, n)), Ps.zoom = S, Ps.distanceFromCenter = 0;
-    const A = b.getGeometry(), R = l3[A.getType()], N = i.get("map");
+    S == -1 && (S = o3(y, n)), Ps.zoom = S, Ps.distanceFromCenter = 0;
+    const A = b.getGeometry(), R = h3[A.getType()], N = i.get("map");
     if (N && N instanceof k0 && R === 1) {
       const V = N.getSize();
       if (V) {
@@ -50323,7 +50337,7 @@ function f3(i, t, e, n = s3, s = void 0, r = void 0, o = void 0, a = void 0) {
       ) === "none" || "minzoom" in I && S < I.minzoom || "maxzoom" in I && S >= I.maxzoom)
         continue;
       const ut = I.filter;
-      if (!ut || c3(et, ut, T, p)) {
+      if (!ut || u3(et, ut, T, p)) {
         let yt, kt, ee, Ht, Xt, $;
         const we = Y.index;
         if (R == 3 && (I.type == "fill" || I.type == "fill-extrusion")) {
@@ -50709,7 +50723,7 @@ function f3(i, t, e, n = s3, s = void 0, r = void 0, o = void 0, a = void 0) {
                     P
                   )
                 ), ie.setAnchor(
-                  h3[J(
+                  c3[J(
                     I,
                     "layout",
                     "icon-anchor",
@@ -51076,7 +51090,7 @@ ae.parse("#000000");
 ae.parse("#FFFFFF");
 ae.parse("#000000");
 const Jc = "mapml-vector";
-class m3 {
+class p3 {
   constructor(t, e) {
     this._template = t, this._linkEl = e.linkEl, this.zoomBounds = e.zoomBounds, this.extentBounds = e.extentBounds;
     const n = e.type === "mvt" ? new Q_({
@@ -51085,10 +51099,10 @@ class m3 {
       format: new ty(),
       url: e.url,
       attributions: e.attributions
-    }) : new hI({
+    }) : new cI({
       url: e.url,
       attributions: e.attributions
-    }), s = new hL({
+    }), s = new cL({
       declutter: !0,
       source: n,
       zIndex: e.zIndex
@@ -51112,7 +51126,7 @@ class m3 {
         (s) => s.source ? s : { ...s, source: Jc }
       )
     };
-    f3(t, n, Jc);
+    m3(t, n, Jc);
   }
   getLayer() {
     return this._layer;
@@ -51122,7 +51136,7 @@ class m3 {
     (n = (e = (t = this._layer) == null ? void 0 : t.getSource()) == null ? void 0 : e.clear) == null || n.call(e), this._layer = null;
   }
 }
-class p3 extends HTMLElement {
+class g3 extends HTMLElement {
   static get observedAttributes() {
     return ["media"];
   }
@@ -51193,8 +51207,8 @@ function Es(i) {
   if (t === "MAP-LINK")
     return (e = i._getTemplatedFeatureLayer) == null ? void 0 : e.call(i);
 }
-const g3 = /^image\/(png|jpeg|jpg|webp|gif|avif|\*)$/i, _3 = "application/pmtiles", y3 = "application/vnd.mapbox-vector-tile", v3 = "text/mapml", x3 = "application/vnd.maplibre-style+json", b3 = 'map-link[rel="stylesheet"][type="application/vnd.maplibre-style+json"]:not([disabled])';
-class w3 extends HTMLElement {
+const _3 = /^image\/(png|jpeg|jpg|webp|gif|avif|\*)$/i, y3 = "application/pmtiles", v3 = "application/vnd.mapbox-vector-tile", x3 = "text/mapml", b3 = "application/vnd.maplibre-style+json", w3 = 'map-link[rel="stylesheet"][type="application/vnd.maplibre-style+json"]:not([disabled])';
+class E3 extends HTMLElement {
   static get observedAttributes() {
     return ["rel", "tref", "type", "tms", "media", "disabled"];
   }
@@ -51364,7 +51378,7 @@ class w3 extends HTMLElement {
   // layer's shadow-DOM style container; feature styles resolve through it.
   async _applyStylesheet() {
     if (this.disabled || !this.hasAttribute("href")) return;
-    if (this.type === x3) {
+    if (this.type === b3) {
       this._applyVectorStyleSheet();
       return;
     }
@@ -51402,13 +51416,13 @@ class w3 extends HTMLElement {
     }
   }
   async _applyTile() {
-    if (this.type === _3)
-      return this._applyVectorTile("pmtiles");
     if (this.type === y3)
-      return this._applyVectorTile("mvt");
+      return this._applyVectorTile("pmtiles");
     if (this.type === v3)
+      return this._applyVectorTile("mvt");
+    if (this.type === x3)
       return this._applyMapmlTile();
-    if (!g3.test(this.type)) {
+    if (!_3.test(this.type)) {
       console.warn(
         `<map-link rel="tile">: unsupported type ${JSON.stringify(this.type)}.`
       );
@@ -51431,7 +51445,7 @@ class w3 extends HTMLElement {
       attributions: this._attribution()
     }, r = this._templateVars ? this._setUpTileTemplateVars(this._templateVars) : null;
     r && (r.left || r.right || r.top || r.bottom || Object.keys(r.extras).length) ? s.tileUrlFunction = (l) => this._tileUrl(r, l, n) : s.url = this._toOLTemplate(this.tref, this._extent.getInputs());
-    const a = { source: new J4(s) };
+    const a = { source: new Q4(s) };
     if (this._templateVars) {
       const l = this.getZoomBounds(), h = this.getBounds();
       a.minZoom = l.minZoom - 1, a.maxZoom = l.maxZoom;
@@ -51461,7 +51475,7 @@ class w3 extends HTMLElement {
       this._extent.querySelectorAll(
         "map-link[rel=image],map-link[rel=tile],map-link[rel=features]"
       )
-    ).indexOf(this), this._layerRegistry = /* @__PURE__ */ new Map(), this._featuresLayer = new oL(this, this._templateVars, {
+    ).indexOf(this), this._layerRegistry = /* @__PURE__ */ new Map(), this._featuresLayer = new aL(this, this._templateVars, {
       viewer: t,
       projection: t.projection,
       zoomBounds: this.getZoomBounds(),
@@ -51510,7 +51524,7 @@ class w3 extends HTMLElement {
       attributions: this._attribution(),
       linkEl: this
     };
-    t === "mvt" ? (o.url = this._toOLTemplate(this.tref, this._extent.getInputs()), o.projection = $i(r), o.tileGrid = Br(r)) : o.url = new URL(this.tref, this.getBase()).href, this._pmtilesLayer = new m3(this._templateVars, o), this._layer = this._pmtilesLayer.getLayer(), this._targetCollection = this._extent.getLayerGroup().getLayers(), Nn(this._targetCollection, this._layer, () => this.zIndex);
+    t === "mvt" ? (o.url = this._toOLTemplate(this.tref, this._extent.getInputs()), o.projection = $i(r), o.tileGrid = Br(r)) : o.url = new URL(this.tref, this.getBase()).href, this._pmtilesLayer = new p3(this._templateVars, o), this._layer = this._pmtilesLayer.getLayer(), this._targetCollection = this._extent.getLayerGroup().getLayers(), Nn(this._targetCollection, this._layer, () => this.zIndex);
   }
   // Locate the sibling `application/vnd.maplibre-style+json` stylesheet link a
   // vector-tile link should paint with. Mirrors MapML.js's scope resolution:
@@ -51519,7 +51533,7 @@ class w3 extends HTMLElement {
   // owns such a link. First `:not([disabled])` in document order wins.
   _findVectorStyleLink() {
     var n, s, r;
-    const t = b3, e = this.getLayerEl();
+    const t = w3, e = this.getLayerEl();
     return e && e.src ? ((n = this.closest("map-extent")) == null ? void 0 : n.querySelector(t)) ?? ((s = ke(e)) == null ? void 0 : s.querySelector(t)) ?? null : (r = O.getClosest(
       this,
       `map-extent:has(${t}),map-layer:has(${t}),layer-:has(${t})`
@@ -51543,7 +51557,7 @@ class w3 extends HTMLElement {
         "map-link[rel=image],map-link[rel=tile],map-link[rel=features]"
       )
     ).indexOf(this);
-    const n = this._setUpExtentTemplateVars(this._templateVars), r = { source: new eL({
+    const n = this._setUpExtentTemplateVars(this._templateVars), r = { source: new iL({
       projection: $i(e),
       attributions: this._attribution(),
       loader: (o, a) => {
@@ -51568,7 +51582,7 @@ class w3 extends HTMLElement {
         a.max.y
       ];
     }
-    this._layer = new Y4(r), this._targetCollection = this._extent.getLayerGroup().getLayers(), Nn(this._targetCollection, this._layer, () => this.zIndex);
+    this._layer = new J4(r), this._targetCollection = this._extent.getLayerGroup().getLayers(), Nn(this._targetCollection, this._layer, () => this.zIndex);
   }
   // `rel="features"` — a templated vector-feature layer. Ported from MapML.js
   // TemplatedFeaturesOrTilesLayer: on the initial add and every view change a
@@ -51730,7 +51744,7 @@ class w3 extends HTMLElement {
     const e = [];
     for (const n of yr(t, "map-link[rel=license i]")) {
       const s = n.getAttribute("title") || "", r = n.getAttribute("href") || "";
-      !s && !r || e.push(E3(s, r));
+      !s && !r || e.push(M3(s, r));
     }
     return e.length > 0 ? e.join("; ") : void 0;
   }
@@ -51914,14 +51928,14 @@ class w3 extends HTMLElement {
     return e.maxZoom = r || (t ? +t.getAttribute("max") : M[this.parentElement.units].options.resolutions.length - 1), e.maxNativeZoom = t ? +t.getAttribute("max") : e.maxZoom, e;
   }
 }
-function E3(i, t) {
+function M3(i, t) {
   const e = xg(i || t);
   return t ? `<a href="${xg(t)}" target="_blank" rel="noopener">${e}</a>` : e;
 }
 function xg(i) {
   return i.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 }
-class M3 extends HTMLElement {
+class C3 extends HTMLElement {
   constructor() {
     super();
   }
@@ -51952,7 +51966,7 @@ class M3 extends HTMLElement {
     this.observer && this.observer.disconnect();
   }
 }
-class C3 extends HTMLElement {
+class S3 extends HTMLElement {
   static get observedAttributes() {
     return ["name", "content"];
   }
@@ -51978,7 +51992,7 @@ class C3 extends HTMLElement {
   disconnectedCallback() {
   }
 }
-class S3 extends HTMLElement {
+class A3 extends HTMLElement {
   static get observedAttributes() {
     return ["zoom", "min", "max"];
   }
@@ -52270,7 +52284,7 @@ class S3 extends HTMLElement {
     }
   }
 }
-class A3 extends HTMLElement {
+class T3 extends HTMLElement {
   static get observedAttributes() {
     return ["cs"];
   }
@@ -52281,20 +52295,6 @@ class A3 extends HTMLElement {
     ["tcrs", "tilematrix", "pcrs", "gcrs", "map", "tile"].includes(t) && this.setAttribute("cs", t);
   }
   attributeChangedCallback(t, e, n) {
-  }
-  constructor() {
-    super();
-  }
-  connectedCallback() {
-  }
-  disconnectedCallback() {
-  }
-}
-class T3 extends HTMLElement {
-  static get observedAttributes() {
-    return [];
-  }
-  attributeChangedCallback() {
   }
   constructor() {
     super();
@@ -52319,6 +52319,20 @@ class L3 extends HTMLElement {
   }
 }
 class I3 extends HTMLElement {
+  static get observedAttributes() {
+    return [];
+  }
+  attributeChangedCallback() {
+  }
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+  }
+  disconnectedCallback() {
+  }
+}
+class R3 extends HTMLElement {
   static get observedAttributes() {
     return ["href", "target", "type", "inplace"];
   }
@@ -52356,7 +52370,7 @@ class I3 extends HTMLElement {
   disconnectedCallback() {
   }
 }
-class R3 extends HTMLElement {
+class P3 extends HTMLElement {
   static get observedAttributes() {
     return ["row", "col", "zoom", "src"];
   }
@@ -52524,37 +52538,37 @@ class R3 extends HTMLElement {
     };
   }
 }
-customElements.get("map-layer") || customElements.define("map-layer", Z4);
-customElements.get("map-extent") || customElements.define("map-extent", W4);
-customElements.get("map-input") || customElements.define("map-input", V4);
-customElements.get("map-select") || customElements.define("map-select", H4);
-customElements.get("map-link") || customElements.define("map-link", w3);
-customElements.get("map-caption") || customElements.define("map-caption", M3);
-customElements.get("map-meta") || customElements.define("map-meta", C3);
-customElements.get("map-feature") || customElements.define("map-feature", S3);
-customElements.get("map-geometry") || customElements.define("map-geometry", A3);
-customElements.get("map-properties") || customElements.define("map-properties", T3);
-customElements.get("map-span") || customElements.define("map-span", L3);
-customElements.get("map-style") || customElements.define("map-style", p3);
-customElements.get("map-a") || customElements.define("map-a", I3);
-customElements.get("map-tile") || customElements.define("map-tile", R3);
+customElements.get("map-layer") || customElements.define("map-layer", $4);
+customElements.get("map-extent") || customElements.define("map-extent", V4);
+customElements.get("map-input") || customElements.define("map-input", H4);
+customElements.get("map-select") || customElements.define("map-select", X4);
+customElements.get("map-link") || customElements.define("map-link", E3);
+customElements.get("map-caption") || customElements.define("map-caption", C3);
+customElements.get("map-meta") || customElements.define("map-meta", S3);
+customElements.get("map-feature") || customElements.define("map-feature", A3);
+customElements.get("map-geometry") || customElements.define("map-geometry", T3);
+customElements.get("map-properties") || customElements.define("map-properties", L3);
+customElements.get("map-span") || customElements.define("map-span", I3);
+customElements.get("map-style") || customElements.define("map-style", g3);
+customElements.get("map-a") || customElements.define("map-a", R3);
+customElements.get("map-tile") || customElements.define("map-tile", P3);
 export {
-  I3 as HTMLAnchorElement,
-  W4 as HTMLExtentElement,
-  S3 as HTMLFeatureElement,
-  A3 as HTMLGeometryElement,
-  V4 as HTMLInputElement,
-  Z4 as HTMLLayerElement,
-  w3 as HTMLLinkElement,
-  N4 as HTMLMapAreaElement,
-  M3 as HTMLMapCaptionElement,
-  C3 as HTMLMapMetaElement,
-  I4 as HTMLMapmlViewerElement,
-  T3 as HTMLPropertiesElement,
-  H4 as HTMLSelectElement,
-  L3 as HTMLSpanElement,
-  p3 as HTMLStyleElement,
-  R3 as HTMLTileElement,
-  R4 as HTMLWebMapElement
+  R3 as HTMLAnchorElement,
+  V4 as HTMLExtentElement,
+  A3 as HTMLFeatureElement,
+  T3 as HTMLGeometryElement,
+  H4 as HTMLInputElement,
+  $4 as HTMLLayerElement,
+  E3 as HTMLLinkElement,
+  F4 as HTMLMapAreaElement,
+  C3 as HTMLMapCaptionElement,
+  S3 as HTMLMapMetaElement,
+  R4 as HTMLMapmlViewerElement,
+  L3 as HTMLPropertiesElement,
+  X4 as HTMLSelectElement,
+  I3 as HTMLSpanElement,
+  g3 as HTMLStyleElement,
+  P3 as HTMLTileElement,
+  P4 as HTMLWebMapElement
 };
 //# sourceMappingURL=mapml-ol.js.map
