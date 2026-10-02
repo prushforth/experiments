@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Change projection on zoom change</title>
+    <script src="../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../index.html">Experiments</a></p>
+      <h1>Change projection on zoom change</h1>
+      <p class="experiment-feature-tags" data-tags="projections media-queries content-negotiation api">
+        <span class="experiment-nav-label">Feature tags</span>
+      </p>
+    </header>
+
+    <main class="experiment-body">
+      <table class="variant-matrix">
+        <caption class="visually-hidden">Content type by root element</caption>
+        <thead>
+          <tr>
+            <td></td>
+            <th scope="col"><code>&lt;mapml-viewer&gt;</code></th>
+            <th scope="col"><code>&lt;map is="web-map"&gt;</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Inline</th>
+            <td><a href="inline/">All three implementations</a></td>
+            <td><a href="inline/web-map.html">All three implementations</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Remote</th>
+            <td><a href="remote/">All three implementations</a></td>
+            <td><a href="remote/web-map.html">All three implementations</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        MapML-MapLibre draws Web Mercator only, so its cell of each comparison carries a
+        note instead of a map.
+      </p>
+    </main>
+  </body>
+</html>

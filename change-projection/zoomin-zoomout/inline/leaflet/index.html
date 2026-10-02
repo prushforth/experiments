@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Change projection on zoom change, inline &mdash; MapML.js</title>
+    <script src="../../../../templates/experiment.js" data-impl="leaflet"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">Change projection on zoom change, declared inline, rendered by MapML.js</h1>
+      <div class="example-map">
+        <!-- code -->
+        <mapml-viewer projection="CBMTILE" zoom="8" lat="60" lon="-101.219978" controls>
+          <map-caption>Four maps of the same place, each drawn the way that suits how far in you are</map-caption>
+          <map-layer label="Arctic SDI" media="(map-projection: EPSG3573) and (0 <= map-zoom <= 3)" checked>
+            <map-link rel="license" title="&copy; Arctic Council" href="https://catalogue.arctic-sdi.org/geonetwork/srv/eng/catalog.search"></map-link>
+            <map-extent units="EPSG3573" checked hidden>
+              <map-input name="TileMatrix" type="zoom" min="0" max="12" value="0"></map-input>
+              <map-input name="TileCol" type="location" units="tilematrix" axis="column" min="0" max="1"></map-input>
+              <map-input name="TileRow" type="location" units="tilematrix" axis="row" min="0" max="1"></map-input>
+              <map-link rel="tile" tref="https://basemap.arctic-sdi.org/mapcache/wmts/1.0.0/arctic_cascading/default/3573/{TileMatrix}/{TileRow}/{TileCol}.png"></map-link>
+            </map-extent>
+          </map-layer>
+          <map-layer label="Atlas of Canada" media="(map-projection: ATLAS_POLAR_MAP) and (4 <= map-zoom <= 5)" checked>
+            <map-link rel="license" title="Canadian Federal Geospatial Platform" href="https://geoappext.nrcan.gc.ca/arcgis/rest/services/FGP/NCR_RCN/MapServer/"></map-link>
+            <map-extent units="ATLAS_POLAR_MAP" checked hidden>
+              <map-input name="z" type="zoom" min="0" max="6" value="6"></map-input>
+              <map-input name="x" type="location" units="tilematrix" axis="column" min="116" max="186"></map-input>
+              <map-input name="y" type="location" units="tilematrix" axis="row" min="125" max="184"></map-input>
+              <map-link rel="tile" tref="https://geoappext.nrcan.gc.ca/arcgis/rest/services/FGP/NCR_RCN/MapServer/tile/{z}/{y}/{x}/"></map-link>
+              <map-link rel="tile" tref="https://geoappext.nrcan.gc.ca/arcgis/rest/services/FGP/NCR_RCN_A/MapServer/tile/{z}/{y}/{x}/"></map-link>
+            </map-extent>
+          </map-layer>
+          <map-layer label="Canada Base Map" media="(map-projection: CBMTILE) and (6 <= map-zoom <= 8)" checked>
+            <map-link rel="license" title="Canada Base Map &copy; Natural Resources Canada" href="https://www.nrcan.gc.ca/earth-sciences/geography/topographic-information/free-data-geogratis/licence/17285"></map-link>
+            <map-extent units="CBMTILE" checked hidden>
+              <map-input name="z" type="zoom" min="0" max="22"></map-input>
+              <map-input name="y" type="location" units="tilematrix" axis="row"></map-input>
+              <map-input name="x" type="location" units="tilematrix" axis="column"></map-input>
+              <map-link rel="tile" tref="https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT3978/MapServer/tile/{z}/{y}/{x}?m4h=t"></map-link>
+            </map-extent>
+          </map-layer>
+          <map-layer label="Web Mercator base map" media="(map-projection: OSMTILE) and (9 <= map-zoom <= 18)" checked>
+            <map-link rel="license" title="Canada Base Map &copy; Natural Resources Canada" href="https://www.nrcan.gc.ca/earth-sciences/geography/topographic-information/free-data-geogratis/licence/17285"></map-link>
+            <map-extent units="OSMTILE" checked hidden>
+              <map-input name="z" type="zoom" min="0" max="18"></map-input>
+              <map-input name="y" type="location" units="tilematrix" axis="row"></map-input>
+              <map-input name="x" type="location" units="tilematrix" axis="column"></map-input>
+              <map-link rel="tile" tref="https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3857/MapServer/tile/{z}/{y}/{x}?m4h=t"></map-link>
+              <map-link rel="tile" tref="https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3857/MapServer/tile/{z}/{y}/{x}?m4h=t"></map-link>
+            </map-extent>
+          </map-layer>
+        </mapml-viewer>
+        <script>
+          // Two of the four ways of drawing the world used here are not built in,
+          // so the page describes them before the map can be turned to face them.
+          const PROJECTIONS = [
+            `{
+              "projection": "EPSG3573",
+              "proj4string": "+proj=laea +lat_0=90 +lon_0=-100 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs",
+              "origin": [-4889334.802955, 4889334.802955],
+              "resolutions": [38197.92815, 19098.96407, 9549.482037, 4774.741019, 2387.370509, 1193.685255, 596.8426273, 298.4213137, 149.2106568, 74.60532841, 37.30266421],
+              "bounds": [[-4594983, 4507258], [4655569, -4562485]],
+              "tilesize": 256
+            }`,
+            `{
+              "projection": "ATLAS_POLAR_MAP",
+              "proj4string": "+proj=aeqd +lat_0=90 +lon_0=-90 +x_0=0 +y_0=0 +ellps=sphere +units=m +no_defs +type=crs",
+              "code": "ATLAS_POLAR_MAP",
+              "origin": [-20015200, 20015200],
+              "resolutions": [33073, 16536.5, 8268.246, 4134.123, 2067.061, 1033.531, 516.765],
+              "bounds": [[4979939, -4846977], [-5139071, 3980038]],
+              "tilesize": 256
+            }`
+          ];
+
+          customElements.whenDefined('mapml-viewer').then(() => {
+            const map = document.querySelector('mapml-viewer');
+            for (const definition of PROJECTIONS) map.defineCustomProjection(definition);
+
+            // The page only chooses the projection. Which layer is drawn follows
+            // from that, because each layer says in its media attribute which
+            // projection and which zoom range it is good for.
+            map.addEventListener('zoomend', () => {
+              if (map.zoom <= 3) {
+                map.projection = 'EPSG3573';
+              } else if (map.zoom <= 5) {
+                map.projection = 'ATLAS_POLAR_MAP';
+              } else if (map.zoom <= 8) {
+                map.projection = 'CBMTILE';
+              } else {
+                map.projection = 'OSMTILE';
+              }
+            });
+          });
+        </script>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>

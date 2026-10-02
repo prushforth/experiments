@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Change projection on zoom change &mdash; remote MapML in &lt;map is="web-map"&gt;</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Change projection on zoom change, from remote MapML, in a <code>&lt;map is="web-map"&gt;</code></h1>
+      <p class="lede">
+        The same markup as the <a href="./"><code>&lt;mapml-viewer&gt;</code> version</a>, hosted
+        by the customized built-in <code>&lt;map is="web-map"&gt;</code>.
+      </p>
+      <p class="experiment-feature-tags" data-tags="projections media-queries content-negotiation api">
+        <span class="experiment-nav-label">Feature tags</span>
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="../inline/web-map.html">Inline</a>
+        <a href="web-map.html" aria-current="page">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html" aria-current="page">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/web-map.html" title="Change projection on zoom change, from remote MapML in a web-map element, rendered by MapML.js" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The reference implementation. Zoom all the way out and in again to pass
+            through all four maps &mdash; but crossing between the Atlas of Canada map
+            and the Canada Base Map, at zoom 5 to 6, it never settles. Changing the
+            projection also moves the zoom by one, which puts the map back in the range
+            of the map it just left, so the two keep swapping and nothing is drawn.
+          </p>
+        </div>
+      </article>
+
+      <article class="example" data-unavailable>
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map example-unavailable">
+          <p>
+            MapML-MapLibre draws Web Mercator only.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/web-map.html" title="Change projection on zoom change, from remote MapML in a web-map element, rendered by MapML-OpenLayers" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The same four documents and the same four <code>media</code> attributes,
+            drawn by OpenLayers. Here the zoom survives the projection change, so every
+            boundary settles.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        <code>is=</code> is a customized built-in element, which Safari does not support; in
+        WebKit these frames fall back to the element's child content rather than a map.
+      </p>
+    </footer>
+  </body>
+</html>

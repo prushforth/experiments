@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Change projection on zoom change, remote web-map &mdash; MapML.js</title>
+    <script src="../../../../templates/experiment.js" data-impl="leaflet"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">Change projection on zoom change, from remote MapML in a web-map element, rendered by MapML.js</h1>
+      <div class="example-map">
+        <!-- code -->
+        <map is="web-map" projection="CBMTILE" zoom="8" lat="60" lon="-101.219978" controls>
+          <map-caption>Four maps of the same place, each drawn the way that suits how far in you are</map-caption>
+          <map-layer label="Arctic SDI" media="(map-projection: EPSG3573) and (0 <= map-zoom <= 3)" src="../asdi-changeProjection.mapml" checked></map-layer>
+          <map-layer label="Atlas of Canada" media="(map-projection: ATLAS_POLAR_MAP) and (4 <= map-zoom <= 5)" src="../atlas-changeProjection.mapml" checked></map-layer>
+          <map-layer label="Canada Base Map" media="(map-projection: CBMTILE) and (6 <= map-zoom <= 8)" src="../cbmt-changeProjection.mapml" checked></map-layer>
+          <map-layer label="Web Mercator base map" media="(map-projection: OSMTILE) and (9 <= map-zoom <= 18)" src="../osm-changeProjection.mapml" checked></map-layer>
+        </map>
+        <script>
+          // Two of the four ways of drawing the world used here are not built in,
+          // so the page describes them before the map can be turned to face them.
+          const PROJECTIONS = [
+            `{
+              "projection": "EPSG3573",
+              "proj4string": "+proj=laea +lat_0=90 +lon_0=-100 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs",
+              "origin": [-4889334.802955, 4889334.802955],
+              "resolutions": [38197.92815, 19098.96407, 9549.482037, 4774.741019, 2387.370509, 1193.685255, 596.8426273, 298.4213137, 149.2106568, 74.60532841, 37.30266421],
+              "bounds": [[-4594983, 4507258], [4655569, -4562485]],
+              "tilesize": 256
+            }`,
+            `{
+              "projection": "ATLAS_POLAR_MAP",
+              "proj4string": "+proj=aeqd +lat_0=90 +lon_0=-90 +x_0=0 +y_0=0 +ellps=sphere +units=m +no_defs +type=crs",
+              "code": "ATLAS_POLAR_MAP",
+              "origin": [-20015200, 20015200],
+              "resolutions": [33073, 16536.5, 8268.246, 4134.123, 2067.061, 1033.531, 516.765],
+              "bounds": [[4979939, -4846977], [-5139071, 3980038]],
+              "tilesize": 256
+            }`
+          ];
+
+          customElements.whenDefined('web-map').then(() => {
+            const map = document.querySelector('map[is="web-map"]');
+            for (const definition of PROJECTIONS) map.defineCustomProjection(definition);
+
+            // The page only chooses the projection. Which layer is drawn follows
+            // from that, because each layer says in its media attribute which
+            // projection and which zoom range it is good for.
+            map.addEventListener('zoomend', () => {
+              if (map.zoom <= 3) {
+                map.projection = 'EPSG3573';
+              } else if (map.zoom <= 5) {
+                map.projection = 'ATLAS_POLAR_MAP';
+              } else if (map.zoom <= 8) {
+                map.projection = 'CBMTILE';
+              } else {
+                map.projection = 'OSMTILE';
+              }
+            });
+          });
+        </script>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>
