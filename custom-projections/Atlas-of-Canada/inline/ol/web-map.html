@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Atlas of Canada Polar Wall Map, inline web-map &mdash; MapML-OpenLayers</title>
+    <script src="../../../../templates/experiment.js" data-impl="openlayers"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">The Atlas of Canada polar wall map, declared inline in a web-map element, rendered by MapML-OpenLayers</h1>
+      <div class="example-map">
+        <!-- code -->
+        <map is="web-map" projection="ATLAS_POLAR_MAP" zoom="1" lat="86.17166" lon="-95.2744" controls controlslist="search static" static>
+          <map-caption>The Atlas of Canada wall map, looking straight down on the North Pole</map-caption>
+          <map-layer label="Atlas of Canada polar wall map" checked>
+            <map-link rel="license" title="Canadian Federal Geospatial Platform" href="https://geoappext.nrcan.gc.ca/arcgis/rest/services/FGP/NCR_RCN/MapServer/"></map-link>
+            <map-link rel="suggestions" tref="https://geogratis.gc.ca/services/geoname/en/geonames.json?q={searchTerms}*&num=20"></map-link>
+            <map-link rel="search" tref="https://geogratis.gc.ca/services/geoname/en/geonames.json?q={searchTerms}&num=20"></map-link>
+            <map-extent units="ATLAS_POLAR_MAP" checked hidden>
+              <map-input type="zoom" name="z" min="0" max="6" value="6"></map-input>
+              <map-input type="location" name="x" axis="column" units="tilematrix" min="116" max="186"></map-input>
+              <map-input type="location" name="y" axis="row" units="tilematrix" min="125" max="184"></map-input>
+              <map-link rel="tile" tref="https://geoappext.nrcan.gc.ca/arcgis/rest/services/FGP/NCR_RCN/MapServer/tile/{z}/{y}/{x}/"></map-link>
+            </map-extent>
+          </map-layer>
+          <map-layer label="Annotation" checked>
+            <map-extent units="ATLAS_POLAR_MAP" checked hidden>
+              <map-input type="zoom" name="z" min="0" max="6" value="6"></map-input>
+              <map-input type="location" name="x" axis="column" units="tilematrix" min="116" max="186"></map-input>
+              <map-input type="location" name="y" axis="row" units="tilematrix" min="125" max="184"></map-input>
+              <map-link rel="tile" tref="https://geoappext.nrcan.gc.ca/arcgis/rest/services/FGP/NCR_RCN_A/MapServer/tile/{z}/{y}/{x}/"></map-link>
+            </map-extent>
+          </map-layer>
+        </map>
+        <script>
+          // There is no markup for describing a projection, so the page hands the
+          // description over instead. defineCustomProjection() stands in for the
+          // browser API that would accept it.
+          customElements.whenDefined('web-map').then(() => {
+            const map = document.querySelector('map[is="web-map"]');
+            map.projection = map.defineCustomProjection(`{
+              "projection": "ATLAS_POLAR_MAP",
+              "proj4string": "+proj=aeqd +lat_0=90 +lon_0=-90 +x_0=0 +y_0=0 +ellps=sphere +units=m +no_defs +type=crs",
+              "origin": [-20015200, 20015200],
+              "resolutions": [33073, 16536.5, 8268.246, 4134.123, 2067.061, 1033.531, 516.765],
+              "bounds": [[4979939, -4846977], [-5139071, 3980038]],
+              "tilesize": 256
+            }`);
+          });
+        </script>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>

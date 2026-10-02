@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>British National Grid, remote web-map &mdash; MapML-OpenLayers</title>
+    <script src="../../../../templates/experiment.js" data-impl="openlayers"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">The British National Grid, from remote MapML in a web-map element, rendered by MapML-OpenLayers</h1>
+      <div class="example-map">
+        <!-- code -->
+        <map is="web-map" projection="BNG" zoom="0" lat="54.41338" lon="-3.19995" controls controlslist="search static" static>
+          <map-caption>Great Britain, on the national grid its own mapping agencies publish in</map-caption>
+          <map-layer src="os-roads.mapml" label="Ordnance Survey roads" checked></map-layer>
+          <map-layer src="bgs-surficial-geology.mapml" label="Surficial geology" checked></map-layer>
+          <map-layer src="shrink-swell.mapml" label="Shrink/swell"></map-layer>
+        </map>
+        <script>
+          // There is no markup for describing a projection, so the page hands the
+          // description over instead. defineCustomProjection() stands in for the
+          // browser API that would accept it.
+          customElements.whenDefined('web-map').then(() => {
+            const map = document.querySelector('map[is="web-map"]');
+            map.projection = map.defineCustomProjection(`{
+              "projection": "BNG",
+              "proj4string": "+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.999601 +x_0=400000 +y_0=-100000 +ellps=airy +towgs84=446.448,-125.157,542.060,0.1502,0.2470,0.8421,-20.4894 +datum=OSGB36 +units=m +no_defs",
+              "origin": [-238375, 1376256],
+              "resolutions": [896, 448, 224, 112, 56, 28, 14, 7, 3.5, 1.75, 0.875, 0.4375, 0.21875, 0.109375],
+              "bounds": [[-238375, 0], [900000, 1376256]],
+              "tilesize": 256
+            }`);
+          });
+        </script>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>

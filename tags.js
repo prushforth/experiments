@@ -85,6 +85,8 @@
           '--tag-color',
           button.style.getPropertyValue('--tag-color')
         );
+        // Adjacent hues are hard to tell apart; the tooltip says which tag this is.
+        swatch.title = button.dataset.tagLabel;
         swatch.setAttribute('aria-hidden', 'true');
         return swatch;
       });
@@ -99,6 +101,8 @@
     button.style.setProperty('--tag-color', color);
     button.classList.add('tag-button');
     button.setAttribute('aria-pressed', 'false');
+    // Read before the dot and the count are added to the button.
+    button.dataset.tagLabel = button.textContent.trim();
 
     const dot = document.createElement('span');
     dot.className = 'tag-button-dot';

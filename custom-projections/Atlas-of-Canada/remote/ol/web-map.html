@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Atlas of Canada Polar Wall Map, remote web-map &mdash; MapML-OpenLayers</title>
+    <script src="../../../../templates/experiment.js" data-impl="openlayers"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">The Atlas of Canada polar wall map, from remote MapML in a web-map element, rendered by MapML-OpenLayers</h1>
+      <div class="example-map">
+        <!-- code -->
+        <map is="web-map" projection="ATLAS_POLAR_MAP" zoom="1" lat="86.17166" lon="-95.2744" controls controlslist="search static" static>
+          <map-caption>The Atlas of Canada wall map, looking straight down on the North Pole</map-caption>
+          <map-layer src="atlas.mapml" checked></map-layer>
+          <map-layer src="annotation.mapml" checked></map-layer>
+        </map>
+        <script>
+          // There is no markup for describing a projection, so the page hands the
+          // description over instead. defineCustomProjection() stands in for the
+          // browser API that would accept it.
+          customElements.whenDefined('web-map').then(() => {
+            const map = document.querySelector('map[is="web-map"]');
+            map.projection = map.defineCustomProjection(`{
+              "projection": "ATLAS_POLAR_MAP",
+              "proj4string": "+proj=aeqd +lat_0=90 +lon_0=-90 +x_0=0 +y_0=0 +ellps=sphere +units=m +no_defs +type=crs",
+              "origin": [-20015200, 20015200],
+              "resolutions": [33073, 16536.5, 8268.246, 4134.123, 2067.061, 1033.531, 516.765],
+              "bounds": [[4979939, -4846977], [-5139071, 3980038]],
+              "tilesize": 256
+            }`);
+          });
+        </script>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>

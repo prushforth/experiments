@@ -3,39 +3,41 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Province of British Columbia Albers tile cache</title>
-    <script type="module" src="../../dist/MapML-OpenLayers/dist/mapml-ol.js"></script>
-    <link rel="stylesheet" href="../../global.css">
-    <script type="module">
-    /* EPSG:3005 */
-      let customProjectionDefinition = `{
-            "projection": "BCTILE",
-            "proj4string" : "+proj=aea +lat_1=50 +lat_2=58.5 +lat_0=45 +lon_0=-126 +x_0=1000000 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs",
-            "origin" : [-13239300, 19868500],
-            "resolutions" :  [9783.9400003175,4891.969998835831,2445.9849999470835,1222.9925001058336,611.4962500529168,305.74812489416644,152.8740625,76.4370312632292,38.2185156316146,19.10925781316146,9.554628905257811,4.7773144526289055,2.3886572265790367,1.1943286131572264],
-            "bounds" : [[-219204, 93819], [2191523, 2065365]],
-            "tilesize" : 256
-        }`;
-      let map = document.querySelector("mapml-viewer");
-      let cProjection = map.defineCustomProjection(customProjectionDefinition);
-      map.projection =  cProjection;
-    </script>
-    <script src="../../shared/script/geogratis-search-handler.js"></script>
+    <title>British Columbia Albers Equal Area</title>
+    <script src="../../templates/experiment.js"></script>
   </head>
   <body>
-    <mapml-viewer zoom="3" lon="-125.667383" lat="54.60128" controls controlslist="search" projection="BCTILE">
-      <map-layer label="BC basemap" checked>
-        <map-link rel="license" title="Government of British Columbia" href="https://maps.gov.bc.ca/arcserver/rest/services/province/albers_cache/MapServer/wmts/"></map-link>
-        <map-link rel="suggestions" tref="https://geogratis.gc.ca/services/geoname/en/geonames.json?q={searchTerms}*&num=20"></map-link>
-        <map-link rel="search" tref="https://geogratis.gc.ca/services/geoname/en/geonames.json?q={searchTerms}&num=20"></map-link>
-        <map-extent units="BCTILE" checked hidden>
-          <map-input  type="zoom" name="z" min="0" max="11" value="3"></map-input>
-          <map-input  type="location" name="x" axis="column" units="tilematrix" min="42" max="50"></map-input>
-          <map-input  type="location" name="y" axis="row" units="tilematrix" min="56" max="64"></map-input>
-          <map-link rel="tile" tref="https://maps.gov.bc.ca/arcgis/rest/services/province/albers_cache/MapServer/WMTS/tile/1.0.0/province_albers_cache/default/default028mm/{z}/{y}/{x}.jpg"></map-link>
-        </map-extent>
-      </map-layer>
-      <map-layer label="British Columbia Geological Survey" src="bcgs.mapml" checked></map-layer>
-    </mapml-viewer>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../index.html">Experiments</a></p>
+      <h1>British Columbia Albers Equal Area</h1>
+      <p class="experiment-feature-tags" data-tags="projections map-feature keyboard-access rendering-order api default-search-handler">
+        <span class="experiment-nav-label">Feature tags</span>
+      </p>
+    </header>
+
+    <main class="experiment-body">
+      <table class="variant-matrix">
+        <caption class="visually-hidden">Content type by root element</caption>
+        <thead>
+          <tr>
+            <td></td>
+            <th scope="col"><code>&lt;mapml-viewer&gt;</code></th>
+            <th scope="col"><code>&lt;map is="web-map"&gt;</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Inline</th>
+            <td><a href="inline/">All three implementations</a></td>
+            <td><a href="inline/web-map.html">All three implementations</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Remote</th>
+            <td><a href="remote/">All three implementations</a></td>
+            <td><a href="remote/web-map.html">All three implementations</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
   </body>
 </html>

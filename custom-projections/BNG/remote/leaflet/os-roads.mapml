@@ -1,0 +1,21 @@
+<mapml- lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <map-head>
+    <map-meta charset="utf-8"></map-meta>
+    <map-meta http-equiv="Content-Type" content="text/mapml"></map-meta>
+    <map-title>Ordnance Survey roads</map-title>
+    <!-- The projection is named, not described. What BNG is comes from the page
+         viewing this document. -->
+    <map-meta name="projection" content="BNG"></map-meta>
+    <map-link rel="license" title="&#169; Crown copyright and database rights, Ordnance Survey" href="https://osdatahub.os.uk/"></map-link>
+    <map-link rel="suggestions" tref="https://photon.komoot.io/api?q={searchTerms}"></map-link>
+    <map-link rel="search" tref="https://photon.komoot.io/api?q={searchTerms}"></map-link>
+  </map-head>
+  <map-body>
+    <map-extent units="BNG" checked="checked" hidden="hidden">
+      <map-input name="z" type="zoom" min="0" max="9"></map-input>
+      <map-input name="y" type="location" units="tilematrix" axis="row"></map-input>
+      <map-input name="x" type="location" units="tilematrix" axis="column"></map-input>
+      <map-link rel="tile" tref="https://api.os.uk/maps/raster/v1/wmts?key=TtPU7xWvj7AmV6uePZRYWFXuKVHzRTq7&amp;tileMatrixSet=EPSG:27700&amp;version=1.0.0&amp;style=default&amp;layer=Road_27700&amp;service=WMTS&amp;request=GetTile&amp;tileCol={x}&amp;tileRow={y}&amp;tileMatrix={z}"></map-link>
+    </map-extent>
+  </map-body>
+</mapml->

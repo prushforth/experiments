@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Lambert Equal Area Azimuthal, remote web-map &mdash; MapML-OpenLayers</title>
+    <script src="../../../templates/experiment.js" data-impl="openlayers"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">The Arctic SDI, from remote MapML in a web-map element, rendered by MapML-OpenLayers</h1>
+      <div class="example-map">
+        <!-- code -->
+        <map is="web-map" projection="EPSG3573" zoom="0" lat="90" lon="-100" controls controlslist="static" static>
+          <map-caption>The Arctic, as each of the nations around it publishes it</map-caption>
+          <map-layer src="../canada/links.mapml" checked></map-layer>
+        </map>
+        <script>
+          // Six ways of looking straight down on the pole, each turned to face a
+          // different country. There is no markup for describing a projection, so
+          // the page hands the descriptions over instead; any of the seven linked
+          // documents may be chosen, so all six have to be known up front.
+          const WHOLE_ARCTIC = [[-4889334.802955, -4889334.802955], [4889334.802955, 4889334.802955]];
+          const ARCTIC = [
+            { name: 'EPSG3571', meridian: 180 },
+            { name: 'EPSG3572', meridian: -150 },
+            { name: 'EPSG3573', meridian: -100, bounds: [[-4594983, 4507258], [4655569, -4562485]] },
+            { name: 'EPSG3574', meridian: -40 },
+            { name: 'EPSG3575', meridian: 10 },
+            { name: 'EPSG3576', meridian: 90 }
+          ];
+
+          customElements.whenDefined('web-map').then(() => {
+            const map = document.querySelector('map[is="web-map"]');
+            for (const { name, meridian, bounds } of ARCTIC) {
+              map.defineCustomProjection(`{
+                "projection": "${name}",
+                "proj4string": "+proj=laea +lat_0=90 +lon_0=${meridian} +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs",
+                "origin": [-4889334.802955, 4889334.802955],
+                "resolutions": [38197.92815, 19098.96407, 9549.482037, 4774.741019, 2387.370509, 1193.685255, 596.8426273, 298.4213137, 149.2106568, 74.60532841, 37.30266421],
+                "bounds": ${JSON.stringify(bounds || WHOLE_ARCTIC)},
+                "tilesize": 256
+              }`);
+            }
+            map.projection = 'EPSG3573';
+          });
+        </script>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>

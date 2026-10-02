@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>British National Grid, inline web-map &mdash; MapML.js</title>
+    <script src="../../../../templates/experiment.js" data-impl="leaflet"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">The British National Grid, declared inline in a web-map element, rendered by MapML.js</h1>
+      <div class="example-map">
+        <!-- code -->
+        <map is="web-map" projection="BNG" zoom="0" lat="54.41338" lon="-3.19995" controls controlslist="search static" static>
+          <map-caption>Great Britain, on the national grid its own mapping agencies publish in</map-caption>
+          <map-layer label="Ordnance Survey roads" checked>
+            <map-link rel="license" title="&copy; Crown copyright and database rights, Ordnance Survey" href="https://osdatahub.os.uk/"></map-link>
+            <map-link rel="suggestions" tref="https://photon.komoot.io/api?q={searchTerms}"></map-link>
+            <map-link rel="search" tref="https://photon.komoot.io/api?q={searchTerms}"></map-link>
+            <map-extent units="BNG" checked hidden>
+              <map-input name="z" type="zoom" min="0" max="9"></map-input>
+              <map-input name="y" type="location" units="tilematrix" axis="row"></map-input>
+              <map-input name="x" type="location" units="tilematrix" axis="column"></map-input>
+              <map-link rel="tile" tref="https://api.os.uk/maps/raster/v1/wmts?key=TtPU7xWvj7AmV6uePZRYWFXuKVHzRTq7&tileMatrixSet=EPSG:27700&version=1.0.0&style=default&layer=Road_27700&service=WMTS&request=GetTile&tileCol={x}&tileRow={y}&tileMatrix={z}"></map-link>
+            </map-extent>
+          </map-layer>
+          <map-layer label="Surficial geology" checked>
+            <map-link rel="license" title="&copy; UKRI, British Geological Survey" href="https://www.bgs.ac.uk/"></map-link>
+            <!-- The service returns solid white below zoom 5. -->
+            <map-meta name="zoom" content="min=5,max=12"></map-meta>
+            <map-extent units="BNG" checked hidden>
+              <map-input name="z" type="zoom" min="6" max="9"></map-input>
+              <map-input name="xmin" type="location" units="tilematrix" position="top-left" axis="easting" min="240755" max="261199"></map-input>
+              <map-input name="ymin" type="location" units="tilematrix" position="bottom-left" axis="northing" min="628735" max="658452"></map-input>
+              <map-input name="xmax" type="location" units="tilematrix" position="top-right" axis="easting" min="240755" max="261199"></map-input>
+              <map-input name="ymax" type="location" units="tilematrix" position="top-left" axis="northing" min="628735" max="658452"></map-input>
+              <map-link rel="tile" tref="https://map.bgs.ac.uk/arcgis/services/BGS_Detailed_Geology/MapServer/WMSServer?version=1.3.0&request=GetMap&layers=BGS.50k.Superficial.deposits&STYLES=default&format=image/png&crs=epsg:27700&BBOX={xmin},{ymin},{xmax},{ymax}&WIDTH=256&HEIGHT=256&z={z}"></map-link>
+              <map-input name="i" type="location" units="map" axis="i"></map-input>
+              <map-input name="j" type="location" units="map" axis="j"></map-input>
+              <map-input name="wd" type="width"></map-input>
+              <map-input name="hg" type="height"></map-input>
+              <map-input name="ixmin" type="location" units="pcrs" position="top-left" axis="easting" min="240755" max="261199"></map-input>
+              <map-input name="iymin" type="location" units="pcrs" position="bottom-left" axis="northing" min="628735" max="658452"></map-input>
+              <map-input name="ixmax" type="location" units="pcrs" position="top-right" axis="easting" min="240755" max="261199"></map-input>
+              <map-input name="iymax" type="location" units="pcrs" position="top-left" axis="northing" min="628735" max="658452"></map-input>
+              <map-link rel="query" tref="https://map.bgs.ac.uk/arcgis/services/BGS_Detailed_Geology/MapServer/WMSServer?version=1.3.0&request=GetFeatureInfo&i={i}&j={j}&radius=0&query_layers=BGS.50k.Superficial.deposits&info_format=text/html&layers=BGS.50k.Superficial.deposits&STYLES=default&format=image/png&crs=epsg:27700&BBOX={ixmin},{iymin},{ixmax},{iymax}&WIDTH={wd}&HEIGHT={hg}&z={z}"></map-link>
+            </map-extent>
+          </map-layer>
+          <map-layer label="Shrink/swell">
+            <map-link rel="license" title="&copy; UKRI, British Geological Survey" href="https://www.bgs.ac.uk/"></map-link>
+            <map-extent units="BNG" checked hidden>
+              <map-input name="xmin" type="location" rel="map" position="top-left" axis="easting" units="pcrs" min="240755" max="261199"></map-input>
+              <map-input name="ymin" type="location" rel="map" position="bottom-left" axis="northing" units="pcrs" min="628735" max="658452"></map-input>
+              <map-input name="xmax" type="location" rel="map" position="top-right" axis="easting" units="pcrs" min="240755" max="261199"></map-input>
+              <map-input name="ymax" type="location" rel="map" position="top-left" axis="northing" units="pcrs" min="628735" max="658452"></map-input>
+              <map-input name="w" type="width" min="1" max="10000"></map-input>
+              <map-input name="h" type="height" min="1" max="10000"></map-input>
+              <map-link rel="image" tref="https://ogc.bgs.ac.uk/cgi-bin/BGS_1GE_Geology/wms?version=1.3.0&request=GetMap&layers=GBR_Kilmarnock_BGS_50k_ShrinkSwell&styles=&format=image/png&crs=epsg:27700&BBOX={xmin},{ymin},{xmax},{ymax}&WIDTH={w}&HEIGHT={h}"></map-link>
+            </map-extent>
+          </map-layer>
+        </map>
+        <script>
+          // There is no markup for describing a projection, so the page hands the
+          // description over instead. defineCustomProjection() stands in for the
+          // browser API that would accept it.
+          customElements.whenDefined('web-map').then(() => {
+            const map = document.querySelector('map[is="web-map"]');
+            map.projection = map.defineCustomProjection(`{
+              "projection": "BNG",
+              "proj4string": "+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.999601 +x_0=400000 +y_0=-100000 +ellps=airy +towgs84=446.448,-125.157,542.060,0.1502,0.2470,0.8421,-20.4894 +datum=OSGB36 +units=m +no_defs",
+              "origin": [-238375, 1376256],
+              "resolutions": [896, 448, 224, 112, 56, 28, 14, 7, 3.5, 1.75, 0.875, 0.4375, 0.21875, 0.109375],
+              "bounds": [[-238375, 0], [900000, 1376256]],
+              "tilesize": 256
+            }`);
+          });
+        </script>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>
