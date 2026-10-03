@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Layer that stays visible when the projection changes &mdash; remote MapML</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Layer that stays visible when the projection changes, from remote MapML</h1>
+      <p class="experiment-feature-tags" data-tags="projections content-negotiation api extent">
+        <span class="experiment-nav-label">Feature tags</span>
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="../inline/">Inline</a>
+        <a href="./" aria-current="page">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./" aria-current="page">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="Layer that stays visible when the projection changes, from remote MapML, rendered by MapML.js" loading="lazy" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <article class="example" data-unavailable>
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map example-unavailable">
+          <p>
+            MapML-MapLibre draws Web Mercator only.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="Layer that stays visible when the projection changes, from remote MapML, rendered by MapML-OpenLayers" loading="lazy" allowfullscreen></iframe>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

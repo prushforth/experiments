@@ -3,51 +3,45 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Variable projection layers</title>
-    <!-- the layer in this map should continue to be visible when you change
-    the viewer projection from OSMTILE to CBMTILE.  -->
-    <script type="module" src="../../dist/MapML-OpenLayers/dist/mapml-ol.js"></script>
-    <link rel="stylesheet" href="../../global.css">
-    <style>button {
-          z-index: 1;
-          position:absolute;
-          justify-items: center;
-          bottom: 3.5%;
-      }
-      body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-      }
-    </style>
-    <script>
-      function changeProjection() {
-        const map = document.querySelector('mapml-viewer');
-        if (map.projection === "OSMTILE") 
-          map.projection = "CBMTILE";
-        else
-          map.projection = "OSMTILE";
-      }
-    </script>
+    <title>Layer that stays visible when the projection changes</title>
+    <script src="../../templates/experiment.js"></script>
   </head>
   <body>
-    <mapml-viewer zoom="4" lon="-97.288195" lat="56.555669"  controls projection="OSMTILE">
-      <map-layer label="Projection changer"  checked>
-        <map-extent label="CBMT - Mercator" checked units="OSMTILE" >
-          <map-input name="z" type="zoom" value="15" min="0" max="15"></map-input>
-          <map-input name="y" type="location" units="tilematrix" axis="row" min="0" max="32768"></map-input>
-          <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="32768"></map-input>
-          <map-link rel="tile" tref="https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3857/MapServer/tile/{z}/{y}/{x}?m4h=t"></map-link>
-          <map-link rel="tile" tref="https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3857/MapServer/tile/{z}/{y}/{x}?m4h=t"></map-link>
-        </map-extent>
-        <map-extent label="CBMT - Lambert CC" units="CBMTILE" checked >
-          <map-input name="z" type="zoom" min="0" max="18"></map-input>
-          <map-input name="y" type="location" units="tilematrix" axis="row"></map-input>
-          <map-input name="x" type="location" units="tilematrix" axis="column"></map-input>
-          <map-link rel="tile" tref="https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT3978/MapServer/tile/{z}/{y}/{x}?m4h=t" ></map-link>
-        </map-extent>    
-      </map-layer>
-    </mapml-viewer>
-    <button name="change" autofocus type="button" onclick="changeProjection()">Change map projection</button>
-</body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../index.html">Experiments</a></p>
+      <h1>Layer that stays visible when the projection changes</h1>
+      <p class="experiment-feature-tags" data-tags="projections content-negotiation api extent">
+        <span class="experiment-nav-label">Feature tags</span>
+      </p>
+    </header>
+
+    <main class="experiment-body">
+      <table class="variant-matrix">
+        <caption class="visually-hidden">Content type by root element</caption>
+        <thead>
+          <tr>
+            <td></td>
+            <th scope="col"><code>&lt;mapml-viewer&gt;</code></th>
+            <th scope="col"><code>&lt;map is="web-map"&gt;</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Inline</th>
+            <td><a href="inline/">All three implementations</a></td>
+            <td><a href="inline/web-map.html">All three implementations</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Remote</th>
+            <td><a href="remote/">All three implementations</a></td>
+            <td><a href="remote/web-map.html">All three implementations</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        MapML-MapLibre draws Web Mercator only, so its cell of each comparison carries a
+        note instead of a map.
+      </p>
+    </main>
+  </body>
 </html>

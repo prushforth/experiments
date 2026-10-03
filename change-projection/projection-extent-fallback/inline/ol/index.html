@@ -1,0 +1,67 @@
+<!doctype html>
+<!--
+  One frame of the inline comparison, built from templates/full-page/index.html.
+  The buttons belong inside the frame because they act on this page's own map.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Layer that stays visible when the projection changes, inline &mdash; MapML-OpenLayers</title>
+    <script src="../../../../templates/experiment.js" data-impl="openlayers"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">Layer that stays visible when the projection changes, declared inline, rendered by MapML-OpenLayers</h1>
+      <!-- code -->
+      <div class="example-controls">
+        <button type="button" data-projection="OSMTILE" aria-pressed="true">Web Mercator</button>
+        <button type="button" data-projection="CBMTILE" aria-pressed="false">Lambert Conformal Conic</button>
+      </div>
+      <div class="example-map">
+        <mapml-viewer projection="OSMTILE" zoom="4" lat="56.555669" lon="-97.288195" controls>
+          <map-caption>The Canada Base Map, in whichever of its two projections the map is turned to</map-caption>
+          <map-layer label="Canada Base Map" checked>
+            <map-link rel="license" title="Canada Base Map © Natural Resources Canada" href="https://www.nrcan.gc.ca/earth-sciences/geography/topographic-information/free-data-geogratis/licence/17285"></map-link>
+            <map-extent label="CBMT — Web Mercator" units="OSMTILE" checked>
+              <map-input name="z" type="zoom" value="15" min="0" max="15"></map-input>
+              <map-input name="y" type="location" units="tilematrix" axis="row" min="0" max="32768"></map-input>
+              <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="32768"></map-input>
+              <map-link rel="tile" tref="https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_CBCT_GEOM_3857/MapServer/tile/{z}/{y}/{x}"></map-link>
+              <map-link rel="tile" tref="https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3857/MapServer/tile/{z}/{y}/{x}"></map-link>
+            </map-extent>
+            <map-extent label="CBMT — Lambert Conformal Conic" units="CBMTILE" checked>
+              <map-input name="z" type="zoom" min="0" max="18"></map-input>
+              <map-input name="y" type="location" units="tilematrix" axis="row"></map-input>
+              <map-input name="x" type="location" units="tilematrix" axis="column"></map-input>
+              <map-link rel="tile" tref="https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT3978/MapServer/tile/{z}/{y}/{x}"></map-link>
+            </map-extent>
+          </map-layer>
+        </mapml-viewer>
+      </div>
+      <script>
+        const map = document.querySelector('mapml-viewer');
+        const buttons = document.querySelectorAll('[data-projection]');
+
+        // The buttons only set the projection. Nothing here touches the layer:
+        // the extent that is drawn the way the map is now turned takes over,
+        // and the other one is set aside.
+        buttons.forEach((button) => {
+          button.addEventListener('click', () => {
+            map.projection = button.dataset.projection;
+          });
+        });
+
+        function showCurrentProjection() {
+          buttons.forEach((button) => {
+            button.setAttribute('aria-pressed', String(button.dataset.projection === map.projection));
+          });
+        }
+
+        map.addEventListener('map-projectionchange', showCurrentProjection);
+        customElements.whenDefined('mapml-viewer').then(showCurrentProjection);
+      </script>
+      <!-- /code -->
+    </main>
+  </body>
+</html>
