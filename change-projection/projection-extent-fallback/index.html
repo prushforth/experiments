@@ -10,7 +10,12 @@
     <header class="experiment-header">
       <p class="experiment-breadcrumb"><a data-home href="../../index.html">Experiments</a></p>
       <h1>Layer that stays visible when the projection changes</h1>
-      <p class="experiment-feature-tags" data-tags="projections content-negotiation api extent">
+      <p class="lede">
+        The CBMT layer provides multiple <code>&lt;map-extent&gt;</code> elements, one per
+        expected viewer <code>projection</code> value, to visually support the viewer
+        switching projections.
+      </p>
+      <p class="experiment-feature-tags" data-tags="projections content-negotiation api extent history">
         <span class="experiment-nav-label">Feature tags</span>
       </p>
     </header>
@@ -39,8 +44,9 @@
         </tbody>
       </table>
       <p>
-        MapML-MapLibre draws Web Mercator only, so its cell of each comparison carries a
-        note instead of a map.
+        MapML-MapLibre draws Web Mercator only. Turning its map to Lambert Conformal Conic
+        leaves it drawing the Web Mercator extent instead of going blank, which is the point
+        of giving the layer one extent per projection.
       </p>
     </main>
   </body>

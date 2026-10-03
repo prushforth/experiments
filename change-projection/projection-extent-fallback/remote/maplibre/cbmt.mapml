@@ -1,0 +1,22 @@
+<mapml- xmlns="http://www.w3.org/1999/xhtml">
+  <map-head>
+    <map-title>Canada Base Map</map-title>
+    <map-meta charset="utf-8"></map-meta>
+    <map-link rel="license" title="Canada Base Map © Natural Resources Canada" href="https://www.nrcan.gc.ca/earth-sciences/geography/topographic-information/free-data-geogratis/licence/17285"></map-link>
+  </map-head>
+  <map-body>
+    <map-extent label="CBMT — Web Mercator" units="OSMTILE" checked="checked">
+      <map-input name="z" type="zoom" value="15" min="0" max="15"></map-input>
+      <map-input name="y" type="location" units="tilematrix" axis="row" min="0" max="32768"></map-input>
+      <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="32768"></map-input>
+      <map-link rel="tile" tref="https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_CBCT_GEOM_3857/MapServer/tile/{z}/{y}/{x}"></map-link>
+      <map-link rel="tile" tref="https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3857/MapServer/tile/{z}/{y}/{x}"></map-link>
+    </map-extent>
+    <map-extent label="CBMT — Lambert Conformal Conic" units="CBMTILE" checked="checked">
+      <map-input name="z" type="zoom" min="0" max="18"></map-input>
+      <map-input name="y" type="location" units="tilematrix" axis="row"></map-input>
+      <map-input name="x" type="location" units="tilematrix" axis="column"></map-input>
+      <map-link rel="tile" tref="https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT3978/MapServer/tile/{z}/{y}/{x}"></map-link>
+    </map-extent>
+  </map-body>
+</mapml->

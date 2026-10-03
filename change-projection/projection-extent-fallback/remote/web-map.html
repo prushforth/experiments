@@ -10,7 +10,12 @@
     <header class="experiment-header">
       <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
       <h1>Layer that stays visible when the projection changes, from remote MapML, in a <code>&lt;map is="web-map"&gt;</code></h1>
-      <p class="experiment-feature-tags" data-tags="projections content-negotiation api extent">
+      <p class="lede">
+        The CBMT layer provides multiple <code>&lt;map-extent&gt;</code> elements, one per
+        expected viewer <code>projection</code> value, to visually support the viewer
+        switching projections.
+      </p>
+      <p class="experiment-feature-tags" data-tags="projections content-negotiation api extent history">
         <span class="experiment-nav-label">Feature tags</span>
       </p>
       <nav class="experiment-nav" aria-labelledby="content-type-label">
@@ -33,12 +38,10 @@
         </div>
       </article>
 
-      <article class="example" data-unavailable>
+      <article class="example">
         <h2>MapML-MapLibre</h2>
-        <div class="example-map example-unavailable">
-          <p>
-            MapML-MapLibre draws Web Mercator only.
-          </p>
+        <div class="example-map">
+          <iframe src="maplibre/web-map.html" title="Layer that stays visible when the projection changes, from remote MapML in a web-map element, rendered by MapML-MapLibre" loading="lazy" allowfullscreen></iframe>
         </div>
       </article>
 
