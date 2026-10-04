@@ -1,7 +1,7 @@
 <!doctype html>
 <!--
-  One frame of the remote comparison, hosted by <map is="web-map"> instead of
-  <mapml-viewer>. MapML-MapLibre draws Web Mercator only, so this frame has the
+  One frame of the remote comparison, hosted by <map is="web-map" static controlslist="static"> instead of
+  <mapml-viewer static controlslist="static">. MapML-MapLibre draws Web Mercator only, so this frame has the
   one map.
 -->
 <html lang="en">
@@ -59,7 +59,7 @@
       <div class="example-map map-panes">
         <figure class="map-pane">
           <figcaption>Web Mercator <output></output></figcaption>
-          <map is="web-map" projection="OSMTILE" zoom="4" lat="60" lon="-90" controls>
+          <map is="web-map" static controlslist="static" projection="OSMTILE" zoom="4" lat="60" lon="-90" controls>
             <map-caption>Canada in Web Mercator</map-caption>
             <map-layer src="../basemap-osmtile.mapml" checked></map-layer>
           </map>

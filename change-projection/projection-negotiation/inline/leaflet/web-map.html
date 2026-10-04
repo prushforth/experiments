@@ -1,7 +1,7 @@
 <!doctype html>
 <!--
-  One frame of the inline comparison, hosted by <map is="web-map"> instead of
-  <mapml-viewer>. The layer markup is identical to index.html beside it — only
+  One frame of the inline comparison, hosted by <map is="web-map" static controlslist="static"> instead of
+  <mapml-viewer static controlslist="static">. The layer markup is identical to index.html beside it — only
   the root element differs.
 -->
 <html lang="en">
@@ -61,7 +61,7 @@
       <div class="example-map map-panes">
         <figure class="map-pane">
           <figcaption>Web Mercator <output></output></figcaption>
-          <map is="web-map" projection="OSMTILE" zoom="4" lat="60" lon="-90" controls>
+          <map is="web-map" static controlslist="static" projection="OSMTILE" zoom="4" lat="60" lon="-90" controls>
             <map-caption>Canada in Web Mercator</map-caption>
             <map-layer label="Canada Base Map" checked>
               <map-link rel="license" title="Canada Base Map © Natural Resources Canada" href="https://www.nrcan.gc.ca/earth-sciences/geography/topographic-information/free-data-geogratis/licence/17285"></map-link>
@@ -77,7 +77,7 @@
         </figure>
         <figure class="map-pane">
           <figcaption>Lambert Conformal Conic <output></output></figcaption>
-          <map is="web-map" projection="CBMTILE" zoom="4" lat="60" lon="-90" controls>
+          <map is="web-map" static controlslist="static" projection="CBMTILE" zoom="4" lat="60" lon="-90" controls>
             <map-caption>Canada in Lambert Conformal Conic</map-caption>
             <map-layer label="Canada Base Map" checked>
               <map-link rel="license" title="Canada Base Map © Natural Resources Canada" href="https://www.nrcan.gc.ca/earth-sciences/geography/topographic-information/free-data-geogratis/licence/17285"></map-link>

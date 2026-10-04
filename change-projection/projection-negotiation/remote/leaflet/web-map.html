@@ -1,7 +1,7 @@
 <!doctype html>
 <!--
-  One frame of the remote comparison, hosted by <map is="web-map"> instead of
-  <mapml-viewer>. The same documents as index.html beside it — only the root
+  One frame of the remote comparison, hosted by <map is="web-map" static controlslist="static"> instead of
+  <mapml-viewer static controlslist="static">. The same documents as index.html beside it — only the root
   element differs.
 -->
 <html lang="en">
@@ -61,14 +61,14 @@
       <div class="example-map map-panes">
         <figure class="map-pane">
           <figcaption>Web Mercator <output></output></figcaption>
-          <map is="web-map" projection="OSMTILE" zoom="4" lat="60" lon="-90" controls>
+          <map is="web-map" static controlslist="static" projection="OSMTILE" zoom="4" lat="60" lon="-90" controls>
             <map-caption>Canada in Web Mercator</map-caption>
             <map-layer src="../basemap-osmtile.mapml" checked></map-layer>
           </map>
         </figure>
         <figure class="map-pane">
           <figcaption>Lambert Conformal Conic <output></output></figcaption>
-          <map is="web-map" projection="CBMTILE" zoom="4" lat="60" lon="-90" controls>
+          <map is="web-map" static controlslist="static" projection="CBMTILE" zoom="4" lat="60" lon="-90" controls>
             <map-caption>Canada in Lambert Conformal Conic</map-caption>
             <map-layer src="../basemap-cbmtile.mapml" checked></map-layer>
           </map>
