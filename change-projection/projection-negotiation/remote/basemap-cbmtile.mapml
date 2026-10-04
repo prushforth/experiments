@@ -1,0 +1,15 @@
+<mapml- xmlns="http://www.w3.org/1999/xhtml">
+  <map-head>
+    <map-title>Canada Base Map</map-title>
+    <map-meta charset="utf-8"></map-meta>
+    <map-link rel="license" title="Canada Base Map © Natural Resources Canada" href="https://www.nrcan.gc.ca/earth-sciences/geography/topographic-information/free-data-geogratis/licence/17285"/>
+  </map-head>
+  <map-body>
+    <map-extent units="CBMTILE" checked="checked" hidden="hidden">
+      <map-input name="z" type="zoom" value="17" min="0" max="17"/>
+      <map-input name="y" type="location" units="tilematrix" axis="row"/>
+      <map-input name="x" type="location" units="tilematrix" axis="column"/>
+      <map-link rel="tile" tref="https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT3978/MapServer/tile/{z}/{y}/{x}"/>
+    </map-extent>
+  </map-body>
+</mapml->

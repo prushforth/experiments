@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Negotiate map resource projection &mdash; inline MapML</title>
+    <script src="../../../templates/experiment.js"></script>
+    <style>
+      /* Each frame holds two maps, so give the frames more room than usual. */
+      .example-map {
+        height: clamp(22rem, 65vh, 38rem);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Negotiate map resource projection, declared inline</h1>
+      <p class="lede">
+        The sea ice layer is written for one projection and names a version of itself
+        for the other with <code>&lt;map-link rel="alternate" projection="…"&gt;</code>.
+        The button adds that one layer, written once, to every map on the page; a map
+        that is turned the other way follows the link and loads the version that fits it.
+      </p>
+      <p class="experiment-feature-tags" data-tags="projections content-negotiation api">
+        <span class="experiment-nav-label">Feature tags</span>
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="./" aria-current="page">Inline</a>
+        <a href="../remote/">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./" aria-current="page">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 26rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="Negotiate map resource projection, declared inline, rendered by MapML.js" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The caption under each map says which document that map ended up drawing.
+            The Lambert map keeps the markup in the page; the Web Mercator map follows
+            the alternate link and its name in the layer list changes with it.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="Negotiate map resource projection, declared inline, rendered by MapML-MapLibre" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            One map, because this library draws Web Mercator only. The layer written in the
+            page names a Web Mercator version of itself, but that version is never fetched:
+            this library only looks for the alternate when the layer itself came from a
+            document. The layer is switched off in the layer list instead, which looks like
+            a bug rather than a choice.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="Negotiate map resource projection, declared inline, rendered by MapML-OpenLayers" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The caption under each map says which document that map ended up drawing.
+            The Lambert map keeps the markup in the page; the Web Mercator map follows
+            the alternate link and its name in the layer list changes with it.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        The alternative is always a separate document, so even a layer written in the page
+        points at one. Related: <a href="../../projection-extent-fallback/inline/">Layer that
+        stays visible when the projection changes</a>, where one layer carries an extent for
+        each projection instead of pointing at another document.
+      </p>
+    </footer>
+  </body>
+</html>

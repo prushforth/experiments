@@ -1,0 +1,19 @@
+<mapml- xmlns="http://www.w3.org/1999/xhtml">
+  <map-head>
+    <map-title>Minimum snow and ice (Lambert Conformal Conic)</map-title>
+    <map-meta charset="utf-8"></map-meta>
+    <map-link rel="license" title="Open Government Licence" href="https://datacube.services.geo.ca/ows/msi?SERVICE=WMS&amp;REQUEST=GetCapabilities&amp;VERSION=1.3.0"/>
+    <map-link rel="legend" type="image/png" title="legend" sizes="150x33" href="https://datacube.services.geo.ca/assets/legend/legend_msi_color.png"/>
+    <map-link rel="alternate" projection="OSMTILE" href="msi-osmtile.mapml"/>
+  </map-head>
+  <map-body>
+    <map-extent units="CBMTILE" checked="checked">
+      <map-input name="z" type="zoom" value="25" min="4" max="25"/>
+      <map-input name="txmin" type="location" rel="tile" position="top-left" axis="easting" units="tilematrix" min="-6105785.728719063" max="6174630.753072981"/>
+      <map-input name="tymin" type="location" rel="tile" position="bottom-left" axis="northing" units="tilematrix" min="-1692155.9568245453" max="4482681.2054050295"/>
+      <map-input name="txmax" type="location" rel="tile" position="top-right" axis="easting" units="tilematrix" min="-6105785.728719063" max="6174630.753072981"/>
+      <map-input name="tymax" type="location" rel="tile" position="top-left" axis="northing" units="tilematrix" min="-1692155.9568245453" max="4482681.2054050295"/>
+      <map-link rel="tile" tref="https://datacube.services.geo.ca/ows/msi?SERVICE=WMS&amp;REQUEST=GetMap&amp;FORMAT=image/png&amp;TRANSPARENT=TRUE&amp;STYLES=msi-color&amp;VERSION=1.3.0&amp;LAYERS=msi&amp;WIDTH=256&amp;HEIGHT=256&amp;CRS=EPSG:3978&amp;BBOX={txmin},{tymin},{txmax},{tymax}&amp;TIME=2020-08-15T00:00:00Z"/>
+    </map-extent>
+  </map-body>
+</mapml->

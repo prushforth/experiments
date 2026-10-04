@@ -1,38 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Projection Negotiation</title>
-        <script type="module" src="../../dist/MapML-OpenLayers/dist/mapml-ol.js"></script>
-        <link rel="stylesheet" href="../../global.css">
-        <style>
-          mapml-viewer:defined { 
-            display: inline-block;
-            width: 49%;
-            height: 80%;
-          }
-        </style>
-        <script>
-          function addToMaps() {
-            const t = document.querySelector('#negotiable-map-content');
-            var copy1 = t.content.cloneNode(true);
-            var copy2 = t.content.cloneNode(true);
-            document.querySelector('mapml-viewer[projection=CBMTILE]').appendChild(copy1);
-            document.querySelector('mapml-viewer[projection=OSMTILE]').appendChild(copy2);
-          }
-        </script>
-    </head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Negotiate map resource projection</title>
+    <script src="../../templates/experiment.js"></script>
+  </head>
   <body>
-    <template id="negotiable-map-content">
-      <map-layer src="msi-tiles-osmtile.mapml" checked></map-layer>
-    </template>
-    <p><a href="msi-tiles-osmtile.mapml" target="_blank">Minimum Snow and Ice Probability (view source in new tab)</a> <button onclick="addToMaps()" >Add to single source to both maps</button></p>
-  <mapml-viewer projection="CBMTILE" zoom="4" lat="60" lon="-90" controls>
-    <map-layer label="CBMT" src="../../refactoring-temporary/cbmtile-cbmt.mapml" checked hidden></map-layer>
-  </mapml-viewer>
-  <mapml-viewer projection="OSMTILE" zoom="4" lat="60" lon="-90" controls>
-    <map-layer label="CBMT" src="../../refactoring-temporary/osmtile-cbmt.mapml" checked hidden></map-layer>
-  </mapml-viewer>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../index.html">Experiments</a></p>
+      <h1>Negotiate map resource projection</h1>
+      <p class="lede">
+        A layer is written for one projection and names a version of itself for another with
+        <code>&lt;map-link rel="alternate" projection="…"&gt;</code>. One layer, written once,
+        is added to maps that are turned different ways, and each map ends up with the version
+        that fits it.
+      </p>
+      <p class="experiment-feature-tags" data-tags="projections content-negotiation api">
+        <span class="experiment-nav-label">Feature tags</span>
+      </p>
+    </header>
+
+    <main class="experiment-body">
+      <table class="variant-matrix">
+        <caption class="visually-hidden">Content type by root element</caption>
+        <thead>
+          <tr>
+            <td></td>
+            <th scope="col"><code>&lt;mapml-viewer&gt;</code></th>
+            <th scope="col"><code>&lt;map is="web-map"&gt;</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Inline</th>
+            <td><a href="inline/">All three implementations</a></td>
+            <td><a href="inline/web-map.html">All three implementations</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Remote</th>
+            <td><a href="remote/">All three implementations</a></td>
+            <td><a href="remote/web-map.html">All three implementations</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        MapML.js and MapML-OpenLayers each show two maps of the same place, one in Web Mercator
+        and one in Lambert Conformal Conic. MapML-MapLibre draws Web Mercator only, so its frame
+        has the one map. In the inline variant it also never fetches the alternate, because it
+        looks for one only when the layer itself came from a document; the other two look in
+        both places, so that gap reads as a bug.
+      </p>
+    </main>
   </body>
 </html>

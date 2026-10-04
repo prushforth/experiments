@@ -1,0 +1,117 @@
+<!doctype html>
+<!--
+  One frame of the remote comparison, built from templates/full-page/index.html.
+  The layer documents live one folder up, shared by all three implementations.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Negotiate map resource projection, remote &mdash; MapML-OpenLayers</title>
+    <script src="../../../../templates/experiment.js" data-impl="openlayers"></script>
+    <style>
+      /* The maps of the same place, turned different ways, side by side while
+         there is room for them and stacked when there is not. */
+      .map-panes {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+        gap: 1px;
+        background: var(--experiment-border);
+      }
+      .map-pane {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        min-width: 0;
+        min-height: 0;
+        margin: 0;
+        overflow: hidden;
+        background: #fff;
+      }
+      /* Two lines, always, so a caption that gains a second one does not push
+         its map out of step with the one beside it. */
+      .map-pane figcaption {
+        padding: 0.35rem 0.75rem;
+        font-size: 0.875rem;
+        line-height: 1.4;
+        min-height: calc(2.8em + 0.7rem);
+        border-bottom: 1px solid var(--experiment-border);
+      }
+      .map-pane output {
+        display: block;
+        color: var(--experiment-muted);
+      }
+      /* Clear the captions, which the floating code toolbar would cover. */
+      body.full-page .example:has(.example-controls) .example-actions {
+        inset-block-start: 6.25rem;
+      }
+      body.full-page .example:has(.example-controls) .example-code {
+        inset-block-start: 8.75rem;
+        max-height: calc(100% - 10.5rem);
+      }
+    </style>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">Negotiate map resource projection, from remote MapML, rendered by MapML-OpenLayers</h1>
+      <!-- code -->
+      <div class="example-controls">
+        <button type="button" data-add>Add the sea ice layer</button>
+      </div>
+      <div class="example-map map-panes">
+        <figure class="map-pane">
+          <figcaption>Web Mercator <output></output></figcaption>
+          <mapml-viewer projection="OSMTILE" zoom="4" lat="60" lon="-90" controls>
+            <map-caption>Canada in Web Mercator</map-caption>
+            <map-layer src="../basemap-osmtile.mapml" checked></map-layer>
+          </mapml-viewer>
+        </figure>
+        <figure class="map-pane">
+          <figcaption>Lambert Conformal Conic <output></output></figcaption>
+          <mapml-viewer projection="CBMTILE" zoom="4" lat="60" lon="-90" controls>
+            <map-caption>Canada in Lambert Conformal Conic</map-caption>
+            <map-layer src="../basemap-cbmtile.mapml" checked></map-layer>
+          </mapml-viewer>
+        </figure>
+      </div>
+
+      <!-- One layer, written once, added to both maps. msi-cbmtile.mapml is
+           drawn for Lambert Conformal Conic and carries a map-link rel="alternate"
+           offering the same data for a map turned the other way. -->
+      <template id="sea-ice">
+        <map-layer src="../msi-cbmtile.mapml" checked></map-layer>
+      </template>
+
+      <script>
+        const template = document.querySelector('#sea-ice');
+        const button = document.querySelector('[data-add]');
+
+        button.addEventListener('click', () => {
+          button.disabled = true;
+          document.querySelectorAll('.map-pane').forEach((pane) => {
+            const layer = template.content.firstElementChild.cloneNode(true);
+            const report = pane.querySelector('output');
+
+            // A map turned a way the document is not drawn for follows the
+            // alternate link in it, which changes the layer's src. Nothing on
+            // this page chooses: watching src only says what each map ended up
+            // with.
+            const show = () => {
+              const source = 'from ' + layer.src.split('/').pop();
+              report.textContent = layer.hasAttribute('disabled')
+                ? source + ' — not drawn'
+                : source;
+            };
+            new MutationObserver(show).observe(layer, {
+              attributes: true,
+              attributeFilter: ['src', 'disabled']
+            });
+
+            pane.querySelector('mapml-viewer').appendChild(layer);
+            show();
+          });
+        });
+      </script>
+      <!-- /code -->
+    </main>
+  </body>
+</html>
