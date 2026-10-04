@@ -47,9 +47,8 @@
       <p>
         MapML.js and MapML-OpenLayers each show two maps of the same place, one in Web Mercator
         and one in Lambert Conformal Conic. MapML-MapLibre draws Web Mercator only, so its frame
-        has the one map. In the inline variant it also never fetches the alternate, because it
-        looks for one only when the layer itself came from a document; the other two look in
-        both places, so that gap reads as a bug.
+        has the one map — which is the map that has to exchange the Lambert layer for the Web
+        Mercator one.
       </p>
     </main>
   </body>
