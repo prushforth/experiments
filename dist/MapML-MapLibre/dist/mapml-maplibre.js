@@ -49669,7 +49669,8 @@ var X1 = class extends XI {
 	#g = !1;
 	#_ = 0;
 	static #v = 3;
-	#y() {
+	#y = null;
+	#b() {
 		return this.shadowRoot ?? this.attachShadow({ mode: "open" });
 	}
 	get viewer() {
@@ -49718,11 +49719,11 @@ var X1 = class extends XI {
 		for (let e of this.contentRoot.children) {
 			if (e.tagName.toLowerCase() !== "map-link" || e.getAttribute("rel") !== "legend") continue;
 			let t = e.getAttribute("href");
-			return t === null || t === "" ? null : e0(t, this.#b());
+			return t === null || t === "" ? null : e0(t, this.#x());
 		}
 		return null;
 	}
-	#b() {
+	#x() {
 		let e = this.getAttribute("src");
 		if (e !== null && e !== "") try {
 			return new URL(e, this.baseURI).href;
@@ -49744,7 +49745,7 @@ var X1 = class extends XI {
 			minZoom: n.min,
 			maxZoom: n.max
 		};
-		for (let e of this.#C()) {
+		for (let e of this.#w()) {
 			let t = e.pcrsBounds;
 			t !== null && (r = r === null ? t : EF(r, t));
 			let n = e.zoomRange;
@@ -49800,10 +49801,10 @@ var X1 = class extends XI {
 	}
 	notifyStylesChanged() {
 		this.#m || (this.#m = !0, queueMicrotask(() => {
-			this.#m = !1, this.#x();
+			this.#m = !1, this.#S();
 		}));
 	}
-	async #x() {
+	async #S() {
 		let e = this.viewer;
 		if (!e || (await e.whenReady(), !this.isConnected || this.viewer !== e) || this.#t === null) return;
 		let t = [];
@@ -49827,10 +49828,10 @@ var X1 = class extends XI {
 	}
 	notifyFeaturesChanged() {
 		this.#f || (this.#f = !0, queueMicrotask(() => {
-			this.#f = !1, this.#S();
+			this.#f = !1, this.#C();
 		}));
 	}
-	async #S() {
+	async #C() {
 		let e = this.viewer;
 		if (!e || (await e.whenReady(), !this.isConnected || this.viewer !== e)) return;
 		let t = e.renderer, n = [], r = [], i = (e) => {
@@ -49928,22 +49929,22 @@ var X1 = class extends XI {
 		if (this.hasAttribute("data-moving")) return;
 		this.#i = this.closest(BI), this.#i?.registerLayer(this), this.addEventListener("changestyle", this.#r);
 		let e = this.#i?.renderer.root;
-		e && !e.hasLayer(this.#e) && e.addLayer(this.#e), this.#e.setChecked(this.checked), this.validateDisabled(), this.hasAttribute("src") && this.#w();
+		e && !e.hasLayer(this.#e) && e.addLayer(this.#e), this.#e.setChecked(this.checked), this.validateDisabled(), this.hasAttribute("src") ? this.#T() : this.#P();
 		let t = this.getAttribute("media") ?? "";
-		t !== "" && this.#E(t);
+		t !== "" && this.#D(t);
 	}
 	disconnectedCallback() {
-		this.hasAttribute("data-moving") || (this.#D(), this.removeEventListener("changestyle", this.#r), this.#h++, this.shadowRoot && this.shadowRoot.replaceChildren(), this.#t !== null && (this.#e.removeLayer(this.#t), this.#t.remove(), this.#t = null), this.#d.clear(), this.#i?.renderer.root.removeLayer(this.#e), this.#i?.unregisterLayer(this), this.#i = null, this.#l = !0, this.#u = !1);
+		this.hasAttribute("data-moving") || (this.#O(), this.removeEventListener("changestyle", this.#r), this.#h++, this.#y !== null && (clearTimeout(this.#y), this.#y = null), this.shadowRoot && this.shadowRoot.replaceChildren(), this.#t !== null && (this.#e.removeLayer(this.#t), this.#t.remove(), this.#t = null), this.#d.clear(), this.#i?.renderer.root.removeLayer(this.#e), this.#i?.unregisterLayer(this), this.#i = null, this.#l = !0, this.#u = !1);
 	}
 	attributeChangedCallback(e, t, n) {
 		if (e === "media") {
 			if (!this.isConnected) return;
-			this.#E(n ?? "");
+			this.#D(n ?? "");
 			return;
 		}
 		if (e === "src") {
 			if (!this.isConnected || this.#u) return;
-			n === null ? this.#T() : this.#w();
+			n === null ? this.#E() : this.#T();
 			return;
 		}
 		if (e === "checked") this.#e.setChecked(this.checked), this.viewer?.renderer.closeQueryPopup(), this.#d.size > 0 && this.notifyFeaturesChanged();
@@ -49958,9 +49959,9 @@ var X1 = class extends XI {
 		}
 	}
 	validateDisabled() {
-		if (!this.#l) return !0;
+		if (this.hasAttribute("src") || this.#P(), !this.#l) return !0;
 		let e = 0, t = 0;
-		for (let n of this.#C()) n.hasAttribute("hidden") || (e += 1, n.disabled && (t += 1));
+		for (let n of this.#w()) n.hasAttribute("hidden") || (e += 1, n.disabled && (t += 1));
 		let n = e > 0 && t === e;
 		if (n === this.hasAttribute("disabled")) return n;
 		this.#a = !0;
@@ -49971,7 +49972,7 @@ var X1 = class extends XI {
 		}
 		return this.viewer?.notifyLayersChanged(), n;
 	}
-	*#C() {
+	*#w() {
 		for (let e of this.contentRoot.children) e instanceof r0 && (yield e);
 	}
 	getLayerControlHTML(e) {
@@ -50038,7 +50039,7 @@ var X1 = class extends XI {
 		let v = document.createElement("fieldset");
 		v.className = "mapml-layer-grouped-extents", v.setAttribute("aria-label", "Sublayers");
 		let y = 0;
-		for (let t of this.#C()) t.hasAttribute("hidden") || (v.appendChild(t.getLayerControlHTML(e)), y += 1);
+		for (let t of this.#w()) t.hasAttribute("hidden") || (v.appendChild(t.getLayerControlHTML(e)), y += 1);
 		y === 0 && v.setAttribute("hidden", ""), r.appendChild(v), this.disabled && (t.classList.add("mapml-layer-item-disabled"), a.disabled = !0, a.setAttribute("aria-disabled", "true"), g.disabled = !0, g.setAttribute("aria-disabled", "true"), i.style.fontStyle = "italic", m.style.fontStyle = "italic"), t._mapLayer = this;
 		let b = this.viewer, x = b?.shadowRoot;
 		return b && x && eH({
@@ -50055,13 +50056,13 @@ var X1 = class extends XI {
 			}
 		}), t;
 	}
-	async #w() {
+	async #T() {
 		let e = this.getAttribute("src");
 		if (!e) {
-			this.#T();
+			this.#E();
 			return;
 		}
-		let t = this.#y();
+		let t = this.#b();
 		t.replaceChildren(), this.#t !== null && (this.#e.removeLayer(this.#t), this.#t.remove(), this.#t = null), this.#d.clear(), this.viewer?.notifyLayersChanged();
 		let n = ++this.#h;
 		this.#g = !1;
@@ -50072,7 +50073,7 @@ var X1 = class extends XI {
 			r = await t.text();
 		} catch (e) {
 			if (n !== this.#h) return;
-			this.#j(e);
+			this.#M(e);
 			return;
 		}
 		if (n !== this.#h) return;
@@ -50080,44 +50081,44 @@ var X1 = class extends XI {
 		try {
 			a = i.parseFromString(r, "text/xml");
 		} catch (e) {
-			this.#j(e);
+			this.#M(e);
 			return;
 		}
 		if (a.querySelector("parsererror")) {
-			this.#j(/* @__PURE__ */ Error(`XML parse error in ${e}`));
+			this.#M(/* @__PURE__ */ Error(`XML parse error in ${e}`));
 			return;
 		}
 		if (!a.querySelector("mapml-")) {
-			this.#j(/* @__PURE__ */ Error(`No <mapml-> root in ${e}`));
+			this.#M(/* @__PURE__ */ Error(`No <mapml-> root in ${e}`));
 			return;
 		}
 		let o = a.querySelectorAll("map-head > *, map-body > *"), s = document.createDocumentFragment();
 		for (let e of o) s.appendChild(document.adoptNode(e));
-		t.appendChild(s), !this.#N(e) && (this.viewer?.notifyLayersChanged(), this.validateDisabled(), this.#_ = 0);
+		t.appendChild(s), !this.#F(e) && (this.viewer?.notifyLayersChanged(), this.validateDisabled(), this.#_ = 0);
 	}
-	#T() {
+	#E() {
 		this.#h++, this.shadowRoot && this.shadowRoot.replaceChildren(), this.#t !== null && (this.#e.removeLayer(this.#t), this.#t.remove(), this.#t = null), this.#d.clear(), this.#g = !1, this.viewer?.notifyLayersChanged(), this.validateDisabled();
 	}
-	async #E(e) {
+	async #D(e) {
 		if (this.#s === null && (this.#s = () => {
-			this.#o !== null && this.#O(this.#o.matches);
-		}), this.#D(), e.trim() === "") {
-			this.#O(!0);
+			this.#o !== null && this.#k(this.#o.matches);
+		}), this.#O(), e.trim() === "") {
+			this.#k(!0);
 			return;
 		}
 		let t = this.#i;
 		if (t === null) return;
 		this.#c += 1;
 		let n = this.#c;
-		await t.whenReady(), !(n !== this.#c || !this.isConnected || (this.getAttribute("media") ?? "") !== e) && (this.#o = t.matchMedia(e), this.#O(this.#o.matches), this.#o.addEventListener("change", this.#s));
+		await t.whenReady(), !(n !== this.#c || !this.isConnected || (this.getAttribute("media") ?? "") !== e) && (this.#o = t.matchMedia(e), this.#k(this.#o.matches), this.#o.addEventListener("change", this.#s));
 	}
-	#D() {
+	#O() {
 		this.#o !== null && this.#s !== null && this.#o.removeEventListener("change", this.#s), this.#o = null;
 	}
-	#O(e) {
-		e === this.#l && (e || this.#u) || (this.#l = e, e ? this.#A() : this.#k());
+	#k(e) {
+		e === this.#l && (e || this.#u) || (this.#l = e, e ? this.#j() : this.#A());
 	}
-	#k() {
+	#A() {
 		if (!this.#u) {
 			this.#u = !0, this.#h++, this.hasAttribute("src") && this.shadowRoot && this.shadowRoot.replaceChildren(), this.#t !== null && (this.#e.removeLayer(this.#t), this.#t.remove(), this.#t = null), this.#i?.renderer.root.removeLayer(this.#e), this.#i?.unregisterLayer(this), this.#a = !0;
 			try {
@@ -50128,7 +50129,7 @@ var X1 = class extends XI {
 			this.#i?.notifyLayersChanged();
 		}
 	}
-	#A() {
+	#j() {
 		if (!this.#u) {
 			this.validateDisabled();
 			return;
@@ -50141,9 +50142,9 @@ var X1 = class extends XI {
 		} finally {
 			this.#a = !1;
 		}
-		this.hasAttribute("src") ? this.#w() : this.#d.size > 0 && this.notifyFeaturesChanged(), this.validateDisabled(), this.#i?.notifyLayersChanged();
+		this.hasAttribute("src") ? this.#T() : this.#d.size > 0 && this.notifyFeaturesChanged(), this.validateDisabled(), this.#i?.notifyLayersChanged();
 	}
-	#j(e) {
+	#M(e) {
 		this.#g = !0, console.warn("<map-layer src>: failed to load remote content", e), this.dispatchEvent(new CustomEvent("error", {
 			detail: {
 				src: this.getAttribute("src"),
@@ -50153,9 +50154,8 @@ var X1 = class extends XI {
 			cancelable: !1
 		}));
 	}
-	#M() {
-		let e = this.shadowRoot;
-		if (!e) return null;
+	#N() {
+		let e = this.contentRoot;
 		for (let t of e.children) if (t.tagName.toLowerCase() === "map-meta" && (t.getAttribute("name") ?? "").toLowerCase() === "projection") {
 			let e = t.getAttribute("content");
 			if (e) return e.trim();
@@ -50166,19 +50166,22 @@ var X1 = class extends XI {
 		}
 		return null;
 	}
-	#N(t) {
-		let n = this.viewer?.projection, r = this.#M();
+	#P() {
+		this.#y !== null && clearTimeout(this.#y), this.#y = setTimeout(() => {
+			this.#y = null, !(!this.isConnected || this.hasAttribute("src")) && this.#F(null);
+		}, 0);
+	}
+	#F(t) {
+		let n = this.viewer?.projection, r = this.#N();
 		if (!n || !r || r === n) return !1;
-		let i = null, a = this.shadowRoot;
-		if (a) {
-			for (let e of a.children) if (e.tagName.toLowerCase() === "map-link" && (e.getAttribute("rel") ?? "").toLowerCase().split(/\s+/).includes("alternate") && e.getAttribute("projection") === n && e.getAttribute("href")) {
-				i = e;
-				break;
-			}
+		let i = null, a = this.contentRoot;
+		for (let e of a.children) if (e.tagName.toLowerCase() === "map-link" && (e.getAttribute("rel") ?? "").toLowerCase().split(/\s+/).includes("alternate") && e.getAttribute("projection") === n && e.getAttribute("href")) {
+			i = e;
+			break;
 		}
-		if (i === null) return console.warn(`<map-layer src>: projection mismatch (map=${n}, layer=${r}) with no matching <map-link rel="alternate" projection="${n}">; rendering in the native projection may produce garbage`), !1;
+		if (i === null) return t !== null && console.warn(`<map-layer src>: projection mismatch (map=${n}, layer=${r}) with no matching <map-link rel="alternate" projection="${n}">; rendering in the native projection may produce garbage`), !1;
 		if (this.#_ += 1, this.#_ > e.#v) return console.warn(`<map-layer src>: alternate re-fetch loop aborted after ${e.#v} redirects starting from ${t}`), this.#_ = 0, !1;
-		let o = i.getAttribute("href"), s = new URL(t, this.baseURI).href, c = new URL(o, s).href;
+		let o = i.getAttribute("href"), s = t === null ? this.baseURI : new URL(t, this.baseURI).href, c = new URL(o, s).href;
 		return this.setAttribute("src", c), !0;
 	}
 };
