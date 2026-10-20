@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>(map-)select / (map-)option, remote &mdash; MapML.js (Leaflet)</title>
+    <script src="../../../../templates/experiment.js" data-impl="leaflet"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">(map-)select / (map-)option, from remote MapML, rendered by MapML.js</h1>
+      <div class="example-map">
+        <!-- code -->
+        <mapml-viewer projection="CBMTILE" zoom="3" lat="60.4" lon="-82.6" controls controlslist="static" static>
+          <map-caption>The territorial evolution of Canada, one year at a time</map-caption>
+          <map-layer src="territorial-evolution.mapml" checked></map-layer>
+        </mapml-viewer>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>

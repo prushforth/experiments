@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>(map-)select / (map-)option, remote &mdash; MapML-MapLibre</title>
+    <script src="../../../../templates/experiment.js" data-impl="maplibre"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">(map-)select / (map-)option, from remote MapML, rendered by MapML-MapLibre</h1>
+      <div class="example-map">
+        <!-- code -->
+        <mapml-viewer projection="OSMTILE" zoom="3" lat="62" lon="-96" controls controlslist="static" static>
+          <map-caption>Probability of annual minimum snow and ice in Canada, one year at a time</map-caption>
+          <map-layer src="basemap.mapml" checked hidden></map-layer>
+          <map-layer src="msi.mapml" checked opacity="0.7"></map-layer>
+        </mapml-viewer>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>

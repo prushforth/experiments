@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>(map-)select / (map-)option, inline &mdash; MapML-MapLibre</title>
+    <script src="../../../../templates/experiment.js" data-impl="maplibre"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">(map-)select / (map-)option, declared inline, rendered by MapML-MapLibre</h1>
+      <div class="example-map">
+        <!-- code -->
+        <mapml-viewer projection="OSMTILE" zoom="3" lat="62" lon="-96" controls controlslist="static" static>
+          <map-caption>Probability of annual minimum snow and ice in Canada, one year at a time</map-caption>
+          <map-layer label="Canada Base Map" checked hidden>
+            <map-link rel="license" title="Canada Base Map &#169; Natural Resources Canada" href="https://www.nrcan.gc.ca/earth-sciences/geography/topographic-information/free-data-geogratis/licence/17285"></map-link>
+            <map-extent units="OSMTILE" checked>
+              <map-input name="z" type="zoom" value="15" min="0" max="15"></map-input>
+              <map-input name="y" type="location" units="tilematrix" axis="row" min="0" max="32768"></map-input>
+              <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="32768"></map-input>
+              <map-link rel="tile" tref="https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_CBCT_GEOM_3857/MapServer/tile/{z}/{y}/{x}"></map-link>
+              <map-link rel="tile" tref="https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3857/MapServer/tile/{z}/{y}/{x}"></map-link>
+            </map-extent>
+          </map-layer>
+          <map-layer label="Minimum snow and ice" checked opacity="0.7">
+            <map-link rel="license" title="Open Government Licence" href="https://datacube.services.geo.ca/ows/msi?SERVICE=WMS&amp;REQUEST=GetCapabilities&amp;VERSION=1.3.0"></map-link>
+            <map-link rel="legend" type="image/png" title="legend" sizes="150x33" href="https://datacube.services.geo.ca/assets/legend/legend_msi_color.png"></map-link>
+            <map-extent units="OSMTILE" checked>
+              <map-input name="z" type="zoom" value="18" min="0" max="18"></map-input>
+              <map-input name="xmin" type="location" units="pcrs" position="top-left" axis="easting" min="-19736089.485420395" max="-1110810.8645190855"></map-input>
+              <map-input name="ymin" type="location" units="pcrs" position="bottom-left" axis="northing" min="4069264.1959450003" max="19312495.99057358"></map-input>
+              <map-input name="xmax" type="location" units="pcrs" position="top-right" axis="easting" min="-19736089.485420395" max="-1110810.8645190855"></map-input>
+              <map-input name="ymax" type="location" units="pcrs" position="top-left" axis="northing" min="4069264.1959450003" max="19312495.99057358"></map-input>
+              <map-input name="w" type="width"></map-input>
+              <map-input name="h" type="height"></map-input>
+              <map-select name="time">
+                <map-option>2000-08-15T00:00:00Z</map-option>
+                <map-option>2001-08-15T00:00:00Z</map-option>
+                <map-option>2002-08-15T00:00:00Z</map-option>
+                <map-option>2003-08-15T00:00:00Z</map-option>
+                <map-option>2004-08-15T00:00:00Z</map-option>
+                <map-option>2005-08-15T00:00:00Z</map-option>
+                <map-option>2006-08-15T00:00:00Z</map-option>
+                <map-option>2007-08-15T00:00:00Z</map-option>
+                <map-option>2008-08-15T00:00:00Z</map-option>
+                <map-option>2009-08-15T00:00:00Z</map-option>
+                <map-option>2010-08-15T00:00:00Z</map-option>
+                <map-option>2011-08-15T00:00:00Z</map-option>
+                <map-option>2012-08-15T00:00:00Z</map-option>
+                <map-option>2013-08-15T00:00:00Z</map-option>
+                <map-option>2014-08-15T00:00:00Z</map-option>
+                <map-option>2015-08-15T00:00:00Z</map-option>
+                <map-option>2016-08-15T00:00:00Z</map-option>
+                <map-option>2017-08-15T00:00:00Z</map-option>
+                <map-option>2018-08-15T00:00:00Z</map-option>
+                <map-option>2019-08-15T00:00:00Z</map-option>
+                <map-option>2020-08-15T00:00:00Z</map-option>
+              </map-select>
+              <map-link rel="image" tref="https://datacube.services.geo.ca/ows/msi?SERVICE=WMS&amp;REQUEST=GetMap&amp;FORMAT=image/png&amp;TRANSPARENT=TRUE&amp;STYLES=msi-color&amp;VERSION=1.3.0&amp;LAYERS=msi&amp;WIDTH={w}&amp;HEIGHT={h}&amp;CRS=EPSG:3857&amp;BBOX={xmin},{ymin},{xmax},{ymax}&amp;TIME={time}"></map-link>
+            </map-extent>
+          </map-layer>
+        </mapml-viewer>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>

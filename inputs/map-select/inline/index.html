@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>(map-)select / (map-)option &mdash; inline MapML</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>(map-)select / (map-)option, declared inline</h1>
+      <p class="experiment-feature-tags" data-tags="map-select legends hidden">
+        <span class="experiment-nav-label">Feature tags</span>
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="./" aria-current="page">Inline</a>
+        <a href="../remote/">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./" aria-current="page">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="A year chooser, declared inline, rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="A year chooser, declared inline, rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Different data here: MapML-MapLibre draws Web Mercator only, and the map beside it is
+            drawn for Canada's Lambert projection. This one picks a year of snow and ice cover
+            instead, over a Web Mercator base map marked <code>hidden</code> so the layer list
+            holds only the layer with the chooser.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="A year chooser, declared inline, rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>
