@@ -100,7 +100,6 @@
     const color = button.dataset.color || 'hsl(' + ((i * 137.508) % 360) + ' 65% 38%)';
     button.style.setProperty('--tag-color', color);
     button.classList.add('tag-button');
-    button.setAttribute('aria-pressed', 'false');
     // Read before the dot and the count are added to the button.
     button.dataset.tagLabel = button.textContent.trim();
 
@@ -114,6 +113,10 @@
     badge.className = 'tag-count';
     badge.textContent = count;
     button.append(badge);
+
+    // Every tag starts selected, so the page opens fully highlighted and the
+    // select button offers "None". A tag with no matches can't be pressed.
+    button.setAttribute('aria-pressed', count ? 'true' : 'false');
 
     if (!count) {
       button.disabled = true;
@@ -169,4 +172,6 @@
     });
     syncSelectAll();
   }
+
+  render();
 })();

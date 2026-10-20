@@ -7,9 +7,31 @@
     <link rel="stylesheet" href="global.css">
     <link rel="icon" href="dist/MapML.js/dist/images/w3community.ico" type="image/x-icon">
     <style>
+      /*
+       * The page is a viewport-tall column: the mark and the filter bar are
+       * fixed rows, and <main> is the only scroll container. The body itself
+       * never scrolls, so the header can't be scrolled away.
+       */
       body {
-       padding: 1rem;
-       height: unset;
+        padding: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      body > aside,
+      .tag-filter {
+        flex: none;
+      }
+      main {
+        /* min-height:0 lets the flex item shrink below its content so it scrolls */
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow-y: auto;
+        padding: 1rem;
+      }
+      body > aside {
+        padding: 1rem 1rem 0;
       }
       .github-mark {
         display: block;
@@ -17,11 +39,8 @@
       }
 
       .tag-filter {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        /* negative inline margins cancel the body padding so the bar is full bleed */
-        margin: 0 -1rem 1rem;
+        /* full bleed: the body has no padding of its own to cancel */
+        margin: 0;
         padding: 0.5rem 1rem;
         max-height: 45vh;
         overflow: auto;
@@ -38,7 +57,8 @@
         color: #57606a;
       }
       section[id] {
-        scroll-margin-top: 6rem;
+        /* main is its own scrollport now, so this only needs to clear its padding */
+        scroll-margin-top: 1rem;
       }
       /* flex-basis 100% puts the row on a line of its own in the wrapping bar */
       .tag-select {
@@ -126,11 +146,11 @@
       </a>
     </aside>
     <nav class="tag-filter" aria-labelledby="tag-filter-label">
-      <p id="tag-filter-label">Highlight experiments tagged:</p>
       <div class="tag-select">
-        <p>Select:</p>
-        <button type="button" class="tag-select-button" data-tag-select>All</button>
+        <p>Select categories:</p>
+        <button type="button" class="tag-select-button" data-tag-select aria-label="Select none of the tags">None</button>
       </div>
+      <details><summary>Categories:</summary>
       <div class="tag-buttons" data-tag-buttons>
         <button type="button" data-tag="map-select">&lt;map-select&gt;</button>
         <button type="button" data-tag="map-feature">&lt;map-feature&gt;</button>
@@ -167,6 +187,7 @@
         <button type="button" data-tag="default-search-handler">Default search handler</button>
         <button type="button" data-tag="custom-search-handler">Custom search handler</button>
       </div>
+      </details>
     </nav>
     <main>
       <h1>Use Cases</h1>
@@ -276,5 +297,6 @@
         <li data-tags="tms"><a href="tms/maps/">OSGeo TMS support</a></li>
       </ul>
     </section>
+    </main>
   </body>
 </html>

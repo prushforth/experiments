@@ -21,15 +21,20 @@ const mapmlContentTypes = {
   }
 };
 
-// Vite appends an inline sourcemap to every module script it serves, which
-// breaks the `integrity` attribute on these scripts. Serve them byte-for-byte
-// so local dev matches the static server that publishes these pages.
-const rawProjectionScripts = {
-  name: 'raw-projection-scripts',
+// Serve these scripts byte-for-byte rather than letting Vite transform them:
+// - /projections/*.js carry an `integrity` attribute, which Vite's inline
+//   sourcemap would break.
+// - /dist/** are prebuilt library bundles. Transforming them buys nothing and
+//   makes vite:import-analysis warn about the runtime `import(variable)` calls
+//   the bundles legitimately contain.
+// Either way, local dev then matches the static server that publishes these pages.
+const rawScripts = {
+  name: 'raw-scripts',
   configureServer(server) {
     server.middlewares.use((req, res, next) => {
       const url = req.url?.split('?')[0] ?? '';
-      if (!/\/projections\/[^/]+\.js$/.test(url)) return next();
+      if (!/^\/dist\/.+\.js$/.test(url) && !/\/projections\/[^/]+\.js$/.test(url))
+        return next();
       const root = path.resolve(server.config.root);
       const file = path.resolve(root, '.' + path.posix.normalize(decodeURIComponent(url)));
       if (!file.startsWith(root + path.sep) || !fs.existsSync(file)) return next();
@@ -43,7 +48,7 @@ const rawProjectionScripts = {
 export default defineConfig({
   // multi-page static site: 404 on a bad link instead of falling back to /index.html
   appType: 'mpa',
-  plugins: [mapmlContentTypes, rawProjectionScripts],
+  plugins: [mapmlContentTypes, rawScripts],
   server: {
     port: 8080
   }
