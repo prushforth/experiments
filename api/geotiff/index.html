@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>GeoTIFF as &lt;map-tile&gt; — three implementations compared</title>
+    <script src="../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../index.html">Experiments</a></p>
+      <h1>GeoTIFF as <code>&lt;map-tile&gt;</code></h1>
+      <p class="lede">
+        An inline GeoTIFF, decoded by geotiff.js and painted into
+        <code>&lt;map-tile&gt;</code> elements as the map moves.
+      </p>
+      <p class="experiment-feature-tags" data-tags="map-tile api geotiff"></p>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="An inline GeoTIFF rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="An inline GeoTIFF rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>Not implemented yet</p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="An inline GeoTIFF rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

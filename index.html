@@ -186,6 +186,8 @@
         <button type="button" data-tag="locale">Locale</button>
         <button type="button" data-tag="default-search-handler">Default search handler</button>
         <button type="button" data-tag="custom-search-handler">Custom search handler</button>
+        <button type="button" data-tag="map-tile">&lt;map-tile&gt;</button>
+        <button type="button" data-tag="geotiff">GeoTIFF</button>
       </div>
       </details>
     </nav>
@@ -243,17 +245,25 @@
         <h3>Inputs</h3>
         <ul class="example">
           <li data-tags="map-select legends hidden"><a href="inputs/map-select/inline/">(map-)select / (map-)option</a>
+          <!-- could have other input use cases here tbh -->
         </ul>
         </section>
+        <!-- 
+         removing this because a) it doesn't work well and b) every experiment in theory should
+         be able to provide an image map for each map as a browser fallback, but that doesn't work
+         well yet, needs more thought fwiw
+
+          <section id="browser-interop">
+          <h3>Browser interoperability</h3>
         <ul class="example">
-          <li data-tags="api"><a href="api/custom-map-ui/">Custom Map UI</a>
           <li data-tags="progressive-enhancement graceful-degradation map-feature defaults extent"><a href="progressive-enhancement/">Progressive Enhancement / Graceful Degradation</a>
-        </ul>
+        </ul></section> -->
 
         <h2>DOM API</h2>
         <ul class="example">
           <li data-tags="map-feature api"><a href="api/map-feature/">HTMLFeatureElement</a>
           <li data-tags="api"><a href="api/geojson/">GeoJSON to MapML (geojson2mapml)</a>
+          <li data-tags="map-tile api geotiff"><a href="api/geotiff/">GeoTIFF as &lt;map-tile&gt;</a>
           <li data-tags="pwa shadow-root fullscreen custom-search-handler"><a href="api/pwa/file-handling/">Progressive Web App - GeoJSON -&gt; MapML</a>
           <!-- need an example of using the map-change event -->
         </ul>
