@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Globe graceful degradation — MapML.js (Leaflet)</title>
+    <script type="module" src="../dist/MapML.js/dist/mapml.js"></script>
+    <link rel="stylesheet" href="../global.css" />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+      mapml-viewer:defined {
+        width: 100%;
+        height: 100%;
+      }
+      mapml-viewer:not(:defined) > * {
+        display: none;
+      }
+      map-layer {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+      Identical markup is loaded in maplibre-globe.html and leaflet-globe.html.
+      view="globe" asks for the OpenStreetMap raster tiles to be drawn on a
+      3-D globe. MapML-MapLibre honours it; MapML.js does not know the view
+      attribute (or the "view" controlslist token), ignores it as HTML ignores
+      any attribute it does not understand, and draws the same layer as a flat
+      OSMTILE map at the same lat, lon and zoom.
+    -->
+    <mapml-viewer view="globe" projection="OSMTILE" zoom="2" lat="64.1" lon="-101.3" static controls controlslist="view static">
+      <map-caption>OpenStreetMap over Canada, preferably on a globe</map-caption>
+      <map-layer label="OpenStreetMap" checked>
+        <map-link rel="license" title="© OpenStreetMap contributors CC BY-SA" href="https://www.openstreetmap.org/copyright"></map-link>
+        <map-extent units="OSMTILE" checked hidden>
+          <map-input name="z" type="zoom" value="18" min="0" max="18"></map-input>
+          <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="262144"></map-input>
+          <map-input name="y" type="location" units="tilematrix" axis="row" min="0" max="262144"></map-input>
+          <map-link rel="tile" tref="https://tile.openstreetmap.org/{z}/{x}/{y}.png"></map-link>
+        </map-extent>
+      </map-layer>
+    </mapml-viewer>
+  </body>
+</html>

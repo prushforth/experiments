@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Graceful degradation — Leaflet vs MapLibre</title>
+    <title>Graceful degradation — MapLibre vs Leaflet</title>
     <link rel="stylesheet" href="../global.css" />
     <style>
       body {
@@ -80,42 +80,54 @@
       <h1>Graceful degradation</h1>
       <p>
         Identical <code>&lt;mapml-viewer&gt;</code> markup rendered by the
-        Leaflet build (left) and the MapLibre GL build (right). Each map runs
+        MapLibre GL build (left) and the Leaflet build (right). Each map runs
         in its own iframe because both engines register the same custom-element
-        names. When an engine cannot honour the preferred resource, it falls
-        back to an alternative the author supplied.
+        names. An engine that cannot honour what the markup asks for still
+        draws the content, the way a browser ignores an attribute it does not
+        understand.
       </p>
       <nav>
         See also:
-        <a href="progressive-enhancement.html">progressive enhancement</a>
+        <a href="progressive-enhancement.html">progressive enhancement</a>,
+        <a href="../globe/">globe view</a>
       </nav>
     </header>
 
     <section class="example">
-      <h2>CBMTILE projection negotiation</h2>
+      <h2>A globe that degrades to a flat map</h2>
       <p>
-        Both maps declare <code>projection="CBMTILE"</code> and load the
-        <em>same</em> layer, whose Canada Base Map is offered in two
-        projections via a pair of <code>&lt;map-extent&gt;</code> elements: one
-        <code>units="CBMTILE"</code> (EPSG:3978 Lambert) and one
-        <code>units="OSMTILE"</code> (EPSG:3857 Web Mercator). Leaflet renders
-        the native CBMTILE extent (disabling the OSMTILE one); MapLibre GL, if
-        it cannot honour the Lambert projection, gracefully degrades to the
-        OSMTILE extent.
+        Both maps load the same OpenStreetMap raster tiles in
+        <code>projection="OSMTILE"</code>, and both ask for
+        <code>view="globe"</code>. MapML-MapLibre draws the tiles on a globe.
+        MapML.js has no 3-D renderer and does not know the
+        <code>view</code> attribute, so it ignores it and draws a flat Web
+        Mercator map. The degradation is a property of the markup, not
+        something either engine does: <code>lat</code>, <code>lon</code> and
+        <code>zoom</code> mean the same thing in every view, so the flat map
+        opens on the same place, and <code>view</code> never changes how the
+        layer itself is read.
+      </p>
+      <p>
+        Compare the Arctic in the two panes. On the globe, Canada's islands
+        keep their shape; on the flat map Web Mercator stretches them the
+        further north they are. The view button (MapLibre only) cycles the
+        left map through globe, perspective and flat; MapML.js skips the
+        <code>view</code> token in <code>controlslist</code> it does not
+        recognise.
       </p>
       <div class="panes">
         <section class="pane">
-          <h3>Leaflet — native CBMTILE (Lambert)</h3>
+          <h3>MapML-MapLibre — globe</h3>
           <iframe
-            src="leaflet-cbmt.html"
-            title="CBMTILE graceful degradation rendered with Leaflet"
+            src="maplibre-globe.html"
+            title="OpenStreetMap on a globe, rendered by MapML-MapLibre"
           ></iframe>
         </section>
         <section class="pane">
-          <h3>MapLibre GL — degrades to OSMTILE</h3>
+          <h3>MapML.js (Leaflet) — degrades to a flat map</h3>
           <iframe
-            src="maplibre-cbmt.html"
-            title="CBMTILE graceful degradation rendered with MapLibre GL"
+            src="leaflet-globe.html"
+            title="The same globe markup drawn as a flat map by MapML.js"
           ></iframe>
         </section>
       </div>
