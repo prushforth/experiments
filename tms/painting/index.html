@@ -55,10 +55,10 @@
         <code>tms="tms"</code>, because remote MapML is parsed as XML.
       </p>
       <p>
-        MapML-MapLibre has no column in any of the four cells: it renders Web Mercator only,
-        warns that <code>WGS84</code> is unsupported and falls back to <code>OSMTILE</code>.
-        A map of something that is not the Earth needs a renderer that will accept the
-        coordinate system it is given rather than assume one.
+        All three implementations draw every cell. MapML-MapLibre registers
+        <code>WGS84</code> with MapLibre as a projection of its own rather than assuming Web
+        Mercator, which is what a map of something that is not the Earth needs: a renderer
+        that accepts the coordinate system it is given.
       </p>
       <p>
         What the four cells are for, between them:
