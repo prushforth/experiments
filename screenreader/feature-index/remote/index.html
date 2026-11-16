@@ -82,9 +82,8 @@
       <p>
         Each map starts <code>static</code>. Release the lock with the lock button to pan, and
         the list under the reticle is re-read after each move; pan or zoom out and more of the
-        eight restaurants fall inside the box. The MapML.js frame lists nothing at all until
-        the lock is released and the map is focused: its index waits for focus, and
-        <code>static</code> turns off the handler that makes the map focusable.
+        eight restaurants fall inside the box. The index itself only waits for focus, not for
+        the lock: Tab into any frame and it is read.
       </p>
       <p>
         Press <kbd>1</kbd>&ndash;<kbd>7</kbd> to open a listed feature, <kbd>9</kbd> for the

@@ -52,8 +52,13 @@
         The preference is the same in all four cells and in all three implementations: a
         <code>&lt;map-options&gt;</code> element carrying
         <code>{"featureIndexOverlayOption":true}</code>, appended to <code>&lt;head&gt;</code>
-        from script because that is how the MapML browser extension injects it. No map on
-        these pages asks for the index; the reader does.
+        from script because that is how the MapML browser extension injects it. Every map
+        also shows the feature index control (<code>controlslist="featureindex"</code>), the
+        megaphone button an author offers for readers who want the index on one map rather
+        than all of them. Its icon shows the state — a megaphone when the index is on, crossed
+        out when it is off. Here the reader's preference has already switched the index on, so
+        each button shows the megaphone greyed out, and clicking it does nothing: the map
+        can't override the reader.
       </p>
       <p>
         The content type is the restaurant layer's. Inline, its eight

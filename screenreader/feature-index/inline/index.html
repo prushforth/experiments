@@ -41,12 +41,13 @@
         </div>
         <div class="example-description">
           <p>
-            The reference implementation, and the only one where the preference is the whole
-            interface: MapML.js has no control for the index, so a page either gets it from
-            the reader's settings or not at all. Its index is also focus-gated — nothing is
-            listed until the map is focused — and <code>static</code> turns off the very
-            handler that makes the map focusable, so this frame stays silent until the lock
-            is released.
+            The reference implementation. The feature index control began in the ports and
+            was taken back upstream, so all three frames now carry the same megaphone button
+            and the same rule: the reader's preference wins, and the button shows the
+            megaphone greyed out and ignores clicks. In all three the index is focus-gated: nothing is shown until the
+            map is focused. MapML.js used to stay silent on a <code>static</code> map, because
+            Leaflet's keyboard handler, which <code>static</code> switches off, is also what
+            tells the map it has focus; a static map now keeps telling it.
           </p>
         </div>
       </article>
@@ -58,10 +59,12 @@
         </div>
         <div class="example-description">
           <p>
-            MapLibre added an optional megaphone control
+            MapLibre added the megaphone control
             (<code>controlslist="featureindex"</code>) for readers who want the index on one
-            map rather than all of them. It is not used here, so that the three frames are
-            switched on the same way.
+            map rather than all of them. Every frame shows it, but the index is still switched
+            on the same way in all three — by the preference — so the button only reports
+            that: a greyed megaphone that ignores clicks, still reachable with Tab so a screen
+            reader can say it is on and unavailable.
           </p>
         </div>
       </article>
@@ -84,10 +87,10 @@
     <footer class="experiment-footer">
       <h2>Trying it</h2>
       <p>
-        Each map starts <code>static</code>, so scrolling past it does not zoom it. Two of the
-        three frames are already listing whatever the reticle covers; MapML.js is not, for the
-        reason above. Release the lock with the lock button, click or Tab into the map, and all
-        three agree. Pan, or zoom out, and more of the eight restaurants fall inside the box.
+        Each map starts <code>static</code>, so scrolling past it does not zoom it. Tab into
+        any of the three and the reticle and its list appear all the same: <code>static</code>
+        stops the map moving, not the index. Release the lock with the lock button to pan, or
+        zoom out, and more of the eight restaurants fall inside the box.
       </p>
       <p>
         With the keyboard alone: Tab to a map, release the lock, then use the arrow keys to
@@ -97,9 +100,11 @@
       </p>
       <p>
         Turn the preference off — remove the <code>&lt;map-options&gt;</code> script from the
-        framed page — and the maps are unchanged in every other respect. That is the point:
-        the index is the reader's, not the author's, and it has nothing to work with that a
-        pointer user was not already given.
+        framed page — and the maps are unchanged in every other respect, except that the
+        megaphone button comes alive: it starts crossed out, and pressing it turns the index
+        on for that map alone and returns focus to the map so the list is read. That is the
+        point: the index is the reader's, not the author's, and it has nothing to work with
+        that a pointer user was not already given.
       </p>
     </footer>
   </body>
