@@ -11,8 +11,8 @@
   <map-body>
     <map-extent units="OSMTILE" checked="checked">
       <map-input name="TileMatrix" type="zoom" value="12" min="0" max="12"></map-input>
-      <map-input name="TileCol" type="location" units="tilematrix" axis="column" min="0" max="262144"></map-input>
-      <map-input name="TileRow" type="location" units="tilematrix" axis="row" min="0" max="262144"></map-input>
+      <map-input name="TileCol" type="location" units="tilematrix" axis="column" min="0" max="4096"></map-input>
+      <map-input name="TileRow" type="location" units="tilematrix" axis="row" min="0" max="4096"></map-input>
       <map-link rel="tile" type="image/png" tref="https://geoservices.un.org/arcgis/rest/services/ClearMap_WebTopo/MapServer/tile/{TileMatrix}/{TileRow}/{TileCol}"></map-link>
     </map-extent>
   </map-body>
