@@ -31304,30 +31304,31 @@ class tA {
     }), this._queryLayer.setZIndex(1e3), this._queryLayerProjection = t, this._map.addLayer(this._queryLayer));
   }
   _showFeature(t, e) {
+    var l;
     const n = this._features[t];
     if (!n) return;
     this._index = t;
     const s = n._linkEl;
     if (s != null && s.shadowRoot) {
       if (s.shadowRoot.replaceChildren(), n.meta)
-        for (const l of n.meta)
-          s.shadowRoot.appendChild(l);
+        for (const h of n.meta)
+          s.shadowRoot.appendChild(h);
       s.shadowRoot.appendChild(n), this._activeLinks.add(s);
     }
     this._queryLayer.getSource().clear(), this._queryLayer._features = [], n._initialZoom = n._initialZoom ?? Math.round(
       this._map.getView().getZoom()
     ), n._viewer = this._viewer;
     const r = this._fallbackCS(n), o = this._queryLayer.createGeometry(n, r);
-    o && (n._olFeature = o, this._queryLayer.addLayer(o));
+    o && (n._olFeature = o, this._queryLayer.addLayer(o)), (l = this._viewer._featureIndex) == null || l.scheduleRefresh();
     const a = this._features.length;
     this._viewer._featureInteraction.openPopup(n, e, {
       sandbox: !0,
       paginate: {
         index: t,
         total: a,
-        onNavigate: (l) => {
-          const h = (t + l + a) % a;
-          this._showFeature(h, e);
+        onNavigate: (h) => {
+          const c = (t + h + a) % a;
+          this._showFeature(c, e);
         }
       }
     });
@@ -31345,9 +31346,10 @@ class tA {
     this._clear();
   }
   _clear() {
-    this._queryLayer && (this._queryLayer.getSource().clear(), this._queryLayer._features = []);
-    for (const t of this._activeLinks)
-      t.shadowRoot && t.shadowRoot.replaceChildren();
+    var t;
+    this._queryLayer && (this._queryLayer.getSource().clear(), this._queryLayer._features = [], (t = this._viewer._featureIndex) == null || t.scheduleRefresh());
+    for (const e of this._activeLinks)
+      e.shadowRoot && e.shadowRoot.replaceChildren();
     this._activeLinks.clear(), this._features = [], this._index = 0;
   }
 }
