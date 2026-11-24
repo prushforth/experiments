@@ -42356,29 +42356,30 @@ var JU = class e {
 	#o;
 	#s;
 	#c;
-	#l = /* @__PURE__ */ new Map();
+	#l;
 	#u = /* @__PURE__ */ new Map();
-	#d = [];
-	#f = 0;
-	#p = !1;
-	#m = /* @__PURE__ */ new Set();
-	constructor(e, t, n, r = () => {}, i = () => {}, a = () => {}, o = (e) => e) {
-		this.#e = e, this.#t = o, this.#n = t, this.#r = n, this.#o = r, this.#a = i, this.#i = a, this.#s = document.createElement("div"), this.#s.className = "mapml-feature-focus-layer", this.#s.setAttribute("aria-hidden", "false"), this.#c = document.createElement("div"), this.#c.className = "mapml-feature-focus-ring", this.#c.setAttribute("aria-hidden", "true"), this.#c.style.display = "none", this.#s.appendChild(this.#c);
-		let s = e.getContainer(), c = s.querySelector(".maplibregl-canvas-container"), l = s.querySelector(".maplibregl-control-container");
-		l === null ? c !== null && c.nextSibling !== null ? s.insertBefore(this.#s, c.nextSibling) : s.appendChild(this.#s) : s.insertBefore(this.#s, l), e.on("moveend", this.#_), e.on("styledata", this.#_), e.on("move", this.#C), this.#s.addEventListener("focusin", this.#x), this.#s.addEventListener("focusout", this.#S), this.#s.addEventListener("keydown", this.#w);
+	#d = /* @__PURE__ */ new Map();
+	#f = [];
+	#p = 0;
+	#m = !1;
+	#h = /* @__PURE__ */ new Set();
+	constructor(e, t, n, r = () => {}, i = () => {}, a = () => {}, o = (e) => e, s = () => {}) {
+		this.#e = e, this.#t = o, this.#n = t, this.#r = n, this.#o = r, this.#s = s, this.#a = i, this.#i = a, this.#c = document.createElement("div"), this.#c.className = "mapml-feature-focus-layer", this.#c.setAttribute("aria-hidden", "false"), this.#l = document.createElement("div"), this.#l.className = "mapml-feature-focus-ring", this.#l.setAttribute("aria-hidden", "true"), this.#l.style.display = "none", this.#c.appendChild(this.#l);
+		let c = e.getContainer(), l = c.querySelector(".maplibregl-canvas-container"), u = c.querySelector(".maplibregl-control-container");
+		u === null ? l !== null && l.nextSibling !== null ? c.insertBefore(this.#c, l.nextSibling) : c.appendChild(this.#c) : c.insertBefore(this.#c, u), e.on("moveend", this.#v), e.on("styledata", this.#v), e.on("move", this.#w), this.#c.addEventListener("focusin", this.#S), this.#c.addEventListener("focusout", this.#C), this.#c.addEventListener("keydown", this.#E), this.#c.addEventListener("keyup", this.#T);
 	}
 	setFeatureFocusItems(t, n) {
-		let r = this.#u.get(t);
+		let r = this.#d.get(t);
 		if (r !== void 0) for (let n of r) {
-			let r = e.#g(t, n.featureId, n.partIndex), i = this.#l.get(r);
-			i !== void 0 && (i.proxy.remove(), this.#l.delete(r));
+			let r = e.#_(t, n.featureId, n.partIndex), i = this.#u.get(r);
+			i !== void 0 && (i.proxy.remove(), this.#u.delete(r));
 		}
-		if (n.length === 0) this.#u.delete(t);
+		if (n.length === 0) this.#d.delete(t);
 		else {
-			this.#u.set(t, n.slice());
+			this.#d.set(t, n.slice());
 			for (let r of n) {
-				let n = e.#g(t, r.featureId, r.partIndex), i = this.#h(r);
-				this.#l.set(n, {
+				let n = e.#_(t, r.featureId, r.partIndex), i = this.#g(r);
+				this.#u.set(n, {
 					item: r,
 					proxy: i,
 					dist: Infinity,
@@ -42386,50 +42387,50 @@ var JU = class e {
 				});
 			}
 		}
-		this.#_();
+		this.#v();
 	}
 	focusProxyForItem(t, n) {
-		let r = e.#g(t, n), i = this.#l.get(r);
+		let r = e.#_(t, n), i = this.#u.get(r);
 		if (i === void 0 || !i.inbound) return !1;
-		let a = this.#d.indexOf(i);
-		return a >= 0 && this.#b(a), i.proxy.focus(), !0;
+		let a = this.#f.indexOf(i);
+		return a >= 0 && this.#x(a), i.proxy.focus(), !0;
 	}
 	getItem(t, n) {
-		let r = e.#g(t, n);
-		return this.#l.get(r)?.item;
+		let r = e.#_(t, n);
+		return this.#u.get(r)?.item;
 	}
 	focusAdjacentFeature(e, t) {
-		let n = this.#d.findIndex((t) => t.item.featureEl === e && t.item.partIndex === void 0);
+		let n = this.#f.findIndex((t) => t.item.featureEl === e && t.item.partIndex === void 0);
 		if (n < 0) return !1;
-		let r = Math.min(Math.max(n + t, 0), this.#d.length - 1);
-		return this.#b(r), this.#d[r].proxy.focus(), !0;
+		let r = Math.min(Math.max(n + t, 0), this.#f.length - 1);
+		return this.#x(r), this.#f[r].proxy.focus(), !0;
 	}
 	focusFeature(e, t) {
 		let n;
-		for (let t of this.#l.values()) if (t.item.featureEl === e && t.item.partIndex === void 0) {
+		for (let t of this.#u.values()) if (t.item.featureEl === e && t.item.partIndex === void 0) {
 			n = t;
 			break;
 		}
 		if (n === void 0) return !1;
-		let r = this.#d.indexOf(n);
-		if (r >= 0) return this.#b(r), n.proxy.focus(t), !0;
+		let r = this.#f.indexOf(n);
+		if (r >= 0) return this.#x(r), n.proxy.focus(t), !0;
 		let { item: i, proxy: a } = n, o = this.#e, s = VU(this.#t(o.getZoom()));
 		if (s < i.min || s > i.max) return !1;
 		let c = o.project([i.centerLng, i.centerLat]);
-		return a.style.left = `${Math.round(c.x)}px`, a.style.top = `${Math.round(c.y)}px`, this.#s.appendChild(a), a.focus({
+		return a.style.left = `${Math.round(c.x)}px`, a.style.top = `${Math.round(c.y)}px`, this.#c.appendChild(a), a.focus({
 			preventScroll: !0,
 			...t
 		}), !0;
 	}
 	blurFeature(e) {
-		let t = this.#s.getRootNode().activeElement;
-		for (let { item: n, proxy: r } of this.#l.values()) if (r === t && n.featureEl === e) {
+		let t = this.#c.getRootNode().activeElement;
+		for (let { item: n, proxy: r } of this.#u.values()) if (r === t && n.featureEl === e) {
 			this.#e.getCanvas().focus();
 			return;
 		}
 	}
 	getFeatureItem(e) {
-		for (let { item: t } of this.#l.values()) if (t.featureEl === e && t.partIndex === void 0) return t;
+		for (let { item: t } of this.#u.values()) if (t.featureEl === e && t.partIndex === void 0) return t;
 	}
 	getFeatureEl(e, t) {
 		let n;
@@ -42437,11 +42438,11 @@ var JU = class e {
 		return n?.featureEl;
 	}
 	getSourceItems(e) {
-		return this.#u.get(e) ?? [];
+		return this.#d.get(e) ?? [];
 	}
 	linkedPartAt(e, t = 8) {
 		let n = this.#e, r = VU(this.#t(n.getZoom())), i = null, a = Infinity;
-		for (let { item: o } of this.#l.values()) {
+		for (let { item: o } of this.#u.values()) {
 			if (!o.hasLink || o.partCoordinates === void 0 || r < o.min || r > o.max) continue;
 			let s = YU(e, o.partCoordinates.map((e) => n.project(e)));
 			s <= t && s < a && (a = s, i = o);
@@ -42449,7 +42450,7 @@ var JU = class e {
 		return i;
 	}
 	getInboundEntries() {
-		return this.#d.filter((e) => e.item.partIndex === void 0).map((e) => {
+		return this.#f.filter((e) => e.item.partIndex === void 0).map((e) => {
 			let t = e.item;
 			return {
 				label: t.caption === "" ? this.#n.dfFeatureCaption : t.caption,
@@ -42462,22 +42463,22 @@ var JU = class e {
 					if (t.hasPopup) this.#r(t, e.proxy, this.#e.unproject(this.#e.project([t.centerLng, t.centerLat])));
 					else {
 						this.#i();
-						let t = this.#d.indexOf(e);
-						t >= 0 && this.#b(t), e.proxy.focus();
+						let t = this.#f.indexOf(e);
+						t >= 0 && this.#x(t), e.proxy.focus();
 					}
 				}
 			};
 		});
 	}
 	onEntriesChanged(e) {
-		return this.#m.add(e), () => {
-			this.#m.delete(e);
+		return this.#h.add(e), () => {
+			this.#h.delete(e);
 		};
 	}
 	destroy() {
-		this.#e.off("moveend", this.#_), this.#e.off("styledata", this.#_), this.#e.off("move", this.#C), this.#s.removeEventListener("focusin", this.#x), this.#s.removeEventListener("focusout", this.#S), this.#s.removeEventListener("keydown", this.#w), this.#s.remove(), this.#l.clear(), this.#u.clear(), this.#d = [], this.#f = 0, this.#m.clear();
+		this.#e.off("moveend", this.#v), this.#e.off("styledata", this.#v), this.#e.off("move", this.#w), this.#c.removeEventListener("focusin", this.#S), this.#c.removeEventListener("focusout", this.#C), this.#c.removeEventListener("keydown", this.#E), this.#c.removeEventListener("keyup", this.#T), this.#c.remove(), this.#u.clear(), this.#d.clear(), this.#f = [], this.#p = 0, this.#h.clear();
 	}
-	#h(e) {
+	#g(e) {
 		let t = document.createElement("button");
 		t.type = "button", t.className = "mapml-feature-focus-proxy", t.dataset.source = e.sourceId, t.dataset.feature = String(e.featureId);
 		let n = e.caption === "" ? this.#n.dfFeatureCaption : e.caption;
@@ -42486,21 +42487,21 @@ var JU = class e {
 		});
 		return t.style.pointerEvents = "none", t;
 	}
-	static #g(e, t, n) {
+	static #_(e, t, n) {
 		return `${e}\0${t}\0${n ?? ""}`;
 	}
-	#_ = () => {
-		this.#p || (this.#p = !0, queueMicrotask(() => {
-			this.#p = !1, this.#v();
+	#v = () => {
+		this.#m || (this.#m = !0, queueMicrotask(() => {
+			this.#m = !1, this.#y();
 		}));
 	};
-	#v() {
-		if (this.#l.size === 0) {
-			this.#s.replaceChildren(), this.#d = [], this.#f = 0, this.#y();
+	#y() {
+		if (this.#u.size === 0) {
+			this.#c.replaceChildren(), this.#f = [], this.#p = 0, this.#b();
 			return;
 		}
 		let e = this.#e, t = e.getCanvas(), n = t.clientWidth, r = t.clientHeight, i = n / 2, a = r / 2, o = [];
-		for (let t of this.#l.values()) {
+		for (let t of this.#u.values()) {
 			let { item: s, proxy: c } = t, l = VU(this.#t(e.getZoom()));
 			if (l < s.min || l > s.max) {
 				c.remove(), t.inbound = !1, t.dist = Infinity;
@@ -42515,30 +42516,30 @@ var JU = class e {
 			t.dist = f * f + p * p, c.style.left = `${Math.round(u.x)}px`, c.style.top = `${Math.round(u.y)}px`, o.push(t);
 		}
 		o.sort((e, t) => e.dist - t.dist);
-		let s = this.#s.getRootNode().activeElement, c = o.map((e) => e.proxy);
-		this.#s.replaceChildren(this.#c, ...c);
+		let s = this.#c.getRootNode().activeElement, c = o.map((e) => e.proxy);
+		this.#c.replaceChildren(this.#l, ...c);
 		for (let e of o) e.proxy.tabIndex = -1;
-		if (o.length > 0 && (o[0].proxy.tabIndex = 0), this.#d = o, s instanceof HTMLElement && this.#s.contains(s)) {
+		if (o.length > 0 && (o[0].proxy.tabIndex = 0), this.#f = o, s instanceof HTMLElement && this.#c.contains(s)) {
 			let e = o.findIndex((e) => e.proxy === s);
-			this.#f = e >= 0 ? e : 0;
-		} else this.#f = 0;
-		this.#y();
+			this.#p = e >= 0 ? e : 0;
+		} else this.#p = 0;
+		this.#b();
 	}
-	#y() {
-		for (let e of this.#m) e();
+	#b() {
+		for (let e of this.#h) e();
 	}
-	#b(e) {
-		if (this.#d.length === 0) return;
-		let t = (e % this.#d.length + this.#d.length) % this.#d.length;
-		for (let e = 0; e < this.#d.length; e++) this.#d[e].proxy.tabIndex = e === t ? 0 : -1;
-		this.#f = t;
+	#x(e) {
+		if (this.#f.length === 0) return;
+		let t = (e % this.#f.length + this.#f.length) % this.#f.length;
+		for (let e = 0; e < this.#f.length; e++) this.#f[e].proxy.tabIndex = e === t ? 0 : -1;
+		this.#p = t;
 	}
-	#x = (e) => {
+	#S = (e) => {
 		let t = e.target;
 		if (!(t instanceof HTMLButtonElement)) return;
-		let n = this.#d.findIndex((e) => e.proxy === t);
-		if (n >= 0 && this.#b(n), this.#C(), n >= 0) {
-			let e = this.#d[n];
+		let n = this.#f.findIndex((e) => e.proxy === t);
+		if (n >= 0 && this.#x(n), this.#w(), n >= 0) {
+			let e = this.#f[n];
 			if (e.item.partIndex !== void 0) {
 				this.#o(null, null);
 				return;
@@ -42550,47 +42551,51 @@ var JU = class e {
 			}, t);
 		}
 	};
-	#S = (e) => {
+	#C = (e) => {
 		let t = e.relatedTarget;
-		t instanceof Node && this.#s.contains(t) || (this.#c.style.display = "none", this.#o(null, null), this.#d.length > 0 && this.#b(0));
+		t instanceof Node && this.#c.contains(t) || (this.#l.style.display = "none", this.#o(null, null), this.#f.length > 0 && this.#x(0));
 	};
-	#C = () => {
-		let e = this.#s.getRootNode().activeElement;
-		if (!(e instanceof HTMLButtonElement) || !this.#s.contains(e)) {
-			this.#c.style.display = "none";
+	#w = () => {
+		let e = this.#c.getRootNode().activeElement;
+		if (!(e instanceof HTMLButtonElement) || !this.#c.contains(e)) {
+			this.#l.style.display = "none";
 			return;
 		}
-		let t = this.#d.find((t) => t.proxy === e);
+		let t = this.#f.find((t) => t.proxy === e);
 		if (t === void 0) {
-			this.#c.style.display = "none";
+			this.#l.style.display = "none";
 			return;
 		}
 		let n = this.#e, { bboxWest: r, bboxSouth: i, bboxEast: a, bboxNorth: o } = t.item, s = n.project([r, o]), c = n.project([a, o]), l = n.project([r, i]), u = n.project([a, i]), d = Math.min(s.x, c.x, l.x, u.x), f = Math.max(s.x, c.x, l.x, u.x), p = Math.min(s.y, c.y, l.y, u.y), m = Math.max(s.y, c.y, l.y, u.y), h = f - d, g = m - p, _ = d, v = p;
-		h < 24 && (_ -= (24 - h) / 2, h = 24), g < 24 && (v -= (24 - g) / 2, g = 24), this.#c.style.display = "block", this.#c.style.left = `${Math.round(_)}px`, this.#c.style.top = `${Math.round(v)}px`, this.#c.style.width = `${Math.round(h)}px`, this.#c.style.height = `${Math.round(g)}px`;
+		h < 24 && (_ -= (24 - h) / 2, h = 24), g < 24 && (v -= (24 - g) / 2, g = 24), this.#l.style.display = "block", this.#l.style.left = `${Math.round(_)}px`, this.#l.style.top = `${Math.round(v)}px`, this.#l.style.width = `${Math.round(h)}px`, this.#l.style.height = `${Math.round(g)}px`;
 	};
-	#w = (e) => {
+	#T = (e) => {
+		let t = this.#f.find((t) => t.proxy === e.target);
+		t?.item.hasLink && this.#s(t.item);
+	};
+	#E = (e) => {
 		let t = e.target;
 		if (!(t instanceof HTMLButtonElement)) return;
-		let n = this.#d.findIndex((e) => e.proxy === t);
-		if (!(n < 0)) switch (e.key) {
+		let n = this.#f.findIndex((e) => e.proxy === t);
+		if (!(n < 0)) switch (this.#s(null), e.key) {
 			case "ArrowLeft":
 			case "ArrowUp": {
 				e.preventDefault(), e.stopPropagation();
-				let t = n === 0 ? this.#d.length - 1 : n - 1;
-				this.#b(t), this.#d[t].proxy.focus();
+				let t = n === 0 ? this.#f.length - 1 : n - 1;
+				this.#x(t), this.#f[t].proxy.focus();
 				return;
 			}
 			case "ArrowRight":
 			case "ArrowDown": {
 				e.preventDefault(), e.stopPropagation();
-				let t = n === this.#d.length - 1 ? 0 : n + 1;
-				this.#b(t), this.#d[t].proxy.focus();
+				let t = n === this.#f.length - 1 ? 0 : n + 1;
+				this.#x(t), this.#f[t].proxy.focus();
 				return;
 			}
 			case "Enter":
 			case " ":
 			case "Spacebar": {
-				let t = this.#d[n];
+				let t = this.#f[n];
 				if (t.item.hasLink) {
 					e.preventDefault(), e.stopPropagation(), this.#a(t.item, t.proxy);
 					return;
@@ -44899,27 +44904,28 @@ var hq = class {
 	#i;
 	#a;
 	#o;
-	#s = /* @__PURE__ */ new Map();
-	root = new fW("mapml-root");
+	#s;
 	#c = /* @__PURE__ */ new Map();
-	#l;
-	#u = null;
-	featureIndexOverlayActive = !1;
+	root = new fW("mapml-root");
+	#l = /* @__PURE__ */ new Map();
+	#u;
 	#d = null;
-	#f = [];
-	#p = 0;
-	#m = !1;
+	featureIndexOverlayActive = !1;
+	#f = null;
+	#p = [];
+	#m = 0;
 	#h = !1;
-	#g = null;
+	#g = !1;
 	#_ = null;
 	#v = null;
-	#y = !1;
-	#b = OH;
-	#x;
+	#y = null;
+	#b = !1;
+	#x = OH;
 	#S;
+	#C;
 	init({ container: e, projection: t, view: n, center: r, zoom: i, bearing: a, pitch: o, minZoom: s, maxZoom: c, controls: l, locale: u, mapmlLocale: d, onFeatureLinkActivate: f }) {
-		d && (this.#b = d), this.#x = f, this.#t = t, this.#S = e;
-		let p = n ?? (t === "GLOBE" ? "globe" : "map"), m = this.#w(p), h = {
+		d && (this.#x = d), this.#S = f, this.#t = t, this.#C = e;
+		let p = n ?? (t === "GLOBE" ? "globe" : "map"), m = this.#T(p), h = {
 			container: e,
 			style: {
 				..._q,
@@ -44932,16 +44938,16 @@ var hq = class {
 			maxZoom: this.toNativeZoom(c ?? lH(t)),
 			zoomSnap: UU(t),
 			attributionControl: !1,
-			transformConstrain: this.#T(m)
+			transformConstrain: this.#E(m)
 		};
 		a !== void 0 && (h.bearing = a), o !== void 0 && (h.pitch = o), u && (h.locale = u);
 		let g = new VN(h);
-		g.keyboard.disable(), this.#e = g, this.#r = $U(g, t), this.#C(g), this.#D(m);
+		g.keyboard.disable(), this.#e = g, this.#r = $U(g, t), this.#w(g), this.#O(m);
 		let _ = new Promise((e) => {
 			g.loaded() ? e() : g.once("load", () => e());
 		});
-		this.#n = Promise.all([_, cW(t)]).then(() => {}), this.#o = new JU(g, this.#b, (e, t, n) => {
-			this.#I(n, [e.properties], 0, {
+		this.#n = Promise.all([_, cW(t)]).then(() => {}), this.#s = new JU(g, this.#x, (e, t, n) => {
+			this.#L(n, [e.properties], 0, {
 				sourceProxy: t,
 				sourceItem: e
 			});
@@ -44950,31 +44956,31 @@ var hq = class {
 				this.#i?.remove();
 				return;
 			}
-			if (this.#a?.isOpen() || e.caption === "") return;
+			if (this.#o?.isOpen() || e.caption === "") return;
 			let n = this.#e;
-			n && this.#Y().setLngLat(t).setText(e.caption).addTo(n);
+			n && this.#Q().setLngLat(t).setText(e.caption).addTo(n);
 		}, (e) => {
-			this.#x?.(e);
+			this.#S?.(e);
 		}, () => {
-			this.#a?.remove();
-		}, (e) => this.toMapmlZoom(e)), this.#l = {
-			onFeatureEnter: this.#M,
-			onFeatureMove: this.#N,
-			onFeatureLeave: this.#P,
-			onFeatureClick: this.#F,
+			this.#o?.remove();
+		}, (e) => this.toMapmlZoom(e), (e) => this.#J(e?.properties.linkHref)), this.#a = document.createElement("div"), this.#a.className = "mapml-link-preview", this.#a.hidden = !0, this.#a.appendChild(document.createElement("p")), g.getContainer().appendChild(this.#a), this.#u = {
+			onFeatureEnter: this.#N,
+			onFeatureMove: this.#P,
+			onFeatureLeave: this.#F,
+			onFeatureClick: this.#I,
 			publishFocusItems: (e, t) => {
-				this.#o?.setFeatureFocusItems(e, t);
+				this.#s?.setFeatureFocusItems(e, t);
 			},
 			onLastCompositeRemoved: () => {
-				this.#i?.remove(), this.#a?.remove();
+				this.#i?.remove(), this.#o?.remove();
 			},
 			onCompositeHidden: (e) => {
-				this.#g === e && (this.#i?.remove(), this.#a?.remove());
+				this.#_ === e && (this.#i?.remove(), this.#o?.remove());
 			}
 		};
 	}
 	addControl(e, t) {
-		this.#X().addControl(e, t);
+		this.#$().addControl(e, t);
 	}
 	removeControl(e) {
 		this.#e?.hasControl(e) && this.#e.removeControl(e);
@@ -44991,7 +44997,7 @@ var hq = class {
 	toNativeZoom(e) {
 		return BU(this.#t, e);
 	}
-	#C(e) {
+	#w(e) {
 		let t = !1, n = () => {
 			if (!t) return;
 			let n = VU(qU(this.#t, e.getZoom()));
@@ -45033,7 +45039,7 @@ var hq = class {
 		let n = e.max[0] - e.min[0], r = e.max[1] - e.min[1], { clientWidth: i, clientHeight: a } = t.getContainer(), o = Math.max(n / i, r / a);
 		return o > 0 && Number.isFinite(o) ? Math.floor(this.toMapmlZoom(Math.log2(HU(this.#t, 0) / o)) + 1e-6) : this.getZoom();
 	}
-	#w(e) {
+	#T(e) {
 		let t = sW(this.#t);
 		return t === "mercator" ? xU(e) : {
 			...xU(e === "globe" ? "map" : e),
@@ -45043,8 +45049,8 @@ var hq = class {
 	applyViewMode(e) {
 		let t = this.#e;
 		if (!t) return;
-		let n = this.#w(e), r = () => {
-			t.setTransformConstrain(this.#T(n)), t.setProjection({ type: n.projection }), this.#D(n);
+		let n = this.#T(e), r = () => {
+			t.setTransformConstrain(this.#E(n)), t.setProjection({ type: n.projection }), this.#O(n);
 		};
 		t.isStyleLoaded() ? r() : t.once("load", r);
 	}
@@ -45052,17 +45058,17 @@ var hq = class {
 		let i = this.#e;
 		if (!i || e === this.#t) return Promise.resolve();
 		this.#t = e;
-		let a = this.#w(t);
-		return this.#r?.setProjection(e), i.setZoomSnap(UU(e)), i.setMinZoom(-2), i.setMaxZoom(this.toNativeZoom(lH(e))), i.setMinZoom(this.toNativeZoom(0)), i.setTransformConstrain(this.#T(a)), i.setProjection({ type: a.projection }), i.jumpTo({
+		let a = this.#T(t);
+		return this.#r?.setProjection(e), i.setZoomSnap(UU(e)), i.setMinZoom(-2), i.setMaxZoom(this.toNativeZoom(lH(e))), i.setMinZoom(this.toNativeZoom(0)), i.setTransformConstrain(this.#E(a)), i.setProjection({ type: a.projection }), i.jumpTo({
 			center: n,
 			zoom: this.toNativeZoom(r)
-		}), this.#D(a), i.setGlobalStateProperty(dq, VU(this.getZoom())), cW(e);
+		}), this.#O(a), i.setGlobalStateProperty(dq, VU(this.getZoom())), cW(e);
 	}
-	#T(e) {
-		return e.projection === "mercator" && !e.allowTilt ? this.#E : null;
+	#E(e) {
+		return e.projection === "mercator" && !e.allowTilt ? this.#D : null;
 	}
-	#E = (e, t) => {
-		let n = this.#e, r = n ? Math.min(Math.max(t, n.getMinZoom()), n.getMaxZoom()) : t, i = 512 * 2 ** r, a = this.#S?.clientHeight ?? 0;
+	#D = (e, t) => {
+		let n = this.#e, r = n ? Math.min(Math.max(t, n.getMinZoom()), n.getMaxZoom()) : t, i = 512 * 2 ** r, a = this.#C?.clientHeight ?? 0;
 		if (i < a) return r += Math.log2(a / i), {
 			center: new Z(e.lng, 0),
 			zoom: r
@@ -45073,83 +45079,83 @@ var hq = class {
 			zoom: r
 		};
 	};
-	#D(e) {
+	#O(e) {
 		let t = this.#e;
 		t && (e.allowTilt ? (t.dragRotate.enable(), t.touchZoomRotate.enableRotation(), t.touchPitch?.enable()) : (t.dragRotate.disable(), t.touchZoomRotate.disableRotation(), t.touchPitch?.disable()));
 	}
 	destroy() {
-		this.#r?.destroy(), this.#r = void 0, this.#i?.remove(), this.#i = void 0, this.#a?.remove(), this.#a = void 0, this.#o?.destroy(), this.#o = void 0, this.#u = null, this.#d = null, this.#f = [], this.#p = 0, this.#m = !1, this.#g = null, this.#e?.remove(), this.#e = void 0, this.#n = void 0;
+		this.#r?.destroy(), this.#r = void 0, this.#i?.remove(), this.#i = void 0, this.#o?.remove(), this.#o = void 0, this.#s?.destroy(), this.#s = void 0, this.#a?.remove(), this.#a = void 0, this.#d = null, this.#f = null, this.#p = [], this.#m = 0, this.#h = !1, this.#_ = null, this.#e?.remove(), this.#e = void 0, this.#n = void 0;
 	}
 	whenReady() {
 		return this.#n ?? Promise.reject(/* @__PURE__ */ Error("Renderer not initialised"));
 	}
 	createRasterTileLayer(e) {
-		return new rq(this.#X(), e);
+		return new rq(this.#$(), e);
 	}
 	createWmsTileLayer(e) {
-		return new iq(this.#X(), e);
+		return new iq(this.#$(), e);
 	}
 	createMapTileRunLayer(e) {
-		return new aq(this.#X(), e);
+		return new aq(this.#$(), e);
 	}
 	createMapmlTileLayer(e) {
-		return new oq(this.#X(), e);
+		return new oq(this.#$(), e);
 	}
 	createImageLayer(e) {
-		return new sq(this.#X(), e);
+		return new sq(this.#$(), e);
 	}
 	createVectorTileLayer(e) {
-		return new lq(this.#X(), e);
+		return new lq(this.#$(), e);
 	}
 	createFeatureCollectionLayer(e) {
-		let t = this.#X();
-		if (!this.#l) throw Error("createFeatureCollectionLayer called before init()");
-		let n = new hq(t, this.#l, e), r = this.#s.get(e.id);
+		let t = this.#$();
+		if (!this.#u) throw Error("createFeatureCollectionLayer called before init()");
+		let n = new hq(t, this.#u, e), r = this.#c.get(e.id);
 		return r && n.setStyle(r), n;
 	}
 	getHandle(e) {
-		return this.#c.get(e);
+		return this.#l.get(e);
 	}
 	addRasterTileLayer(e) {
-		if (this.#c.has(e.id)) return;
+		if (this.#l.has(e.id)) return;
 		let t = this.createRasterTileLayer(e);
-		this.#c.set(e.id, t);
+		this.#l.set(e.id, t);
 	}
 	addWmsTileLayer(e) {
-		if (this.#c.has(e.id)) return;
+		if (this.#l.has(e.id)) return;
 		let t = this.createWmsTileLayer(e);
-		this.#c.set(e.id, t);
+		this.#l.set(e.id, t);
 	}
 	addImageLayer(e) {
-		if (this.#c.has(e.id)) return;
+		if (this.#l.has(e.id)) return;
 		let t = this.createImageLayer(e);
-		this.#c.set(e.id, t);
+		this.#l.set(e.id, t);
 	}
 	updateImageLayer(e, t) {
-		let n = this.#c.get(e);
+		let n = this.#l.get(e);
 		!n || n.kind !== "image" || n.update(t);
 	}
 	addOrUpdateFeatureCollection(e) {
-		let t = this.#c.get(e.id);
+		let t = this.#l.get(e.id);
 		if (t && t.kind === "feature-collection") {
 			t.setData(e.data);
 			return;
 		}
 		let n = this.createFeatureCollectionLayer(e);
-		this.#c.set(e.id, n);
+		this.#l.set(e.id, n);
 	}
 	removeLayer(e) {
-		let t = this.#c.get(e);
-		t && (t.remove(), this.#c.delete(e), this.#s.delete(e));
+		let t = this.#l.get(e);
+		t && (t.remove(), this.#l.delete(e), this.#c.delete(e));
 	}
 	moveLayer(e, t) {
-		let n = this.#c.get(e);
+		let n = this.#l.get(e);
 		if (!n) return;
 		if (t === void 0) {
 			n.moveAbove();
 			return;
 		}
-		let r = this.#c.get(t);
+		let r = this.#l.get(t);
 		if (!r) {
 			n.moveAbove();
 			return;
@@ -45157,37 +45163,37 @@ var hq = class {
 		n.moveAbove(), r.moveAbove(n);
 	}
 	setLayerVisibility(e, t) {
-		this.#c.get(e)?.setVisible(t);
+		this.#l.get(e)?.setVisible(t);
 	}
 	setLayerOpacity(e, t) {
-		this.#c.get(e)?.setOpacity(t);
+		this.#l.get(e)?.setOpacity(t);
 	}
 	setFeatureFocusItems(e, t) {
-		this.#o?.setFeatureFocusItems(e, t);
+		this.#s?.setFeatureFocusItems(e, t);
 	}
 	setFeatureStyle(e, t) {
-		Object.keys(t.fill).length === 0 && Object.keys(t.line).length === 0 && Object.keys(t.circle).length === 0 ? this.#s.delete(e) : this.#s.set(e, t);
-		let n = this.#c.get(e);
+		Object.keys(t.fill).length === 0 && Object.keys(t.line).length === 0 && Object.keys(t.circle).length === 0 ? this.#c.delete(e) : this.#c.set(e, t);
+		let n = this.#l.get(e);
 		n && n.kind === "feature-collection" && n.setStyle(t);
 	}
 	openContentPopup({ lngLat: e, features: t, index: n = 0 }) {
 		if (t.length === 0) return;
 		let r = Math.min(Math.max(n, 0), t.length - 1);
-		this.#I(e, t, r, null), this.#m = !0, this.#k();
+		this.#L(e, t, r, null), this.#h = !0, this.#A();
 	}
 	closeQueryPopup() {
-		this.#m && (this.#m = !1, this.#a?.remove(), this.#j());
+		this.#h && (this.#h = !1, this.#o?.remove(), this.#M());
 	}
-	static #O = "mapml-query-highlight";
-	#k() {
-		let e = this.#f[this.#p];
+	static #k = "mapml-query-highlight";
+	#A() {
+		let e = this.#p[this.#m];
 		if (!e) {
-			this.#j();
+			this.#M();
 			return;
 		}
-		this.#A([e]);
+		this.#j([e]);
 	}
-	#A(t) {
+	#j(t) {
 		let n = this.#e;
 		if (!n) return;
 		let r = [];
@@ -45200,13 +45206,13 @@ var hq = class {
 			});
 		}
 		if (r.length === 0) {
-			this.#j();
+			this.#M();
 			return;
 		}
 		let i = {
 			type: "FeatureCollection",
 			features: r
-		}, a = e.#O, o = () => {
+		}, a = e.#k, o = () => {
 			let e = n.getSource(a);
 			e ? e.setData(i) : (n.addSource(a, {
 				type: "geojson",
@@ -45253,16 +45259,16 @@ var hq = class {
 					"circle-stroke-color": "#ffcc00",
 					"circle-stroke-width": 2
 				}
-			})), this.#h = !0;
+			})), this.#g = !0;
 		};
 		n.isStyleLoaded() ? o() : n.once("idle", o);
 	}
-	#j() {
-		if (!this.#h) return;
-		this.#h = !1;
+	#M() {
+		if (!this.#g) return;
+		this.#g = !1;
 		let t = this.#e;
 		if (!t) return;
-		let n = e.#O;
+		let n = e.#k;
 		for (let e of [
 			"-fill",
 			"-line",
@@ -45273,52 +45279,52 @@ var hq = class {
 		}
 		t.getSource(n) && t.removeSource(n);
 	}
-	#M = (e) => {
-		let t = this.#e;
-		t && (t.getCanvas().style.cursor = "pointer", this.#K(e));
-	};
 	#N = (e) => {
-		this.#K(e);
+		let t = this.#e;
+		t && (t.getCanvas().style.cursor = "pointer", this.#q(e), this.#Y(e));
 	};
 	#P = (e) => {
+		this.#q(e), this.#Y(e);
+	};
+	#F = (e) => {
 		let t = this.#e;
 		if (!t) return;
-		if (this.#a?.isOpen()) {
+		if (this.#q(e), this.#o?.isOpen()) {
 			t.getCanvas().style.cursor = "";
 			return;
 		}
-		let n = this.#q(e);
+		let n = this.#X(e);
 		if (n !== null) {
 			this.#i?.setLngLat(e.lngLat).setText(n);
 			return;
 		}
 		t.getCanvas().style.cursor = "", this.#i?.remove();
 	};
-	#F = (e) => {
-		if (!this.#e || e.originalEvent === this.#v) return;
-		this.#v = e.originalEvent;
-		let t = this.#o?.linkedPartAt(e.point) ?? null, n = t === null ? this.#J(e, "linkHref") : null;
-		if (t !== null) this.#x?.(t);
+	#I = (e) => {
+		if (!this.#e || e.originalEvent === this.#y) return;
+		this.#y = e.originalEvent;
+		let t = this.#s?.linkedPartAt(e.point) ?? null, n = t === null ? this.#Z(e, "linkHref") : null;
+		if (t !== null) this.#S?.(t);
 		else if (n !== null) {
-			let e = String(n.source ?? ""), t = this.#o?.getItem(e, Number(n.id ?? -1)) ?? this.#o?.getSourceItems(e)[0];
-			t !== void 0 && this.#x?.({
+			let e = String(n.source ?? ""), t = this.#s?.getItem(e, Number(n.id ?? -1)) ?? this.#s?.getSourceItems(e)[0];
+			t !== void 0 && this.#S?.({
 				...t,
 				properties: { ...n.properties }
 			});
 		}
-		let r = t === null ? this.#J(e) : null, i = t?.featureEl ?? (r === null ? void 0 : this.#o?.getFeatureEl(String(r.source ?? ""), Number(r.id ?? -1)));
+		let r = t === null ? this.#Z(e) : null, i = t?.featureEl ?? (r === null ? void 0 : this.#s?.getFeatureEl(String(r.source ?? ""), Number(r.id ?? -1)));
 		if (i !== void 0 && bq(i, e.originalEvent), t !== null || n !== null || e.originalEvent.cancelBubble) return;
-		let a = this.#J(e, "propertiesHtml");
-		a !== null && (this.#I(e.lngLat, [a.properties ?? {}], 0, null), this.#g = typeof a.source == "string" ? a.source : null, this.#_ = this.#o?.getFeatureEl(String(a.source ?? ""), Number(a.id ?? -1)) ?? null);
+		let a = this.#Z(e, "propertiesHtml");
+		a !== null && (this.#L(e.lngLat, [a.properties ?? {}], 0, null), this.#_ = typeof a.source == "string" ? a.source : null, this.#v = this.#s?.getFeatureEl(String(a.source ?? ""), Number(a.id ?? -1)) ?? null);
 	};
 	focusFeature(e, t) {
-		this.#o?.focusFeature(e, t);
+		this.#s?.focusFeature(e, t);
 	}
 	blurFeature(e) {
-		this.#o?.blurFeature(e);
+		this.#s?.blurFeature(e);
 	}
 	clickFeature(e) {
-		let t = this.#e, n = this.#o?.getFeatureItem(e), r = 0, i = 0;
+		let t = this.#e, n = this.#s?.getFeatureItem(e), r = 0, i = 0;
 		if (t && n) {
 			let e = t.project([n.centerLng, n.centerLat]), a = t.getCanvas().getBoundingClientRect();
 			r = a.left + e.x, i = a.top + e.y;
@@ -45328,48 +45334,48 @@ var hq = class {
 			clientY: i,
 			button: 0
 		});
-		if (n?.hasLink && this.#x?.(n), bq(e, a), !t || !n?.hasPopup || !e.isConnected) return;
-		let o = this.#a;
-		o?.isOpen() && this.#_ === e ? o.remove() : a.cancelBubble || (this.#I([n.centerLng, n.centerLat], [n.properties], 0, null), this.#g = n.sourceId, this.#_ = e);
+		if (n?.hasLink && this.#S?.(n), bq(e, a), !t || !n?.hasPopup || !e.isConnected) return;
+		let o = this.#o;
+		o?.isOpen() && this.#v === e ? o.remove() : a.cancelBubble || (this.#L([n.centerLng, n.centerLat], [n.properties], 0, null), this.#_ = n.sourceId, this.#v = e);
 	}
-	#I(e, t, n, r) {
+	#L(e, t, n, r) {
 		let i = this.#e;
 		if (!i || t.length === 0) return;
 		this.#i?.remove();
-		let a = this.#H();
-		a.isOpen() && (this.#y = !0), this.#u = r?.sourceProxy ?? null, this.#d = r?.sourceItem ?? null, this.#f = t, this.#m = !1, this.#g = r?.sourceItem.sourceId ?? null, this.#_ = r?.sourceItem.featureEl ?? null, this.#p = Math.min(Math.max(n, 0), t.length - 1);
-		let o = this.#B(t[this.#p], this.#p, t.length);
+		let a = this.#U();
+		a.isOpen() && (this.#b = !0), this.#d = r?.sourceProxy ?? null, this.#f = r?.sourceItem ?? null, this.#p = t, this.#h = !1, this.#_ = r?.sourceItem.sourceId ?? null, this.#v = r?.sourceItem.featureEl ?? null, this.#m = Math.min(Math.max(n, 0), t.length - 1);
+		let o = this.#V(t[this.#m], this.#m, t.length);
 		a.setLngLat(e).setDOMContent(o).addTo(i);
 	}
-	#L(e) {
-		let t = this.#_;
-		if (this.#m || !t) {
-			this.#R(e);
+	#R(e) {
+		let t = this.#v;
+		if (this.#h || !t) {
+			this.#z(e);
 			return;
 		}
-		this.#u = null, this.#d = null, this.#a?.remove(), this.#o?.focusAdjacentFeature(t, e) || this.#e?.getCanvas().focus();
+		this.#d = null, this.#f = null, this.#o?.remove(), this.#s?.focusAdjacentFeature(t, e) || this.#e?.getCanvas().focus();
 	}
-	#R(e) {
-		let t = this.#f.length;
+	#z(e) {
+		let t = this.#p.length;
 		if (t < 2) return;
-		let n = this.#p + e;
+		let n = this.#m + e;
 		if (n < 0 || n >= t) return;
-		this.#p = n;
-		let r = this.#a;
+		this.#m = n;
+		let r = this.#o;
 		if (!r || !r.isOpen()) return;
-		let i = this.#B(this.#f[n], n, t);
-		r.setDOMContent(i), this.#U(), this.#m && this.#k();
+		let i = this.#V(this.#p[n], n, t);
+		r.setDOMContent(i), this.#W(), this.#h && this.#A();
 		let a = r.getElement();
-		a?.setAttribute("role", "dialog"), this.#z(a, e > 0 ? "next" : "prev");
+		a?.setAttribute("role", "dialog"), this.#B(a, e > 0 ? "next" : "prev");
 	}
-	#z(e, t) {
+	#B(e, t) {
 		e && e.querySelector(`nav.mapml-focus-buttons button.mapml-popup-button[data-nav-role="${t}"]`)?.focus();
 	}
-	#B(e, t, n) {
-		let r = this.#X(), i = document.createElement("div");
+	#V(e, t, n) {
+		let r = this.#$(), i = document.createElement("div");
 		i.className = "mapml-popup-content", i.setAttribute("role", "document"), i.tabIndex = -1;
 		let a = e.caption, o = document.createElement("h3");
-		o.textContent = typeof a == "string" && a !== "" ? a : this.#b.dfFeatureCaption, i.appendChild(o);
+		o.textContent = typeof a == "string" && a !== "" ? a : this.#x.dfFeatureCaption, i.appendChild(o);
 		let s = e.propertiesHtml;
 		if (typeof s == "string" && s !== "") {
 			let e = document.createElement("div");
@@ -45378,22 +45384,22 @@ var hq = class {
 		let c = e.centerLng, l = e.centerLat, u = e.zoom;
 		if (typeof c == "number" && typeof l == "number" && typeof u == "number" && Number.isFinite(c) && Number.isFinite(l) && Number.isFinite(u)) {
 			let e = document.createElement("a");
-			e.className = "mapml-zoom-link", e.href = `#${u},${c},${l}`, e.textContent = this.#b.popupZoom;
+			e.className = "mapml-zoom-link", e.href = `#${u},${c},${l}`, e.textContent = this.#x.popupZoom;
 			let t = (e) => {
 				e.preventDefault(), r.jumpTo({
 					center: [c, l],
 					zoom: this.toNativeZoom(u)
-				}), this.#u = null, this.#d = null, this.#a?.remove();
+				}), this.#d = null, this.#f = null, this.#o?.remove();
 			};
 			e.addEventListener("click", t), e.addEventListener("keydown", (e) => {
 				e.key === "Enter" && t(e);
 			}), i.appendChild(e);
 		}
 		let d = document.createElement("hr");
-		return d.className = "mapml-popup-divider", i.appendChild(d), i.appendChild(this.#V(t, n)), i;
+		return d.className = "mapml-popup-divider", i.appendChild(d), i.appendChild(this.#H(t, n)), i;
 	}
-	#V(e, t) {
-		let n = this.#X(), r = document.createElement("nav");
+	#H(e, t) {
+		let n = this.#$(), r = document.createElement("nav");
 		r.className = "mapml-focus-buttons";
 		let i = t < 1 ? 1 : t, a = Math.min(Math.max(e + 1, 1), i), o = (e, t, n, r, i = !1) => {
 			let a = document.createElement("button");
@@ -45403,48 +45409,48 @@ var hq = class {
 				e.preventDefault(), r();
 			}), a;
 		};
-		r.appendChild(o("|&#10094;", this.#b.kbdFocusMap, "focus-map", () => {
-			this.#u = null, this.#d = null, this.#a?.remove(), n.getCanvas().focus();
-		})), r.appendChild(o("&#10094;", this.#b.kbdPrevFeature, "prev", () => this.#L(-1)));
+		r.appendChild(o("|&#10094;", this.#x.kbdFocusMap, "focus-map", () => {
+			this.#d = null, this.#f = null, this.#o?.remove(), n.getCanvas().focus();
+		})), r.appendChild(o("&#10094;", this.#x.kbdPrevFeature, "prev", () => this.#R(-1)));
 		let s = document.createElement("p");
-		return s.className = "mapml-feature-count", s.textContent = `${a}/${i}`, r.appendChild(s), r.appendChild(o("&#10095;", this.#b.kbdNextFeature, "next", () => this.#L(1))), r.appendChild(o("&#10095;|", this.#b.kbdFocusControls, "focus-controls", () => {
-			this.#u = null, this.#d = null, this.#a?.remove(), [...n.getContainer().querySelectorAll(".maplibregl-control-container :is(a[href], button, summary, input, select, [tabindex])")].find((e) => e.tabIndex >= 0 && e.checkVisibility())?.focus();
+		return s.className = "mapml-feature-count", s.textContent = `${a}/${i}`, r.appendChild(s), r.appendChild(o("&#10095;", this.#x.kbdNextFeature, "next", () => this.#R(1))), r.appendChild(o("&#10095;|", this.#x.kbdFocusControls, "focus-controls", () => {
+			this.#d = null, this.#f = null, this.#o?.remove(), [...n.getContainer().querySelectorAll(".maplibregl-control-container :is(a[href], button, summary, input, select, [tabindex])")].find((e) => e.tabIndex >= 0 && e.checkVisibility())?.focus();
 		})), r;
 	}
-	#H() {
-		return this.#a || (this.#a = new CP({
+	#U() {
+		return this.#o || (this.#o = new CP({
 			closeButton: !0,
 			closeOnClick: !1,
 			className: "mapml-feature-content-popup",
 			offset: 12,
 			maxWidth: "340px",
 			focusAfterOpen: !0
-		}), this.#a.on("open", () => {
-			let e = this.#a?.getElement();
-			e && (e.setAttribute("role", "dialog"), this.#U(), e.querySelector(".mapml-popup-content")?.focus(), e.addEventListener("keydown", this.#G), this.#e?.getContainer().dispatchEvent(new CustomEvent("mapml:contentpopupopen")));
-		}), this.#a.on("close", () => {
-			if (this.#y) {
-				this.#y = !1;
+		}), this.#o.on("open", () => {
+			let e = this.#o?.getElement();
+			e && (e.setAttribute("role", "dialog"), this.#W(), e.querySelector(".mapml-popup-content")?.focus(), e.addEventListener("keydown", this.#K), this.#e?.getContainer().dispatchEvent(new CustomEvent("mapml:contentpopupopen")));
+		}), this.#o.on("close", () => {
+			if (this.#b) {
+				this.#b = !1;
 				return;
 			}
-			this.#W(), this.#u = null, this.#d = null, this.#f = [], this.#p = 0, this.#m = !1, this.#g = null, this.#j(), this.#e?.getContainer().dispatchEvent(new CustomEvent("mapml:contentpopupclose"));
-		})), this.#a;
+			this.#G(), this.#d = null, this.#f = null, this.#p = [], this.#m = 0, this.#h = !1, this.#_ = null, this.#M(), this.#e?.getContainer().dispatchEvent(new CustomEvent("mapml:contentpopupclose"));
+		})), this.#o;
 	}
-	#U() {
-		let e = this.#e, t = this.#a?.getElement();
+	#W() {
+		let e = this.#e, t = this.#o?.getElement();
 		if (!e || !t) return;
 		let n = e.getContainer(), r = n.getBoundingClientRect(), i = t.getBoundingClientRect(), a = i.left + n.scrollLeft, o = i.right + n.scrollLeft, s = i.top + n.scrollTop, c = i.bottom + n.scrollTop, l = 0, u = 0;
 		o + 5 > r.right && (l = o + 5 - r.right), a - l - 5 < r.left && (l = a - 5 - r.left), c + 5 > r.bottom && (u = c + 5 - r.bottom), s - u - 5 < r.top && (u = s - 5 - r.top), (l || u) && e.panBy([l, u]);
 	}
-	#W() {
+	#G() {
 		let e = this.#e;
 		if (!e) return;
-		let t = this.#u, n = this.#d;
-		t !== null && n !== null && this.#o && this.#o.focusProxyForItem(n.sourceId, n.featureId) || e.getCanvas().focus();
+		let t = this.#d, n = this.#f;
+		t !== null && n !== null && this.#s && this.#s.focusProxyForItem(n.sourceId, n.featureId) || e.getCanvas().focus();
 	}
-	#G = (e) => {
+	#K = (e) => {
 		let t = e.key, n = e.target, r = () => {
-			this.featureIndexOverlayActive && (this.#u = null, this.#d = null), this.#a?.remove();
+			this.featureIndexOverlayActive && (this.#d = null, this.#f = null), this.#o?.remove();
 		};
 		if (t === "Escape") {
 			e.preventDefault(), e.stopPropagation(), r();
@@ -45457,7 +45463,7 @@ var hq = class {
 			return;
 		}
 		if (i && t === "Tab" && !e.shiftKey) {
-			e.preventDefault(), e.stopPropagation(), this.#a?.remove();
+			e.preventDefault(), e.stopPropagation(), this.#o?.remove();
 			return;
 		}
 		if (i && t === "Enter") {
@@ -45465,21 +45471,35 @@ var hq = class {
 			return;
 		}
 	};
-	#K(e) {
+	#q(e) {
+		let t = (this.#s?.linkedPartAt(e.point) ?? null)?.properties.linkHref ?? this.#Z(e, "linkHref")?.properties?.linkHref;
+		this.#J(t);
+	}
+	#J(e) {
+		let t = this.#a;
+		if (!t) return;
+		if (typeof e != "string" || e === "") {
+			t.hidden = !0;
+			return;
+		}
+		let n = document.createElement("a");
+		n.href = e, t.firstElementChild.textContent = n.href, t.hidden = !1;
+	}
+	#Y(e) {
 		let t = this.#e;
 		if (!t) return;
-		if (this.#a?.isOpen()) {
+		if (this.#o?.isOpen()) {
 			this.#i?.remove();
 			return;
 		}
-		let n = this.#q(e);
-		n !== null && this.#Y().setLngLat(e.lngLat).setText(n).addTo(t);
+		let n = this.#X(e);
+		n !== null && this.#Q().setLngLat(e.lngLat).setText(n).addTo(t);
 	}
-	#q(e) {
-		let t = this.#J(e, "caption")?.properties?.caption;
+	#X(e) {
+		let t = this.#Z(e, "caption")?.properties?.caption;
 		return typeof t == "string" && t !== "" ? t : null;
 	}
-	#J(e, t) {
+	#Z(e, t) {
 		let n = this.#e;
 		if (!n) return null;
 		let r = {
@@ -45506,7 +45526,7 @@ var hq = class {
 		}
 		return null;
 	}
-	#Y() {
+	#Q() {
 		if (!this.#i) {
 			this.#i = new CP({
 				closeButton: !1,
@@ -45523,9 +45543,9 @@ var hq = class {
 		return this.#e;
 	}
 	get featureIndexHost() {
-		return this.#o;
+		return this.#s;
 	}
-	#X() {
+	#$() {
 		if (!this.#e) throw Error("MapLibreRenderer.init() has not been called");
 		return this.#e;
 	}
@@ -58244,7 +58264,7 @@ function G7(e, t) {
 }
 //#endregion
 //#region src/controls/crosshair.css.ts
-var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" viewBox=\"0 0 100 100\"><g stroke=\"#fff\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"50.028\" cy=\"50.219\" r=\"3.923\" stroke-width=\"2\" color=\"currentColor\" overflow=\"visible\"/><path stroke-width=\"3\" d=\"M4.973 54.424h31.768a4.204 4.204 0 1 0 0-8.409H4.973A4.203 4.203 0 0 0 .77 50.22a4.203 4.203 0 0 0 4.204 4.205z\" color=\"currentColor\" overflow=\"visible\"/><path stroke-width=\"3\" d=\"M54.232 5.165a4.204 4.204 0 1 0-8.408 0v31.767a4.204 4.204 0 1 0 8.408 0V5.165z\"/><path stroke-width=\"3\" d=\"M99.288 50.22a4.204 4.204 0 0 0-4.204-4.205H63.317a4.204 4.204 0 1 0 0 8.409h31.767a4.205 4.205 0 0 0 4.204-4.205zM45.823 95.274a4.204 4.204 0 1 0 8.409 0V63.506a4.204 4.204 0 1 0-8.409 0v31.768z\" color=\"currentColor\" overflow=\"visible\"/></g></svg>", Bne = "\n.mapml-crosshair {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 72px;\n  height: 72px;\n  margin: -36px 0 0 -36px;\n  pointer-events: none;\n  /* Sit above the canvas but below MapLibre's popups (z-index: 3)\n     and controls (z-index: 2 / ≥ 3). MapLibre's canvas has no\n     explicit z-index so `1` puts us just above it. */\n  z-index: 1;\n}\n", Vne = "\n.maplibregl-popup.mapml-feature-content-popup .maplibregl-popup-content {\n  /* Keep MapLibre's default padding, but ensure our block elements\n     don't collapse each other's margins into a jumbled stack. */\n  padding: 10px 12px;\n  /* Cap the popup's growth in the vertical direction. Combined with\n     the popup's constructor-level maxWidth, this gives us a hard\n     bounding box; the body scrolls internally. 60vh keeps the popup\n     readable on both mobile and desktop viewports. */\n  max-height: 60vh;\n  /* Explicit box-sizing prevents the padding from double-counting\n     when the flex layout below computes its column heights. */\n  box-sizing: border-box;\n  /* A flex column, so the cap above reaches the `.mapml-popup-content`\n     child: a percentage `max-height` can't resolve against a parent\n     that only has a `max-height`, which let the content overflow and\n     pushed the nav bar out of the panel. (MapLibre's absolutely\n     positioned close button is unaffected.) */\n  display: flex;\n  flex-direction: column;\n}\n\n/*\n * The immediate child of the maplibregl popup-content div is our own\n * `.mapml-popup-content` wrapper. Lay it out as a flex column so the\n * middle sections (properties body / query-response iframe) can\n * shrink and scroll while the header, zoom-link, divider, and nav\n * bar stay at their natural size.\n */\n.mapml-popup-content {\n  display: flex;\n  flex-direction: column;\n  /* Shrink to the popup-content's capped height (`min-height: 0` lets\n     a flex item go below its content size) so the flex column has a\n     concrete height to distribute. */\n  flex: 0 1 auto;\n  min-height: 0;\n}\n\n.mapml-popup-content > * + * {\n  margin-top: 0.25rem;\n}\n\n/*\n * Author-facing typography defaults for the popup body. These target\n * the DOM {@link MapLibreRenderer.#buildFeatureContentDom} emits:\n * an `<h3>` heading with the feature caption, a\n * `.mapml-popup-properties` wrapper holding the author's\n * `<map-properties>` innerHTML verbatim, and an `.mapml-zoom-link`\n * anchor. All rules are unopinionated (no !important) so page-level\n * stylesheets can override any of them.\n */\n.mapml-popup-content h3 {\n  margin: 0 0 0.25rem;\n  font-size: 1rem;\n  /* Header never scrolls or shrinks; if the caption is long, wrap\n     it onto multiple lines rather than clipping. */\n  flex: 0 0 auto;\n  word-break: break-word;\n}\n\n.mapml-popup-content .mapml-popup-properties {\n  margin: 0 0 0.25rem;\n  font-size: 0.9rem;\n  /* The properties body is the flex column's scrollable region.\n     `min-height: 0` is the critical rule that lets a flex item\n     shrink *below* its content size — without it, browsers refuse\n     to shrink and the popup grows to fit the whole table. */\n  flex: 1 1 auto;\n  min-height: 0;\n  overflow: auto;\n}\n\n.mapml-popup-content .mapml-popup-properties table {\n  border-collapse: collapse;\n  /* Long-tail defence: a wide table gets a horizontal scrollbar\n     inside the properties wrapper rather than bursting the popup.\n     `max-width: 100%` keeps a narrow table from overflowing;\n     the parent's `overflow: auto` handles a wider one. */\n  max-width: 100%;\n}\n\n.mapml-popup-content .mapml-popup-properties th,\n.mapml-popup-content .mapml-popup-properties td {\n  border: 1px solid #ccc;\n  padding: 2px 6px;\n  text-align: left;\n  /* Break long single-word values (URLs, IDs) so they don't force\n     horizontal scroll on the parent. */\n  word-break: break-word;\n  overflow-wrap: anywhere;\n}\n\n/*\n * Query-response popup body (produced by `<map-link rel=\"query\">`\n * via `parseQueryResponse`). The body is either an `<iframe>` (for\n * HTML / MapML / GeoJSON-per-feature responses) or a `<pre>` (for\n * plain-text responses). Both need bounded dimensions so the popup\n * as a whole stays predictable.\n */\n.mapml-popup-content .mapml-query-response,\n.mapml-popup-content .mapml-query-response-text {\n  flex: 1 1 auto;\n  min-height: 0;\n  /* iframe handles its own scroll; text branch has scroll on the\n     `<pre>` below. Outer wrappers just clip. */\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n}\n\n.mapml-popup-content .mapml-query-response iframe {\n  /* Fill the wrapper's width; give the iframe a reasonable initial\n     height so a short response doesn't leave a wall of whitespace\n     and a long response has room to grow (its own scrollbar takes\n     over from there). */\n  width: 100%;\n  height: 260px;\n  min-height: 120px;\n  border: 0;\n  display: block;\n  /* Let the iframe shrink when the popup itself is height-bounded\n     on small viewports. */\n  flex: 1 1 auto;\n}\n\n.mapml-popup-content .mapml-query-response-text pre {\n  margin: 0;\n  padding: 0;\n  /* Wrap long lines rather than horizontal-scroll; matches how\n     browsers render plain-text server responses inline. */\n  white-space: pre-wrap;\n  word-break: break-word;\n  overflow-wrap: anywhere;\n  overflow: auto;\n  flex: 1 1 auto;\n  min-height: 0;\n  font-size: 0.85rem;\n  line-height: 1.35;\n}\n\n.mapml-popup-content .mapml-zoom-link {\n  display: inline-block;\n  margin-top: 0.25rem;\n  /* Pinned to the natural row below the scrollable body; never\n     shrinks, never grows. */\n  flex: 0 0 auto;\n}\n\n.mapml-popup-content .mapml-popup-divider {\n  border: 0;\n  border-top: 1px solid #ccc;\n  margin: 0.5rem 0 0.25rem;\n  width: 100%;\n  flex: 0 0 auto;\n}\n\n.mapml-popup-content nav.mapml-focus-buttons {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 4px;\n  /* Cancel the sibling-spacing rule above — the divider already sits\n     immediately before the nav, so we don't need extra top margin. */\n  margin-top: 0;\n  /* Nav bar always visible at the bottom of the popup regardless of\n     how long the properties body is. */\n  flex: 0 0 auto;\n}\n\n.mapml-popup-content nav.mapml-focus-buttons .mapml-popup-button {\n  /* Small square buttons matching the arrow-glyph aspect ratio. */\n  min-width: 24px;\n  height: 24px;\n  padding: 0 6px;\n  border: 1px solid #ccc;\n  border-radius: 3px;\n  background: #f7f7f7;\n  color: #333;\n  font: inherit;\n  line-height: 1;\n  cursor: pointer;\n}\n\n.mapml-popup-content nav.mapml-focus-buttons .mapml-popup-button:hover:not([disabled]) {\n  background: #ececec;\n}\n\n.mapml-popup-content nav.mapml-focus-buttons .mapml-popup-button:disabled {\n  color: #bbb;\n  cursor: default;\n}\n\n.mapml-popup-content nav.mapml-focus-buttons .mapml-feature-count {\n  /* Kill the browser default `p` block margin so the counter sits on\n     the same baseline as the buttons instead of wrapping to its own\n     row. Small horizontal padding keeps it visually separated. */\n  margin: 0;\n  padding: 0 4px;\n  font-variant-numeric: tabular-nums;\n  color: #555;\n  min-width: 3ch;\n  text-align: center;\n}\n", Hne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" viewBox=\"0 0 100 100\"><path fill=\"none\" stroke=\"#000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"3\" d=\"M0 0h100v100H0z\" color=\"#000\" overflow=\"visible\"/></svg>", K7 = .16, q7 = 7, Une = class {
+var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" viewBox=\"0 0 100 100\"><g stroke=\"#fff\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"50.028\" cy=\"50.219\" r=\"3.923\" stroke-width=\"2\" color=\"currentColor\" overflow=\"visible\"/><path stroke-width=\"3\" d=\"M4.973 54.424h31.768a4.204 4.204 0 1 0 0-8.409H4.973A4.203 4.203 0 0 0 .77 50.22a4.203 4.203 0 0 0 4.204 4.205z\" color=\"currentColor\" overflow=\"visible\"/><path stroke-width=\"3\" d=\"M54.232 5.165a4.204 4.204 0 1 0-8.408 0v31.767a4.204 4.204 0 1 0 8.408 0V5.165z\"/><path stroke-width=\"3\" d=\"M99.288 50.22a4.204 4.204 0 0 0-4.204-4.205H63.317a4.204 4.204 0 1 0 0 8.409h31.767a4.205 4.205 0 0 0 4.204-4.205zM45.823 95.274a4.204 4.204 0 1 0 8.409 0V63.506a4.204 4.204 0 1 0-8.409 0v31.768z\" color=\"currentColor\" overflow=\"visible\"/></g></svg>", Bne = "\n.mapml-crosshair {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 72px;\n  height: 72px;\n  margin: -36px 0 0 -36px;\n  pointer-events: none;\n  /* Sit above the canvas but below MapLibre's popups (z-index: 3)\n     and controls (z-index: 2 / ≥ 3). MapLibre's canvas has no\n     explicit z-index so `1` puts us just above it. */\n  z-index: 1;\n}\n", Vne = "\n.maplibregl-popup.mapml-feature-content-popup .maplibregl-popup-content {\n  /* Keep MapLibre's default padding, but ensure our block elements\n     don't collapse each other's margins into a jumbled stack. */\n  padding: 10px 12px;\n  /* Cap the popup's growth in the vertical direction. Combined with\n     the popup's constructor-level maxWidth, this gives us a hard\n     bounding box; the body scrolls internally. 60vh keeps the popup\n     readable on both mobile and desktop viewports. */\n  max-height: 60vh;\n  /* Explicit box-sizing prevents the padding from double-counting\n     when the flex layout below computes its column heights. */\n  box-sizing: border-box;\n  /* A flex column, so the cap above reaches the `.mapml-popup-content`\n     child: a percentage `max-height` can't resolve against a parent\n     that only has a `max-height`, which let the content overflow and\n     pushed the nav bar out of the panel. (MapLibre's absolutely\n     positioned close button is unaffected.) */\n  display: flex;\n  flex-direction: column;\n}\n\n/*\n * The immediate child of the maplibregl popup-content div is our own\n * `.mapml-popup-content` wrapper. Lay it out as a flex column so the\n * middle sections (properties body / query-response iframe) can\n * shrink and scroll while the header, zoom-link, divider, and nav\n * bar stay at their natural size.\n */\n.mapml-popup-content {\n  display: flex;\n  flex-direction: column;\n  /* Shrink to the popup-content's capped height (`min-height: 0` lets\n     a flex item go below its content size) so the flex column has a\n     concrete height to distribute. */\n  flex: 0 1 auto;\n  min-height: 0;\n}\n\n.mapml-popup-content > * + * {\n  margin-top: 0.25rem;\n}\n\n/*\n * Author-facing typography defaults for the popup body. These target\n * the DOM {@link MapLibreRenderer.#buildFeatureContentDom} emits:\n * an `<h3>` heading with the feature caption, a\n * `.mapml-popup-properties` wrapper holding the author's\n * `<map-properties>` innerHTML verbatim, and an `.mapml-zoom-link`\n * anchor. All rules are unopinionated (no !important) so page-level\n * stylesheets can override any of them.\n */\n.mapml-popup-content h3 {\n  margin: 0 0 0.25rem;\n  font-size: 1rem;\n  /* Header never scrolls or shrinks; if the caption is long, wrap\n     it onto multiple lines rather than clipping. */\n  flex: 0 0 auto;\n  word-break: break-word;\n}\n\n.mapml-popup-content .mapml-popup-properties {\n  margin: 0 0 0.25rem;\n  font-size: 0.9rem;\n  /* The properties body is the flex column's scrollable region.\n     `min-height: 0` is the critical rule that lets a flex item\n     shrink *below* its content size — without it, browsers refuse\n     to shrink and the popup grows to fit the whole table. */\n  flex: 1 1 auto;\n  min-height: 0;\n  overflow: auto;\n}\n\n.mapml-popup-content .mapml-popup-properties table {\n  border-collapse: collapse;\n  /* Long-tail defence: a wide table gets a horizontal scrollbar\n     inside the properties wrapper rather than bursting the popup.\n     `max-width: 100%` keeps a narrow table from overflowing;\n     the parent's `overflow: auto` handles a wider one. */\n  max-width: 100%;\n}\n\n.mapml-popup-content .mapml-popup-properties th,\n.mapml-popup-content .mapml-popup-properties td {\n  border: 1px solid #ccc;\n  padding: 2px 6px;\n  text-align: left;\n  /* Break long single-word values (URLs, IDs) so they don't force\n     horizontal scroll on the parent. */\n  word-break: break-word;\n  overflow-wrap: anywhere;\n}\n\n/*\n * Query-response popup body (produced by `<map-link rel=\"query\">`\n * via `parseQueryResponse`). The body is either an `<iframe>` (for\n * HTML / MapML / GeoJSON-per-feature responses) or a `<pre>` (for\n * plain-text responses). Both need bounded dimensions so the popup\n * as a whole stays predictable.\n */\n.mapml-popup-content .mapml-query-response,\n.mapml-popup-content .mapml-query-response-text {\n  flex: 1 1 auto;\n  min-height: 0;\n  /* iframe handles its own scroll; text branch has scroll on the\n     `<pre>` below. Outer wrappers just clip. */\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n}\n\n.mapml-popup-content .mapml-query-response iframe {\n  /* Fill the wrapper's width; give the iframe a reasonable initial\n     height so a short response doesn't leave a wall of whitespace\n     and a long response has room to grow (its own scrollbar takes\n     over from there). */\n  width: 100%;\n  height: 260px;\n  min-height: 120px;\n  border: 0;\n  display: block;\n  /* Let the iframe shrink when the popup itself is height-bounded\n     on small viewports. */\n  flex: 1 1 auto;\n}\n\n.mapml-popup-content .mapml-query-response-text pre {\n  margin: 0;\n  padding: 0;\n  /* Wrap long lines rather than horizontal-scroll; matches how\n     browsers render plain-text server responses inline. */\n  white-space: pre-wrap;\n  word-break: break-word;\n  overflow-wrap: anywhere;\n  overflow: auto;\n  flex: 1 1 auto;\n  min-height: 0;\n  font-size: 0.85rem;\n  line-height: 1.35;\n}\n\n.mapml-popup-content .mapml-zoom-link {\n  display: inline-block;\n  margin-top: 0.25rem;\n  /* Pinned to the natural row below the scrollable body; never\n     shrinks, never grows. */\n  flex: 0 0 auto;\n}\n\n.mapml-popup-content .mapml-popup-divider {\n  border: 0;\n  border-top: 1px solid #ccc;\n  margin: 0.5rem 0 0.25rem;\n  width: 100%;\n  flex: 0 0 auto;\n}\n\n.mapml-popup-content nav.mapml-focus-buttons {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 4px;\n  /* Cancel the sibling-spacing rule above — the divider already sits\n     immediately before the nav, so we don't need extra top margin. */\n  margin-top: 0;\n  /* Nav bar always visible at the bottom of the popup regardless of\n     how long the properties body is. */\n  flex: 0 0 auto;\n}\n\n.mapml-popup-content nav.mapml-focus-buttons .mapml-popup-button {\n  /* Small square buttons matching the arrow-glyph aspect ratio. */\n  min-width: 24px;\n  height: 24px;\n  padding: 0 6px;\n  border: 1px solid #ccc;\n  border-radius: 3px;\n  background: #f7f7f7;\n  color: #333;\n  font: inherit;\n  line-height: 1;\n  cursor: pointer;\n}\n\n.mapml-popup-content nav.mapml-focus-buttons .mapml-popup-button:hover:not([disabled]) {\n  background: #ececec;\n}\n\n.mapml-popup-content nav.mapml-focus-buttons .mapml-popup-button:disabled {\n  color: #bbb;\n  cursor: default;\n}\n\n.mapml-popup-content nav.mapml-focus-buttons .mapml-feature-count {\n  /* Kill the browser default `p` block margin so the counter sits on\n     the same baseline as the buttons instead of wrapping to its own\n     row. Small horizontal padding keeps it visually separated. */\n  margin: 0;\n  padding: 0 4px;\n  font-variant-numeric: tabular-nums;\n  color: #555;\n  min-width: 3ch;\n  text-align: center;\n}\n", Hne = "\n.mapml-link-preview {\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  background-color: rgb(222, 225, 230);\n  border-radius: 0 5px 0 0;\n  z-index: 1050;\n  max-width: 60%;\n  pointer-events: none;\n  font: 12px/1.5 'Helvetica Neue', Arial, Helvetica, sans-serif;\n}\n\n.mapml-link-preview > p {\n  margin: 3px 5px 2px 3px;\n  color: rgb(60, 64, 67);\n  text-overflow: ellipsis;\n  overflow-x: hidden;\n  white-space: nowrap;\n}\n", Une = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" viewBox=\"0 0 100 100\"><path fill=\"none\" stroke=\"#000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"3\" d=\"M0 0h100v100H0z\" color=\"#000\" overflow=\"visible\"/></svg>", K7 = .16, q7 = 7, Wne = class {
 	#e;
 	#t;
 	#n;
@@ -58264,7 +58284,7 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 	constructor(e, t, n, r = () => null) {
 		this.#e = e, this.#t = t, this.#n = n, this.#h = r;
 		let i = e.getContainer();
-		this.#r = document.createElement("div"), this.#r.className = "mapml-feature-index-box", this.#r.innerHTML = Hne, this.#r.setAttribute("hidden", ""), i.appendChild(this.#r), this.#i = document.createElement("output"), this.#i.className = "mapml-feature-index mapml-screen-reader-output", this.#i.setAttribute("role", "status"), this.#i.setAttribute("aria-live", "polite"), this.#i.setAttribute("aria-atomic", "true"), this.#i.setAttribute("aria-hidden", "true"), i.appendChild(this.#i), this.#a = document.createElement("span"), this.#a.className = "mapml-feature-index-content", this.#i.appendChild(this.#a), i.addEventListener("focusin", this.#y), i.addEventListener("focusout", this.#b);
+		this.#r = document.createElement("div"), this.#r.className = "mapml-feature-index-box", this.#r.innerHTML = Une, this.#r.setAttribute("hidden", ""), i.appendChild(this.#r), this.#i = document.createElement("output"), this.#i.className = "mapml-feature-index mapml-screen-reader-output", this.#i.setAttribute("role", "status"), this.#i.setAttribute("aria-live", "polite"), this.#i.setAttribute("aria-atomic", "true"), this.#i.setAttribute("aria-hidden", "true"), i.appendChild(this.#i), this.#a = document.createElement("span"), this.#a.className = "mapml-feature-index-content", this.#i.appendChild(this.#a), i.addEventListener("focusin", this.#y), i.addEventListener("focusout", this.#b);
 	}
 	enable(e) {
 		if (this.#c) return;
@@ -58387,9 +58407,9 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 			n?.activate && n.activate();
 		} else e.key === "8" ? this.#O(-1) : e.key === "9" && this.#O(1);
 	};
-}, Wne = "\n.mapml-feature-index-box {\n  margin: -8% 0 0 -8%;\n  width: 16%;\n  left: 50%;\n  top: 50%;\n  position: absolute;\n  z-index: 10000;\n  outline: 2px solid #fff;\n  pointer-events: none;\n}\n\n.mapml-feature-index-box:after {\n  display: block;\n  content: '';\n  padding-top: 100%;\n}\n\n.mapml-feature-index-box > svg {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n}\n\n.mapml-feature-index {\n  outline: 1px solid #000000;\n  contain: content;\n  border-radius: 4px;\n  background-color: #fff;\n  cursor: default;\n  z-index: 1000;\n  position: absolute;\n  top: auto;\n  left: 50%;\n  transform: translateX(-50%);\n  bottom: 30px;\n  padding-top: 5px;\n  height: 92px;\n  width: 450px;\n  font-size: 16px;\n}\n\n/* Size the results menu to the map's width, as MapML.js's container queries\n   do. MapML.js declares the container on .leaflet-container; here it is the\n   map container. Below 650px the menu tracks the map's width; below 390px it\n   also lifts clear of the centred reticle. */\n.container {\n  container-type: inline-size;\n  container-name: mapmlviewer;\n}\n\n@container mapmlviewer (max-width: 650px) {\n  .mapml-feature-index {\n    width: 70cqw;\n  }\n}\n\n@container mapmlviewer (max-width: 390px) {\n  .mapml-feature-index {\n    bottom: 100px;\n  }\n}\n\n.mapml-feature-index-content > span {\n  width: 140px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  display: inline-block;\n  padding-left: 5px;\n  padding-right: 5px;\n}\n\n.mapml-feature-index-content > span > kbd {\n  background-color: lightgrey;\n  padding-right: 4px;\n  padding-left: 4px;\n  border-radius: 4px;\n}\n\n/* The trailing \", \" node is a screen-reader-only auditory pause. */\n.mapml-feature-index-content > span > span {\n  clip: rect(0 0 0 0);\n  clip-path: inset(50%);\n  height: 1px;\n  overflow: hidden;\n  position: absolute;\n  white-space: nowrap;\n  width: 1px;\n}\n\n/* Hides the aria-live output from sighted users while keeping it in the\n * accessibility tree (screen readers still announce its contents). */\n.mapml-feature-index.mapml-screen-reader-output {\n  clip: rect(0 0 0 0);\n  clip-path: inset(50%);\n  height: 1px;\n  overflow: hidden;\n  position: absolute;\n  white-space: nowrap;\n  width: 1px;\n}\n", Gne = "<".codePointAt(0), Kne = ">".codePointAt(0), J7 = "=".codePointAt(0), qne = "/".codePointAt(0), Y7 = (e, t = 0) => {
+}, Gne = "\n.mapml-feature-index-box {\n  margin: -8% 0 0 -8%;\n  width: 16%;\n  left: 50%;\n  top: 50%;\n  position: absolute;\n  z-index: 10000;\n  outline: 2px solid #fff;\n  pointer-events: none;\n}\n\n.mapml-feature-index-box:after {\n  display: block;\n  content: '';\n  padding-top: 100%;\n}\n\n.mapml-feature-index-box > svg {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n}\n\n.mapml-feature-index {\n  outline: 1px solid #000000;\n  contain: content;\n  border-radius: 4px;\n  background-color: #fff;\n  cursor: default;\n  z-index: 1000;\n  position: absolute;\n  top: auto;\n  left: 50%;\n  transform: translateX(-50%);\n  bottom: 30px;\n  padding-top: 5px;\n  height: 92px;\n  width: 450px;\n  font-size: 16px;\n}\n\n/* Size the results menu to the map's width, as MapML.js's container queries\n   do. MapML.js declares the container on .leaflet-container; here it is the\n   map container. Below 650px the menu tracks the map's width; below 390px it\n   also lifts clear of the centred reticle. */\n.container {\n  container-type: inline-size;\n  container-name: mapmlviewer;\n}\n\n@container mapmlviewer (max-width: 650px) {\n  .mapml-feature-index {\n    width: 70cqw;\n  }\n}\n\n@container mapmlviewer (max-width: 390px) {\n  .mapml-feature-index {\n    bottom: 100px;\n  }\n}\n\n.mapml-feature-index-content > span {\n  width: 140px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  display: inline-block;\n  padding-left: 5px;\n  padding-right: 5px;\n}\n\n.mapml-feature-index-content > span > kbd {\n  background-color: lightgrey;\n  padding-right: 4px;\n  padding-left: 4px;\n  border-radius: 4px;\n}\n\n/* The trailing \", \" node is a screen-reader-only auditory pause. */\n.mapml-feature-index-content > span > span {\n  clip: rect(0 0 0 0);\n  clip-path: inset(50%);\n  height: 1px;\n  overflow: hidden;\n  position: absolute;\n  white-space: nowrap;\n  width: 1px;\n}\n\n/* Hides the aria-live output from sighted users while keeping it in the\n * accessibility tree (screen readers still announce its contents). */\n.mapml-feature-index.mapml-screen-reader-output {\n  clip: rect(0 0 0 0);\n  clip-path: inset(50%);\n  height: 1px;\n  overflow: hidden;\n  position: absolute;\n  white-space: nowrap;\n  width: 1px;\n}\n", Kne = "<".codePointAt(0), qne = ">".codePointAt(0), J7 = "=".codePointAt(0), Jne = "/".codePointAt(0), Y7 = (e, t = 0) => {
 	let n = e.at(t);
-	if (n?._t === "delim" && n.value === Gne) {
+	if (n?._t === "delim" && n.value === Kne) {
 		let n = e.at(t + 1), r = n?._t === "delim" && n.value === J7 && !n.isAfterSpace;
 		return {
 			t: {
@@ -58401,7 +58421,7 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 	}
 }, X7 = (e, t = 0) => {
 	let n = e.at(t);
-	if (n?._t === "delim" && n.value === Kne) {
+	if (n?._t === "delim" && n.value === qne) {
 		let n = e.at(t + 1), r = n?._t === "delim" && n.value === J7 && !n.isAfterSpace;
 		return {
 			t: {
@@ -58411,18 +58431,18 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 			i: t + (r ? 2 : 1)
 		};
 	}
-}, Jne = (e, t = 0) => Y7(e, t) ?? X7(e, t) ?? ((e, t = 0) => {
+}, Yne = (e, t = 0) => Y7(e, t) ?? X7(e, t) ?? ((e, t = 0) => {
 	let n = e.at(t);
 	if (n?._t === "delim" && n.value === J7) return {
 		t: { t: "eq" },
 		i: t + 1
 	};
-})(e, t), Yne = (e, t = 0) => {
+})(e, t), Xne = (e, t = 0) => {
 	let n = ((e, t = 0) => {
 		let n = e.at(t);
 		if (n?._t === "number" && n.value >= 0) {
 			let r = e.at(t + 1);
-			if (r?._t === "delim" && r.value === qne) {
+			if (r?._t === "delim" && r.value === Jne) {
 				let r = e.at(t + 2);
 				if (r?._t === "number" && r.value >= 0) return {
 					t: {
@@ -58456,7 +58476,7 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 		i: t + 1
 	};
 }, Z7 = (e, t = 0) => {
-	let n = Yne(e, t);
+	let n = Xne(e, t);
 	if (n) return n;
 	let r = e.at(t);
 	return r?._t === "ident" ? {
@@ -58468,7 +58488,7 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 		},
 		i: t + 1
 	} : void 0;
-}, Xne = (e, t = 0) => {
+}, Zne = (e, t = 0) => {
 	let n = e.at(t);
 	if (n?._t === "ident" && e.at(t + 1)?._t === "colon") {
 		let r = Z7(e, t + 2);
@@ -58484,7 +58504,7 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 			i: r.i
 		};
 	}
-}, Zne = (e, t = 0) => {
+}, Qne = (e, t = 0) => {
 	let n = e.at(t);
 	if (n?._t === "ident") return {
 		t: {
@@ -58496,12 +58516,12 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 		},
 		i: t + 1
 	};
-}, Qne = (e, t = 0) => {
+}, $ne = (e, t = 0) => {
 	if (e.at(t)?._t === "(") {
-		let n = Xne(e, t + 1) ?? ((e, t = 0) => {
+		let n = Zne(e, t + 1) ?? ((e, t = 0) => {
 			let n = Z7(e, t);
 			if (n) {
-				let t = Jne(e, n.i);
+				let t = Yne(e, n.i);
 				if (t) {
 					let r = Z7(e, t.i);
 					if (r) {
@@ -58574,13 +58594,13 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 					}
 				}
 			}
-		})(e, t + 1) ?? Zne(e, t + 1);
+		})(e, t + 1) ?? Qne(e, t + 1);
 		if (n && e.at(n.i)?._t === ")") return {
 			t: n.t,
 			i: n.i + 1
 		};
 	}
-}, $ne = (e, t = 0) => {
+}, ere = (e, t = 0) => {
 	let n = e.at(t);
 	if (n && (n._t === "function" || n._t === "(")) {
 		let r = ["("], i = t + 1, a = e.at(i);
@@ -58615,7 +58635,7 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 		};
 	}
 }, Q7 = (e, t = 0) => {
-	let n = Qne(e, t);
+	let n = $ne(e, t);
 	if (n) return {
 		t: {
 			_t: "in-parens",
@@ -58633,7 +58653,7 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 			i: n.i + 1
 		};
 	}
-	let r = $ne(e, t);
+	let r = ere(e, t);
 	return r ? {
 		t: {
 			_t: "in-parens",
@@ -58767,7 +58787,7 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 			};
 		}
 	}
-}, ere = (e) => {
+}, tre = (e) => {
 	let t = n9(e, 0);
 	if (t) return {
 		t: {
@@ -58836,8 +58856,8 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 			};
 		}
 	}
-}, tre = (e) => {
-	let t = nre(e);
+}, nre = (e) => {
+	let t = rre(e);
 	if (t.length === 1 && t[0].length === 0) return {
 		_t: "query-list",
 		nodes: [{
@@ -58850,7 +58870,7 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 	{
 		let e = [];
 		for (let n of t) {
-			let t = ere(n);
+			let t = tre(n);
 			t && t.i === n.length ? e.push(t.t) : e.push(void 0);
 		}
 		return {
@@ -58858,7 +58878,7 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 			nodes: e
 		};
 	}
-}, nre = (e) => {
+}, rre = (e) => {
 	let t = [[]], n = [];
 	for (let r of e) if (r._t === "comma" && n.length === 0) t.push([]);
 	else {
@@ -58882,7 +58902,7 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 		t[t.length - 1].push(r);
 	}
 	return t;
-}, i9 = (e) => typeof e == "object" && !!e && "_errid" in e, a9, rre = (e) => {
+}, i9 = (e) => typeof e == "object" && !!e && "_errid" in e, a9, ire = (e) => {
 	let t = (() => {
 		let e;
 		return a9 ? e = a9 : (e = new TextEncoder(), a9 = e), e;
@@ -58904,7 +58924,7 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 		else r < 224 ? n.push(r << 59 >>> 53 | t[++e] << 58 >>> 58) : r < 240 ? n.push(r << 60 >>> 48 | t[++e] << 58 >>> 52 | t[++e] << 58 >>> 58) : n.push(r << 61 >>> 43 | t[++e] << 58 >>> 46 | t[++e] << 58 >>> 52 | t[++e] << 58 >>> 58);
 	}
 	return n;
-}, ire = (e) => {
+}, are = (e) => {
 	let t = [], n = !1;
 	for (let r of e) switch (r._t) {
 		case "{": return {
@@ -58927,7 +58947,7 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 		}), n = !1;
 	}
 	return t;
-}, o9 = 10, s9 = 32, c9 = 45, l9 = 48, u9 = 57, d9 = 65, f9 = 92, p9 = 97, m9 = 122, h9 = 128, are = (e, t = 0) => {
+}, o9 = 10, s9 = 32, c9 = 45, l9 = 48, u9 = 57, d9 = 65, f9 = 92, p9 = 97, m9 = 122, h9 = 128, ore = (e, t = 0) => {
 	let n = [];
 	for (; t < e.length; t += 1) {
 		let r = e.at(t), i = t;
@@ -59296,7 +59316,7 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 	}
 	return [t + 1, n];
 }, y9 = (e, t) => {
-	let n = ore(e, t);
+	let n = sre(e, t);
 	if (n === null) return null;
 	let [r, i, a] = n, o = x9(e, r + 1);
 	if (o !== null) {
@@ -59312,7 +59332,7 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 		i,
 		a
 	]];
-}, ore = (e, t) => {
+}, sre = (e, t) => {
 	let n = e.at(t);
 	if (n === void 0) return null;
 	let r = "integer", i = [];
@@ -59364,7 +59384,7 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 		n.push(r);
 	}
 	return t === 0 ? null : [t - 1, String.fromCodePoint(...n)];
-}, x9 = (e, t) => _9(e, t) ? b9(e, t) : null, sre = (e, t) => {
+}, x9 = (e, t) => _9(e, t) ? b9(e, t) : null, cre = (e, t) => {
 	let n = e.at(t);
 	for (; n === 9 || n === s9 || n === o9;) n = e.at(++t);
 	let r = [], i = !1;
@@ -59398,7 +59418,7 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 					"function"
 				];
 				if (n !== 9 && n !== s9 && n !== o9) {
-					let n = sre(e, r + t);
+					let n = cre(e, r + t);
 					if (n === null) return null;
 					let [i, a] = n;
 					return [
@@ -59424,13 +59444,13 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 		i.toLowerCase(),
 		"ident"
 	];
-}, cre = (e) => {
-	let t = are(rre(e));
-	return i9(t) ? t : ire(t);
+}, lre = (e) => {
+	let t = ore(ire(e));
+	return i9(t) ? t : are(t);
 }, C9 = (e) => {
-	let t = cre(e);
-	return i9(t) ? t : tre(t);
-}, w9 = (e) => e._t === "number" && e.flag === "integer", T9 = (e) => e._t === "dimension" && ure(e.unit) || e._t === "number" && e.flag === "integer" && e.value === 0, E9 = (e) => e._t === "dimension" && mre(e.unit), D9 = (e) => e._t === "ratio" || w9(e) && e.value >= 0, O9 = /* @__PURE__ */ new Set([
+	let t = lre(e);
+	return i9(t) ? t : nre(t);
+}, w9 = (e) => e._t === "number" && e.flag === "integer", T9 = (e) => e._t === "dimension" && dre(e.unit) || e._t === "number" && e.flag === "integer" && e.value === 0, E9 = (e) => e._t === "dimension" && hre(e.unit), D9 = (e) => e._t === "ratio" || w9(e) && e.value >= 0, O9 = /* @__PURE__ */ new Set([
 	"cm",
 	"mm",
 	"q",
@@ -59438,7 +59458,7 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 	"pc",
 	"pt",
 	"px"
-]), k9 = (e) => O9.has(e.unit), lre = /* @__PURE__ */ new Set([
+]), k9 = (e) => O9.has(e.unit), ure = /* @__PURE__ */ new Set([
 	...O9,
 	"em",
 	"ex",
@@ -59478,7 +59498,7 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 	"cqb",
 	"cqmin",
 	"cqmax"
-]), ure = (e) => lre.has(e), A9 = (e, t) => {
+]), dre = (e) => ure.has(e), A9 = (e, t) => {
 	let n = e._t === "number" ? {
 		_t: "dimension",
 		value: 0,
@@ -59505,33 +59525,33 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 		return e === "lt" ? "gt" : e === "gt" ? "lt" : e;
 	}
 	return n.value === 0 && r.value === 0 ? "eq" : "unknown";
-}, dre = /* @__PURE__ */ new Map([
+}, fre = /* @__PURE__ */ new Map([
 	["cm", 96 / 2.54],
 	["mm", 96 / 25.4],
 	["q", 96 / 101.6],
 	["in", 96],
 	["pc", 16],
 	["pt", 96 / 72]
-]), j9 = (e) => e.value * (dre.get(e.unit) ?? 1), fre = (e, t) => {
+]), j9 = (e) => e.value * (fre.get(e.unit) ?? 1), pre = (e, t) => {
 	let n = e._t === "number" ? e.value : e.left, r = e._t === "number" ? 1 : e.right, i = t._t === "number" ? t.value : t.left, a = t._t === "number" ? 1 : t.right;
 	if (n === 0 && r === 0) return i === 0 && a === 0 ? "eq" : "incomparable";
 	if (i === 0 && a === 0) return "incomparable";
 	if (n === 0 && i === 0 || r === 0 && a === 0 || n !== 0 && i !== 0 && r !== 0 && a !== 0 && n * a == i * r) return "eq";
 	let o = n / r, s = i / a;
 	return o > s ? "gt" : o < s ? "lt" : "eq";
-}, pre = /* @__PURE__ */ new Set([
+}, mre = /* @__PURE__ */ new Set([
 	"dpi",
 	"dpcm",
 	"dppx",
 	"x"
-]), mre = (e) => pre.has(e), hre = (e, t) => {
+]), hre = (e) => mre.has(e), gre = (e, t) => {
 	let n = M9(e), r = M9(t);
 	return n === r ? "eq" : n > r ? "gt" : "lt";
-}, gre = /* @__PURE__ */ new Map([
+}, _re = /* @__PURE__ */ new Map([
 	["dpi", 96],
 	["dpcm", 96 / 2.54],
 	["dppx", 1]
-]), M9 = (e) => e.value * (gre.get(e.unit) ?? 1), N9 = (e, t) => {
+]), M9 = (e) => e.value * (_re.get(e.unit) ?? 1), N9 = (e, t) => {
 	let n = e.feature.startsWith("min-"), r = e.feature.startsWith("max-");
 	if ((n || r) && e.context === "value" && e.value._t !== "ident") return N9({
 		_t: "feature",
@@ -59571,7 +59591,7 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 					}
 					return "false";
 				}
-				if (n.valueType === "ratio") return D9(e.value) ? fre(e.value, {
+				if (n.valueType === "ratio") return D9(e.value) ? pre(e.value, {
 					_t: "number",
 					value: 0,
 					flag: "integer",
@@ -59579,7 +59599,7 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 					end: 0
 				}) === "eq" && !n.canNumeratorBeZero ? "false" : t.solveUnknownFeature(e) : "false";
 				if (E9(e.value)) {
-					let r = hre(e.value, {
+					let r = gre(e.value, {
 						_t: "dimension",
 						value: 0,
 						unit: "x",
@@ -59633,13 +59653,13 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 		}
 		return "false";
 	}
-}, P9 = (e, t) => e.node._t === "condition" ? F9(e.node, t) : e.node._t === "feature" ? N9(e.node, t) : t.solveGeneralEnclosed(e.node), F9 = (e, t) => e.op === "and" ? L9(...e.nodes.map((e) => P9(e, t))) : e.op === "or" ? vre(...e.nodes.map((e) => P9(e, t))) : I9(P9(e.nodes[0], t)), _re = (e, t) => {
+}, P9 = (e, t) => e.node._t === "condition" ? F9(e.node, t) : e.node._t === "feature" ? N9(e.node, t) : t.solveGeneralEnclosed(e.node), F9 = (e, t) => e.op === "and" ? L9(...e.nodes.map((e) => P9(e, t))) : e.op === "or" ? yre(...e.nodes.map((e) => P9(e, t))) : I9(P9(e.nodes[0], t)), vre = (e, t) => {
 	if (t.isLegacyBrowser === "true" && e.prefix === "only") return "false";
 	let n;
 	n = e.type === void 0 || e.type === "all" ? "true" : e.type === "screen" ? t.isMediaTypeScreen : e.type === "print" ? I9(t.isMediaTypeScreen) : "false";
 	let r = e.condition === void 0 ? "true" : F9(e.condition, t), i = L9(n, r);
 	return e.prefix === "not" ? I9(i) : i;
-}, I9 = (e) => e === "true" ? "false" : e === "false" ? "true" : "unknown", L9 = (...e) => e.reduce((e, t) => e === "false" || t === "false" ? "false" : e === "unknown" || t === "unknown" ? "unknown" : "true", "true"), vre = (...e) => e.reduce((e, t) => e === "true" || t === "true" ? "true" : e === "unknown" || t === "unknown" ? "unknown" : "false", "false"), yre = {
+}, I9 = (e) => e === "true" ? "false" : e === "false" ? "true" : "unknown", L9 = (...e) => e.reduce((e, t) => e === "false" || t === "false" ? "false" : e === "unknown" || t === "unknown" ? "unknown" : "true", "true"), yre = (...e) => e.reduce((e, t) => e === "true" || t === "true" ? "true" : e === "unknown" || t === "unknown" ? "unknown" : "false", "false"), bre = {
 	"color-gamut": {
 		type: "discrete",
 		values: [
@@ -59855,10 +59875,10 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 		canBeZero: !0,
 		canBeNegative: !1
 	}
-}, R9 = (e) => Object.entries(e), bre = (e) => {
+}, R9 = (e) => Object.entries(e), xre = (e) => {
 	let t = /* @__PURE__ */ new Map();
 	for (let [n, r] of R9({
-		...yre,
+		...bre,
 		...e?.features
 	})) r.type === "discrete" ? t.set(n, {
 		...r,
@@ -59874,11 +59894,11 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 		isLegacyBrowser: e?.isLegacyBrowser ?? "unknown",
 		features: t
 	};
-}, xre = (e, t) => {
-	let n = typeof e == "string" ? C9(e) : e;
-	return i9(n) ? "false" : Sre(n, bre(t));
 }, Sre = (e, t) => {
-	let n = e.nodes.map((e) => e === void 0 ? "false" : _re(e, t));
+	let n = typeof e == "string" ? C9(e) : e;
+	return i9(n) ? "false" : Cre(n, xre(t));
+}, Cre = (e, t) => {
+	let n = e.nodes.map((e) => e === void 0 ? "false" : vre(e, t));
 	if (n.length === 0) return "true";
 	{
 		let e = "false";
@@ -59888,17 +59908,17 @@ var zne = "<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" view
 		}
 		return e;
 	}
-}, Cre = /* @__PURE__ */ new Set([
+}, wre = /* @__PURE__ */ new Set([
 	"map-zoom",
 	"map-top-left-easting",
 	"map-top-left-northing",
 	"map-bottom-right-easting",
 	"map-bottom-right-northing"
 ]);
-function wre(e, t) {
+function Tre(e, t) {
 	let n = e.feature;
 	if (!n.startsWith("map-")) return "unknown";
-	let r = Tre(n, t);
+	let r = Ere(n, t);
 	if (r === void 0) return "unknown";
 	let i = (e) => {
 		if (!e || e.value === void 0) return;
@@ -59923,7 +59943,7 @@ function wre(e, t) {
 	}
 	return "unknown";
 }
-function Tre(e, t) {
+function Ere(e, t) {
 	if (e === "map-zoom") return t.zoom;
 	let n = t.extent;
 	if (n !== null) switch (e) {
@@ -59934,7 +59954,7 @@ function Tre(e, t) {
 		default: return;
 	}
 }
-function Ere(e) {
+function Dre(e) {
 	return {
 		"prefers-lang": {
 			type: "discrete",
@@ -60000,8 +60020,8 @@ function Ere(e) {
 	};
 }
 function z9(e, t) {
-	let n = Ere(t);
-	return xre(e, {
+	let n = Dre(t);
+	return Sre(e, {
 		features: n,
 		solveUnknownFeature: (e) => {
 			let r = e.feature, i = n[r];
@@ -60013,7 +60033,7 @@ function z9(e, t) {
 				let t = n["prefers-lang"].values, r = B9(e);
 				return r !== void 0 && t.includes(r) ? "true" : "false";
 			}
-			if (Cre.has(r)) return wre(e, t);
+			if (wre.has(r)) return Tre(e, t);
 			if (r === "map-projection") {
 				let t = n["map-projection"].values, r = B9(e);
 				return r !== void 0 && t.includes(r) ? "true" : "false";
@@ -60035,7 +60055,7 @@ function B9(e) {
 	let t = e.value.value;
 	return typeof t == "string" ? t : void 0;
 }
-function Dre(e) {
+function Ore(e) {
 	let t = C9(e), n = this, r = z9(t, n), i = Object.assign(new EventTarget(), {
 		matches: r,
 		media: e,
@@ -60066,7 +60086,7 @@ function Dre(e) {
 }
 //#endregion
 //#region src/elements/mapml-viewer.ts
-var Ore = `<img src="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABMLAAATCwAAAAAAAAAAAAD///8A////AP///wD///8A6/X+N/3+/zL///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A+fz/APn8/wD7/f8A5vP9EZDI+JPL5vyA////B////wD///8A////AP///wD///8A////AP///wD///8A////ADif8wA4n/MAO6DzACSW8msAdO7/MZzz8////yD///8L////Dv///wD///8A////AP///wD///8A////AP///wAOi/EADovxAA6L8QAUjvE3HZDx1Vqw9bF7vvelX7L2wsPg+zbAvPIg9PT9QP///wD///8A////Bv///wD///8A8/n+APP5/gDz+f4A4PD9B2y49p1AoPPXDojw9bjf/EjN3PkAIBvTSDs52PTY1/dwj43pfnp45cHy8fxH////ANvu/QDc7v0A4PD9BFmv9aMAfO//AHnu/5LL+Zb///8A////AKek7T4AAMr/SUXb4gcCzv4AAMj/paPtkf///wBOrf8AT67/AC+c/A1EpPRaJJbySQB97+vA4ft/////AO3s+xgzMdfSAADL/zs32OxNSdzeJyXUv9PT9iz///8A7tuqAO7cqwDi4tAi8fr/AJrQ/QAZjvVCmtD6VtLO9Sg7ONnRAADL/wQAzv8AAMz/V1Te3e7t/Br///8A////ANu9agDSrUQAzJwclfrw14P//vA74eroPsHU9hiBduc6MS7XWyci1UIhHdQ+AADLoC0p1vn///8k////AP///wD///8A////AM+oOozBjwr/xpYb++GvRNil59E+wPjnY/nv/wC6tvIAl5LrAIF26QBhXeFy/Pz+EP///wD///8A7uC6L+DGf5jfxXy9yZ0k5r+JAP/537Vbb+DQDg3Bmuue69e4///+Q////yC3+d9z3vnxN////wD///8A////AMKQBIe8hgD/yJsd+NOvSbfOpTL4////IoThzwAAv5baAL2T/yjKqPopyaftP9Cxx/T9+hT37uMA2reLAPLm1gLDkQccwI0AZty+bE/ew3YZwY0IuPjnx23L9fI1B8Ga+QK/l/8oyqjXRNCz0uf59UH///8A5s6yAKROAADfwZsBw5IIAMGOAADjy4oA4smGAMaGAAalrVQjGcyxeAjBmbQ1za2NQdCyxiHFofR63snM////Ff///wDAhD0A27mQAMOSCADBjgAA4smGAOHIhADKhwAAjqhNAAfIqQAZxqMAEMSeAAC/l70AvZL2UNS4pf///wn///8A5MqqANy7kwDDkggAwY4AAOLJhgDhyIQAyYcAAJGpTwALyasAGcajAAfCmwACwZllAL6WoHzeyk7///8B////AOjStwDdvJUA8/8AAOH/AADgfwAA4BsAAOCBAADBgQAAwQEAANgDAADAAwAAwPMAAAAHAAACBgAAAA4AAP" style="position: relative; top: 5px" alt="W3C Community and Business Groups logo"> <a href="https://www.w3.org/community/maps4html/" target="_blank" rel="noopener">Maps for HTML Community Group</a> | <a href="https://maplibre.org/" target="_blank" rel="noopener" title="MapLibre"><img src="${Fne}" class="mapml-maplibre-logo" alt="MapLibre"></a>`, V9 = [
+var kre = `<img src="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABMLAAATCwAAAAAAAAAAAAD///8A////AP///wD///8A6/X+N/3+/zL///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A+fz/APn8/wD7/f8A5vP9EZDI+JPL5vyA////B////wD///8A////AP///wD///8A////AP///wD///8A////ADif8wA4n/MAO6DzACSW8msAdO7/MZzz8////yD///8L////Dv///wD///8A////AP///wD///8A////AP///wAOi/EADovxAA6L8QAUjvE3HZDx1Vqw9bF7vvelX7L2wsPg+zbAvPIg9PT9QP///wD///8A////Bv///wD///8A8/n+APP5/gDz+f4A4PD9B2y49p1AoPPXDojw9bjf/EjN3PkAIBvTSDs52PTY1/dwj43pfnp45cHy8fxH////ANvu/QDc7v0A4PD9BFmv9aMAfO//AHnu/5LL+Zb///8A////AKek7T4AAMr/SUXb4gcCzv4AAMj/paPtkf///wBOrf8AT67/AC+c/A1EpPRaJJbySQB97+vA4ft/////AO3s+xgzMdfSAADL/zs32OxNSdzeJyXUv9PT9iz///8A7tuqAO7cqwDi4tAi8fr/AJrQ/QAZjvVCmtD6VtLO9Sg7ONnRAADL/wQAzv8AAMz/V1Te3e7t/Br///8A////ANu9agDSrUQAzJwclfrw14P//vA74eroPsHU9hiBduc6MS7XWyci1UIhHdQ+AADLoC0p1vn///8k////AP///wD///8A////AM+oOozBjwr/xpYb++GvRNil59E+wPjnY/nv/wC6tvIAl5LrAIF26QBhXeFy/Pz+EP///wD///8A7uC6L+DGf5jfxXy9yZ0k5r+JAP/537Vbb+DQDg3Bmuue69e4///+Q////yC3+d9z3vnxN////wD///8A////AMKQBIe8hgD/yJsd+NOvSbfOpTL4////IoThzwAAv5baAL2T/yjKqPopyaftP9Cxx/T9+hT37uMA2reLAPLm1gLDkQccwI0AZty+bE/ew3YZwY0IuPjnx23L9fI1B8Ga+QK/l/8oyqjXRNCz0uf59UH///8A5s6yAKROAADfwZsBw5IIAMGOAADjy4oA4smGAMaGAAalrVQjGcyxeAjBmbQ1za2NQdCyxiHFofR63snM////Ff///wDAhD0A27mQAMOSCADBjgAA4smGAOHIhADKhwAAjqhNAAfIqQAZxqMAEMSeAAC/l70AvZL2UNS4pf///wn///8A5MqqANy7kwDDkggAwY4AAOLJhgDhyIQAyYcAAJGpTwALyasAGcajAAfCmwACwZllAL6WoHzeyk7///8B////AOjStwDdvJUA8/8AAOH/AADgfwAA4BsAAOCBAADBgQAAwQEAANgDAADAAwAAwPMAAAAHAAACBgAAAA4AAP" style="position: relative; top: 5px" alt="W3C Community and Business Groups logo"> <a href="https://www.w3.org/community/maps4html/" target="_blank" rel="noopener">Maps for HTML Community Group</a> | <a href="https://maplibre.org/" target="_blank" rel="noopener" title="MapLibre"><img src="${Fne}" class="mapml-maplibre-logo" alt="MapLibre"></a>`, V9 = [
 	"search",
 	"fullscreen",
 	"layerControl",
@@ -60078,14 +60098,14 @@ var Ore = `<img src="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAA
 	"compass",
 	"viewControl",
 	"featureIndexControl"
-], kre = /* @__PURE__ */ new Set([
+], Are = /* @__PURE__ */ new Set([
 	"search",
 	"geolocate",
 	"staticControl",
 	"compass",
 	"viewControl",
 	"featureIndexControl"
-]), Are = {
+]), jre = {
 	nofullscreen: ["fullscreen", !0],
 	nolayer: ["layerControl", !0],
 	noreload: ["reload", !0],
@@ -60189,8 +60209,9 @@ ${eJ}
 ${iJ}
 ${Bne}
 ${Vne}
+${Hne}
 ${XU}
-${Wne}
+${Gne}
 ${Ane}
 ${Pne}
 ${Tne}`, e.appendChild(t), this.#n = document.createElement("div"), this.#n.className = "container", e.appendChild(this.#n);
@@ -60218,7 +60239,7 @@ ${Tne}`, e.appendChild(t), this.#n = document.createElement("div"), this.#n.clas
 			zoom: Number(this.getAttribute("zoom") ?? 0),
 			bearing: s,
 			pitch: a,
-			locale: jre(this.locale),
+			locale: Mre(this.locale),
 			mapmlLocale: this.locale,
 			onFeatureLinkActivate: (e) => {
 				let t = eY(e.properties);
@@ -60286,7 +60307,7 @@ ${Tne}`, e.appendChild(t), this.#n = document.createElement("div"), this.#n.clas
 	}
 	#V() {
 		let e = this.#e.map, t = this.#e.featureIndexHost;
-		!e || !t || this.#F || (this.#F = new Une(e, t, this.locale, () => this.#e.getViewPcrsBounds()), this.#e.featureIndexOverlayActive = this.featureIndex, this.featureIndex && this.#F.enable());
+		!e || !t || this.#F || (this.#F = new Wne(e, t, this.locale, () => this.#e.getViewPcrsBounds()), this.#e.featureIndexOverlayActive = this.featureIndex, this.featureIndex && this.#F.enable());
 	}
 	get controlsList() {
 		return this.#g;
@@ -60442,7 +60463,7 @@ ${Tne}`, e.appendChild(t), this.#n = document.createElement("div"), this.#n.clas
 		return this.appendChild(r), r;
 	}
 	matchMedia(e) {
-		return Dre.call(this, e);
+		return Ore.call(this, e);
 	}
 	#W(e) {
 		let t = this.getAttribute(e);
@@ -60785,7 +60806,7 @@ ${Tne}`, e.appendChild(t), this.#n = document.createElement("div"), this.#n.clas
 		if (await this.#e.whenReady(), !this.#r || this.#p) return;
 		this.#p = new Nne({
 			compact: !0,
-			customAttribution: Ore,
+			customAttribution: kre,
 			locale: this.locale
 		}), this.#e.addControl(this.#p, "bottom-right"), this.#Y();
 		let e = this.#e.map;
@@ -60816,9 +60837,9 @@ ${Tne}`, e.appendChild(t), this.#n = document.createElement("div"), this.#n.clas
 		for (let e of V9) this.#Te(e, !0);
 	}
 	#we() {
-		for (let e of V9) this.#Te(e, kre.has(e));
+		for (let e of V9) this.#Te(e, Are.has(e));
 		this.#g?.forEach((e) => {
-			let t = Are[e.toLowerCase()];
+			let t = jre[e.toLowerCase()];
 			t && this.#Te(t[0], t[1]);
 		});
 		let e = this.#d.layerControl;
@@ -60969,7 +60990,7 @@ ${Tne}`, e.appendChild(t), this.#n = document.createElement("div"), this.#n.clas
 		}), this.dispatchEvent(new CustomEvent("mapml:staticchanged"));
 	}
 }, U9 = class extends H9(HTMLElement) {};
-function jre(e) {
+function Mre(e) {
 	return {
 		"NavigationControl.ZoomIn": e.btnZoomIn,
 		"NavigationControl.ZoomOut": e.btnZoomOut,
@@ -60981,7 +61002,7 @@ function jre(e) {
 }
 //#endregion
 //#region src/elements/web-map.ts
-var W9 = "web-map-default-style", G9 = "mapml-web-map", Mre = `
+var W9 = "web-map-default-style", G9 = "mapml-web-map", Nre = `
 [is="web-map"] {
   all: initial;
   contain: layout size;
@@ -61023,9 +61044,9 @@ var W9 = "web-map-default-style", G9 = "mapml-web-map", Mre = `
 		let e = this.getRootNode(), t = e instanceof ShadowRoot;
 		if ((t ? e.getElementById(W9) : document.getElementById(W9)) !== null) return;
 		let n = document.createElement("style");
-		n.id = W9, n.textContent = Mre, (t ? e : document.head).prepend(n);
+		n.id = W9, n.textContent = Nre, (t ? e : document.head).prepend(n);
 	}
-}, q9 = 64, J9 = 25, Nre = 0, Y9 = class extends HTMLAreaElement {
+}, q9 = 64, J9 = 25, Pre = 0, Y9 = class extends HTMLAreaElement {
 	static observedAttributes = [
 		"coords",
 		"alt",
@@ -61075,7 +61096,7 @@ var W9 = "web-map-default-style", G9 = "mapml-web-map", Mre = `
 			}]
 		};
 		this.#t === null ? this.#t = e.renderer.createFeatureCollectionLayer({
-			id: `map-area-${++Nre}`,
+			id: `map-area-${++Pre}`,
 			data: a
 		}) : this.#t.setData(a), this.#t.setStyle(this.#c()), this.#t.setFocusItems([this.#l(this.#t.id, n, r)]), this.#a();
 	}

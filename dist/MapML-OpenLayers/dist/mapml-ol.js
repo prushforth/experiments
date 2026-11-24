@@ -20895,7 +20895,9 @@ class MS extends Ei {
         r.preventDefault(), this._expand();
       },
       { passive: !1 }
-    ), e.addEventListener("mouseenter", this._expand), e.addEventListener("mouseleave", this._collapse), this._onContextMenu = (r) => this._openLayerContextMenu(r), s.addEventListener("contextmenu", this._onContextMenu), this._outsideTouch = (r) => {
+    ), e.addEventListener("mouseenter", this._expand), e.addEventListener("mouseleave", this._collapse), this._onContextMenu = (r) => {
+      this._openLayerContextMenu(r), r.preventDefault(), r.stopPropagation();
+    }, e.addEventListener("contextmenu", this._onContextMenu), this._outsideTouch = (r) => {
       r.target instanceof Node && !e.contains(r.target) && this._collapse();
     }, this._rebuild = () => this._rebuildList(), t.addEventListener("mapml:layerschanged", this._rebuild), this._rebuildList();
   }
@@ -22202,7 +22204,7 @@ class YS {
         continue;
       }
       const s = document.createElement("button");
-      s.type = "button", s.className = "mapml-contextmenu-item", s.setAttribute("role", "menuitem"), s.dataset.id = n.id, s.tabIndex = -1, s.innerHTML = wc(n.label, n.kbd) + (n.submenu ? "<span></span>" : ""), n.submenu ? (s.setAttribute("aria-haspopup", "true"), s.setAttribute("aria-expanded", "false"), s.setAttribute("aria-controls", "mapml-copy-submenu"), this._copyItemEl = s, s.addEventListener("click", () => this._toggleCopySubMenu()), s.addEventListener("mouseenter", () => this._showCopySubMenu())) : (s.addEventListener("mouseenter", () => this._hideCopySubMenu()), s.addEventListener("click", () => {
+      s.type = "button", s.className = "mapml-contextmenu-item", s.setAttribute("role", "menuitem"), s.dataset.id = n.id, s.tabIndex = -1, s.innerHTML = wc(n.label, n.kbd) + (n.submenu ? "<span></span>" : ""), n.submenu ? (s.setAttribute("aria-haspopup", "true"), s.setAttribute("aria-expanded", "false"), s.setAttribute("aria-controls", "mapml-copy-submenu"), this._copyItemEl = s, s.addEventListener("click", () => this._showCopySubMenu()), s.addEventListener("mouseenter", () => this._showCopySubMenu())) : (s.addEventListener("mouseenter", () => this._hideCopySubMenu()), s.addEventListener("click", () => {
         s.disabled || (n.run(), this.close());
       })), this._menu.appendChild(s), this._items.push({
         el: s,
@@ -22264,9 +22266,6 @@ class YS {
       }), e.appendChild(o), s.push({ el: o, run: r.run });
     }
     e._items = s, e._activeIndex = 0, e.addEventListener("keydown", (r) => this._onCopySubMenuKeyDown(r)), e.addEventListener("mouseleave", (r) => this._hideCopySubMenuIfOutside(r)), this._viewer._container.appendChild(e), this._copySubMenu = e;
-  }
-  _toggleCopySubMenu() {
-    this._copySubMenu.hidden ? this._showCopySubMenu() : this._hideCopySubMenu();
   }
   _showCopySubMenu() {
     var t;
@@ -24640,9 +24639,9 @@ class oT {
     if (e) {
       n && (n.style.cursor = "pointer");
       const r = ((s = this._subRingAt(e, t.pixel)) == null ? void 0 : s.link) ?? e._featureLink;
-      r ? (this._tooltipEl.hidden = !0, this._tooltip.setPosition(void 0), this._showLinkPreview(r)) : (this._hideLinkPreview(), this._tooltipEl.textContent = this._featureCaption(e._featureEl), this._tooltipEl.hidden = !1, this._tooltip.setPosition(t.coordinate));
+      r ? (this._tooltipEl.hidden = !0, this._tooltip.setPosition(void 0), this.showLinkPreview(r)) : (this.hideLinkPreview(), this._tooltipEl.textContent = this._featureCaption(e._featureEl), this._tooltipEl.hidden = !1, this._tooltip.setPosition(t.coordinate));
     } else
-      n && (n.style.cursor = ""), this._tooltipEl.hidden = !0, this._tooltip.setPosition(void 0), this._hideLinkPreview();
+      n && (n.style.cursor = ""), this._tooltipEl.hidden = !0, this._tooltip.setPosition(void 0), this.hideLinkPreview();
   }
   // Keyboard focus on a feature shows its caption at `coordinate`, as
   // MapML.js geometry.js `_handleFocus` opens the feature's Leaflet tooltip
@@ -24655,11 +24654,11 @@ class oT {
   }
   // Resolve a link href against the document base and show it in the preview
   // toast (a plain <a>.href resolves relative/#hash URLs like MapML.js).
-  _showLinkPreview(t) {
+  showLinkPreview(t) {
     const e = document.createElement("a");
     e.href = t.url, this._linkPreviewP.textContent = e.href, this._linkPreviewEl.hidden = !1;
   }
-  _hideLinkPreview() {
+  hideLinkPreview() {
     this._linkPreviewEl.hidden = !0;
   }
   _onSingleClick(t) {
@@ -24803,7 +24802,7 @@ class lT {
   constructor(t) {
     this._viewer = t, this._map = t.map, this._sorted = [], this._currentIndex = 0, this._proxies = /* @__PURE__ */ new Map(), this._entriesListeners = /* @__PURE__ */ new Set(), this._container = document.createElement("div"), this._container.className = "mapml-feature-focus-layer", this._container.setAttribute("aria-hidden", "false"), this._focusRing = document.createElement("div"), this._focusRing.className = "mapml-feature-focus-ring", this._focusRing.setAttribute("aria-hidden", "true"), this._focusRing.style.display = "none", this._container.appendChild(this._focusRing);
     const e = this._map.getViewport(), n = e.querySelector(".ol-overlaycontainer-stopevent");
-    e.insertBefore(this._container, n), this._onMoveEnd = () => this.scheduleRefresh(), this._onPostRender = () => this._reposition(), this._onLayersChanged = () => this.scheduleRefresh(), this._onKeyDown = this._onKeyDown.bind(this), this._onFocusIn = this._onFocusIn.bind(this), this._onFocusOut = this._onFocusOut.bind(this), this._map.on("moveend", this._onMoveEnd), this._map.on("postrender", this._onPostRender), this._viewer.addEventListener("mapml:layerschanged", this._onLayersChanged), this._container.addEventListener("keydown", this._onKeyDown), this._container.addEventListener("focusin", this._onFocusIn), this._container.addEventListener("focusout", this._onFocusOut), this.scheduleRefresh();
+    e.insertBefore(this._container, n), this._onMoveEnd = () => this.scheduleRefresh(), this._onPostRender = () => this._reposition(), this._onLayersChanged = () => this.scheduleRefresh(), this._onKeyDown = this._onKeyDown.bind(this), this._onKeyUp = this._onKeyUp.bind(this), this._onFocusIn = this._onFocusIn.bind(this), this._onFocusOut = this._onFocusOut.bind(this), this._map.on("moveend", this._onMoveEnd), this._map.on("postrender", this._onPostRender), this._viewer.addEventListener("mapml:layerschanged", this._onLayersChanged), this._container.addEventListener("keydown", this._onKeyDown), this._container.addEventListener("keyup", this._onKeyUp), this._container.addEventListener("focusin", this._onFocusIn), this._container.addEventListener("focusout", this._onFocusOut), this.scheduleRefresh();
   }
   destroy() {
     this._destroyed = !0, this._map.un("moveend", this._onMoveEnd), this._map.un("postrender", this._onPostRender), this._viewer.removeEventListener(
@@ -24853,7 +24852,10 @@ class lT {
   // it as such (MapML.js geometry.js sets role="link" on the feature's SVG
   // group, and path.js adds the link handler to a linked sub-ring's path).
   _applyProxyRole(t, e) {
-    (e.segment ? e.segment.link : e.olFeature._featureLink) ? t.setAttribute("role", "link") : t.removeAttribute("role");
+    this._entryLink(e) ? t.setAttribute("role", "link") : t.removeAttribute("role");
+  }
+  _entryLink(t) {
+    return t.segment ? t.segment.link : t.olFeature._featureLink;
   }
   // The accessible name of a focus stop: a sub-ring's own aria-label (MapML.js
   // copies the sub-part's attributes onto its path), else the feature caption.
@@ -25014,9 +25016,17 @@ class lT {
     const t = this._sorted[this._currentIndex];
     t && (t.proxy.tabIndex = -1);
   }
+  // A key released on a linked stop (so once Tab or an arrow has moved focus
+  // onto it) shows its href in the link preview, and the next key pressed
+  // there hides it: MapML.js path.js attachLinkHandler's `keyup`/`keydown`.
+  _onKeyUp(t) {
+    var s;
+    const e = this._sorted[this._indexOfProxy(t.target)], n = e && this._entryLink(e);
+    n && ((s = this._viewer._featureInteraction) == null || s.showLinkPreview(n));
+  }
   _onKeyDown(t) {
-    var n, s;
-    if (!this._sorted.length) return;
+    var n, s, r;
+    if (this._indexOfProxy(t.target) >= 0 && ((n = this._viewer._featureInteraction) == null || n.hideLinkPreview()), !this._sorted.length) return;
     const e = this._sorted.length - 1;
     switch (t.key) {
       case "ArrowLeft":
@@ -25031,16 +25041,16 @@ class lT {
       case " ":
       case "Spacebar": {
         t.preventDefault(), t.stopPropagation();
-        const r = this._sorted[this._currentIndex];
-        if (!r) break;
-        r.segment ? (n = this._viewer._featureInteraction) == null || n.activateLink(
-          r.olFeature,
-          r.segment
-        ) : r.featureEl.click();
+        const o = this._sorted[this._currentIndex];
+        if (!o) break;
+        o.segment ? (s = this._viewer._featureInteraction) == null || s.activateLink(
+          o.olFeature,
+          o.segment
+        ) : o.featureEl.click();
         break;
       }
       case "Escape":
-        t.preventDefault(), t.stopPropagation(), (s = this._viewer._featureInteraction) == null || s.closePopup(), this._viewer.focus();
+        t.preventDefault(), t.stopPropagation(), (r = this._viewer._featureInteraction) == null || r.closePopup(), this._viewer.focus();
         break;
     }
   }
@@ -31508,6 +31518,8 @@ const eA = `
   z-index: 1050;
   max-width: 60%;
   pointer-events: none;
+  /* Leaflet's UI font, which MapML.js's preview inherits from .leaflet-container */
+  font: 12px/1.5 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 
 .mapml-link-preview > p {
