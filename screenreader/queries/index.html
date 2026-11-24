@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Fire danger queries</title>
+    <script src="../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../index.html">Experiments</a></p>
+      <h1>Fire danger queries</h1>
+      <p class="lede">
+        A query asks a map what is at a point. With a pointer, the point is wherever you
+        click; without one, it is the centre of the map, queried with <kbd>Enter</kbd> or
+        <kbd>Space</kbd> once the map has focus. Either way the answer, here the forecast fire
+        danger rating from a WMS <code>GetFeatureInfo</code> request
+        (<code>&lt;map-link rel="query"&gt;</code>), opens in a popup that takes focus, so a
+        screen reader reads it without the reader having to go looking for it.
+      </p>
+      <p class="experiment-feature-tags" data-tags="rel-query projections keyboard-access hidden legends map-select map-caption">
+        <span class="experiment-nav-label">Feature tags</span>
+      </p>
+    </header>
+
+    <main class="experiment-body">
+      <table class="variant-matrix">
+        <caption class="visually-hidden">Map projection</caption>
+        <thead>
+          <tr>
+            <td></td>
+            <th scope="col"><code>OSMTILE</code> (Web Mercator)</th>
+            <th scope="col"><code>CBMTILE</code> (Canada Lambert)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Inline, <code>&lt;mapml-viewer&gt;</code></th>
+            <td><a href="osmtile/">All three implementations</a></td>
+            <td><a href="cbmtile/">All three implementations</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        The two columns are the same layer, from the Canadian Wildland Fire Information
+        System, requested in two coordinate reference systems: <code>EPSG:3857</code> and
+        <code>EPSG:3978</code>. Each map has a Canada Base Map underneath in the matching
+        projection, marked <code>hidden</code> so the layer control offers only the layer
+        there is something to ask about.
+      </p>
+      <p>
+        The response is GeoJSON with no geometry, only properties, which each implementation
+        places at the point that was queried. Outside the forecast area the service answers
+        with a no-data value rather than nothing, and that number is what a screen reader
+        hears.
+      </p>
+      <p>
+        Related: <a href="../feature-index/">Feature index</a> answers <q>what is here?</q>
+        for features already on the map, at the same centre point.
+      </p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Fire danger queries &mdash; OSMTILE</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Fire danger queries, in Web Mercator</h1>
+      <p class="lede">
+        A forecast of fire danger across Canada, drawn by a WMS and queried through the same
+        service's <code>GetFeatureInfo</code>. Click the map, or focus it and press
+        <kbd>Enter</kbd> or <kbd>Space</kbd> to query its centre: the answer opens in a popup,
+        focus moves into it, and a screen reader reads the forecast value for that place.
+      </p>
+      <p class="experiment-feature-tags" data-tags="rel-query projections keyboard-access hidden legends map-select map-caption">
+        <span class="experiment-nav-label">Feature tags</span>
+      </p>
+      <nav class="experiment-nav" aria-labelledby="projection-label">
+        <span class="experiment-nav-label" id="projection-label">Projection</span>
+        <a href="./" aria-current="page">OSMTILE</a>
+        <a href="../cbmtile/">CBMTILE</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="Queryable fire danger forecast in Web Mercator, rendered by MapML.js" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The reference implementation. A query from the keyboard is aimed at the map's
+            centre, the same point the reticle marks for the feature index, so a reader who
+            pans with the arrow keys can ask about wherever they have arrived.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="Queryable fire danger forecast in Web Mercator, rendered by MapML-MapLibre" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The popup is titled <q>Feature</q>, which the other two leave out. MapLibre
+            fetches its tiles rather than loading them as images, so the basemap must come
+            from a server that allows cross-origin requests; the others would draw it
+            regardless.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="Queryable fire danger forecast in Web Mercator, rendered by MapML-OpenLayers" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Tab rests focus on the viewer itself rather than on a map container inside it, so
+            the keyboard query listens there. As in MapML.js, it fires only when the map has
+            focus, not a control or popup inside it, so the <kbd>Enter</kbd> that presses a
+            popup button does not start another query.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <h2>Trying it</h2>
+      <p>
+        Tab to a map and press <kbd>Enter</kbd>. The maps start <code>static</code>, which
+        stops them moving but not answering queries. Focus moves to the popup, which reads
+        a table of one property, <code>FDR</code>, the forecast fire danger rating at the
+        map's centre. <kbd>Escape</kbd> closes it and returns focus to the map. Release the
+        lock to pan with the arrow keys and query somewhere else.
+      </p>
+      <p>
+        Query outside the forecast area &mdash; over Hudson Bay, say &mdash; and the service
+        does not say <q>no data</q>: it answers with its no-data value,
+        <code>-3.4028234663852886e+38</code>, and all three implementations read it out as
+        is. A sighted user sees there is no colour there; a screen reader user hears a
+        number with seventeen significant digits and an exponent.
+      </p>
+      <p>
+        The basemap layer is <code>hidden</code>, so the layer control lists only the fire
+        danger layer. Its name links to the legend (<code>&lt;map-link rel="legend"&gt;</code>),
+        which is where the colours are explained.
+      </p>
+    </footer>
+  </body>
+</html>

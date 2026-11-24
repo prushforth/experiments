@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Fire danger queries &mdash; CBMTILE</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>Fire danger queries, in Canada Lambert</h1>
+      <p class="lede">
+        The same forecast and the same queries as the <a href="../osmtile/">Web Mercator
+        version</a>, with the map, the basemap and the WMS requests all in
+        <code>CBMTILE</code> (<code>EPSG:3978</code>), the Lambert projection the Canadian
+        services are built for.
+      </p>
+      <p class="experiment-feature-tags" data-tags="rel-query projections keyboard-access hidden legends map-select map-caption">
+        <span class="experiment-nav-label">Feature tags</span>
+      </p>
+      <nav class="experiment-nav" aria-labelledby="projection-label">
+        <span class="experiment-nav-label" id="projection-label">Projection</span>
+        <a href="../osmtile/">OSMTILE</a>
+        <a href="./" aria-current="page">CBMTILE</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="Queryable fire danger forecast in Canada Lambert, rendered by MapML.js" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The reference implementation.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="Queryable fire danger forecast in Canada Lambert, rendered by MapML-MapLibre" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            MapLibre now draws <code>CBMTILE</code> as well as Web Mercator, so the Lambert
+            tiles and the <code>EPSG:3978</code> WMS image line up here as they do in the
+            other two, and the popup is again titled <q>Feature</q>.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="Queryable fire danger forecast in Canada Lambert, rendered by MapML-OpenLayers" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            For the same place, the query returns the same rating here as in the other two,
+            and as in all three Web Mercator maps: the projection changes the request, not the
+            answer.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <h2>Trying it</h2>
+      <p>
+        As in the <a href="../osmtile/">Web Mercator version</a>: Tab to a map, press
+        <kbd>Enter</kbd> or <kbd>Space</kbd> to query its centre, and focus moves to the
+        popup; <kbd>Escape</kbd> returns it to the map. Outside the forecast area the service
+        answers with its no-data value, <code>-3.4028234663852886e+38</code>, which is read
+        out as if it were a rating.
+      </p>
+      <p>
+        The faint rectangle around Canada is drawn by the Lambert basemap's own tiles; it is
+        not the fire danger layer's extent.
+      </p>
+    </footer>
+  </body>
+</html>
