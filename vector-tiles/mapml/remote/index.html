@@ -55,11 +55,9 @@
         </div>
         <div class="example-description">
           <p>
-            The renderer is Mercator only, so the WorldCRS84Quad map falls back to
-            <code>OSMTILE</code> — which is exactly what the WGS84 document's
-            <code>rel="alternate"</code> link is for. Feature colours still need
-            <code>&lt;map-link rel="stylesheet"&gt;</code>, which is not implemented there
-            yet.
+            The stylesheet arrives in the fetched document's <code>&lt;map-head&gt;</code>
+            and is compiled into paint expressions for the features of every tile, as in the
+            inline version.
           </p>
         </div>
       </article>

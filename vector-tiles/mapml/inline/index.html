@@ -40,9 +40,9 @@
         </div>
         <div class="example-description">
           <p>
-            The reference implementation, and the reason the stylesheet is written the way
-            it is: features are rendered as SVG, so <code>g[data-fid="…"] &gt; path</code>
-            selects a feature's geometry directly.
+            The reference implementation. Features are rendered as SVG paths carrying their
+            <code>&lt;map-feature&gt;</code>'s classes, so the stylesheet's class selectors
+            apply to them directly.
           </p>
         </div>
       </article>
@@ -54,12 +54,10 @@
         </div>
         <div class="example-description">
           <p>
-            Two gaps show here. <code>&lt;map-link rel="stylesheet"&gt;</code> is not
-            implemented yet — only <code>&lt;map-style&gt;</code> and the MapLibre style JSON
-            used by the <a href="../../pmtiles/inline/">pmtiles and MVT</a> layers are — so
-            the features draw with default styling. And the renderer is Mercator only: the
-            WorldCRS84Quad map falls back to <code>OSMTILE</code> and its tiles, which exist
-            in WGS84 alone, have nothing to draw.
+            MapLibre draws with WebGL, so there is no per-feature DOM either: the port
+            compiles the stylesheet's class selectors into MapLibre paint expressions that
+            match each feature's classes. That is why the stylesheet uses class selectors
+            only.
           </p>
         </div>
       </article>
@@ -84,8 +82,9 @@
       <p>
         The layers are declared inline, but each tile is itself a MapML document fetched and
         parsed as XHTML, holding the features clipped to that tile. The colours come from the
-        layer's stylesheet, keyed on each feature's <code>id</code>, so a country keeps its
-        colour across the tiles it is split over.
+        layer's stylesheet, keyed on a class each feature carries after its <code>id</code>
+        (<code>fclass.N</code> is classed <code>_N</code>), so a country keeps its colour
+        across the tiles it is split over.
       </p>
     </footer>
   </body>

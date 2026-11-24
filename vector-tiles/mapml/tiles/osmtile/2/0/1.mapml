@@ -7,7 +7,7 @@
       <map-meta name="cs" content="pcrs"></map-meta>
     </map-head>
     <map-body>
-        <map-feature id="fclass.68" class="fclass">
+        <map-feature id="fclass.68" class="fclass _68">
             <map-geometry>
                 <map-multipolygon>
                     <map-polygon>
@@ -121,7 +121,7 @@
                 </map-multipolygon>
             </map-geometry>
         </map-feature>
-        <map-feature id="fclass.104" class="fclass">
+        <map-feature id="fclass.104" class="fclass _104">
             <map-geometry>
                 <map-multipolygon>
                     <map-polygon>

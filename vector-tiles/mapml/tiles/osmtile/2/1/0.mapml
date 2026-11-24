@@ -7,7 +7,7 @@
       <map-meta name="cs" content="pcrs"></map-meta>
     </map-head>
     <map-body>
-        <map-feature id="fclass.5" class="fclass">
+        <map-feature id="fclass.5" class="fclass _5">
             <map-geometry>
                 <map-polygon>
                     <map-coordinates>
@@ -18,7 +18,7 @@
                 </map-polygon>
             </map-geometry>
         </map-feature>
-        <map-feature id="fclass.68" class="fclass">
+        <map-feature id="fclass.68" class="fclass _68">
             <map-geometry>
                 <map-multipolygon>
                     <map-polygon>
@@ -50,7 +50,7 @@
                 </map-multipolygon>
             </map-geometry>
         </map-feature>
-        <map-feature id="fclass.70" class="fclass">
+        <map-feature id="fclass.70" class="fclass _70">
             <map-geometry>
                 <map-polygon>
                     <map-coordinates>
@@ -61,7 +61,7 @@
                 </map-polygon>
             </map-geometry>
         </map-feature>
-        <map-feature id="fclass.71" class="fclass">
+        <map-feature id="fclass.71" class="fclass _71">
             <map-geometry>
                 <map-polygon>
                     <map-coordinates>
@@ -72,7 +72,7 @@
                 </map-polygon>
             </map-geometry>
         </map-feature>
-        <map-feature id="fclass.72" class="fclass">
+        <map-feature id="fclass.72" class="fclass _72">
             <map-geometry>
                 <map-polygon>
                     <map-coordinates>
@@ -86,7 +86,7 @@
                 </map-polygon>
             </map-geometry>
         </map-feature>
-        <map-feature id="fclass.73" class="fclass">
+        <map-feature id="fclass.73" class="fclass _73">
             <map-geometry>
                 <map-polygon>
                     <map-coordinates>
@@ -97,7 +97,7 @@
                 </map-polygon>
             </map-geometry>
         </map-feature>
-        <map-feature id="fclass.74" class="fclass">
+        <map-feature id="fclass.74" class="fclass _74">
             <map-geometry>
                 <map-multipolygon>
                     <map-polygon>

@@ -7,7 +7,7 @@
       <map-meta name="cs" content="pcrs"></map-meta>
     </map-head>
     <map-body>
-        <map-feature id="fclass.2" class="fclass">
+        <map-feature id="fclass.2" class="fclass _2">
             <map-geometry>
                 <map-multipolygon>
                     <map-polygon>
@@ -145,7 +145,7 @@
                 </map-multipolygon>
             </map-geometry>
         </map-feature>
-        <map-feature id="fclass.3" class="fclass">
+        <map-feature id="fclass.3" class="fclass _3">
             <map-geometry>
                 <map-multipolygon>
                     <map-polygon>
@@ -176,7 +176,7 @@
                 </map-multipolygon>
             </map-geometry>
         </map-feature>
-        <map-feature id="fclass.5" class="fclass">
+        <map-feature id="fclass.5" class="fclass _5">
             <map-geometry>
                 <map-multipolygon>
                     <map-polygon>
@@ -196,7 +196,7 @@
                 </map-multipolygon>
             </map-geometry>
         </map-feature>
-        <map-feature id="fclass.6" class="fclass">
+        <map-feature id="fclass.6" class="fclass _6">
             <map-geometry>
                 <map-multipolygon>
                     <map-polygon>
@@ -211,7 +211,7 @@
                 </map-multipolygon>
             </map-geometry>
         </map-feature>
-        <map-feature id="fclass.16" class="fclass">
+        <map-feature id="fclass.16" class="fclass _16">
             <map-geometry>
                 <map-multipolygon>
                     <map-polygon>
@@ -223,14 +223,14 @@
                 </map-multipolygon>
             </map-geometry>
         </map-feature>
-        <map-feature id="fclass.17" class="fclass">
+        <map-feature id="fclass.17" class="fclass _17">
             <map-geometry>
                 <map-polygon>
                     <map-coordinates>-7119320.72116 -2511701.11847 -6971788.25191 -2519122.86604 -6880363.98598 -2234565.90989 -6603339.28723 -2177985.32429 -6472623.99064 -2256985.23361 -6400004.38142 -2046488.24466 -6499072.81673 -1949737.92116 -6507175.63629 -1844178.44801 -6690941.46846 -1835895.38496 -6746591.02163 -1533774.46351 -6879905.33582 -1511286.27634 -7133385.99284 -1393479.69311 -7261043.62168 -1307501.28264 -7279389.62822 -1085941.59324 -7424170.1965 -1110145.72167 -7613134.06386 -1237952.93761 -7746142.61127 -1225026.35082 -7664961.53234 -1381271.55859 -7675663.36948 -1596305.76768 -7734523.4738 -1699173.5827 -7686823.8568 -1850870.82378 -7744155.12723 -1965271.53775 -7647685.70951 -2194990.60609 -7649214.54339 -2282361.11616 -7544795.1895 -2621381.49442 -7458721.84215 -2604957.84678 -7396345.41992 -2510711.79672 -7165950.15445 -2541572.80922 -7119320.72116 -2511701.11847</map-coordinates>
                 </map-polygon>
             </map-geometry>
         </map-feature>
-        <map-feature id="fclass.18" class="fclass">
+        <map-feature id="fclass.18" class="fclass _18">
             <map-geometry>
                 <map-multipolygon>
                     <map-polygon>
@@ -260,7 +260,7 @@
                 </map-multipolygon>
             </map-geometry>
         </map-feature>
-        <map-feature id="fclass.19" class="fclass">
+        <map-feature id="fclass.19" class="fclass _19">
             <map-geometry>
                 <map-polygon>
                     <map-coordinates>
@@ -271,7 +271,7 @@
                 </map-polygon>
             </map-geometry>
         </map-feature>
-        <map-feature id="fclass.20" class="fclass">
+        <map-feature id="fclass.20" class="fclass _20">
             <map-geometry>
                 <map-multipolygon>
                     <map-polygon>
@@ -283,28 +283,28 @@
                 </map-multipolygon>
             </map-geometry>
         </map-feature>
-        <map-feature id="fclass.23" class="fclass">
+        <map-feature id="fclass.23" class="fclass _23">
             <map-geometry>
                 <map-polygon>
                     <map-coordinates>-8407210.38026 -1678123.26717 -8372352.96783 -1729435.45514 -8220998.41388 -1816314.71792 -8135536.60008 -1858840.52398 -8062458.3407 -1890907.34837 -7956510.15293 -1962708.5155 -7943515.06497 -2000384.02723 -7824266.02246 -2084477.25922 -7744155.12723 -1965271.53775 -7686823.8568 -1850870.82378 -7734523.4738 -1699173.5827 -7675663.36948 -1596305.76768 -7664961.53234 -1381271.55859 -7746142.61127 -1225026.35082 -7862028.21925 -1239199.13827 -7868907.9717 -1090750.14422 -8027906.69505 -1109835.31287 -8137218.31735 -1006918.84941 -8229559.8836 -790589.25413 -8147614.38772 -710230.62653 -8115355.99289 -577923.98167 -7997941.55103 -500748.07498 -7785280.75856 -460885.32941 -7873188.70656 -419968.0369 -7798734.49669 -289048.49252 -8110769.49125 -265023.14096 -8354924.26162 -9173.00643 -8385806.70596 -131183.1948 -8512088.38431 -276499.72998 -8700746.4849 -348441.54915 -8810058.1072 -568713.89428 -8914783.22786 -474835.16694 -8964164.56213 -393005.87748 -9051460.97658 -479127.87772 -9053295.57724 -522834.20636 -9022413.13289 -560118.88004 -9039841.83911 -577616.9595 -8999480.62472 -622917.53481 -9032962.08666 -678549.78712 -8913713.04415 -743468.13694 -8867695.14441 -800912.26645 -8852865.45579 -848086.11267 -8794464.00164 -918007.44082 -8703192.6191 -1122253.70267 -8630878.77666 -1262574.10565 -8597550.19811 -1296263.57242 -8585013.76031 -1360935.71307 -8554284.19935 -1385183.87761 -8481053.05658 -1513015.47887 -8495424.09504 -1586845.68501 -8451393.67934 -1646818.20357 -8407210.38026 -1678123.26717</map-coordinates>
                 </map-polygon>
             </map-geometry>
         </map-feature>
-        <map-feature id="fclass.24" class="fclass">
+        <map-feature id="fclass.24" class="fclass _24">
             <map-geometry>
                 <map-polygon>
                     <map-coordinates>-6880363.98598 -2234565.90989 -6971788.25191 -2519122.86604 -6854373.81005 -2675080.98351 -6619392.04295 -2800639.23562 -6416515.7873 -2908787.54062 -6509163.12033 -3163405.01796 -6107844.22727 -3086868.74872 -6080019.45068 -2950943.08001 -6033695.78417 -2742166.10079 -6167010.09836 -2761577.00168 -6204772.29515 -2554131.39482 -6437613.69482 -2518133.11244 -6472623.99064 -2256985.23361 -6603339.28723 -2177985.32429 -6880363.98598 -2234565.90989</map-coordinates>
                 </map-polygon>
             </map-geometry>
         </map-feature>
-        <map-feature id="fclass.25" class="fclass">
+        <map-feature id="fclass.25" class="fclass _25">
             <map-geometry>
                 <map-polygon>
                     <map-coordinates>-4019457.14949 -7340217.30695 -4000040.95923 -7286972.6145 -4114244.84994 -7184422.71984 -4194355.74517 -7174266.9575 -4060888.54759 -7274574.50798 -4019457.14949 -7340217.30695</map-coordinates>
                 </map-polygon>
             </map-geometry>
         </map-feature>
-        <map-feature id="fclass.27" class="fclass">
+        <map-feature id="fclass.27" class="fclass _27">
             <map-geometry>
                 <map-polygon>
                     <map-coordinates>-6362395.06801 -4093245.46113 -6248802.71085 -4152377.86229 -6211040.51406 -4131701.81523 -6109067.29437 -4154988.37553 -5998073.95481 -4095285.72824 -5952208.93846 -4003835.53165 -5939366.73388 -3823988.90292 -6331512.62367 -3526696.89317 -6429357.99188 -3556620.90467 -6483478.71117 -3807330.7406 -6470789.38998 -3881749.2388 -6498308.39979 -3911101.15868 -6503659.31837 -4013223.80862 -6436390.62772 -4089166.03483 -6362395.06801 -4093245.46113</map-coordinates>
