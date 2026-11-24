@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>TMS maps, remote MapML</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>TMS maps, from remote MapML</h1>
+      <p class="lede">
+        The same map, except that the page says only <code>&lt;map-layer src="fire-
+        weather.mapml"&gt;</code>. The two extents, the TMS template, the query template and
+        the basemap's licence are in that document, which is how a service could publish its
+        tile set for anyone to put on a page.
+      </p>
+      <p class="experiment-feature-tags" data-tags="tms rel-query hidden">
+        <span class="experiment-nav-label">Feature tags</span>
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="../inline/">Inline</a>
+        <a href="./" aria-current="page">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./" aria-current="page">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 26rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="Fire weather TMS tiles over a WMS basemap, from remote MapML, rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The document names itself with <code>&lt;map-title&gt;</code>, so the layer
+            control reads <em>Canada Base Map + Fire Weather Index</em> without the page
+            saying so.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="Fire weather TMS tiles over a WMS basemap, from remote MapML, rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Remote MapML is XHTML, so the bare <code>tms</code> attribute has to be written
+            <code>tms="tms"</code>: the same declaration, spelled the way an XML parser
+            requires, and the same <code>tms</code> tile scheme once it reaches MapLibre.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="Fire weather TMS tiles over a WMS basemap, from remote MapML, rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The query link arrives in the layer's shadow root with the rest of the document
+            and still answers clicks on the map: a fetched <code>&lt;map-extent&gt;</code>
+            is as queryable as an inline one.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        Each frame fetches its own copy of <code>fire-weather.mapml</code>, so that
+        <em>View code</em> and <em>Open full page</em> show a self-contained example; the three
+        copies are identical.
+      </p>
+    </footer>
+  </body>
+</html>

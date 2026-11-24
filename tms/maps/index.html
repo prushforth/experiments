@@ -1,53 +1,75 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>TMS Geospatial Example</title>
-    <script type="module" src="../../dist/MapML-OpenLayers/dist/mapml-ol.js"></script>
-    <link rel="stylesheet" href="../../global.css">
-    <style>
-      body {
-        padding: 0 1rem;
-      }
-      mapml-viewer:defined {
-        width: 100vw;
-       height: 65vh;
-      }
-    </style>
+    <title>TMS maps</title>
+    <script src="../../templates/experiment.js"></script>
   </head>
   <body>
-    <mapml-viewer projection="OSMTILE" zoom="2" lon="-96" lat="56" controls>
-     <map-layer label="Basemap WMS + Fire weather index TMS" checked>
-        <map-extent units="OSMTILE" label="CBMT" checked="checked" hidden="hidden">
-          <map-input name="z" type="zoom" min="0" max="22"></map-input>
-          <map-input name="xmin" type="location" units="pcrs" position="top-left" axis="easting"></map-input>
-          <map-input name="ymin" type="location" units="pcrs" position="bottom-left" axis="northing"></map-input>
-          <map-input name="xmax" type="location" units="pcrs" position="top-right" axis="easting"></map-input>
-          <map-input name="ymax" type="location" units="pcrs" position="top-left" axis="northing"></map-input>
-          <map-input name="w" type="width"></map-input>
-          <map-input name="h" type="height"></map-input>
-          <map-link rel="image" tref="https://geogratis.gc.ca/maps/CBMT?SERVICE=WMS&amp;VERSION=1.1.1&amp;SRS=EPSG:3857&amp;LAYERS=CBMT&amp;BBOX={xmin},{ymin},{xmax},{ymax}&amp;REQUEST=GetMap&amp;FORMAT=image/png&amp;TRANSPARENT=TRUE&amp;WIDTH={w}&amp;HEIGHT={h}&amp;STYLES="></map-link>
-        </map-extent>
-        <map-extent units="OSMTILE" opacity="0.6" label="TMS map link from GeoServer" checked>
-          <map-input name="z" type="zoom" min="0" max="18" value="0"></map-input>
-          <map-input name="x" type="location" axis="column" units="tilematrix"></map-input>
-          <map-input name="y" type="location" axis="row" units="tilematrix"></map-input>
-          <map-link tms rel="tile" tref="https://cwfis.cfs.nrcan.gc.ca/geoserver/gwc/service/tms/1.0.0/public:fwi@EPSG:900913@png/{z}/{x}/{y}.png"></map-link>
-          <!-- query (WMS GetFeatureInfo on the same layer) -->
-          <map-input name="w" type="width"></map-input>
-          <map-input name="h" type="height"></map-input>
-          <map-input name="i" type="location" units="map" axis="i"></map-input>
-          <map-input name="j" type="location" units="map" axis="j"></map-input>
-          <map-input name="xmin" type="location" units="pcrs" axis="easting"  position="top-left"></map-input>
-          <map-input name="ymin" type="location" units="pcrs" axis="northing" position="bottom-right"></map-input>
-          <map-input name="xmax" type="location" units="pcrs" axis="easting"  position="bottom-right"></map-input>
-          <map-input name="ymax" type="location" units="pcrs" axis="northing" position="top-left"></map-input>
-          <map-link rel="query"
-            tref="https://cwfis.cfs.nrcan.gc.ca/geoserver/public/wms?service=WMS&amp;version=1.3.0&amp;request=GetFeatureInfo&amp;layers=public:fwi&amp;query_layers=public:fwi&amp;crs=EPSG:3857&amp;bbox={xmin},{ymin},{xmax},{ymax}&amp;width={w}&amp;height={h}&amp;i={i}&amp;j={j}&amp;info_format=application/json&amp;feature_count=5"></map-link>
-        </map-extent>
-      </map-layer>
-    </mapml-viewer>
-    <p>An example of <code>&lt;map-link tms&gt;</map-link></code></p>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../index.html">Experiments</a></p>
+      <h1>TMS maps</h1>
+      <p class="lede">
+        The Canadian Forest Service's Fire Weather Index, published by GeoServer as an
+        <a href="https://wiki.osgeo.org/wiki/Tile_Map_Service_Specification">OSGeo Tile Map
+        Service</a>, over the Canada Base Map from a WMS. A TMS tile set counts its rows up from
+        the bottom of the map rather than down from the top, and
+        <code>&lt;map-link tms rel="tile"&gt;</code> is all an author needs to say so. The same
+        extent carries a <code>&lt;map-link rel="query"&gt;</code>, so clicking the map asks the
+        service's WMS for the index at that point.
+      </p>
+      <p class="experiment-feature-tags" data-tags="tms rel-query hidden">
+        <span class="experiment-nav-label">Feature tags</span>
+      </p>
+    </header>
+
+    <main class="experiment-body">
+      <table class="variant-matrix">
+        <caption class="visually-hidden">Content type by root element</caption>
+        <thead>
+          <tr>
+            <td></td>
+            <th scope="col"><code>&lt;mapml-viewer&gt;</code></th>
+            <th scope="col"><code>&lt;map is="web-map"&gt;</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Inline</th>
+            <td><a href="inline/">All three implementations</a></td>
+            <td><a href="inline/web-map.html">All three implementations</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Remote</th>
+            <td><a href="remote/">All three implementations</a></td>
+            <td><a href="remote/web-map.html">All three implementations</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        All three implementations draw every cell and answer the query. Where they differ is in
+        what they ask the two services for, and each service shows it:
+      </p>
+      <ul>
+        <li>
+          <strong>The basemap</strong> — once the map is wider than about 480px, its view
+          reaches past 180° west. MapML.js and MapML-MapLibre ask the WMS for the whole view,
+          and the Canada Base Map service then leaves most of the mainland out: it comes back
+          white. MapML-OpenLayers clips its request to the projection's bounds, and gets the
+          provinces and territories drawn. A frame's <em>Open full page</em> link shows it.
+        </li>
+        <li>
+          <strong>The TMS tiles</strong> — the service covers only the north-western quadrant
+          of the world. MapML.js and MapML-OpenLayers ask for the four tiles in it;
+          MapML-MapLibre also asks for lower-zoom tiles and the neighbours of the view, and the
+          service answers those outside its coverage with 404s.
+        </li>
+      </ul>
+      <p>
+        Related: <a href="../painting/">Non-geographic image map</a> uses the same attribute
+        on a painting, where reading the rows the wrong way round swaps the top and bottom of the picture.
+      </p>
+    </main>
   </body>
 </html>

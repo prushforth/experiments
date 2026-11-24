@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>TMS maps, inline MapML</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>TMS maps, declared inline</h1>
+      <p class="lede">
+        The Fire Weather Index as GeoServer publishes it, a <a
+        href="https://wiki.osgeo.org/wiki/Tile_Map_Service_Specification">Tile Map
+        Service</a>, over the Canada Base Map from a WMS: one <code>&lt;map-layer&gt;</code>
+        with an extent for each. A TMS counts its tile rows up from the bottom of the map,
+        and the bare <code>tms</code> attribute on <code>&lt;map-link rel="tile"&gt;</code>
+        is the whole declaration of it. Click the map to query the index at that point.
+      </p>
+      <p class="experiment-feature-tags" data-tags="tms rel-query hidden">
+        <span class="experiment-nav-label">Feature tags</span>
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="./" aria-current="page">Inline</a>
+        <a href="../remote/">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./" aria-current="page">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 26rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="Fire weather TMS tiles over a WMS basemap, rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The reference implementation of the <code>tms</code> attribute: the row from the
+            template is counted from the bottom of the tile matrix instead of the top, and
+            nothing else about the template changes.
+          </p>
+          <p>
+            Its WMS request covers the whole view. When the view reaches past 180° west, the
+            Canada Base Map service leaves most of the mainland white.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="Fire weather TMS tiles over a WMS basemap, rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The <code>tms</code> attribute becomes MapLibre's own <code>tms</code> tile
+            scheme on the raster source.
+          </p>
+          <p>
+            MapLibre also asks for lower-zoom tiles and the tiles around the view. The
+            service covers only the north-western quadrant of the world and answers the rest
+            with 404s; nothing is missing from the map, but the console fills up.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="Fire weather TMS tiles over a WMS basemap, rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Clips the WMS request to the projection's bounds, so the basemap is drawn whole
+            even when the view is wider than the world, which is where the other two frames'
+            basemaps differ from this one.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <h2>What to try</h2>
+      <ul>
+        <li>
+          Each map starts <code>static</code>, so scrolling past it does not zoom it. Release
+          it with the lock button to pan and zoom.
+        </li>
+        <li>
+          Click a coloured area: the
+          <code>&lt;map-link rel="query"&gt;</code> sends a WMS
+          <code>GetFeatureInfo</code> request to the same GeoServer layer and shows its
+          <code>FWI</code> value.
+        </li>
+        <li>
+          Open the layer control: the TMS extent is listed with its own opacity slider, while
+          the basemap extent is <code>hidden</code> and only the layer as a whole can be turned
+          off.
+        </li>
+        <li>
+          Use a frame's <em>Open full page</em> link: once the map is wider than about 480px
+          its view reaches past 180° west, and only MapML-OpenLayers keeps the basemap's
+          mainland.
+        </li>
+      </ul>
+      <p>
+        The fire weather tiles come from the
+        <a href="https://cwfis.cfs.nrcan.gc.ca/">Canadian Wildland Fire Information System</a>'s
+        GeoServer, whose
+        <a href="https://cwfis.cfs.nrcan.gc.ca/geoserver/gwc/service/tms/1.0.0/public:fwi@EPSG:900913@png">TileMap
+        description</a> declares the bottom-left origin the <code>tms</code> attribute stands for.
+      </p>
+    </footer>
+  </body>
+</html>

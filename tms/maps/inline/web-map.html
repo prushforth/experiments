@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>TMS maps, inline MapML, &lt;map is="web-map"&gt;</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>TMS maps, declared inline in a <code>&lt;map is="web-map"&gt;</code></h1>
+      <p class="lede">
+        The same TMS fire weather tiles, WMS basemap and query, hosted by the customized
+        built-in <code>&lt;map&gt;</code>. The layer markup is unchanged: a TMS tile set is
+        a property of the <code>&lt;map-link&gt;</code>, not of the element showing it.
+      </p>
+      <p class="experiment-feature-tags" data-tags="tms rel-query hidden">
+        <span class="experiment-nav-label">Feature tags</span>
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="web-map.html" aria-current="page">Inline</a>
+        <a href="../remote/web-map.html">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html" aria-current="page">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 26rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/web-map.html" title="Fire weather TMS tiles over a WMS basemap in a web-map element, rendered by MapML.js" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The <code>&lt;map&gt;</code> hosts its chrome on a child <code>&lt;div
+            class="mapml-web-map"&gt;</code>; the tiles, the basemap and the query popup are
+            the same as in the <code>&lt;mapml-viewer&gt;</code> frame.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/web-map.html" title="Fire weather TMS tiles over a WMS basemap in a web-map element, rendered by MapML-MapLibre" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The same <code>tms</code> tile scheme on the source, and the same 404s for tiles
+            outside the service's coverage. In WebKit the customized built-in never
+            upgrades, in this column as in the other two.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/web-map.html" title="Fire weather TMS tiles over a WMS basemap in a web-map element, rendered by MapML-OpenLayers" loading="lazy"></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            One viewer implementation serves both root elements, so the row flip, the
+            clipped basemap request and the query are the same code in this frame as in the
+            <code>&lt;mapml-viewer&gt;</code> one.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        Related: <a href="../../painting/inline/web-map.html">Non-geographic image map</a> puts
+        a TMS painting in a <code>&lt;map&gt;</code>, which is closer to what that element has
+        always been for.
+      </p>
+    </footer>
+  </body>
+</html>
