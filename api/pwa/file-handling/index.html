@@ -1,22 +1,108 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="./images/favicon.ico">
-	<link rel="manifest" href="./manifest.json">
-  <script src="../../../dist/MapML-OpenLayers/dist/mapml-ol.js" type="module"></script>
-</head>
-<style>
-	body {
-		margin: 0;
-		height: 100vh;
-	}
-</style>
-<body>
-<main-app></main-app>
-	<footer>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>A GeoJSON file handler, as a progressive web app</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>A GeoJSON file handler, as a progressive web app</h1>
+      <p class="lede">
+        A map page that the operating system can open <code>.geojson</code> files with. Each
+        frame below is an installable web app: its manifest declares a
+        <code>file_handlers</code> entry for <code>application/geo+json</code>, and a file
+        opened with it arrives through <code>launchQueue</code>, is turned into a
+        <code>&lt;map-layer&gt;</code> by the viewer's <code>geojson2mapml()</code>, and is
+        zoomed to. The map is inside a shadow root, as it would be in an app built from
+        custom elements.
+      </p>
+      <p class="experiment-feature-tags" data-tags="pwa shadow-root fullscreen default-search-handler">
+        <span class="experiment-nav-label">Feature tags</span>
+      </p>
+      <p class="experiment-tags">
+        <span class="experiment-nav-label">Variants</span>
+        <span class="experiment-tag">Inline only</span>
+      </p>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./" aria-current="page">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
 
-	</footer>
-</body>
-<script type="module" src="./src/main-app.js"></script>
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="A GeoJSON file handler rendered by MapML.js" loading="lazy" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="A GeoJSON file handler rendered by MapML-MapLibre" loading="lazy" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="A GeoJSON file handler rendered by MapML-OpenLayers" loading="lazy" allowfullscreen></iframe>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <h2>What to try</h2>
+      <ul>
+        <li>
+          Load a GeoJSON file with the button above a map, for example
+          <a href="geojson/canada.geojson" download>canada.geojson</a>,
+          <a href="geojson/example2.geojson" download>example2.geojson</a> or
+          <a href="geojson/cph-example1.geojson" download>cph-example1.geojson</a>. Click a
+          feature to see the properties the page gave it.
+        </li>
+        <li>
+          To use it as a file handler, open a frame with its <em>Open full page</em> link, in a
+          desktop browser that supports
+          <a href="https://developer.mozilla.org/en-US/docs/Web/Manifest/file_handlers#browser_compatibility">file handlers</a>,
+          and install it. A <code>.geojson</code> file's <em>Open with</em> menu then lists
+          the app, which opens with <code>?log=y</code> and shows an activity log under the
+          map.
+        </li>
+        <li>
+          Go fullscreen and back. The fullscreen element is the viewer, inside
+          <code>&lt;main-app&gt;</code>'s shadow root, where
+          <code>document.fullscreenElement</code> reports <code>&lt;main-app&gt;</code>
+          instead; a viewer that relies on it can enter fullscreen but not leave it.
+        </li>
+        <li>
+          Search for a place: the layer's <code>&lt;map-link rel="search"&gt;</code> and
+          <code>rel="suggestions"</code> point at Photon, and each implementation's default
+          handling lists the results and moves the map.
+        </li>
+      </ul>
+      <p>
+        Why each frame is its own app rather than this page being one: <code>launchQueue</code>
+        hands files only to the top-level page of an installed app, never to an iframe. The
+        six frames (three implementations, two root elements) link six manifests with
+        different <code>id</code>s; each <code>&lt;map is="web-map"&gt;</code> app's scope is
+        its own page, nested inside the folder scope of the
+        <code>&lt;mapml-viewer&gt;</code> app beside it, so each page opens in its own app.
+        The shadow root is declarative, <code>&lt;template shadowrootmode="open"&gt;</code>,
+        so the code panel shows the map markup as written; the page's styles stop at the
+        shadow root, which is why it carries its own small <code>&lt;style&gt;</code>.
+      </p>
+      <p>
+        Based on Lars Knudsen's
+        <a href="https://github.com/larsgk/filehandling-geojson">filehandling-geojson</a>
+        (<a href="README.md">write-up</a>).
+        <a href="https://www.flaticon.com/free-icons/parchment" title="parchment icons">Parchment icons created by Freepik - Flaticon</a>.
+      </p>
+    </footer>
+  </body>
 </html>

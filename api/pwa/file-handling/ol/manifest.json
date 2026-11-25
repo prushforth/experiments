@@ -1,19 +1,22 @@
 {
-	"short_name": "MapML GeoJSON Viewer",
-	"name": "Minimal MapML GeoJSON Web Viewer",
+	"id": "./",
+	"short_name": "GeoJSON (OpenLayers)",
+	"name": "MapML GeoJSON Viewer — MapML-OpenLayers",
+	"description": "Opens .geojson files on a <mapml-viewer> map rendered by MapML-OpenLayers.",
 	"icons": [
 		{
-			"src": "./images/treasure-map-512.png",
+			"src": "../images/treasure-map-512.png",
 			"sizes": "512x512",
 			"type": "image/png"
 		},
 		{
-			"src": "./images/treasure-map-256.png",
+			"src": "../images/treasure-map-256.png",
 			"sizes": "256x256",
 			"type": "image/png"
 		}
 	],
-	"start_url": ".",
+	"start_url": "./",
+	"scope": "./",
 	"theme_color": "#db7093",
 	"background_color": "#222222",
 	"display": "standalone",
@@ -25,7 +28,7 @@
 			},
 			"icons": [
 				{
-					"src": "./images/treasure-map-256.png",
+					"src": "../images/treasure-map-256.png",
 					"sizes": "256x256",
 					"type": "image/png"
 				}

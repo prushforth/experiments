@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>A GeoJSON file handler, as a progressive web app, in &lt;map is="web-map"&gt;</title>
+    <script src="../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../index.html">Experiments</a></p>
+      <h1>A GeoJSON file handler, as a progressive web app, in a <code>&lt;map is="web-map"&gt;</code></h1>
+      <p class="lede">
+        The same apps as the <a href="./"><code>&lt;mapml-viewer&gt;</code> version</a>, with
+        the map hosted by the customized built-in <code>&lt;map is="web-map"&gt;</code>, still
+        inside a shadow root. Each frame is installed as a separate app from its
+        <code>&lt;mapml-viewer&gt;</code> counterpart, with its own <code>.geojson</code>
+        file handler.
+      </p>
+      <p class="experiment-feature-tags" data-tags="pwa shadow-root fullscreen default-search-handler">
+        <span class="experiment-nav-label">Feature tags</span>
+      </p>
+      <p class="experiment-tags">
+        <span class="experiment-nav-label">Variants</span>
+        <span class="experiment-tag">Inline only</span>
+      </p>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html" aria-current="page">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/web-map.html" title="A GeoJSON file handler in a web-map element, rendered by MapML.js" loading="lazy" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/web-map.html" title="A GeoJSON file handler in a web-map element, rendered by MapML-MapLibre" loading="lazy" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/web-map.html" title="A GeoJSON file handler in a web-map element, rendered by MapML-OpenLayers" loading="lazy" allowfullscreen></iframe>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <p>
+        What to try, and why each frame is its own app, is on the
+        <a href="./"><code>&lt;mapml-viewer&gt;</code> page</a>.
+      </p>
+      <p>
+        <code>is=</code> is a customized built-in element, which Safari does not support; in
+        WebKit these frames fall back to the element's child content rather than a map.
+      </p>
+    </footer>
+  </body>
+</html>

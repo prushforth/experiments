@@ -39970,7 +39970,7 @@ class oL extends HTMLElement {
     let e = t.toLowerCase();
     if (e !== "extent" && e !== "zoom" && e !== "cs") return;
     const n = O.getClosest(this, "map-layer"), s = `map-meta[name=${e}]`;
-    return this.querySelector(`:scope > ${s}`) ?? (n ? jn(n, s)[0] : void 0);
+    return this.querySelector(`:scope > ${s}`) ?? (n ? jn(n, s)[0] : void 0) ?? null;
   }
   // Derive the extent's PCRS bounds + zoomBounds by unioning the child
   // <map-link> template bounds/zoom over the extent's own <map-meta>. Ported
