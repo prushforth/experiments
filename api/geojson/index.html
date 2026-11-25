@@ -3,234 +3,88 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>GeoJSON API Demo</title>
-  <script type="module" src="../../dist/MapML-OpenLayers/dist/mapml-ol.js"></script>
-  <link rel="stylesheet" href="../../global.css">
-      <map-style hidden>
-      .a {        
-        fill: #800026;
-        stroke-width: 2;
-        stroke-opacity: 1;
-        stroke: white;
-        stroke-dasharray: 3;
-        fill-opacity: 0.7
-      }
-      .b {        
-        fill: #BD0026;
-        stroke-width: 2;
-        stroke-opacity: 1;
-        stroke: white;
-        stroke-dasharray: 3;
-        fill-opacity: 0.7
-      }
-      .c {        
-        fill: #E31A1C;
-        stroke-width: 2;
-        stroke-opacity: 1;
-        stroke: white;
-        stroke-dasharray: 3;
-        fill-opacity: 0.7
-      }
-      .d {        
-        fill: #FC4E2A;
-        stroke-width: 2;
-        stroke-opacity: 1;
-        stroke: white;
-        stroke-dasharray: 3;
-        fill-opacity: 0.7
-      }
-      .e {        
-        fill: #FD8D3C;
-        stroke-width: 2;
-        stroke-opacity: 1;
-        stroke: white;
-        stroke-dasharray: 3;
-        fill-opacity: 0.7
-      }
-      .f {        
-        fill: #FEB24C;
-        stroke-width: 2;
-        stroke-opacity: 1;
-        stroke: white;
-        stroke-dasharray: 3;
-        fill-opacity: 0.7
-      }
-      .g {        
-        fill: #FED976;
-        stroke-width: 2;
-        stroke-opacity: 1;
-        stroke: white;
-        stroke-dasharray: 3;
-        fill-opacity: 0.7
-      }
-      .h {        
-        fill: #FFEDA0;
-        stroke-width: 2;
-        stroke-opacity: 1;
-        stroke: white;
-        stroke-dasharray: 3;
-        fill-opacity: 0.7
-      }
-      </map-style>
-     <style> 
-       html, 
-       body { 
-         height: 100%; 
-       } 
-       * { 
-         margin: 0; 
-         padding: 0; 
-       } 
-        
-       /* Specifying the `:defined` selector is recommended to style the map 
-       element, such that styles don't apply when fallback content is in use 
-       (e.g. when scripting is disabled or when custom/built-in elements isn't 
-       supported in the browser). */ 
-       mapml-viewer:defined { 
-         /* Responsive map. */ 
-          max-width: 100%;  
-          
-         /* Full viewport. */ 
-          width: 100%;  
-          height: 100%;  
-          
-         /* Remove default (native-like) border. */ 
-         border: none;
-         
-         vertical-align: middle;
-       } 
-        
-       /* Pre-style to avoid FOUC of inline map-layer and fallback content. */ 
-       mapml-viewer:not(:defined) > * { 
-         display: none; 
-       } 
-       
-       /* Pre-style to avoid Layout Shift. */
-       mapml-viewer:not(:defined) {
-         display: inline-block;
-         contain: size;
-         contain-intrinsic-size: 304px 154px;
-       }
-       
-       /* Ensure inline layer content is hidden if custom/built-in elements isn't 
-       supported, or if javascript is disabled. This needs to be defined separately 
-       from the above, because the `:not(:defined)` selector invalidates the entire 
-       declaration in browsers that do not support it. */ 
-       map-layer { 
-         display: none; 
-       } 
-     </style> 
-     <noscript> 
-       <style> 
-         /* Ensure fallback content (children of the map element) is displayed if 
-         custom/built-in elements is supported but javascript is disabled. */ 
-         mapml-viewer:not(:defined) > :not(map-layer) { 
-           display: initial; 
-         } 
-         
-         /* "Reset" the properties used to pre-style (to avoid Layout Shift) if
-         custom/built-in elements is supported but javascript is disabled. */
-         mapml-viewer:not(:defined) {
-           display: initial;
-           contain: initial;
-           contain-intrinsic-size: initial;
-         }
-       </style> 
-     </noscript> 
+    <title>GeoJSON to MapML and back</title>
+    <script src="../../templates/experiment.js"></script>
   </head>
   <body>
-    <mapml-viewer projection="OSMTILE" zoom="2" lat="45" lon="-90" controls>
-      <map-layer label="United States - National Geographic" checked>
-        <map-extent label="National Geographic" units="OSMTILE" checked="checked" hidden>
-          <map-input name="TileMatrix" type="zoom" value="18" min="0" max="18"></map-input>
-          <map-input name="TileCol" type="location" units="tilematrix" axis="column" min="0" max="262144"></map-input>
-          <map-input name="TileRow" type="location" units="tilematrix" axis="row" min="0" max="262144"></map-input>
-          <map-link rel="tile" tref="https://server.arcgisonline.com/arcgis/rest/services/NatGeo_World_Map/MapServer/WMTS/tile/1.0.0/NatGeo_World_Map/default/default028mm/{TileMatrix}/{TileRow}/{TileCol}.jpg"></map-link>
-        </map-extent>
-      </map-layer>
-    </mapml-viewer>
-  <script src="https://leafletjs.com/examples/choropleth/us-states.js"></script>
-<script src="canada.js"></script>
-  <script>
-window.onload = (event) => {
-    function getStateClass(d) {
-       return d > 1000 ? 'a' :
-              d > 500  ? 'b' :
-              d > 200  ? 'c' :
-              d > 100  ? 'd' :
-              d > 50   ? 'e' :
-              d > 20   ? 'f' :
-              d > 10   ? 'g' :
-                         'h';
-    }
-    let provOptions = { 
-      projection: "OSMTILE",
-      label: "Canada Provincial/Territorial Population Density", 
-      caption: "PRENAME",
-      geometryFunction: function (g, f) {
-        if (g.nodeName === "MAP-MULTIPOLYGON") {
-          // need to do this because of a bug: 
-          // https://github.com/Maps4HTML/MapML.js/issues/688
-          let polys = g.querySelectorAll("map-polygon");
-          for (let i=0;i < polys.length; i++) {
-            polys[i].setAttribute("class", "h");
-          }
-        } else {
-          g.setAttribute("class", "h");
-        }
-        return g;
-      }
-    };
-    let stateOptions = { 
-      projection: "OSMTILE",
-      label: "United States' Population Density", 
-      caption: "name",
-//      properties: function(f) {
-//        let h = document.createElement("h4");
-//        h.innerText = f.properties.name;
-//        return h;                                  
-//      },
-      geometryFunction: function (g, f) {
-        if (g.nodeName === "MAP-MULTIPOLYGON") {
-          // need to do this because of a bug: 
-          // https://github.com/Maps4HTML/MapML.js/issues/688
-          let polys = g.querySelectorAll("map-polygon");
-          for (let i=0;i < polys.length; i++) {
-            polys[i].setAttribute("class", getStateClass(f.properties.density));
-          }
-        } else {
-          g.setAttribute("class", getStateClass(f.properties.density));
-        }
-        return g;
-      }
-    };
-    let provs = M.geojson2mapml(provData, provOptions);
-    let stateStyle = document.querySelector("map-style").cloneNode(true);
-    // I wonder if there shouldn't be a style: <Element> option?
-    provs.appendChild(document.querySelector("map-style"));
-    let states = M.geojson2mapml(statesData, stateOptions);
-    states.appendChild(stateStyle);
-    // add the new layer on top of the map
-    document.querySelector('mapml-viewer').appendChild(provs);
-    document.querySelector('mapml-viewer').appendChild(states);
-    
-    let m2goptions =  {
-      // setting transform: true when the coordinates are already in lat/lng
-      // can result in extra precision that is not warranted
-      // to be specified, a precision option that controls the output 
-      // decimal places similar to how GeoServer manages this.
-      transform: false
-      // is this the correct name, compared with geojson2mapml properties function and geometryFunction options tbd
-//      propertyFunction: function(propertiesElement) { 
-//        return {"name": propertiesElement.querySelector('h4').innerText};
-//      }
-    };
-    let sjson = M.mapml2geojson(states, m2goptions);
-    let pjson = M.mapml2geojson(provs, m2goptions);
-    console.log("There are "+sjson.features.length + " states or territories in these United States");
-    console.log("There are "+pjson.features.length + " provinces or territories in Canada");
-//    console.log(JSON.stringify(geojson));
-};  
-    </script>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../index.html">Experiments</a></p>
+      <h1>GeoJSON to MapML and back</h1>
+      <p class="lede">
+        Two GeoJSON feature collections, the population density of the United States and
+        Canada's provinces and territories, turned into <code>&lt;map-layer&gt;</code>s by
+        <code>M.geojson2mapml()</code> and added over a basemap. Its
+        <code>geometryFunction</code> option gives each geometry a density class, which a
+        <code>&lt;map-style&gt;</code> copied into each layer colours. The layers are then
+        converted back with <code>M.mapml2geojson()</code>, and the bar above each map counts
+        the features that came back.
+      </p>
+      <p class="experiment-feature-tags" data-tags="api css">
+        <span class="experiment-nav-label">Feature tags</span>
+      </p>
+      <p class="experiment-tags">
+        <span class="experiment-nav-label">Variants</span>
+        <span class="experiment-tag">Inline only</span>
+      </p>
+      <nav class="experiment-nav" aria-labelledby="root-element-label">
+        <span class="experiment-nav-label" id="root-element-label">Root element</span>
+        <a href="./" aria-current="page">&lt;mapml-viewer&gt;</a>
+        <a href="web-map.html">&lt;map is="web-map"&gt;</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="GeoJSON to MapML and back, rendered by MapML.js" loading="lazy" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="GeoJSON to MapML and back, rendered by MapML-MapLibre" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>A feature's popup is headed by its caption, which the other two leave out.</p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="GeoJSON to MapML and back, rendered by MapML-OpenLayers" loading="lazy" allowfullscreen></iframe>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <h2>What to try</h2>
+      <ul>
+        <li>
+          Hover over a state or province for the caption <code>geojson2mapml</code> made from
+          its <code>name</code> or <code>PRENAME</code> property, and click it for a popup of
+          all its properties.
+        </li>
+        <li>
+          Open the layer control: each generated layer is named by the <code>label</code>
+          option and can be hidden, reordered or made transparent like any other.
+        </li>
+      </ul>
+      <p>
+        A class set on a <code>&lt;map-multipolygon&gt;</code> is not applied
+        (<a href="https://github.com/Maps4HTML/MapML.js/issues/688">Maps4HTML/MapML.js#688</a>),
+        so the <code>geometryFunction</code> sets it on each of the multipolygon's polygons
+        instead. Every Canadian province or territory gets the lowest density class, as the
+        Canadian data carries no density.
+      </p>
+      <p>
+        The United States data is <code>us-states.js</code> from Leaflet's
+        <a href="https://leafletjs.com/examples/choropleth/">choropleth tutorial</a>; the
+        basemap is Esri's National Geographic World Map, which Esri has retired to mature
+        support.
+      </p>
+    </footer>
   </body>
 </html>

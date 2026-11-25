@@ -1,0 +1,113 @@
+<!doctype html>
+<!--
+  One frame of the GeoJSON API comparison: the markup between the code markers
+  is what the framing page shows and copies. Hosted by <map is="web-map">
+  instead of <mapml-viewer>; otherwise the same as index.html beside it.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>GeoJSON to MapML and back, &lt;map is="web-map"&gt; — MapML.js (Leaflet)</title>
+    <script src="../../../templates/experiment.js" data-impl="leaflet"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">GeoJSON to MapML and back in a web-map element, rendered by MapML.js</h1>
+      <!-- code -->
+      <div class="example-controls">
+        <output>Converting GeoJSON to MapML…</output>
+      </div>
+      <div class="example-map">
+        <map is="web-map" projection="OSMTILE" zoom="2" lat="45" lon="-90" controls>
+          <map-caption>Population density of the United States, beside Canada's provinces and territories</map-caption>
+          <map-layer label="National Geographic World Map" checked>
+            <map-link rel="license" title="National Geographic, Esri, Garmin, HERE, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, increment P Corp." href="https://www.arcgis.com/home/item.html?id=b9b1b422198944fbbd5250b3241691b6"></map-link>
+            <map-extent units="OSMTILE" checked hidden>
+              <map-input name="TileMatrix" type="zoom" value="18" min="0" max="18"></map-input>
+              <map-input name="TileCol" type="location" units="tilematrix" axis="column" min="0" max="262144"></map-input>
+              <map-input name="TileRow" type="location" units="tilematrix" axis="row" min="0" max="262144"></map-input>
+              <map-link rel="tile" tref="https://server.arcgisonline.com/arcgis/rest/services/NatGeo_World_Map/MapServer/WMTS/tile/1.0.0/NatGeo_World_Map/default/default028mm/{TileMatrix}/{TileRow}/{TileCol}.jpg"></map-link>
+            </map-extent>
+          </map-layer>
+        </map>
+      </div>
+      <!-- Each generated layer gets its own copy of these classes. -->
+      <template id="density-classes">
+        <map-style>
+          .a, .b, .c, .d, .e, .f, .g, .h {
+            stroke: white;
+            stroke-width: 2;
+            stroke-opacity: 1;
+            stroke-dasharray: 3;
+            fill-opacity: 0.7;
+          }
+          .a { fill: #800026; }
+          .b { fill: #BD0026; }
+          .c { fill: #E31A1C; }
+          .d { fill: #FC4E2A; }
+          .e { fill: #FD8D3C; }
+          .f { fill: #FEB24C; }
+          .g { fill: #FED976; }
+          .h { fill: #FFEDA0; }
+        </map-style>
+      </template>
+      <!-- statesData, from Leaflet's choropleth tutorial, and provData. -->
+      <script src="https://leafletjs.com/examples/choropleth/us-states.js"></script>
+      <script src="../canada.js"></script>
+      <script>
+        const viewer = document.querySelector('map[is="web-map"]');
+
+        function densityClass(d) {
+          return d > 1000 ? 'a' :
+                 d > 500  ? 'b' :
+                 d > 200  ? 'c' :
+                 d > 100  ? 'd' :
+                 d > 50   ? 'e' :
+                 d > 20   ? 'f' :
+                 d > 10   ? 'g' :
+                            'h';
+        }
+
+        // A class on <map-multipolygon> is not applied
+        // (https://github.com/Maps4HTML/MapML.js/issues/688), so it goes on
+        // each of its polygons.
+        function classify(geometry, className) {
+          const shapes = geometry.nodeName === 'MAP-MULTIPOLYGON'
+            ? geometry.querySelectorAll('map-polygon')
+            : [geometry];
+          for (const shape of shapes) shape.setAttribute('class', className);
+          return geometry;
+        }
+
+        customElements.whenDefined('web-map').then(() => {
+          const provinces = M.geojson2mapml(provData, {
+            projection: 'OSMTILE',
+            label: 'Canada Provincial/Territorial Population Density',
+            caption: 'PRENAME',
+            geometryFunction: (g) => classify(g, 'h')
+          });
+          const states = M.geojson2mapml(statesData, {
+            projection: 'OSMTILE',
+            label: "United States' Population Density",
+            caption: 'name',
+            geometryFunction: (g, f) => classify(g, densityClass(f.properties.density))
+          });
+          const style = document.querySelector('#density-classes').content;
+          provinces.append(style.cloneNode(true));
+          states.append(style.cloneNode(true));
+          // Added on top of the basemap.
+          viewer.append(provinces, states);
+
+          // And back again. The coordinates are already longitude/latitude, so
+          // transforming them would only add unwarranted precision.
+          const stateCount = M.mapml2geojson(states, { transform: false }).features.length;
+          const provinceCount = M.mapml2geojson(provinces, { transform: false }).features.length;
+          document.querySelector('output').textContent =
+            `Back to GeoJSON: ${stateCount} US states and territories, ${provinceCount} Canadian provinces and territories.`;
+        });
+      </script>
+      <!-- /code -->
+    </main>
+  </body>
+</html>
