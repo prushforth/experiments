@@ -1,7 +1,7 @@
 <!doctype html>
 <!--
   One frame of the remote comparison, built from templates/full-page/index.html.
-  MapML-MapLibre draws Web Mercator only, so this frame has the one map.
+  The layer documents live one folder up, shared by all three implementations.
 -->
 <html lang="en">
   <head>
@@ -10,6 +10,8 @@
     <title>Negotiate map resource projection, remote &mdash; MapML-MapLibre</title>
     <script src="../../../../templates/experiment.js" data-impl="maplibre"></script>
     <style>
+      /* The maps of the same place, turned different ways, side by side while
+         there is room for them and stacked when there is not. */
       .map-panes {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
@@ -25,8 +27,8 @@
         overflow: hidden;
         background: #fff;
       }
-      /* Two lines, always, so the map does not shift when the caption gains a
-         second one. */
+      /* Two lines, always, so a caption that gains a second one does not push
+         its map out of step with the one beside it. */
       .map-pane figcaption {
         padding: 0.35rem 0.75rem;
         font-size: 0.875rem;
@@ -38,7 +40,7 @@
         display: block;
         color: var(--experiment-muted);
       }
-      /* Clear the caption, which the floating code toolbar would cover. */
+      /* Clear the captions, which the floating code toolbar would cover. */
       body.full-page .example:has(.example-controls) .example-actions {
         inset-block-start: 6.25rem;
       }
@@ -63,11 +65,18 @@
             <map-layer src="../basemap-osmtile.mapml" checked></map-layer>
           </mapml-viewer>
         </figure>
+        <figure class="map-pane">
+          <figcaption>Lambert Conformal Conic <output></output></figcaption>
+          <mapml-viewer static controlslist="static" projection="CBMTILE" zoom="4" lat="60" lon="-90" controls>
+            <map-caption>Canada in Lambert Conformal Conic</map-caption>
+            <map-layer src="../basemap-cbmtile.mapml" checked></map-layer>
+          </mapml-viewer>
+        </figure>
       </div>
 
-      <!-- msi-cbmtile.mapml is drawn for Lambert Conformal Conic and carries a
-           map-link rel="alternate" offering the same data for a map turned the
-           other way. -->
+      <!-- One layer, written once, added to both maps. msi-cbmtile.mapml is
+           drawn for Lambert Conformal Conic and carries a map-link rel="alternate"
+           offering the same data for a map turned the other way. -->
       <template id="sea-ice">
         <map-layer src="../msi-cbmtile.mapml" checked></map-layer>
       </template>
@@ -84,7 +93,7 @@
 
             // A map turned a way the document is not drawn for follows the
             // alternate link in it, which changes the layer's src. Nothing on
-            // this page chooses: watching src only says what the map ended up
+            // this page chooses: watching src only says what each map ended up
             // with.
             const show = () => {
               const source = 'from ' + layer.src.split('/').pop();
