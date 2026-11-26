@@ -38,11 +38,19 @@
         </div>
       </article>
 
-      <article class="example" data-unavailable>
+      <article class="example">
         <h2>MapML-MapLibre</h2>
-        <div class="example-map example-unavailable">
+        <div class="example-map">
+          <iframe src="maplibre/" title="The Arctic SDI, from remote MapML, rendered by MapML-MapLibre" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
           <p>
-            MapML-MapLibre draws Web Mercator only.
+            MapLibre fetches its tiles rather than loading them as images, so it can only
+            draw tiles from a server that allows cross-origin requests, and the Arctic
+            SDI's does not: the map stays blank. The projections themselves work
+            &mdash; choosing another country in the layer's settings still turns the
+            map to face it &mdash; but the outlines of the other countries stop at the edge
+            of the projection's bounds, where the other two draw them past it.
           </p>
         </div>
       </article>

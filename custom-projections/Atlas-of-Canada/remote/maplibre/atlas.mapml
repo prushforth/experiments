@@ -1,0 +1,22 @@
+<mapml- lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <map-head>
+    <map-meta charset="utf-8"></map-meta>
+    <map-meta http-equiv="Content-Type" content="text/mapml"></map-meta>
+    <map-title>Atlas of Canada polar wall map</map-title>
+    <!-- The projection is named, not described. What ATLAS_POLAR_MAP is comes
+         from the page viewing this document. -->
+    <map-meta name="projection" content="ATLAS_POLAR_MAP"></map-meta>
+    <map-meta name="zoom" content="min=0,max=6"></map-meta>
+    <map-link rel="license" title="Canadian Federal Geospatial Platform" href="https://geoappext.nrcan.gc.ca/arcgis/rest/services/FGP/NCR_RCN/MapServer/"></map-link>
+    <map-link rel="suggestions" tref="https://geogratis.gc.ca/services/geoname/en/geonames.json?q={searchTerms}*&amp;num=20"></map-link>
+    <map-link rel="search" tref="https://geogratis.gc.ca/services/geoname/en/geonames.json?q={searchTerms}&amp;num=20"></map-link>
+  </map-head>
+  <map-body>
+    <map-extent units="ATLAS_POLAR_MAP" checked="checked" hidden="hidden">
+      <map-input type="zoom" name="z" min="0" max="6" value="6"></map-input>
+      <map-input type="location" name="x" axis="column" units="tilematrix" min="116" max="186"></map-input>
+      <map-input type="location" name="y" axis="row" units="tilematrix" min="125" max="184"></map-input>
+      <map-link rel="tile" tref="https://geoappext.nrcan.gc.ca/arcgis/rest/services/FGP/NCR_RCN/MapServer/tile/{z}/{y}/{x}/"></map-link>
+    </map-extent>
+  </map-body>
+</mapml->

@@ -51,11 +51,17 @@
         </div>
       </article>
 
-      <article class="example" data-unavailable>
+      <article class="example">
         <h2>MapML-MapLibre</h2>
-        <div class="example-map example-unavailable">
+        <div class="example-map">
+          <iframe src="maplibre/" title="Change projection on zoom change, from remote MapML, rendered by MapML-MapLibre" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
           <p>
-            MapML-MapLibre draws Web Mercator only.
+            As in MapML-OpenLayers, the zoom survives the projection change, so every
+            boundary settles. The Arctic SDI map, at zoom 0 to 3, stays blank: MapLibre
+            fetches its tiles rather than loading them as images, and the Arctic
+            SDI's tile server does not allow cross-origin requests.
           </p>
         </div>
       </article>
