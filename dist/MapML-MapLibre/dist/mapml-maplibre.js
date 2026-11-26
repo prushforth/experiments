@@ -56598,7 +56598,7 @@ var P7 = class extends xW {
 				featureId: a,
 				featureEl: t,
 				caption: _,
-				hasPopup: typeof o.propertiesHtml == "string" && o.propertiesHtml !== "",
+				hasPopup: S === null && typeof o.propertiesHtml == "string" && o.propertiesHtml !== "",
 				hasLink: S !== null,
 				centerLng: u,
 				centerLat: d,
@@ -60829,7 +60829,7 @@ ${Rne}`, e.appendChild(t), this.#n = document.createElement("div"), this.#n.clas
 			e.preventDefault(), this.#le(e);
 			return;
 		}
-		if (e.altKey || e.metaKey) return;
+		if (e.altKey || e.metaKey || this.hasAttribute("static")) return;
 		let t = this.#e.map;
 		if (t) {
 			if (e.key === "ArrowLeft" || e.key === "ArrowRight" || e.key === "ArrowUp" || e.key === "ArrowDown") {
@@ -61025,7 +61025,13 @@ ${Rne}`, e.appendChild(t), this.#n = document.createElement("div"), this.#n.clas
 		if (!this.#r || !e || this.#p) return;
 		this.#p = !0;
 		let t = e.getContainer().clientHeight, n = 0, r = (e) => n + e > t ? !1 : (n += e, !0);
-		this.#f.layerControl = new jq(this), this.#e.addControl(this.#f.layerControl, "top-right"), this.#f.layerContextMenu = new Ine(this, this.renderRoot, this.locale), this.#f.compass = new Vq(this), this.#e.addControl(this.#f.compass, "top-right"), this.#f.viewControl = new Fq(this), this.#e.addControl(this.#f.viewControl, "top-right"), this.#f.staticControl = new zq(this), this.#e.addControl(this.#f.staticControl, "top-right"), this.#f.featureIndexControl = new qq(this), this.#e.addControl(this.#f.featureIndexControl, "top-right"), this.#f.scale = new Xne({ unit: "metric" }), this.#e.addControl(this.#f.scale, "bottom-left"), r(93) && (this.#f.nav = new BN({ showCompass: !1 }), this.#e.addControl(this.#f.nav, "top-left"), this.#f.nav._container.dataset.testid = "zoom-control", this.#f.nav._zoomInButton.dataset.testid = "zoom-in-button", this.#f.nav._zoomOutButton.dataset.testid = "zoom-out-button"), this.#f.search = new Vne(this), this.#e.addControl(this.#f.search, "top-left"), r(49) && (this.#f.reload = new Nq(this), this.#e.addControl(this.#f.reload, "top-left")), r(49) && (this.#f.fullscreen = new gP({ container: this }), this.#e.addControl(this.#f.fullscreen, "top-left"), this.#f.fullscreen._controlContainer.dataset.testid = "fullscreen-control", this.#f.fullscreen._controlContainer.addEventListener("click", () => this.#e.map?.getCanvas().focus({ preventScroll: !0 }))), this.#f.geolocate = new Yne({
+		if (this.#f.layerControl = new jq(this), this.#e.addControl(this.#f.layerControl, "top-right"), this.#f.layerContextMenu = new Ine(this, this.renderRoot, this.locale), this.#f.compass = new Vq(this), this.#e.addControl(this.#f.compass, "top-right"), this.#f.viewControl = new Fq(this), this.#e.addControl(this.#f.viewControl, "top-right"), this.#f.staticControl = new zq(this), this.#e.addControl(this.#f.staticControl, "top-right"), this.#f.featureIndexControl = new qq(this), this.#e.addControl(this.#f.featureIndexControl, "top-right"), this.#f.scale = new Xne({ unit: "metric" }), this.#e.addControl(this.#f.scale, "bottom-left"), r(93)) {
+			let e = new BN({ showCompass: !1 }), t = e._updateZoomButtons;
+			e._updateZoomButtons = () => {
+				if (t(), this.hasAttribute("static")) for (let t of [e._zoomInButton, e._zoomOutButton]) t.disabled = !0, t.setAttribute("aria-disabled", "true");
+			}, this.#f.nav = e, this.#e.addControl(this.#f.nav, "top-left"), this.#f.nav._container.dataset.testid = "zoom-control", this.#f.nav._zoomInButton.dataset.testid = "zoom-in-button", this.#f.nav._zoomOutButton.dataset.testid = "zoom-out-button";
+		}
+		this.#f.search = new Vne(this), this.#e.addControl(this.#f.search, "top-left"), r(49) && (this.#f.reload = new Nq(this), this.#e.addControl(this.#f.reload, "top-left")), r(49) && (this.#f.fullscreen = new gP({ container: this }), this.#e.addControl(this.#f.fullscreen, "top-left"), this.#f.fullscreen._controlContainer.dataset.testid = "fullscreen-control", this.#f.fullscreen._controlContainer.addEventListener("click", () => this.#e.map?.getCanvas().focus({ preventScroll: !0 }))), this.#f.geolocate = new Yne({
 			positionOptions: { enableHighAccuracy: !1 },
 			trackUserLocation: !0
 		}, this.locale), this.#e.addControl(this.#f.geolocate, "bottom-right"), this.#we();
@@ -61183,9 +61189,7 @@ ${Rne}`, e.appendChild(t), this.#n = document.createElement("div"), this.#n.clas
 			e.dragRotate
 		];
 		for (let e of n) e && (t ? e.disable() : e.enable());
-		(this.renderRoot?.querySelectorAll(".maplibregl-ctrl-zoom-in, .maplibregl-ctrl-zoom-out"))?.forEach((e) => {
-			e.disabled = t;
-		}), this.dispatchEvent(new CustomEvent("mapml:staticchanged"));
+		this.#f.nav?._updateZoomButtons(), this.dispatchEvent(new CustomEvent("mapml:staticchanged"));
 	}
 }, U9 = class extends H9(HTMLElement) {};
 function Gre(e) {

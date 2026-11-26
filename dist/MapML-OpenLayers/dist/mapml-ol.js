@@ -37416,7 +37416,7 @@ const ny = (i) => class extends i {
   _setMinAndMaxZoomFromLayers() {
     var n;
     const t = (n = this._map) == null ? void 0 : n.getView(), e = this.extent;
-    !t || !e || (t.setMaxZoom(e.zoom.maxZoom), t.setMinZoom(e.zoom.minZoom));
+    !t || !e || (t.setMaxZoom(e.zoom.maxZoom), t.setMinZoom(e.zoom.minZoom), this._updateZoomButtons());
   }
   // Ported from MapML.js mapml-viewer.js: resolves once the named projection is
   // registered on the global `M` (polls, since a custom projection may be
@@ -37795,7 +37795,7 @@ const ny = (i) => class extends i {
     s.hasAttribute("tabindex") || s.setAttribute("tabindex", "-1"), s.addEventListener("pointerdown", (o) => {
       o.target.closest(".ol-control") || s.focus({ preventScroll: !0 });
     }), this._history = new qS(this._map), this._history.enable(), this._lastZoom = Math.round(this._view.getZoom()), this._map.on("moveend", () => {
-      this._updateMapCenter(), this.dispatchEvent(
+      this._updateMapCenter(), this._updateZoomButtons(), this.dispatchEvent(
         new CustomEvent("map-moveend", { detail: { target: this } })
       );
       const o = Math.round(this._view.getZoom());
@@ -37899,20 +37899,28 @@ const ny = (i) => class extends i {
     const t = !this.hasAttribute("static");
     this._map.getInteractions().forEach((e) => {
       e.setActive(t);
-    }), this._syncZoomControlStatic();
+    }), this._updateZoomButtons();
   }
-  // Reflect the `static` state onto the (optional) zoom control's buttons. OL's
-  // ol/control/Zoom has no disable() (unlike Leaflet's zoom control), so we
-  // toggle the `disabled` property on its two buttons and mirror Leaflet's
-  // `leaflet-disabled` styling hook via `aria-disabled` (see zoomControl.css.js).
-  // Called from _toggleStatic and after (re)creating the zoom control, since it
-  // may be installed while the map is already static.
-  _syncZoomControlStatic() {
+  // Disable the (optional) zoom control's buttons that can't act: both while
+  // the map is static, else zoom in at the maximum zoom and zoom out at the
+  // minimum, as Leaflet's zoom control does (`disable()`, `_updateDisabled`).
+  // OL's ol/control/Zoom does neither, so we set `disabled` on its buttons and
+  // mirror Leaflet's `leaflet-disabled` styling hook via `aria-disabled` (see
+  // zoomControl.css.js). A button can't act when the zoom it would go to,
+  // constrained as ol/control/Zoom constrains it, is the current one. Called
+  // on every move, when the layers change the zoom range, from _toggleStatic,
+  // and after (re)creating the zoom control.
+  _updateZoomButtons() {
+    var a;
     if (!this._zoomControl) return;
-    const t = this.hasAttribute("static");
-    this._zoomControl.element.querySelectorAll("button").forEach((e) => {
-      e.disabled = t, e.setAttribute("aria-disabled", String(t));
-    });
+    const t = this.hasAttribute("static"), e = (a = this._map) == null ? void 0 : a.getView(), n = e == null ? void 0 : e.getZoom(), s = (l) => n !== void 0 && Math.abs(e.getConstrainedZoom(n + l) - n) < 1e-6, [r, o] = this._zoomControl.element.querySelectorAll("button");
+    for (const [l, h] of [
+      [r, 1],
+      [o, -1]
+    ]) {
+      const c = t || s(h);
+      l.disabled = c, l.setAttribute("aria-disabled", String(c));
+    }
   }
   // The controlslist DOMTokenList (mirrors MapML.js's `controlsList` property).
   get controlsList() {
@@ -38147,7 +38155,7 @@ const ny = (i) => class extends i {
       }
       this[s.key] = r;
     }
-    this._orderControls(), this._syncZoomControlStatic();
+    this._orderControls(), this._updateZoomButtons();
   }
   // Drop the control references so a reconnect recreates them; the elements
   // themselves go with the map. Ported from MapML.js's _deleteControls.
@@ -38281,7 +38289,7 @@ const ny = (i) => class extends i {
     }
     await Promise.allSettled(u);
     const f = this.layers;
-    f.length === 1 && f[0].extent && (h.setMinZoom(f[0].extent.zoom.minZoom), h.setMaxZoom(f[0].extent.zoom.maxZoom)), this.zoomTo(e, n, l);
+    f.length === 1 && f[0].extent && (h.setMinZoom(f[0].extent.zoom.minZoom), h.setMaxZoom(f[0].extent.zoom.maxZoom), this._updateZoomButtons()), this.zoomTo(e, n, l);
     for (const { layer: p, resolve: g, reject: _ } of d)
       p.whenReady().then(g, _);
     if (c && this._announceMovement.enable(), this._debug) for (let p = 0; p < 2; p++) this.toggleDebug();
