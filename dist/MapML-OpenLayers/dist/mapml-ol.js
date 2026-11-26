@@ -39856,7 +39856,7 @@ function rL(i, t) {
 }
 class oL extends HTMLElement {
   static get observedAttributes() {
-    return ["units", "checked", "hidden", "opacity"];
+    return ["units", "checked", "hidden", "opacity", "label"];
   }
   constructor() {
     super(), this._settingsExpanded = !1;
@@ -39864,9 +39864,11 @@ class oL extends HTMLElement {
   get units() {
     return this.getAttribute("units") || "";
   }
-  // Extent name shown in the layer control (falls back to the projection name).
+  // Extent name shown in the layer control; without a label attribute, the
+  // locale's dfExtent ("Sub-layer"). Ported from MapML.js map-extent.js.
   get label() {
-    return this.getAttribute("label") || this.units;
+    var t;
+    return this.hasAttribute("label") ? this.getAttribute("label") : (((t = this.getMapEl()) == null ? void 0 : t.locale) ?? window.M.options.locale).dfExtent;
   }
   get checked() {
     return this.hasAttribute("checked");
@@ -39885,7 +39887,7 @@ class oL extends HTMLElement {
   }
   attributeChangedCallback(t, e, n) {
     var s, r;
-    e !== n && (t === "checked" ? this._handleChange() : t === "hidden" ? (s = this._viewer) == null || s.dispatchEvent(new CustomEvent("mapml:layerschanged")) : t === "opacity" && (this._opacity = +n, (r = this._extentGroup) == null || r.setOpacity(this._opacity)));
+    e !== n && (t === "checked" ? this._handleChange() : t === "hidden" || t === "label" ? (s = this._viewer) == null || s.dispatchEvent(new CustomEvent("mapml:layerschanged")) : t === "opacity" && (this._opacity = +n, (r = this._extentGroup) == null || r.setOpacity(this._opacity)));
   }
   // Reflect opacity to the extent group (called by the opacity slider). Records
   // `_opacity` so `get opacity()` and the slider stay in sync.
@@ -39945,7 +39947,9 @@ class oL extends HTMLElement {
   }
   async connectedCallback() {
     var t;
-    this.hasAttribute("data-moving") || (t = O.getClosest(this, "map-layer")) != null && t.hasAttribute("data-moving") || (this._viewer = O.getClosest(this, 'mapml-viewer,map[is="web-map"]'), this._viewer && (await this._viewer.whenReady(), this.isConnected && (this.getLayerGroup(), this._viewer.dispatchEvent(new CustomEvent("mapml:layerschanged")))));
+    this.hasAttribute("data-moving") || (t = O.getClosest(this, "map-layer")) != null && t.hasAttribute("data-moving") || (this._viewer = O.getClosest(this, 'mapml-viewer,map[is="web-map"]'), this._viewer && (await this._viewer.whenProjectionDefined(this.units).catch(() => {
+      throw new Error("Undefined projection:" + this.units);
+    }), await this._viewer.whenReady(), this.isConnected && (this.getLayerGroup(), this._viewer.dispatchEvent(new CustomEvent("mapml:layerschanged")))));
   }
   disconnectedCallback() {
     var t, e;
