@@ -8070,7 +8070,7 @@ function re(i, t, e) {
     );
   return new he(Vn, i);
 }
-const k = {
+const O = {
   Get: "get",
   Var: "var",
   Concat: "concat",
@@ -8119,164 +8119,164 @@ const k = {
   ToString: "to-string",
   Has: "has"
 }, ob = {
-  [k.Get]: st(dt(1, 1 / 0), mm),
-  [k.Var]: ab(),
-  [k.Has]: st(dt(1, 1 / 0), mm),
-  [k.Id]: st(lb, Ys),
-  [k.Concat]: st(
+  [O.Get]: st(dt(1, 1 / 0), mm),
+  [O.Var]: ab(),
+  [O.Has]: st(dt(1, 1 / 0), mm),
+  [O.Id]: st(lb, Ys),
+  [O.Concat]: st(
     dt(2, 1 / 0),
     Lt(Ne)
   ),
-  [k.GeometryType]: st(hb, Ys),
-  [k.LineMetric]: st(cb, Ys),
-  [k.Resolution]: st(dc, Ys),
-  [k.Zoom]: st(dc, Ys),
-  [k.Time]: st(dc, Ys),
-  [k.Any]: st(
+  [O.GeometryType]: st(hb, Ys),
+  [O.LineMetric]: st(cb, Ys),
+  [O.Resolution]: st(dc, Ys),
+  [O.Zoom]: st(dc, Ys),
+  [O.Time]: st(dc, Ys),
+  [O.Any]: st(
     dt(2, 1 / 0),
     Lt(Oe)
   ),
-  [k.All]: st(
+  [O.All]: st(
     dt(2, 1 / 0),
     Lt(Oe)
   ),
-  [k.Not]: st(
+  [O.Not]: st(
     dt(1, 1),
     Lt(Oe)
   ),
-  [k.Equal]: st(
+  [O.Equal]: st(
     dt(2, 2),
     gm()
   ),
-  [k.NotEqual]: st(
+  [O.NotEqual]: st(
     dt(2, 2),
     gm()
   ),
-  [k.GreaterThan]: st(
+  [O.GreaterThan]: st(
     dt(2, 2),
     Lt(gt)
   ),
-  [k.GreaterThanOrEqualTo]: st(
+  [O.GreaterThanOrEqualTo]: st(
     dt(2, 2),
     Lt(gt)
   ),
-  [k.LessThan]: st(
+  [O.LessThan]: st(
     dt(2, 2),
     Lt(gt)
   ),
-  [k.LessThanOrEqualTo]: st(
+  [O.LessThanOrEqualTo]: st(
     dt(2, 2),
     Lt(gt)
   ),
-  [k.Multiply]: st(
+  [O.Multiply]: st(
     dt(2, 1 / 0),
     pm
   ),
-  [k.Coalesce]: st(
+  [O.Coalesce]: st(
     dt(2, 1 / 0),
     pm
   ),
-  [k.Divide]: st(
+  [O.Divide]: st(
     dt(2, 2),
     Lt(gt)
   ),
-  [k.Add]: st(
+  [O.Add]: st(
     dt(2, 1 / 0),
     Lt(gt)
   ),
-  [k.Subtract]: st(
+  [O.Subtract]: st(
     dt(2, 2),
     Lt(gt)
   ),
-  [k.Clamp]: st(
+  [O.Clamp]: st(
     dt(3, 3),
     Lt(gt)
   ),
-  [k.Mod]: st(
+  [O.Mod]: st(
     dt(2, 2),
     Lt(gt)
   ),
-  [k.Pow]: st(
+  [O.Pow]: st(
     dt(2, 2),
     Lt(gt)
   ),
-  [k.Abs]: st(
+  [O.Abs]: st(
     dt(1, 1),
     Lt(gt)
   ),
-  [k.Floor]: st(
+  [O.Floor]: st(
     dt(1, 1),
     Lt(gt)
   ),
-  [k.Ceil]: st(
+  [O.Ceil]: st(
     dt(1, 1),
     Lt(gt)
   ),
-  [k.Round]: st(
+  [O.Round]: st(
     dt(1, 1),
     Lt(gt)
   ),
-  [k.Sin]: st(
+  [O.Sin]: st(
     dt(1, 1),
     Lt(gt)
   ),
-  [k.Cos]: st(
+  [O.Cos]: st(
     dt(1, 1),
     Lt(gt)
   ),
-  [k.Atan]: st(
+  [O.Atan]: st(
     dt(1, 2),
     Lt(gt)
   ),
-  [k.Sqrt]: st(
+  [O.Sqrt]: st(
     dt(1, 1),
     Lt(gt)
   ),
-  [k.Match]: st(
+  [O.Match]: st(
     dt(4, 1 / 0),
     _m,
     db
   ),
-  [k.Between]: st(
+  [O.Between]: st(
     dt(3, 3),
     Lt(gt)
   ),
-  [k.Interpolate]: st(
+  [O.Interpolate]: st(
     dt(6, 1 / 0),
     _m,
     fb
   ),
-  [k.Case]: st(
+  [O.Case]: st(
     dt(3, 1 / 0),
     ub,
     mb
   ),
-  [k.In]: st(dt(2, 2), pb),
-  [k.Number]: st(
+  [O.In]: st(dt(2, 2), pb),
+  [O.Number]: st(
     dt(1, 1 / 0),
     Lt(Pl)
   ),
-  [k.String]: st(
+  [O.String]: st(
     dt(1, 1 / 0),
     Lt(Pl)
   ),
-  [k.Array]: st(
+  [O.Array]: st(
     dt(1, 1 / 0),
     Lt(gt)
   ),
-  [k.Color]: st(
+  [O.Color]: st(
     dt(1, 4),
     Lt(gt)
   ),
-  [k.Band]: st(
+  [O.Band]: st(
     dt(1, 3),
     Lt(gt)
   ),
-  [k.Palette]: st(
+  [O.Palette]: st(
     dt(2, 2),
     gb
   ),
-  [k.ToString]: st(
+  [O.ToString]: st(
     dt(1, 1),
     Lt(Oe | gt | Ne | ti)
   )
@@ -8670,60 +8670,60 @@ function Gi(i, t) {
   }
   const e = i.operator;
   switch (e) {
-    case k.Number:
-    case k.String:
-    case k.Coalesce:
+    case O.Number:
+    case O.String:
+    case O.Coalesce:
       return yb(i);
-    case k.Get:
-    case k.Var:
-    case k.Has:
+    case O.Get:
+    case O.Var:
+    case O.Has:
       return vb(i);
-    case k.Id:
+    case O.Id:
       return (n) => n.featureId;
-    case k.GeometryType:
+    case O.GeometryType:
       return (n) => n.geometryType;
-    case k.Concat: {
+    case O.Concat: {
       const n = i.args.map((s) => Gi(s));
       return (s) => "".concat(...n.map((r) => r(s).toString()));
     }
-    case k.Resolution:
+    case O.Resolution:
       return (n) => n.resolution;
-    case k.Any:
-    case k.All:
-    case k.Between:
-    case k.In:
-    case k.Not:
+    case O.Any:
+    case O.All:
+    case O.Between:
+    case O.In:
+    case O.Not:
       return bb(i);
-    case k.Equal:
-    case k.NotEqual:
-    case k.LessThan:
-    case k.LessThanOrEqualTo:
-    case k.GreaterThan:
-    case k.GreaterThanOrEqualTo:
+    case O.Equal:
+    case O.NotEqual:
+    case O.LessThan:
+    case O.LessThanOrEqualTo:
+    case O.GreaterThan:
+    case O.GreaterThanOrEqualTo:
       return xb(i);
-    case k.Multiply:
-    case k.Divide:
-    case k.Add:
-    case k.Subtract:
-    case k.Clamp:
-    case k.Mod:
-    case k.Pow:
-    case k.Abs:
-    case k.Floor:
-    case k.Ceil:
-    case k.Round:
-    case k.Sin:
-    case k.Cos:
-    case k.Atan:
-    case k.Sqrt:
+    case O.Multiply:
+    case O.Divide:
+    case O.Add:
+    case O.Subtract:
+    case O.Clamp:
+    case O.Mod:
+    case O.Pow:
+    case O.Abs:
+    case O.Floor:
+    case O.Ceil:
+    case O.Round:
+    case O.Sin:
+    case O.Cos:
+    case O.Atan:
+    case O.Sqrt:
       return wb(i);
-    case k.Case:
+    case O.Case:
       return Eb(i);
-    case k.Match:
+    case O.Match:
       return Mb(i);
-    case k.Interpolate:
+    case O.Interpolate:
       return Cb(i);
-    case k.ToString:
+    case O.ToString:
       return Sb(i);
     default:
       throw new Error(`Unsupported operator ${e}`);
@@ -8734,7 +8734,7 @@ function yb(i, t) {
   for (let r = 0; r < n; ++r)
     s[r] = Gi(i.args[r]);
   switch (e) {
-    case k.Coalesce:
+    case O.Coalesce:
       return (r) => {
         for (let o = 0; o < n; ++o) {
           const a = s[o](r);
@@ -8743,8 +8743,8 @@ function yb(i, t) {
         }
         throw new Error("Expected one of the values to be non-null");
       };
-    case k.Number:
-    case k.String:
+    case O.Number:
+    case O.String:
       return (r) => {
         for (let o = 0; o < n; ++o) {
           const a = s[o](r);
@@ -8764,7 +8764,7 @@ function vb(i, t) {
     i.args[0].value
   );
   switch (i.operator) {
-    case k.Get:
+    case O.Get:
       return (s) => {
         const r = i.args;
         let o = s.properties[n];
@@ -8778,9 +8778,9 @@ function vb(i, t) {
         }
         return o;
       };
-    case k.Var:
+    case O.Var:
       return (s) => s.variables[n];
-    case k.Has:
+    case O.Has:
       return (s) => {
         const r = i.args;
         if (!(n in s.properties))
@@ -8805,17 +8805,17 @@ function vb(i, t) {
 function xb(i, t) {
   const e = i.operator, n = Gi(i.args[0]), s = Gi(i.args[1]);
   switch (e) {
-    case k.Equal:
+    case O.Equal:
       return (r) => n(r) === s(r);
-    case k.NotEqual:
+    case O.NotEqual:
       return (r) => n(r) !== s(r);
-    case k.LessThan:
+    case O.LessThan:
       return (r) => n(r) < s(r);
-    case k.LessThanOrEqualTo:
+    case O.LessThanOrEqualTo:
       return (r) => n(r) <= s(r);
-    case k.GreaterThan:
+    case O.GreaterThan:
       return (r) => n(r) > s(r);
-    case k.GreaterThanOrEqualTo:
+    case O.GreaterThanOrEqualTo:
       return (r) => n(r) >= s(r);
     default:
       throw new Error(`Unsupported comparison operator ${e}`);
@@ -8826,26 +8826,26 @@ function bb(i, t) {
   for (let r = 0; r < n; ++r)
     s[r] = Gi(i.args[r]);
   switch (e) {
-    case k.Any:
+    case O.Any:
       return (r) => {
         for (let o = 0; o < n; ++o)
           if (s[o](r))
             return !0;
         return !1;
       };
-    case k.All:
+    case O.All:
       return (r) => {
         for (let o = 0; o < n; ++o)
           if (!s[o](r))
             return !1;
         return !0;
       };
-    case k.Between:
+    case O.Between:
       return (r) => {
         const o = s[0](r), a = s[1](r), l = s[2](r);
         return o >= a && o <= l;
       };
-    case k.In:
+    case O.In:
       return (r) => {
         const o = s[0](r);
         for (let a = 1; a < n; ++a)
@@ -8853,7 +8853,7 @@ function bb(i, t) {
             return !0;
         return !1;
       };
-    case k.Not:
+    case O.Not:
       return (r) => !s[0](r);
     default:
       throw new Error(`Unsupported logical operator ${e}`);
@@ -8864,25 +8864,25 @@ function wb(i, t) {
   for (let r = 0; r < n; ++r)
     s[r] = Gi(i.args[r]);
   switch (e) {
-    case k.Multiply:
+    case O.Multiply:
       return (r) => {
         let o = 1;
         for (let a = 0; a < n; ++a)
           o *= s[a](r);
         return o;
       };
-    case k.Divide:
+    case O.Divide:
       return (r) => s[0](r) / s[1](r);
-    case k.Add:
+    case O.Add:
       return (r) => {
         let o = 0;
         for (let a = 0; a < n; ++a)
           o += s[a](r);
         return o;
       };
-    case k.Subtract:
+    case O.Subtract:
       return (r) => s[0](r) - s[1](r);
-    case k.Clamp:
+    case O.Clamp:
       return (r) => {
         const o = s[0](r), a = s[1](r);
         if (o < a)
@@ -8890,25 +8890,25 @@ function wb(i, t) {
         const l = s[2](r);
         return o > l ? l : o;
       };
-    case k.Mod:
+    case O.Mod:
       return (r) => s[0](r) % s[1](r);
-    case k.Pow:
+    case O.Pow:
       return (r) => Math.pow(s[0](r), s[1](r));
-    case k.Abs:
+    case O.Abs:
       return (r) => Math.abs(s[0](r));
-    case k.Floor:
+    case O.Floor:
       return (r) => Math.floor(s[0](r));
-    case k.Ceil:
+    case O.Ceil:
       return (r) => Math.ceil(s[0](r));
-    case k.Round:
+    case O.Round:
       return (r) => Math.round(s[0](r));
-    case k.Sin:
+    case O.Sin:
       return (r) => Math.sin(s[0](r));
-    case k.Cos:
+    case O.Cos:
       return (r) => Math.cos(s[0](r));
-    case k.Atan:
+    case O.Atan:
       return n === 2 ? (r) => Math.atan2(s[0](r), s[1](r)) : (r) => Math.atan(s[0](r));
-    case k.Sqrt:
+    case O.Sqrt:
       return (r) => Math.sqrt(s[0](r));
     default:
       throw new Error(`Unsupported numeric operator ${e}`);
@@ -8974,7 +8974,7 @@ function Sb(i, t) {
   for (let r = 0; r < n; ++r)
     s[r] = Gi(i.args[r]);
   switch (e) {
-    case k.ToString:
+    case O.ToString:
       return (r) => {
         const o = s[0](r);
         return i.args[0].type === ti ? Gd(o) : o.toString();
@@ -18745,7 +18745,7 @@ var Ym = {
   locale: pS,
   localeFr: gS
 };
-const O = {
+const k = {
   /* Scheme-allowlist an author-supplied URL, resolved against the page's
    * base URI, returning '' for anything that is not http(s). Pasted or
    * remotely fetched MapML documents are treated as untrusted: a malicious
@@ -19025,7 +19025,7 @@ const O = {
     let s = e.options.crs.tile.bounds.max.x;
     switch (n.toUpperCase()) {
       case "TILEMATRIX":
-        return O.pixelToPCRSPoint(
+        return k.pixelToPCRSPoint(
           et(i.x * s, i.y * s),
           t,
           e
@@ -19037,7 +19037,7 @@ const O = {
       // parity; TODO(upstream): should be `case 'TCRS': case 'TILE':`.
       // eslint-disable-next-line no-constant-binary-expression
       case "TCRS":
-        return O.pixelToPCRSPoint(i, t, e);
+        return k.pixelToPCRSPoint(i, t, e);
       case "GCRS":
         return e.project(As(i.y, i.x));
       default:
@@ -19055,8 +19055,8 @@ const O = {
   boundsToPCRSBounds: function(i, t, e, n) {
     if (!(!i || !i.max || !i.min || t !== void 0 && !Number.isFinite(+t) || t === void 0 && (n === "TILEMATRIX" || n === "TCRS" || n === "TILE") || !e || !n))
       return e = typeof e == "string" ? M[e] : e, K(
-        O.pointToPCRSPoint(i.min, t, e, n),
-        O.pointToPCRSPoint(i.max, t, e, n)
+        k.pointToPCRSPoint(i.min, t, e, n),
+        k.pointToPCRSPoint(i.max, t, e, n)
       );
   },
   //bounds have fixed point positions, where min is always topleft, max is always bottom right, and the values are always sorted by leaflet
@@ -19064,8 +19064,8 @@ const O = {
   pixelToPCRSBounds: function(i, t, e) {
     if (!(!i || !i.max || !i.min || !t && t !== 0 || !Number.isFinite(+t) || !e))
       return e = typeof e == "string" ? M[e] : e, K(
-        O.pixelToPCRSPoint(i.min, t, e),
-        O.pixelToPCRSPoint(i.max, t, e)
+        k.pixelToPCRSPoint(i.min, t, e),
+        k.pixelToPCRSPoint(i.max, t, e)
       );
   },
   //meta content is the content attribute of meta
@@ -19084,16 +19084,16 @@ const O = {
   // map-meta[name=projection] beside it
   getBoundsFromMeta: function(i, t) {
     if (!i) return null;
-    let e, n = i instanceof ShadowRoot ? ":host" : ":scope", s = i.querySelector(n + " > map-meta[name=projection]") && O._metaContentToObject(
+    let e, n = i instanceof ShadowRoot ? ":host" : ":scope", s = i.querySelector(n + " > map-meta[name=projection]") && k._metaContentToObject(
       i.querySelector(n + " > map-meta[name=projection]").getAttribute("content")
     ).content.toUpperCase() || t || M.FALLBACK_PROJECTION;
     try {
-      let r = i.querySelector(n + " > map-meta[name=extent]") && O._metaContentToObject(
+      let r = i.querySelector(n + " > map-meta[name=extent]") && k._metaContentToObject(
         i.querySelector(n + " > map-meta[name=extent]").getAttribute("content")
       ), o = r.zoom, a = Object.keys(r);
       for (let h = 0; h < a.length; h++)
         if (!a[h].includes("zoom")) {
-          e = O.axisToCS(a[h].split("-")[2]);
+          e = k.axisToCS(a[h].split("-")[2]);
           break;
         }
       if (e === void 0) throw new Error("cs undefined when getting bounds");
@@ -19101,8 +19101,8 @@ const O = {
         throw new Error(
           "map-meta[name=extent] zoom= parameter not provided for tcrs,tile or tilematrix bounds"
         );
-      let l = O.csToAxes(e);
-      return O.boundsToPCRSBounds(
+      let l = k.csToAxes(e);
+      return k.boundsToPCRSBounds(
         K(
           et(+r[`top-left-${l[0]}`], +r[`top-left-${l[1]}`]),
           et(
@@ -19115,7 +19115,7 @@ const O = {
         e
       );
     } catch {
-      return O.boundsToPCRSBounds(
+      return k.boundsToPCRSBounds(
         M[s].options.crs.tilematrix.bounds(0),
         0,
         s,
@@ -19132,7 +19132,7 @@ const O = {
    */
   getZoomBoundsFromMeta: function(i) {
     if (!i) return null;
-    let t = i instanceof ShadowRoot ? ":host" : ":scope", e = O._metaContentToObject(
+    let t = i instanceof ShadowRoot ? ":host" : ":scope", e = k._metaContentToObject(
       i.querySelector(t + "> map-meta[name=zoom]").getAttribute("content")
     );
     if (e.min && e.max && e.value)
@@ -19238,7 +19238,7 @@ const O = {
       ];
       let y = i.features;
       for (let v = 0; v < y.length; v++)
-        O.geojson2mapml(y[v], t, e, n);
+        k.geojson2mapml(y[v], t, e, n);
     } else if (o === "FEATURE") {
       let v = x.cloneNode(!0).querySelector("map-feature");
       i.bbox ? e.querySelector("map-layer").insertAdjacentHTML(
@@ -19255,13 +19255,13 @@ const O = {
       let E;
       typeof t.properties == "function" ? (E = t.properties(i), E instanceof Element || (E = !1, console.error(
         "options.properties function returns a string instead of an HTMLElement."
-      ))) : typeof t.properties == "string" ? (v.querySelector("map-properties").insertAdjacentHTML("beforeend", t.properties), E = !1) : t.properties instanceof HTMLElement ? E = t.properties : E = O._properties2Table(i.properties), E && v.querySelector("map-properties").appendChild(E);
-      let C = O.geojson2mapml(i.geometry, t, e, n);
+      ))) : typeof t.properties == "string" ? (v.querySelector("map-properties").insertAdjacentHTML("beforeend", t.properties), E = !1) : t.properties instanceof HTMLElement ? E = t.properties : E = k._properties2Table(i.properties), E && v.querySelector("map-properties").appendChild(E);
+      let C = k.geojson2mapml(i.geometry, t, e, n);
       typeof t.geometryFunction == "function" ? v.querySelector("map-geometry").appendChild(t.geometryFunction(C, i)) : v.querySelector("map-geometry").appendChild(C), e.querySelector("map-layer").appendChild(v);
     } else if (r.includes(o))
       switch (o) {
         case "POINT": {
-          n = O._updateExtent(
+          n = k._updateExtent(
             n,
             i.coordinates[0],
             i.coordinates[1]
@@ -19275,7 +19275,7 @@ const O = {
           let y = f.cloneNode(!0), v = y.querySelector("map-coordinates");
           a = "";
           for (let w = 0; w < i.coordinates.length; w++)
-            n = O._updateExtent(
+            n = k._updateExtent(
               n,
               i.coordinates[w][0],
               i.coordinates[w][1]
@@ -19289,7 +19289,7 @@ const O = {
             let w = "", E = b.cloneNode(!0);
             E = E.querySelector("map-coordinates");
             for (let C = 0; C < i.coordinates[v].length; C++)
-              n = O._updateExtent(
+              n = k._updateExtent(
                 n,
                 i.coordinates[v][C][0],
                 i.coordinates[v][C][1]
@@ -19303,7 +19303,7 @@ const O = {
           let y = d.cloneNode(!0);
           y = y.querySelector("map-multipoint");
           for (let v = 0; v < i.coordinates.length; v++)
-            n = O._updateExtent(
+            n = k._updateExtent(
               n,
               i.coordinates[v][0],
               i.coordinates[v][1]
@@ -19319,7 +19319,7 @@ const O = {
             let w = "", E = b.cloneNode(!0);
             E = E.querySelector("map-coordinates");
             for (let C = 0; C < i.coordinates[v].length; C++)
-              n = O._updateExtent(
+              n = k._updateExtent(
                 n,
                 i.coordinates[v][C][0],
                 i.coordinates[v][C][1]
@@ -19338,7 +19338,7 @@ const O = {
               let C = "", S = b.cloneNode(!0);
               S = S.querySelector("map-coordinates");
               for (let T = 0; T < i.coordinates[v][E].length; T++)
-                n = O._updateExtent(
+                n = k._updateExtent(
                   n,
                   i.coordinates[v][E][T][0],
                   i.coordinates[v][E][T][1]
@@ -19353,7 +19353,7 @@ const O = {
           let y = _.cloneNode(!0);
           y = y.querySelector("map-geometrycollection");
           for (let v = 0; v < i.geometries.length; v++) {
-            let w = O.geojson2mapml(
+            let w = k.geojson2mapml(
               i.geometries[v],
               t,
               e,
@@ -19410,28 +19410,28 @@ const O = {
           r.coordinates = i.querySelector("map-coordinates").innerHTML.split(/[<> ]/g).map(Number);
         break;
       case "MAP-LINESTRING":
-        r.type = "LineString", o = i.querySelector("map-coordinates").innerHTML.split(/[<> ]/g), o = O._breakArray(o), n && (o = O._pcrsToGcrs(o, t, e)), r.coordinates = o;
+        r.type = "LineString", o = i.querySelector("map-coordinates").innerHTML.split(/[<> ]/g), o = k._breakArray(o), n && (o = k._pcrsToGcrs(o, t, e)), r.coordinates = o;
         break;
       case "MAP-POLYGON":
         {
           r.type = "Polygon", r.coordinates = [];
           let a = 0;
           i.querySelectorAll("map-coordinates").forEach((l) => {
-            l = l.innerHTML.split(/[<> ]/g), l = O._breakArray(l), n && (l = O._pcrsToGcrs(l, t, e)), r.coordinates[a] = l, a++;
+            l = l.innerHTML.split(/[<> ]/g), l = k._breakArray(l), n && (l = k._pcrsToGcrs(l, t, e)), r.coordinates[a] = l, a++;
           });
         }
         break;
       case "MAP-MULTIPOINT":
-        r.type = "MultiPoint", o = O._breakArray(
+        r.type = "MultiPoint", o = k._breakArray(
           i.querySelector("map-coordinates").innerHTML.split(/[<> ]/g)
-        ), n && (o = O._pcrsToGcrs(o, t, e)), r.coordinates = o;
+        ), n && (o = k._pcrsToGcrs(o, t, e)), r.coordinates = o;
         break;
       case "MAP-MULTILINESTRING":
         {
           r.type = "MultiLineString", r.coordinates = [];
           let a = 0;
           i.querySelectorAll("map-coordinates").forEach((l) => {
-            l = l.innerHTML.split(/[<> ]/g), l = O._breakArray(l), n && (l = O._pcrsToGcrs(l, t, e)), r.coordinates[a] = l, a++;
+            l = l.innerHTML.split(/[<> ]/g), l = k._breakArray(l), n && (l = k._pcrsToGcrs(l, t, e)), r.coordinates[a] = l, a++;
           });
         }
         break;
@@ -19442,7 +19442,7 @@ const O = {
           i.querySelectorAll("map-polygon").forEach((l) => {
             let h = 0;
             r.coordinates.push([]), l.querySelectorAll("map-coordinates").forEach((c) => {
-              c = c.innerHTML.split(/[<> ]/g), c = O._breakArray(c), n && (c = O._pcrsToGcrs(c, t, e)), r.coordinates[a].push([]), r.coordinates[a][h] = c, h++;
+              c = c.innerHTML.split(/[<> ]/g), c = k._breakArray(c), n && (c = k._pcrsToGcrs(c, t, e)), r.coordinates[a].push([]), r.coordinates[a][h] = c, h++;
             }), a++;
           });
         }
@@ -19501,7 +19501,7 @@ const O = {
         );
         n.features[l].properties = u;
       } else if (h.querySelector("map-properties").querySelector("table") !== null) {
-        let u = h.querySelector("map-properties").querySelector("table").cloneNode(!0), d = O._table2properties(u);
+        let u = h.querySelector("map-properties").querySelector("table").cloneNode(!0), d = k._table2properties(u);
         n.features[l].properties = d;
       } else
         n.features[l].properties = {
@@ -19511,7 +19511,7 @@ const O = {
       for (; c.nodeName.toUpperCase() === "MAP-SPAN" || c.nodeName.toUpperCase() === "MAP-A"; )
         c = c.firstElementChild;
       if (c.nodeName.toUpperCase() !== "MAP-GEOMETRYCOLLECTION")
-        n.features[l].geometry = O._geometry2geojson(
+        n.features[l].geometry = k._geometry2geojson(
           c,
           s,
           r,
@@ -19525,8 +19525,8 @@ const O = {
           f === "MAP-SPAN" || f === "MAP-A" ? (d = d.cloneNode(!0), [...d.querySelectorAll("map-a, map-span")].forEach(
             (m) => m.replaceWith(...m.children)
           ), Array.from(d.children).forEach((m) => {
-            m = O._geometry2geojson(m, s, r, t.transform), n.features[l].geometry.geometries.push(m);
-          })) : (d = O._geometry2geojson(d, s, r, t.transform), n.features[l].geometry.geometries.push(d));
+            m = k._geometry2geojson(m, s, r, t.transform), n.features[l].geometry.geometries.push(m);
+          })) : (d = k._geometry2geojson(d, s, r, t.transform), n.features[l].geometry.geometries.push(d));
         });
       }
       l++;
@@ -19543,12 +19543,12 @@ const O = {
     let o = Math.round(t._map.getView().getZoom()), a = s.scale(o), l = s.transformation.transform(
       i.getCenter(!0),
       a
-    ), h = et(r[0], r[1]).divideBy(2), c = l.subtract(h).round(), u = l.add(h).round(), d = O.pixelToPCRSPoint(c, o, s), f = O.pixelToPCRSPoint(u, o, s), m = K(d, f), p = m.contains(i) ? 1 : -1;
+    ), h = et(r[0], r[1]).divideBy(2), c = l.subtract(h).round(), u = l.add(h).round(), d = k.pixelToPCRSPoint(c, o, s), f = k.pixelToPCRSPoint(u, o, s), m = K(d, f), p = m.contains(i) ? 1 : -1;
     for (; p === -1 && !m.contains(i) && o - 1 >= e || p === 1 && m.contains(i) && o + 1 <= n; )
       o += p, a = s.scale(o), l = s.transformation.transform(
         i.getCenter(!0),
         a
-      ), c = l.subtract(h).round(), u = l.add(h).round(), d = O.pixelToPCRSPoint(c, o, s), f = O.pixelToPCRSPoint(u, o, s), m = K(d, f);
+      ), c = l.subtract(h).round(), u = l.add(h).round(), d = k.pixelToPCRSPoint(c, o, s), f = k.pixelToPCRSPoint(u, o, s), m = K(d, f);
     return p === 1 && o - 1 >= 0 && !(o === n && m.contains(i)) && o--, o;
   },
   // Centre the viewer on a PCRS bound at the deepest zoom that shows all of
@@ -19559,11 +19559,11 @@ const O = {
     var a;
     const s = (a = t == null ? void 0 : t._map) == null ? void 0 : a.getView();
     if (!i || !s) return;
-    const r = i.getCenter(!0), o = O.getMaxZoom(i, t, e, n);
+    const r = i.getCenter(!0), o = k.getMaxZoom(i, t, e, n);
     s.setCenter([r.x, r.y]), s.setZoom(o), t._updateMapCenter();
   },
   getClosest(i, t) {
-    return i ? i instanceof ShadowRoot ? O.getClosest(i.host, t) : i instanceof HTMLElement && i.matches(t) ? i : O.getClosest(i.parentNode, t) : null;
+    return i ? i instanceof ShadowRoot ? k.getClosest(i.host, t) : i instanceof HTMLElement && i.matches(t) ? i : k.getClosest(i.parentNode, t) : null;
   },
   // Pastes text to a mapml-viewer/map element(mapEl), text can be a mapml link, GeoJSON link, GeoJSON,
   //    or a map-layer used for pasting layers through ctrl+v, drag/drop, and pasting through the contextmenu
@@ -19582,7 +19582,7 @@ const O = {
           console.log("Error parsing GeoJSON from: " + t);
         }
       } else {
-        const r = O.sanitizeUrl(t);
+        const r = k.sanitizeUrl(t);
         if (!r) {
           console.log("Ignoring paste of URL with disallowed scheme: " + t);
           return;
@@ -20306,7 +20306,7 @@ const O = {
         )
       }
     }
-  }), e.geojson2mapml = O.geojson2mapml, e.mapml2geojson = O.mapml2geojson, e.Util = O, e.TILE_SIZE = 256, e.FALLBACK_PROJECTION = "OSMTILE", e.FALLBACK_CS = "TILEMATRIX", e.BLANK_TT_TREF = "mapmltemplatedtileplaceholder";
+  }), e.geojson2mapml = k.geojson2mapml, e.mapml2geojson = k.mapml2geojson, e.Util = k, e.TILE_SIZE = 256, e.FALLBACK_PROJECTION = "OSMTILE", e.FALLBACK_CS = "TILEMATRIX", e.BLANK_TT_TREF = "mapmltemplatedtileplaceholder";
 })(window, document);
 function _S(i) {
   const t = Object.keys(i.defs), e = t.length;
@@ -22065,7 +22065,7 @@ class KS {
       const n = e.extent;
       if (!n)
         continue;
-      const s = O.extentToBounds(n, "pcrs");
+      const s = k.extentToBounds(n, "pcrs");
       s && (t ? t.extend(s) : t = K(s.min, s.max));
     }
     return t;
@@ -22240,7 +22240,7 @@ class YS {
   // URL (as <map-layer src>), or GeoJSON. Ported from MapML.js ContextMenu._paste.
   _paste() {
     navigator.clipboard.readText().then((t) => {
-      O._pasteLayer(this._viewer, t);
+      k._pasteLayer(this._viewer, t);
     });
   }
   // ---- Copy submenu -------------------------------------------------------
@@ -22364,7 +22364,7 @@ class YS {
     var w;
     const e = this._viewer, n = e.projection, s = (w = window.M) == null ? void 0 : w[n], r = this._map.getView(), o = this._clickCoordinate ?? r.getCenter();
     if (!s || !o) return;
-    const [a, l] = o, c = O._convertAndFormatPCRS(
+    const [a, l] = o, c = k._convertAndFormatPCRS(
       K([a, l], [a, l]),
       s,
       n
@@ -24446,8 +24446,8 @@ function Au(i, t, e) {
   const n = i.trim().match(/(\S+\s+\S+)/gim) || [], s = [];
   for (const r of n) {
     const o = [];
-    r.split(/\s+/gim).forEach(O._parseNumber, o);
-    const a = O.pointToPCRSPoint(
+    r.split(/\s+/gim).forEach(k._parseNumber, o);
+    const a = k.pointToPCRSPoint(
       et(o),
       t.zoom,
       t.projection,
@@ -24691,7 +24691,7 @@ class oT {
           stroke: new be({ color: Mc, width: 3 })
         })
       })
-    ), O._handleLink(n, this._viewer, s.getLayerEl());
+    ), k._handleLink(n, this._viewer, s.getLayerEl());
   }
   // MapML.js marks a visited sub-ring with stroke="#6c00a2" + class
   // map-a-visited on its SVG path; the style probe IS that path here, so the
@@ -31015,7 +31015,7 @@ class Zn extends Ih {
     const h = new Yn({ geometry: s });
     h._featureEl = t;
     const c = this._static || this._query ? t.extent : null;
-    return h._pcrsBounds = c ? O.extentToBounds(c, "pcrs") : r, h._zoomBounds = t._getZoomBounds(), o && (h._featureLink = o), l.length && (h._linkedParts = l), a && (h._spanOutline = a, h._inlineStyled = a.segments.some((u) => {
+    return h._pcrsBounds = c ? k.extentToBounds(c, "pcrs") : r, h._zoomBounds = t._getZoomBounds(), o && (h._featureLink = o), l.length && (h._linkedParts = l), a && (h._spanOutline = a, h._inlineStyled = a.segments.some((u) => {
       var d;
       return (d = u.attrs) == null ? void 0 : d.style;
     })), h;
@@ -34988,7 +34988,7 @@ class qA {
     let n, s = 0;
     for (const r of this._viewer.layers) {
       if (!r.checked) continue;
-      const o = r.extent, a = o ? O.extentToBounds(o, "pcrs") : null;
+      const o = r.extent, a = o ? k.extentToBounds(o, "pcrs") : null;
       if (!a) continue;
       const l = this._boundsFeature(a), h = Ep[s % Ep.length], c = r.getAttribute("data-testid");
       l.set("debugClass", c || "layer-bounds"), l.set("title", r.label || ""), l.setStyle(
@@ -37375,7 +37375,7 @@ const ny = (i) => class extends i {
     const n = t.calculateExtent(e), s = K(
       [n[0], n[1]],
       [n[2], n[3]]
-    ), r = O._convertAndFormatPCRS(
+    ), r = k._convertAndFormatPCRS(
       s,
       window.M[this.projection],
       this.projection
@@ -37679,7 +37679,7 @@ const ny = (i) => class extends i {
   _dropHandler(t) {
     t.preventDefault();
     let e = t.dataTransfer.getData("text");
-    O._pasteLayer(this, e);
+    k._pasteLayer(this, e);
   }
   _dragoverHandler(t) {
     t.preventDefault(), t.dataTransfer.dropEffect = "copy";
@@ -37694,7 +37694,7 @@ const ny = (i) => class extends i {
   // mapml-viewer.js geojson2mapml.
   geojson2mapml(t, e = {}) {
     e.projection === void 0 && (e.projection = this.projection);
-    let n = O.geojson2mapml(t, e);
+    let n = k.geojson2mapml(t, e);
     return this.appendChild(n), n;
   }
   // Seam: return the ShadowRoot the map chrome lives in. `<mapml-viewer>` is an
@@ -38619,7 +38619,7 @@ class K4 extends HTMLAreaElement {
   // An area with no href is inert, as it is upstream (MapML.js only binds the
   // click handler when there is one).
   _activate() {
-    this.href && O._handleLink(
+    this.href && k._handleLink(
       {
         url: this.href,
         target: this.target || "_blank",
@@ -39293,7 +39293,7 @@ class sL extends HTMLElement {
   // ported from MapML.js layer.js. Bounds are (re)derived on every read.
   get extent() {
     return this._calculateBounds(), this.bounds ? Object.assign(
-      O._convertAndFormatPCRS(
+      k._convertAndFormatPCRS(
         this.bounds,
         window.M[this.getProjection()],
         this.getProjection()
@@ -39361,7 +39361,7 @@ class sL extends HTMLElement {
     const t = this.extent;
     if (!t || !((s = this._viewer) != null && s.map)) return;
     const e = t.topLeft.pcrs, n = t.bottomRight.pcrs;
-    O.zoomToBounds(
+    k.zoomToBounds(
       K([e.horizontal, n.vertical], [n.horizontal, e.vertical]),
       this._viewer,
       t.zoom.minZoom,
@@ -39451,7 +39451,7 @@ class sL extends HTMLElement {
   // `_onRemove`.
   _onRemove() {
     var t, e, n;
-    this._layerGroup && ((t = this._viewer) != null && t.map) && this._viewer.map.removeLayer(this._layerGroup), this._validateDisabledBound && ((e = this._viewer) != null && e.map) && (this._viewer.map.un("moveend", this._validateDisabledBound), (n = this._layerGroup) == null || n.getLayers().un(["add", "remove"], this._validateDisabledBound), this._validateDisabledBound = null), this.src && (this._layerGroup = null, this._mapmlvectors = null, this._layerRegistry = null, this.shadowRoot && (this.shadowRoot.innerHTML = "")), this._title = void 0, this._titleIsReadOnly = !1, delete this._legendUrl, delete this.legendLinks, delete this._fetchError;
+    this._layerGroup && ((t = this._viewer) != null && t.map) && this._viewer.map.removeLayer(this._layerGroup), this._validateDisabledBound && ((e = this._viewer) != null && e.map) && (this._viewer.map.un("moveend", this._validateDisabledBound), (n = this._layerGroup) == null || n.getLayers().un(["add", "remove"], this._validateDisabledBound), this._validateDisabledBound = null), this.src && (this.innerHTML = "", this._layerGroup = null, this._mapmlvectors = null, this._layerRegistry = null, this.shadowRoot && (this.shadowRoot.innerHTML = "")), this._title = void 0, this._titleIsReadOnly = !1, delete this._legendUrl, delete this.legendLinks, delete this._fetchError;
   }
   // Reload after a runtime `src` change: remove the current content, arm a
   // fresh whenReady, and re-run the add path.
@@ -39468,7 +39468,7 @@ class sL extends HTMLElement {
     var n;
     const t = (n = ke(this)) == null ? void 0 : n.querySelector(
       "map-link[rel=legend i]"
-    ), e = O.sanitizeUrl(
+    ), e = k.sanitizeUrl(
       (t == null ? void 0 : t.getAttribute("href")) || ""
     );
     e && (this._legendUrl = e, this.legendLinks = [
@@ -39678,7 +39678,7 @@ class sL extends HTMLElement {
   // Return a GeoJSON FeatureCollection for this layer's <map-feature>s.
   // Ported from MapML.js layer.js; delegates to Util.mapml2geojson.
   mapml2geojson(t = {}) {
-    return O.mapml2geojson(this, t);
+    return k.mapml2geojson(this, t);
   }
   // Build the per-layer fieldset for the layer control. Delegates to the
   // ported createLayerControlForLayer.js builder (kept standalone to diff 1:1
@@ -39738,7 +39738,7 @@ class sL extends HTMLElement {
     delete this.bounds, delete this.zoomBounds;
     const t = this.getProjection(), e = ke(this);
     if (!e) return;
-    let n = jn(this, "map-meta[name=extent][content]").length ? O.getBoundsFromMeta(e, t) : void 0, s = jn(this, "map-meta[name=zoom][content]").length ? O.getZoomBoundsFromMeta(e) : void 0;
+    let n = jn(this, "map-meta[name=extent][content]").length ? k.getBoundsFromMeta(e, t) : void 0, s = jn(this, "map-meta[name=zoom][content]").length ? k.getZoomBoundsFromMeta(e) : void 0;
     const r = jn(this, "map-extent");
     let o, a, l, h;
     s && (o = s.maxZoom, a = s.minZoom, h = s.maxNativeZoom ? s.maxNativeZoom : -1 / 0, l = s.minNativeZoom ? s.minNativeZoom : 1 / 0);
@@ -39780,7 +39780,7 @@ class sL extends HTMLElement {
     var n, s;
     let t = ke(this), e = ((n = this.parentElement) == null ? void 0 : n.projection) ?? ((s = this._viewer) == null ? void 0 : s.projection);
     if (t != null && t.querySelector("map-meta[name=projection][content]"))
-      e = O._metaContentToObject(
+      e = k._metaContentToObject(
         t.querySelector("map-meta[name=projection]").getAttribute("content")
       ).content || e;
     else if (t != null && t.querySelector("map-extent[units]"))
@@ -39853,7 +39853,7 @@ function rL(i, t) {
     mapEl: i.getMapEl(),
     stopPropagation: !0,
     commit: (y) => {
-      const v = O.getClosest(i, "map-layer"), w = ke(v);
+      const v = k.getClosest(i, "map-layer"), w = ke(v);
       for (const E of y.children) {
         const C = E._layerControlElement;
         C && (C.setAttribute("data-moving", ""), w.append(C), C.removeAttribute("data-moving"));
@@ -39911,7 +39911,7 @@ class oL extends HTMLElement {
     const t = this.extent;
     if (!t || !((s = this._viewer) != null && s.map)) return;
     const e = t.topLeft.pcrs, n = t.bottomRight.pcrs;
-    O.zoomToBounds(
+    k.zoomToBounds(
       K([e.horizontal, n.vertical], [n.horizontal, e.vertical]),
       this._viewer,
       t.zoom.minZoom,
@@ -39940,7 +39940,7 @@ class oL extends HTMLElement {
   // extent's `ol/layer/Group` (`_extentGroup`), created via `getLayerGroup()`.
   get extent() {
     const t = (s) => Object.assign(
-      O._convertAndFormatPCRS(
+      k._convertAndFormatPCRS(
         s._extentGroup.bounds,
         M[s.units],
         s.units
@@ -39955,13 +39955,13 @@ class oL extends HTMLElement {
   }
   async connectedCallback() {
     var t;
-    this.hasAttribute("data-moving") || (t = O.getClosest(this, "map-layer")) != null && t.hasAttribute("data-moving") || (this._viewer = O.getClosest(this, 'mapml-viewer,map[is="web-map"]'), this._viewer && (await this._viewer.whenProjectionDefined(this.units).catch(() => {
+    this.hasAttribute("data-moving") || (t = k.getClosest(this, "map-layer")) != null && t.hasAttribute("data-moving") || (this._viewer = k.getClosest(this, 'mapml-viewer,map[is="web-map"]'), this._viewer && (await this._viewer.whenProjectionDefined(this.units).catch(() => {
       throw new Error("Undefined projection:" + this.units);
     }), await this._viewer.whenReady(), this.isConnected && (this.getLayerGroup(), this._viewer.dispatchEvent(new CustomEvent("mapml:layerschanged")))));
   }
   disconnectedCallback() {
     var t, e;
-    this.hasAttribute("data-moving") || (t = O.getClosest(this, "map-layer")) != null && t.hasAttribute("data-moving") || (this._extentGroup && this._parentCollection && this._parentCollection.remove(this._extentGroup), this._extentGroup = null, this._parentCollection = null, (e = this._viewer) == null || e.dispatchEvent(new CustomEvent("mapml:layerschanged")));
+    this.hasAttribute("data-moving") || (t = k.getClosest(this, "map-layer")) != null && t.hasAttribute("data-moving") || (this._extentGroup && this._parentCollection && this._parentCollection.remove(this._extentGroup), this._extentGroup = null, this._parentCollection = null, (e = this._viewer) == null || e.dispatchEvent(new CustomEvent("mapml:layerschanged")));
   }
   // Live list of the child <map-input> elements declaring tref variables.
   getInputs() {
@@ -39970,10 +39970,10 @@ class oL extends HTMLElement {
   // Ancestor accessors (ported from MapML.js map-extent.js). Cross the shadow
   // boundary for grafted (remote <map-layer src>) extents.
   getMapEl() {
-    return O.getClosest(this, "mapml-viewer,map[is=web-map]");
+    return k.getClosest(this, "mapml-viewer,map[is=web-map]");
   }
   getLayerEl() {
-    return O.getClosest(this, "map-layer,layer-");
+    return k.getClosest(this, "map-layer,layer-");
   }
   // Resolve a <map-meta name=extent|zoom|cs> for this extent: its own child
   // first, then the containing <map-layer>'s. Ported from MapML.js
@@ -39981,7 +39981,7 @@ class oL extends HTMLElement {
   getMeta(t) {
     let e = t.toLowerCase();
     if (e !== "extent" && e !== "zoom" && e !== "cs") return;
-    const n = O.getClosest(this, "map-layer"), s = `map-meta[name=${e}]`;
+    const n = k.getClosest(this, "map-layer"), s = `map-meta[name=${e}]`;
     return this.querySelector(`:scope > ${s}`) ?? (n ? jn(n, s)[0] : void 0) ?? null;
   }
   // Derive the extent's PCRS bounds + zoomBounds by unioning the child
@@ -39996,7 +39996,7 @@ class oL extends HTMLElement {
     delete t.bounds, delete t.zoomBounds;
     let e = this.querySelectorAll(
       "map-link[rel=image]:not([disabled]),map-link[rel=tile]:not([disabled]),map-link[rel=features]:not([disabled]),map-link[rel=query]:not([disabled])"
-    ), n = this.querySelector(":scope > map-meta[name=extent][content]") ? O.getBoundsFromMeta(this, this.units) : void 0, s = this.querySelector(":scope > map-meta[name=zoom][content]") ? O.getZoomBoundsFromMeta(this) : void 0;
+    ), n = this.querySelector(":scope > map-meta[name=extent][content]") ? k.getBoundsFromMeta(this, this.units) : void 0, s = this.querySelector(":scope > map-meta[name=zoom][content]") ? k.getZoomBoundsFromMeta(this) : void 0;
     for (let r = 0; r < e.length; r++) {
       const o = e[r].getZoomBounds(), a = e[r].getBounds();
       let l = s && Object.hasOwn(s, "maxZoom") ? s.maxZoom : -1 / 0, h = s && Object.hasOwn(s, "minZoom") ? s.minZoom : 1 / 0, c = s && Object.hasOwn(s, "minNativeZoom") ? s.minNativeZoom : 1 / 0, u = s && Object.hasOwn(s, "maxNativeZoom") ? s.maxNativeZoom : -1 / 0;
@@ -40071,8 +40071,8 @@ class oL extends HTMLElement {
   getLayerGroup() {
     if (this._extentGroup)
       return this._extentGroup;
-    this._viewer = this._viewer || O.getClosest(this, 'mapml-viewer,map[is="web-map"]');
-    const t = O.getClosest(this, "map-layer");
+    this._viewer = this._viewer || k.getClosest(this, 'mapml-viewer,map[is="web-map"]');
+    const t = k.getClosest(this, "map-layer");
     return this._parentCollection = t ? t.getLayerGroup().getLayers() : this._viewer.map.getLayers(), this._opacity = this.opacity || 1, this._extentGroup = new bn({
       layers: [],
       visible: this.checked && this._projectionMatch(),
@@ -40155,7 +40155,7 @@ class aL extends HTMLElement {
     var t;
     switch (this.type) {
       case "zoom":
-        return this.hasAttribute("min") ? this.getAttribute("min") : this.parentElement.querySelector("map-meta[name=zoom]") ? O._metaContentToObject(
+        return this.hasAttribute("min") ? this.getAttribute("min") : this.parentElement.querySelector("map-meta[name=zoom]") ? k._metaContentToObject(
           this.parentElement.querySelector("map-meta[name=zoom]").getAttribute("content")
         ).min : (t = this.getLayerEl().extent) == null ? void 0 : t.zoom.minZoom.toString();
       // every type=zoom branch returns above; type=location falls back by
@@ -40172,7 +40172,7 @@ class aL extends HTMLElement {
     var t;
     switch (this.type) {
       case "zoom":
-        return this.hasAttribute("max") ? this.getAttribute("max") : this.parentElement.querySelector("map-meta[name=zoom]") ? O._metaContentToObject(
+        return this.hasAttribute("max") ? this.getAttribute("max") : this.parentElement.querySelector("map-meta[name=zoom]") ? k._metaContentToObject(
           this.parentElement.querySelector("map-meta[name=zoom]").getAttribute("content")
         ).max : (t = this.getLayerEl().extent) == null ? void 0 : t.zoom.maxZoom.toString();
       // every type=zoom branch returns above; type=location falls back by
@@ -40186,10 +40186,10 @@ class aL extends HTMLElement {
     t && this.setAttribute("max", t);
   }
   getMapEl() {
-    return O.getClosest(this, "mapml-viewer,map[is=web-map]");
+    return k.getClosest(this, "mapml-viewer,map[is=web-map]");
   }
   getLayerEl() {
-    return O.getClosest(this, "map-layer,layer-");
+    return k.getClosest(this, "map-layer,layer-");
   }
 }
 class lL extends HTMLElement {
@@ -51685,7 +51685,7 @@ class LP extends HTMLElement {
     } else this._mql && (this._mql.removeEventListener("change", this._changeHandler), delete this._mql, this._disconnect(), this._connect());
   }
   getMapEl() {
-    return O.getClosest(this, "mapml-viewer,map[is=web-map]");
+    return k.getClosest(this, "mapml-viewer,map[is=web-map]");
   }
   constructor() {
     super();
@@ -51780,7 +51780,7 @@ class FP extends HTMLElement {
   // The owning `<map-extent>` (MapML.js `parentExtent`) is `this._extent`.
   get extent() {
     return this._templateVars ? Object.assign(
-      O._convertAndFormatPCRS(
+      k._convertAndFormatPCRS(
         this.getBounds(),
         M[this._extent.units],
         this._extent.units
@@ -51788,11 +51788,24 @@ class FP extends HTMLElement {
       { zoom: this.getZoomBounds() }
     ) : null;
   }
+  // Ported from MapML.js map-link.js `zoomTo`: centre on the extent at the
+  // deepest zoom that shows all of it (Util.getMaxZoom).
+  zoomTo() {
+    const t = this.extent;
+    if (!t) return;
+    const e = t.topLeft.pcrs, n = t.bottomRight.pcrs;
+    k.zoomToBounds(
+      K([e.horizontal, n.vertical], [n.horizontal, e.vertical]),
+      this.getMapEl(),
+      t.zoom.minZoom,
+      t.zoom.maxZoom
+    );
+  }
   getMapEl() {
-    return O.getClosest(this, "mapml-viewer,map[is=web-map]");
+    return k.getClosest(this, "mapml-viewer,map[is=web-map]");
   }
   getLayerEl() {
-    return O.getClosest(this, "map-layer,layer-");
+    return k.getClosest(this, "map-layer,layer-");
   }
   // Resolve the base URL for the link's href/tref. For grafted (remote) links
   // the base is the owning <map-layer src>; otherwise the document baseURI.
@@ -51813,7 +51826,7 @@ class FP extends HTMLElement {
   }
   connectedCallback() {
     var t, e;
-    (t = this.getLayerEl()) != null && t.hasAttribute("data-moving") || (e = this.closest("map-extent")) != null && e.hasAttribute("data-moving") || (this._hasConnected = !0, this._viewer = O.getClosest(this, 'mapml-viewer,map[is="web-map"]'), this._extent = this.closest("map-extent"), this.disabled || (this._setupTemplateVars(), this._apply()), this._registerMediaQuery(this.media));
+    (t = this.getLayerEl()) != null && t.hasAttribute("data-moving") || (e = this.closest("map-extent")) != null && e.hasAttribute("data-moving") || (this._hasConnected = !0, this._viewer = k.getClosest(this, 'mapml-viewer,map[is="web-map"]'), this._extent = this.closest("map-extent"), this.disabled || (this._setupTemplateVars(), this._apply()), this._registerMediaQuery(this.media));
   }
   // Associate this link's template variables; a query link additionally gets
   // the query role map and a shadow root to hold its queried <map-feature>s
@@ -52057,7 +52070,7 @@ class FP extends HTMLElement {
   _findVectorStyleLink() {
     var n, s, r;
     const t = NP, e = this.getLayerEl();
-    return e && e.src ? ((n = this.closest("map-extent")) == null ? void 0 : n.querySelector(t)) ?? ((s = ke(e)) == null ? void 0 : s.querySelector(t)) ?? null : (r = O.getClosest(
+    return e && e.src ? ((n = this.closest("map-extent")) == null ? void 0 : n.querySelector(t)) ?? ((s = ke(e)) == null ? void 0 : s.querySelector(t)) ?? null : (r = k.getClosest(
       this,
       `map-extent:has(${t}),map-layer:has(${t}),layer-:has(${t})`
     )) == null ? void 0 : r.querySelector(t);
@@ -52261,7 +52274,7 @@ class FP extends HTMLElement {
   // `<map-link>` spec) rather than an `attribution=` attribute. Multiple
   // license links are joined with `; `.
   _attribution() {
-    const t = O.getClosest(this, "map-layer");
+    const t = k.getClosest(this, "map-layer");
     if (!t)
       return;
     const e = [];
@@ -52364,7 +52377,7 @@ class FP extends HTMLElement {
           case "longitude":
           case "column":
           case "easting":
-            s.name = O.axisToCS(
+            s.name = k.axisToCS(
               e[l].getAttribute("axis").toLowerCase()
             ), r.min.x = c, r.max.x = h, s.horizontalAxis = e[l].getAttribute("axis").toLowerCase();
             break;
@@ -52372,7 +52385,7 @@ class FP extends HTMLElement {
           case "latitude":
           case "row":
           case "northing":
-            s.name = O.axisToCS(
+            s.name = k.axisToCS(
               e[l].getAttribute("axis").toLowerCase()
             ), r.min.y = c, r.max.y = h, s.verticalAxis = e[l].getAttribute("axis").toLowerCase();
             break;
@@ -52380,7 +52393,7 @@ class FP extends HTMLElement {
       }
     if (s.horizontalAxis && s.verticalAxis && (s.horizontalAxis === "x" && s.verticalAxis === "y" || s.horizontalAxis === "longitude" && s.verticalAxis === "latitude" || s.horizontalAxis === "column" && s.verticalAxis === "row" || s.horizontalAxis === "easting" && s.verticalAxis === "northing") && (o = !0), o) {
       let l = (a = this._templateVars.zoom) != null && a.hasAttribute("value") ? +this._templateVars.zoom.getAttribute("value") : 0;
-      r = O.boundsToPCRSBounds(
+      r = k.boundsToPCRSBounds(
         r,
         l,
         n,
@@ -52392,18 +52405,18 @@ class FP extends HTMLElement {
   getFallbackBounds(t) {
     let e, n = 0, s = this.parentElement.getMeta("extent");
     if (s) {
-      let r = O._metaContentToObject(
+      let r = k._metaContentToObject(
         s.getAttribute("content")
       ), o;
       n = r.zoom || n;
       let a = Object.keys(r);
       for (let h = 0; h < a.length; h++)
         if (!a[h].includes("zoom")) {
-          o = O.axisToCS(a[h].split("-")[2]);
+          o = k.axisToCS(a[h].split("-")[2]);
           break;
         }
-      let l = O.csToAxes(o);
-      e = O.boundsToPCRSBounds(
+      let l = k.csToAxes(o);
+      e = k.boundsToPCRSBounds(
         K(
           et(
             +r[`top-left-${l[0]}`],
@@ -52445,9 +52458,9 @@ class FP extends HTMLElement {
    */
   _getZoomBounds(t) {
     var o, a;
-    let e = {}, n = this.parentElement.getMeta("zoom"), s = n ? +((o = O._metaContentToObject(n.getAttribute("content"))) == null ? void 0 : o.min) : null;
+    let e = {}, n = this.parentElement.getMeta("zoom"), s = n ? +((o = k._metaContentToObject(n.getAttribute("content"))) == null ? void 0 : o.min) : null;
     e.minZoom = s || (t ? +t.getAttribute("min") : 0), e.minNativeZoom = t ? +t.getAttribute("min") : e.minZoom;
-    let r = n ? +((a = O._metaContentToObject(n.getAttribute("content"))) == null ? void 0 : a.max) : null;
+    let r = n ? +((a = k._metaContentToObject(n.getAttribute("content"))) == null ? void 0 : a.max) : null;
     return e.maxZoom = r || (t ? +t.getAttribute("max") : M[this.parentElement.units].options.resolutions.length - 1), e.maxNativeZoom = t ? +t.getAttribute("max") : e.maxZoom, e;
   }
 }
@@ -52537,11 +52550,11 @@ class BP extends HTMLElement {
   }
   get min() {
     let t = {}, e = this.getMeta("zoom");
-    return e && (t = O._metaContentToObject(e.getAttribute("content"))), +(this.hasAttribute("min") ? this.getAttribute("min") : t.min ? t.min : 0);
+    return e && (t = k._metaContentToObject(e.getAttribute("content"))), +(this.hasAttribute("min") ? this.getAttribute("min") : t.min ? t.min : 0);
   }
   get max() {
     let t = {}, e = this.getMeta("zoom");
-    e && (t = O._metaContentToObject(e.getAttribute("content")));
+    e && (t = k._metaContentToObject(e.getAttribute("content")));
     const n = this.getLayerEl().getProjection();
     let s = window.M[n].options.resolutions.length - 1;
     return +(this.hasAttribute("max") ? this.getAttribute("max") : t.max ? t.max : s);
@@ -52556,10 +52569,10 @@ class BP extends HTMLElement {
     return Nh(this);
   }
   getMapEl() {
-    return O.getClosest(this, "mapml-viewer,map[is=web-map]");
+    return k.getClosest(this, "mapml-viewer,map[is=web-map]");
   }
   getLayerEl() {
-    return O.getClosest(this, "map-layer,layer-");
+    return k.getClosest(this, "map-layer,layer-");
   }
   attributeChangedCallback(t, e, n) {
     if (this._hasConnected)
@@ -52648,7 +52661,7 @@ class BP extends HTMLElement {
     if (o.originalEvent = r, this.dispatchEvent(o), o.defaultPrevented || !this.isConnected) return;
     const a = (u = this._olFeature) == null ? void 0 : u._featureLink;
     if (a) {
-      a.visited = !0, O._handleLink(a, this._viewer, this.getLayerEl());
+      a.visited = !0, k._handleLink(a, this._viewer, this.getLayerEl());
       return;
     }
     const l = (d = this._viewer) == null ? void 0 : d._featureInteraction;
@@ -52686,7 +52699,7 @@ class BP extends HTMLElement {
       et(t.horizontal, t.vertical),
       et(e.horizontal, e.vertical)
     ), s = this.getMapEl().projection, r = this.getLayerEl().extent.zoom, o = r.minZoom ? r.minZoom : 0, a = r.maxZoom ? r.maxZoom : window.M[s].options.resolutions.length - 1, l;
-    return this.hasAttribute("zoom") ? l = this.zoom : (l = O.getMaxZoom(n, this.getMapEl(), o, a), this.max < l ? l = this.max : this.min > l && (l = this.min)), l < o ? l = o : l > a && (l = a), l;
+    return this.hasAttribute("zoom") ? l = this.zoom : (l = k.getMaxZoom(n, this.getMapEl(), o, a), this.max < l ? l = this.max : this.min > l && (l = this.min)), l < o ? l = o : l > a && (l = a), l;
   }
   // native cs: the fallback cs for <map-geometry> when its cs attribute is
   // absent. Static path: the layer's map-meta[name=cs]; templated path: the
@@ -52701,7 +52714,7 @@ class BP extends HTMLElement {
       const r = this.getLayerEl();
       t = r != null && r.src ? (s = r.shadowRoot) == null ? void 0 : s.querySelector("map-meta[name=cs][content]") : r == null ? void 0 : r.querySelector("map-meta[name=cs][content]");
     }
-    return t ? O._metaContentToObject(t.getAttribute("content")).content : "gcrs";
+    return t ? k._metaContentToObject(t.getAttribute("content")).content : "gcrs";
   }
   _getZoomBounds() {
     return {
@@ -52740,7 +52753,7 @@ class BP extends HTMLElement {
       n.properties = t.propertyFunction(s);
     else if (s.querySelector("table")) {
       let h = s.querySelector("table").cloneNode(!0);
-      n.properties = O._table2properties(h);
+      n.properties = k._table2properties(h);
     } else
       n.properties = {
         prop0: s.innerHTML.replace(/(<([^>]+)>)/gi, "").replace(/\s/g, "")
@@ -52759,10 +52772,10 @@ class BP extends HTMLElement {
       n.geometry.type = "GeometryCollection", n.geometry.geometries = [];
       for (let h of l)
         n.geometry.geometries.push(
-          O._geometry2geojson(h, r, o, t.transform)
+          k._geometry2geojson(h, r, o, t.transform)
         );
     } else
-      n.geometry = O._geometry2geojson(
+      n.geometry = k._geometry2geojson(
         l[0],
         r,
         o,
@@ -52790,7 +52803,7 @@ class BP extends HTMLElement {
         for (let g = 0; g < p.length; ++g)
           h = e(m, p[g], h);
       }
-      let c = et(h[0], h[1]), u = et(h[2], h[3]), d = O.boundsToPCRSBounds(
+      let c = et(h[0], h[1]), u = et(h[2], h[3]), d = k.boundsToPCRSBounds(
         K(c, u),
         a,
         n,
@@ -52801,14 +52814,14 @@ class BP extends HTMLElement {
           d.min,
           s.scale(+this.zoom || m)
         );
-        d = O.pixelToPCRSBounds(
+        d = k.pixelToPCRSBounds(
           K(g.subtract(p), g.add(p)),
           this.zoom || m,
           n
         );
       }
       let f = Object.assign(
-        O._convertAndFormatPCRS(d, s, n),
+        k._convertAndFormatPCRS(d, s, n),
         { zoom: this._getZoomBounds() }
       );
       return t = f, f;
@@ -52817,14 +52830,14 @@ class BP extends HTMLElement {
       let o = s.innerHTML.trim().replace(/<[^>]+>/g, "").replace(/\s+/g, " ").split(/[<> ]/g);
       switch (n.tagName.toUpperCase()) {
         case "MAP-POINT":
-          r = O._updateExtent(r, +o[0], +o[1]);
+          r = k._updateExtent(r, +o[0], +o[1]);
           break;
         case "MAP-LINESTRING":
         case "MAP-POLYGON":
         case "MAP-MULTIPOINT":
         case "MAP-MULTILINESTRING":
           for (let a = 0; a < o.length; a += 2)
-            r = O._updateExtent(r, +o[a], +o[a + 1]);
+            r = k._updateExtent(r, +o[a], +o[a + 1]);
           break;
       }
       return r;
@@ -52964,10 +52977,10 @@ class $P extends HTMLElement {
     super();
   }
   getMapEl() {
-    return O.getClosest(this, "mapml-viewer,map[is=web-map]");
+    return k.getClosest(this, "mapml-viewer,map[is=web-map]");
   }
   getLayerEl() {
-    return O.getClosest(this, "map-layer,layer-");
+    return k.getClosest(this, "map-layer,layer-");
   }
   // row/col/zoom identify a fixed tilematrix cell and are immutable once
   // connected; only src may change (re-point the same cell). Ported from
@@ -53072,8 +53085,8 @@ class $P extends HTMLElement {
     const e = t.projection, n = M[e].options.crs.tile.bounds.max.x, s = this.col * n, r = this.row * n, o = K(
       et(s, r),
       et(s + n, r + n)
-    ), a = O.pixelToPCRSBounds(o, this.zoom, e);
-    this._extent = O._convertAndFormatPCRS(
+    ), a = k.pixelToPCRSBounds(o, this.zoom, e);
+    this._extent = k._convertAndFormatPCRS(
       a,
       M[e],
       e

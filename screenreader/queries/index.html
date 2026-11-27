@@ -25,7 +25,7 @@
 
     <main class="experiment-body">
       <table class="variant-matrix">
-        <caption class="visually-hidden">Map projection</caption>
+        <caption class="visually-hidden">Content type by map projection</caption>
         <thead>
           <tr>
             <td></td>
@@ -35,9 +35,14 @@
         </thead>
         <tbody>
           <tr>
-            <th scope="row">Inline, <code>&lt;mapml-viewer&gt;</code></th>
-            <td><a href="osmtile/">All three implementations</a></td>
-            <td><a href="cbmtile/">All three implementations</a></td>
+            <th scope="row">Inline</th>
+            <td><a href="inline/osmtile/">All three implementations</a></td>
+            <td><a href="inline/cbmtile/">All three implementations</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Remote</th>
+            <td><a href="remote/osmtile/">All three implementations</a></td>
+            <td><a href="remote/cbmtile/">All three implementations</a></td>
           </tr>
         </tbody>
       </table>
@@ -46,7 +51,9 @@
         System, requested in two coordinate reference systems: <code>EPSG:3857</code> and
         <code>EPSG:3978</code>. Each map has a Canada Base Map underneath in the matching
         projection, marked <code>hidden</code> so the layer control offers only the layer
-        there is something to ask about.
+        there is something to ask about. In the remote versions the fire danger layer is
+        <code>&lt;map-layer src="fire-danger.mapml"&gt;</code>, a document holding its
+        image and query templates, style, legend and licence.
       </p>
       <p>
         The response is GeoJSON with no geometry, only properties, which each implementation

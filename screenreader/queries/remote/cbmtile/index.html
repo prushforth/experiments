@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Fire danger queries &mdash; CBMTILE, remote MapML</title>
+    <script src="../../../../templates/experiment.js"></script>
+  </head>
+  <body>
+    <header class="experiment-header">
+      <p class="experiment-breadcrumb"><a data-home href="../../../../index.html">Experiments</a></p>
+      <h1>Fire danger queries, in Canada Lambert, from remote MapML</h1>
+      <p class="lede">
+        The same maps as the <a href="../../inline/cbmtile/">inline version</a>, except that
+        the page says only <code>&lt;map-layer src="fire-danger.mapml"&gt;</code> for the fire
+        danger layer. The WMS image and query templates, the style
+        <code>&lt;map-select&gt;</code>, and the legend and licence links are in that
+        document, which is how the service could publish a queryable layer for anyone to put
+        on a page. The document also carries the layer's own extent, as a <code>&lt;map-meta name="extent"&gt;</code> in its <code>&lt;map-head&gt;</code>.
+      </p>
+      <p class="experiment-feature-tags" data-tags="rel-query projections keyboard-access hidden legends map-select map-caption">
+        <span class="experiment-nav-label">Feature tags</span>
+      </p>
+      <nav class="experiment-nav" aria-labelledby="content-type-label">
+        <span class="experiment-nav-label" id="content-type-label">Content type</span>
+        <a href="../../inline/cbmtile/">Inline</a>
+        <a href="./" aria-current="page">Remote</a>
+      </nav>
+      <nav class="experiment-nav" aria-labelledby="projection-label">
+        <span class="experiment-nav-label" id="projection-label">Projection</span>
+        <a href="../osmtile/">OSMTILE</a>
+        <a href="./" aria-current="page">CBMTILE</a>
+      </nav>
+    </header>
+
+    <main class="examples" style="--example-min: 24rem">
+      <article class="example">
+        <h2>MapML.js (Leaflet)</h2>
+        <div class="example-map">
+          <iframe src="leaflet/" title="Queryable fire danger forecast in Canada Lambert, from remote MapML, rendered by MapML.js" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The document names itself with <code>&lt;map-title&gt;</code>, so the layer
+            control reads <em>Fire Danger / Risque d'incendie</em> without the page saying
+            so, and the name still links to the legend from the document's
+            <code>&lt;map-head&gt;</code>.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-MapLibre</h2>
+        <div class="example-map">
+          <iframe src="maplibre/" title="Queryable fire danger forecast in Canada Lambert, from remote MapML, rendered by MapML-MapLibre" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            Remote MapML is XHTML, so the bare <code>checked</code> and
+            <code>selected</code> attributes of the inline version are written
+            <code>checked="checked"</code> and <code>selected="selected"</code>: the same
+            declarations, spelled the way an XML parser requires.
+          </p>
+        </div>
+      </article>
+
+      <article class="example">
+        <h2>MapML-OpenLayers</h2>
+        <div class="example-map">
+          <iframe src="ol/" title="Queryable fire danger forecast in Canada Lambert, from remote MapML, rendered by MapML-OpenLayers" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="example-description">
+          <p>
+            The query link arrives in the layer's shadow root with the rest of the document
+            and still answers the keyboard and the pointer: a fetched
+            <code>&lt;map-extent&gt;</code> is as queryable as an inline one.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="experiment-footer">
+      <h2>Trying it</h2>
+      <p>
+        As in the <a href="../../inline/cbmtile/">inline version</a>: Tab to a map, press
+        <kbd>Enter</kbd> or <kbd>Space</kbd> to query its centre, and focus moves to the
+        popup; <kbd>Escape</kbd> returns it to the map. All three send the service the same
+        <code>GetMap</code> and <code>GetFeatureInfo</code> requests as they do inline.
+      </p>
+      <p>
+        The basemap layer is still inline and <code>hidden</code>, so the layer control lists
+        only the remote layer. Each frame fetches its own copy of
+        <code>fire-danger.mapml</code>, so that <em>View code</em> and <em>Open full
+        page</em> show a self-contained example; the three copies are identical.
+      </p>
+    </footer>
+  </body>
+</html>

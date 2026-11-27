@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Fire danger queries, remote, CBMTILE — MapML-MapLibre</title>
+    <script src="../../../../../templates/experiment.js" data-impl="maplibre"></script>
+  </head>
+  <body class="full-page">
+    <main class="example">
+      <h1 class="visually-hidden">Queryable fire danger forecast in Canada Lambert, from remote MapML, rendered by MapML-MapLibre</h1>
+      <div class="example-map">
+        <!-- code -->
+        <mapml-viewer projection="CBMTILE" zoom="2" lat="55" lon="-95" controls controlslist="static" static>
+          <map-caption>Fire danger forecast for Canada, date unspecified</map-caption>
+          <map-layer label="Canada Base Map - Transportation" checked hidden>
+            <map-extent checked units="CBMTILE">
+              <map-meta name="extent" content="top-left-easting=-5388605, top-left-northing=7005413, bottom-right-easting=3895643, bottom-right-northing=-4427255"></map-meta>
+              <map-link rel="license" href="https://open.canada.ca/en/open-government-licence-canada" title="Open Government Licence - Canada"></map-link>
+              <map-input name="z" type="zoom" min="0" max="17" value="17"></map-input>
+              <map-input name="y" type="location" units="tilematrix" axis="row"></map-input>
+              <map-input name="x" type="location" units="tilematrix" axis="column"></map-input>
+              <map-link rel="tile" tref="https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT3978/MapServer/tile/{z}/{y}/{x}?m4h=t"></map-link>
+            </map-extent>
+          </map-layer>
+          <map-layer src="fire-danger.mapml" checked></map-layer>
+        </mapml-viewer>
+        <!-- /code -->
+      </div>
+    </main>
+  </body>
+</html>
