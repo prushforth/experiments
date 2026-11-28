@@ -42,7 +42,7 @@
       "id": "archsites-labels",
       "type": "symbol",
       "source-layer": "archsites",
-      "filter": ["!=", ["get", "str1"], "no name"],
+      "filter": ["!=", ["downcase", ["get", "str1"]], "no name"],
       "layout": {
         "text-field": ["get", "str1"],
         "text-font": ["Noto Sans Regular"],
